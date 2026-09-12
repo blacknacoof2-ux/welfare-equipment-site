@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { categories, getCategoryBySlug } from '@/lib/categories';
+import { categories, getCategoryBySlug } from '@/lib/all-categories';
 import { getCopays, getPriceSuffix, publishedProducts } from '@/lib/products';
 
 const formatter = new Intl.NumberFormat('ko-KR');
