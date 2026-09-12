@@ -19,6 +19,14 @@ export function validateProductCatalog(products: Product[]) {
       throw new Error(`Invalid benefit price: ${product.slug}`);
     }
 
+    if (product.rentalMonthlyPrice !== undefined && (!Number.isFinite(product.rentalMonthlyPrice) || product.rentalMonthlyPrice <= 0)) {
+      throw new Error(`Invalid rental monthly price: ${product.slug}`);
+    }
+
+    if (product.benefitMode === 'PURCHASE_OR_RENTAL' && product.rentalMonthlyPrice === undefined) {
+      throw new Error(`PURCHASE_OR_RENTAL product requires rentalMonthlyPrice: ${product.slug}`);
+    }
+
     if (!/^\d{4}-\d{2}-\d{2}$/.test(product.sourceCheckedAt)) {
       throw new Error(`Invalid sourceCheckedAt: ${product.slug}`);
     }
