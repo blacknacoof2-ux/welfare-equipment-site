@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import { categories } from '@/lib/categories';
 import { getCopays, publishedProducts } from '@/lib/products';
 
 const formatter = new Intl.NumberFormat('ko-KR');
@@ -25,7 +26,15 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   if (!product) notFound();
 
   const copays = getCopays(product.benefitPrice);
-  const jsonLd = {
+  const category = categories.find((item) => item.name === product.category);
+  const relatedProducts = publishedProducts.filter(
+    (item) => item.category === product.category && item.slug !== product.slug,
+  ).slice(0, 4);
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
+  const categoryUrl = category ? `${baseUrl}/categories/${category.slug}` : `${baseUrl}/products`;
+  const productUrl = `${baseUrl}/products/${product.slug}`;
+
+  const productLd = {
     '@context': 'https://schema.org',
     '@type': 'Product',
     name: product.name,
@@ -34,12 +43,36 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
     category: product.category,
     description: product.description,
     sku: product.benefitCode,
+    url: productUrl,
+    additionalProperty: [
+      { '@type': 'PropertyValue', name: '급여코드', value: product.benefitCode },
+      { '@type': 'PropertyValue', name: '급여가격', value: `${product.benefitPrice} KRW` },
+      { '@type': 'PropertyValue', name: '15% 본인부담금', value: `${copays.copay15} KRW` },
+      { '@type': 'PropertyValue', name: '9% 본인부담금', value: `${copays.copay9} KRW` },
+      { '@type': 'PropertyValue', name: '6% 본인부담금', value: `${copays.copay6} KRW` },
+    ],
     ...(product.imageUrl && product.imageRightsConfirmed ? { image: [product.imageUrl] } : {}),
+  };
+
+  const breadcrumbLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: '홈', item: baseUrl },
+      { '@type': 'ListItem', position: 2, name: product.category, item: categoryUrl },
+      { '@type': 'ListItem', position: 3, name: product.name, item: productUrl },
+    ],
   };
 
   return (
     <section className="section">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
+
+      <nav aria-label="breadcrumb" className="muted" style={{ marginBottom: 16 }}>
+        <a href="/">홈</a> · {category ? <a href={`/categories/${category.slug}`}>{product.category}</a> : <a href="/products">복지용구</a>} · <span>{product.name}</span>
+      </nav>
+
       <p className="eyebrow">{product.category}</p>
       <h1>{product.name} <span className="muted">{product.model}</span></h1>
       <p>{product.description}</p>
@@ -72,13 +105,30 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             <tr><th>급여코드</th><td>{product.benefitCode}</td></tr>
             {product.material && <tr><th>재질</th><td>{product.material}</td></tr>}
             {product.dimensions && <tr><th>규격</th><td>{product.dimensions}</td></tr>}
-            {product.weightKg && <tr><th>중량</th><td>{product.weightKg}kg</td></tr>}
+            {product.weightKg !== undefined && <tr><th>중량</th><td>{product.weightKg}kg</td></tr>}
             {product.purchaseCycleYears && <tr><th>구매 기준</th><td>{product.purchaseCycleYears}년 / 최대 {product.maxQuantityPerCycle ?? '-'}개</td></tr>}
             <tr><th>유통상태</th><td><strong>정상 유통 확인</strong></td></tr>
             <tr><th>최종 확인일</th><td>{product.sourceCheckedAt}</td></tr>
           </tbody>
         </table>
       </div>
+
+      {relatedProducts.length > 0 && (
+        <div className="content-card" style={{ marginTop: 20 }}>
+          <h2>같은 {product.category} 제품 비교</h2>
+          <ul>
+            {relatedProducts.map((item) => {
+              const relatedCopays = getCopays(item.benefitPrice);
+              return (
+                <li key={item.slug} style={{ marginBottom: 10 }}>
+                  <a href={`/products/${item.slug}`}><strong>{item.name}</strong></a>
+                  <span className="muted"> · 본인부담금 6% {formatter.format(relatedCopays.copay6)}원부터</span>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      )}
 
       <div className="content-card" style={{ marginTop: 20 }}>
         <h2>검증 기록</h2>
