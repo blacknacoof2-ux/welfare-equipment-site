@@ -1,6 +1,6 @@
 import CopayCalculator from '@/components/CopayCalculator';
 import { categories } from '@/lib/categories';
-import { getCopays, publishedProducts } from '@/lib/products';
+import { getCopays, getPriceSuffix, publishedProducts } from '@/lib/products';
 
 const formatter = new Intl.NumberFormat('ko-KR');
 
@@ -86,13 +86,14 @@ export default function HomePage() {
         <div className="product-list">
           {featuredProducts.map((product) => {
             const copays = getCopays(product.benefitPrice);
+            const suffix = getPriceSuffix(product);
             return (
               <a className="content-card" href={`/products/${product.slug}`} key={product.slug}>
                 <small>{product.category}</small>
                 <h2>{product.name}</h2>
                 <p>{product.manufacturer}</p>
-                <strong>본인부담금 {formatter.format(copays.copay6)}원부터</strong>
-                <p className="muted">15% {formatter.format(copays.copay15)}원 · 9% {formatter.format(copays.copay9)}원 · 6% {formatter.format(copays.copay6)}원</p>
+                <strong>본인부담금 {formatter.format(copays.copay6)}원{suffix}부터</strong>
+                <p className="muted">15% {formatter.format(copays.copay15)}원{suffix} · 9% {formatter.format(copays.copay9)}원{suffix} · 6% {formatter.format(copays.copay6)}원{suffix}</p>
               </a>
             );
           })}
