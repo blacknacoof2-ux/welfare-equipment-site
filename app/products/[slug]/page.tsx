@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { categories } from '@/lib/categories';
+import { categories } from '@/lib/all-categories';
 import {
   getBenefitMode,
   getCopays,
