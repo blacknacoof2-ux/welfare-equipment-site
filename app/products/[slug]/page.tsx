@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import { ProductGallery, ProductImage } from '@/components/ProductMedia';
 import { categories } from '@/lib/all-categories';
 import {
   getBenefitMode,
@@ -41,7 +42,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   const relatedProducts = publishedProducts.filter(
     (item) => item.category === product.category && item.slug !== product.slug,
   ).slice(0, 4);
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:5000';
   const categoryUrl = category ? `${baseUrl}/categories/${category.slug}` : `${baseUrl}/products`;
   const productUrl = `${baseUrl}/products/${product.slug}`;
 
@@ -62,6 +63,10 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
     );
   }
 
+  const structuredImages = product.imageRightsConfirmed
+    ? Array.from(new Set([...(product.imageUrls ?? []), ...(product.imageUrl ? [product.imageUrl] : [])]))
+    : [];
+
   const productLd = {
     '@context': 'https://schema.org',
     '@type': 'Product',
@@ -73,7 +78,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
     sku: product.benefitCode,
     url: productUrl,
     additionalProperty,
-    ...(product.imageUrl && product.imageRightsConfirmed ? { image: [product.imageUrl] } : {}),
+    ...(structuredImages.length > 0 ? { image: structuredImages } : {}),
   };
 
   const breadcrumbLd = {
@@ -95,17 +100,26 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
         <a href="/">홈</a> · {category ? <a href={`/categories/${category.slug}`}>{product.category}</a> : <a href="/products">복지용구</a>} · <span>{product.name}</span>
       </nav>
 
-      <p className="eyebrow">{product.category}</p>
-      <h1>{product.name} <span className="muted">{product.model}</span></h1>
-      <p>{product.description}</p>
-
-      {!product.imageRightsConfirmed && (
-        <div className="empty-state" style={{ marginTop: 20 }}>
-          제품 이미지는 제조사·공급사의 사용 허가 자료 확인 후 등록합니다. 제품 식별이 끝난 타사 상세페이지 이미지를 무단 복제하지 않습니다.
+      <div className="product-detail-hero">
+        <ProductGallery product={product} />
+        <div className="product-detail-copy">
+          <p className="eyebrow">{product.category}</p>
+          <h1>{product.name} <span className="muted">{product.model}</span></h1>
+          <p>{product.description}</p>
+          <div className="product-price-highlight">
+            <span>본인부담금 6%부터</span>
+            <strong>{formatter.format(copays.copay6)}원{priceSuffix}</strong>
+            <small>9% {formatter.format(copays.copay9)}원{priceSuffix} · 15% {formatter.format(copays.copay15)}원{priceSuffix}</small>
+          </div>
+          <div className="product-quick-info">
+            <span>급여코드 <strong>{product.benefitCode}</strong></span>
+            <span>제조·공급사 <strong>{product.manufacturer}</strong></span>
+            <span>유통상태 <strong>정상 유통 확인</strong></span>
+          </div>
         </div>
-      )}
+      </div>
 
-      <div className="content-card" style={{ marginTop: 20 }}>
+      <div className="content-card" style={{ marginTop: 28 }}>
         <h2>{benefitMode === 'RENTAL' ? '월 대여 본인부담금' : '본인부담금'}</h2>
         <p className="muted">사이트에서는 0%를 제외하고 15%·9%·6% 기준만 표시합니다.</p>
         <table className="price-table">
@@ -152,24 +166,28 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       </div>
 
       {relatedProducts.length > 0 && (
-        <div className="content-card" style={{ marginTop: 20 }}>
+        <div style={{ marginTop: 28 }}>
           <h2>같은 {product.category} 제품 비교</h2>
-          <ul>
+          <div className="product-list">
             {relatedProducts.map((item) => {
               const relatedCopays = getCopays(item.benefitPrice);
               const relatedSuffix = getPriceSuffix(item);
               return (
-                <li key={item.slug} style={{ marginBottom: 10 }}>
-                  <a href={`/products/${item.slug}`}><strong>{item.name}</strong></a>
-                  <span className="muted"> · 본인부담금 6% {formatter.format(relatedCopays.copay6)}원{relatedSuffix}부터</span>
-                </li>
+                <a className="content-card product-card" href={`/products/${item.slug}`} key={item.slug}>
+                  <ProductImage product={item} />
+                  <div className="product-card-body">
+                    <small>{item.manufacturer}</small>
+                    <h2>{item.name}</h2>
+                    <strong>본인부담금 6% {formatter.format(relatedCopays.copay6)}원{relatedSuffix}부터</strong>
+                  </div>
+                </a>
               );
             })}
-          </ul>
+          </div>
         </div>
       )}
 
-      <div className="content-card" style={{ marginTop: 20 }}>
+      <div className="content-card" style={{ marginTop: 28 }}>
         <h2>검증 기록</h2>
         <p className="muted">이로움 유통 상태와 급여코드·급여가격을 서로 다른 출처로 교차 확인한 기록입니다.</p>
         <ul>
