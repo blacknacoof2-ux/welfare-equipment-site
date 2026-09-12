@@ -53,7 +53,12 @@ export type Product = {
   purchaseCycleYears?: number;
   maxQuantityPerCycle?: number;
   imageUrl?: string;
+  imageUrls?: string[];
   imageRightsConfirmed?: boolean;
+  // 로컬 개발 화면에서 제품 식별용으로만 사용합니다.
+  // production에서는 ProductMedia가 자동으로 숨깁니다.
+  referenceImageUrls?: string[];
+  referenceImageSourceUrl?: string;
   verificationSources: VerificationSource[];
 };
 
@@ -91,10 +96,11 @@ export function isPublishable(product: Product) {
 // 1) 이로움 기준 단종 / 비유통 / 품절 / 일시품절은 게시하지 않습니다.
 // 2) 이로움에서 직접 정상유통 확인이 끝나지 않은 제품은 PENDING_EROUM_VERIFICATION으로 보관하고 공개하지 않습니다.
 // 3) 급여코드와 급여가격은 별도 급여 데이터와 교차검증합니다.
-// 4) 제품 이미지는 제조사/공급사로부터 사용권이 확인된 경우에만 imageUrl을 활성화합니다.
-// 5) 사이트 가격 표시는 15% / 9% / 6% 본인부담금만 사용하며 0%는 노출하지 않습니다.
-// 6) 대여품목은 benefitPrice를 월 대여 급여가격으로 저장하고 /월 단위를 표시합니다.
-// 7) 구입·대여 가능 제품은 benefitPrice에 구입가격, rentalMonthlyPrice에 월 대여가격을 저장할 수 있습니다.
+// 4) 제품 이미지는 제조사/공급사로부터 사용권이 확인된 경우에만 imageUrl/imageUrls를 production에서 활성화합니다.
+// 5) referenceImageUrls는 로컬 개발 검수에서만 표시하고 production에서는 자동 차단합니다.
+// 6) 사이트 가격 표시는 15% / 9% / 6% 본인부담금만 사용하며 0%는 노출하지 않습니다.
+// 7) 대여품목은 benefitPrice를 월 대여 급여가격으로 저장하고 /월 단위를 표시합니다.
+// 8) 구입·대여 가능 제품은 benefitPrice에 구입가격, rentalMonthlyPrice에 월 대여가격을 저장할 수 있습니다.
 export const products: Product[] = [
   {
     slug: 'wag02-adult-walker',
@@ -114,6 +120,10 @@ export const products: Product[] = [
     purchaseCycleYears: 5,
     maxQuantityPerCycle: 2,
     imageRightsConfirmed: false,
+    referenceImageUrls: [
+      'https://godomall.speedycdn.net/e9c45f52a146ba8cbf23a3fd8738b016/goods/1000008875/image/detail/1000008875_detail_053.jpg',
+    ],
+    referenceImageSourceUrl: 'https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000008875',
     verificationSources: [
       {
         label: '이로움 정상 유통 검색 결과',
@@ -145,6 +155,10 @@ export const products: Product[] = [
     purchaseCycleYears: 5,
     maxQuantityPerCycle: 2,
     imageRightsConfirmed: false,
+    referenceImageUrls: [
+      'https://cdn.imweb.me/upload/S20250508610aa7396002d/7cbbdf2ee8aeb.jpg',
+    ],
+    referenceImageSourceUrl: 'https://rodem.shop/90/?bmode=view&idx=170537283',
     verificationSources: [
       {
         label: '이로움 정상 유통 검색 결과',
