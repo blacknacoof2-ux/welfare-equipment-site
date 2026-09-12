@@ -1,6 +1,9 @@
 import type { Metadata } from 'next';
+import { validatePublishedProductImages } from '@/lib/validate-published-images';
 import './globals.css';
 import './product-media.css';
+
+validatePublishedProductImages();
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:5000';
 
@@ -39,9 +42,11 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <header className="site-header">
           <a className="brand" href="/">ATOM CARE <span>복지용구</span></a>
           <nav aria-label="주요 메뉴">
+            <a href="/#purchase">구입</a>
+            <a href="/#rental">대여</a>
             <a href="/#categories">품목 찾기</a>
             <a href="/#calculator">본인부담금</a>
-            <a href="/products">제품</a>
+            <a href="/products">전체 제품</a>
             <a href="/guide/copay">급여안내</a>
           </nav>
         </header>
