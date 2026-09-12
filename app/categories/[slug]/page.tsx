@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { categories, getCategoryBySlug } from '@/lib/categories';
-import { getCopays, publishedProducts } from '@/lib/products';
+import { getCopays, getPriceSuffix, publishedProducts } from '@/lib/products';
 
 const formatter = new Intl.NumberFormat('ko-KR');
 
@@ -13,11 +13,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const category = getCategoryBySlug(slug);
   if (!category) return {};
+  const hasProducts = publishedProducts.some((product) => product.category === category.name);
   return {
     title: category.seoTitle,
     description: category.seoDescription,
     keywords: category.keywords,
     alternates: { canonical: `/categories/${category.slug}` },
+    robots: hasProducts ? undefined : { index: false, follow: true },
   };
 }
 
@@ -81,7 +83,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
 
       <div className="content-card" style={{ marginTop: 20 }}>
         <h2>{category.name} 본인부담금 확인 방법</h2>
-        <p className="muted">제품의 급여가격을 기준으로 일반 15%, 감경 9%, 감경 6% 금액을 계산합니다. 이 사이트는 0% 금액은 표시하지 않습니다.</p>
+        <p className="muted">제품의 급여가격 또는 월 대여 급여가격을 기준으로 일반 15%, 감경 9%, 감경 6% 금액을 계산합니다. 이 사이트는 0% 금액은 표시하지 않습니다.</p>
       </div>
 
       <div style={{ marginTop: 32 }}>
@@ -96,14 +98,15 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
         <div className="product-list">
           {products.map((product) => {
             const copays = getCopays(product.benefitPrice);
+            const suffix = getPriceSuffix(product);
             return (
               <a className="content-card" href={`/products/${product.slug}`} key={product.slug}>
                 <small>{product.manufacturer}</small>
                 <h2>{product.name}</h2>
                 <p>{product.material}</p>
                 <p className="muted">{product.dimensions}{product.weightKg !== undefined ? ` · ${product.weightKg}kg` : ''}</p>
-                <strong>본인부담금 {formatter.format(copays.copay6)}원부터</strong>
-                <p className="muted">15% {formatter.format(copays.copay15)}원 · 9% {formatter.format(copays.copay9)}원 · 6% {formatter.format(copays.copay6)}원</p>
+                <strong>본인부담금 {formatter.format(copays.copay6)}원{suffix}부터</strong>
+                <p className="muted">15% {formatter.format(copays.copay15)}원{suffix} · 9% {formatter.format(copays.copay9)}원{suffix} · 6% {formatter.format(copays.copay6)}원{suffix}</p>
               </a>
             );
           })}
