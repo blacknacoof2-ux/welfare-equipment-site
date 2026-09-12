@@ -5,6 +5,7 @@ import { verifiedBatch5 } from './products-batch5';
 import { pendingBatch6 } from './products-batch6-pending';
 import { pendingBathChairs } from './products-batch7-pending-bath';
 import { pendingSafetyHandles } from './products-batch8-pending-safety-handles';
+import { activeCurrentBatch } from './products-batch9-active-current';
 import { validateProductCatalog } from './validate-products';
 
 export type ProductStatus =
@@ -152,6 +153,7 @@ export const products: Product[] = [
   ...verifiedBatch3,
   ...verifiedBatch4,
   ...verifiedBatch5,
+  ...activeCurrentBatch,
   ...pendingBatch6,
   ...pendingBathChairs,
   ...pendingSafetyHandles,
