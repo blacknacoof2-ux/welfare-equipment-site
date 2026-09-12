@@ -1,4 +1,5 @@
 import CopayCalculator from '@/components/CopayCalculator';
+import { ProductImage } from '@/components/ProductMedia';
 import { categories } from '@/lib/all-categories';
 import { getCopays, getPriceSuffix, publishedProducts } from '@/lib/products';
 
@@ -6,7 +7,7 @@ const formatter = new Intl.NumberFormat('ko-KR');
 
 export default function HomePage() {
   const featuredProducts = publishedProducts.slice(0, 6);
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:5000';
   const websiteLd = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
@@ -89,12 +90,15 @@ export default function HomePage() {
             const copays = getCopays(product.benefitPrice);
             const suffix = getPriceSuffix(product);
             return (
-              <a className="content-card" href={`/products/${product.slug}`} key={product.slug}>
-                <small>{product.category}</small>
-                <h2>{product.name}</h2>
-                <p>{product.manufacturer}</p>
-                <strong>본인부담금 {formatter.format(copays.copay6)}원{suffix}부터</strong>
-                <p className="muted">15% {formatter.format(copays.copay15)}원{suffix} · 9% {formatter.format(copays.copay9)}원{suffix} · 6% {formatter.format(copays.copay6)}원{suffix}</p>
+              <a className="content-card product-card" href={`/products/${product.slug}`} key={product.slug}>
+                <ProductImage product={product} />
+                <div className="product-card-body">
+                  <small>{product.category}</small>
+                  <h2>{product.name}</h2>
+                  <p>{product.manufacturer}</p>
+                  <strong>본인부담금 {formatter.format(copays.copay6)}원{suffix}부터</strong>
+                  <p className="muted">15% {formatter.format(copays.copay15)}원{suffix} · 9% {formatter.format(copays.copay9)}원{suffix} · 6% {formatter.format(copays.copay6)}원{suffix}</p>
+                </div>
               </a>
             );
           })}
