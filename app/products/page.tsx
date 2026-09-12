@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { getCopays, publishedProducts } from '@/lib/products';
+import { getCopays, getPriceSuffix, publishedProducts } from '@/lib/products';
 
 export const metadata: Metadata = {
   title: '복지용구 제품 찾기',
@@ -65,14 +65,15 @@ export default async function ProductsPage({
         <div className="product-list">
           {filtered.map((product) => {
             const copays = getCopays(product.benefitPrice);
+            const suffix = getPriceSuffix(product);
             return (
               <a className="content-card" href={`/products/${product.slug}`} key={product.slug}>
                 <small>{product.category}</small>
                 <h2>{product.name}</h2>
                 <p>{product.manufacturer} · {product.model}</p>
                 <p className="muted">급여코드 {product.benefitCode}</p>
-                <strong>본인부담금 {formatter.format(copays.copay6)}원부터</strong>
-                <p className="muted">15% {formatter.format(copays.copay15)}원 · 9% {formatter.format(copays.copay9)}원 · 6% {formatter.format(copays.copay6)}원</p>
+                <strong>본인부담금 {formatter.format(copays.copay6)}원{suffix}부터</strong>
+                <p className="muted">15% {formatter.format(copays.copay15)}원{suffix} · 9% {formatter.format(copays.copay9)}원{suffix} · 6% {formatter.format(copays.copay6)}원{suffix}</p>
               </a>
             );
           })}
