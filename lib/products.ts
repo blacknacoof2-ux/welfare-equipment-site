@@ -14,6 +14,7 @@ import { rampBatch } from './products-batch14-ramps';
 import { newBenefitTypeBatch } from './products-batch15-new-benefit-types';
 import { smallGapBatch } from './products-batch16-small-gaps';
 import { currentSafetyHandleCandidates } from './products-batch17-safety-handles-current';
+import { caneCatalogBatch } from './products-batch18-canes';
 import { validateProductCatalog } from './validate-products';
 
 export type ProductStatus =
@@ -173,6 +174,7 @@ export const products: Product[] = [
   ...newBenefitTypeBatch,
   ...smallGapBatch,
   ...currentSafetyHandleCandidates,
+  ...caneCatalogBatch,
 ];
 
 validateProductCatalog(products);
