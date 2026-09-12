@@ -20,16 +20,8 @@ export const verifiedBatch2: Product[] = [
     maxQuantityPerCycle: 2,
     imageRightsConfirmed: false,
     verificationSources: [
-      {
-        label: '이로움 정상 유통·급여가 확인',
-        url: 'https://eroumcare.com/shop/search.php?ca_id=&itmaker=&itmodel=&page=14&pttag=&q=&qbasic=&qexplan=&qid=&qname=1&qorder=&qsort=&qtag=',
-        checkedAt: '2026-09-12',
-      },
-      {
-        label: '급여코드·가격·규격 교차검증',
-        url: 'https://www.carestore.co.kr/welfare/M06060004003',
-        checkedAt: '2026-09-12',
-      },
+      { label: '이로움 정상 유통·급여가 확인', url: 'https://eroumcare.com/shop/search.php?ca_id=&itmaker=&itmodel=&page=14&pttag=&q=&qbasic=&qexplan=&qid=&qname=1&qorder=&qsort=&qtag=', checkedAt: '2026-09-12' },
+      { label: '급여코드·가격·규격 교차검증', url: 'https://www.carestore.co.kr/welfare/M06060004003', checkedAt: '2026-09-12' },
     ],
   },
   {
@@ -51,16 +43,8 @@ export const verifiedBatch2: Product[] = [
     maxQuantityPerCycle: 2,
     imageRightsConfirmed: false,
     verificationSources: [
-      {
-        label: '이로움 정상 유통·급여가 확인',
-        url: 'https://eroumcare.com/shop/search.php?ca_id=&itmodel=&page=5&q=&qbasic=&qexplan=&qid=&qname=1&qorder=&qsort=&qtag=',
-        checkedAt: '2026-09-12',
-      },
-      {
-        label: '급여코드·가격·규격 교차검증',
-        url: 'https://silvercar114.godomall.com/goods/goods_view.php?goodsNo=1000000541',
-        checkedAt: '2026-09-12',
-      },
+      { label: '이로움 정상 유통·급여가 확인', url: 'https://eroumcare.com/shop/search.php?ca_id=&itmodel=&page=5&q=&qbasic=&qexplan=&qid=&qname=1&qorder=&qsort=&qtag=', checkedAt: '2026-09-12' },
+      { label: '급여코드·가격·유통중 교차검증', url: 'https://www.carestore.co.kr/welfare/M06090217501', checkedAt: '2026-09-12' },
     ],
   },
   {
@@ -82,16 +66,8 @@ export const verifiedBatch2: Product[] = [
     maxQuantityPerCycle: 1,
     imageRightsConfirmed: false,
     verificationSources: [
-      {
-        label: '이로움 정상 유통·급여가 확인',
-        url: 'https://eroumcare.com/shop/search.php',
-        checkedAt: '2026-09-12',
-      },
-      {
-        label: '급여코드·가격·유통중 교차검증',
-        url: 'https://www.carestore.co.kr/welfare/B03180081503',
-        checkedAt: '2026-09-12',
-      },
+      { label: '이로움 정상 유통·급여가 확인', url: 'https://eroumcare.com/shop/search.php', checkedAt: '2026-09-12' },
+      { label: '급여코드·가격·유통중 교차검증', url: 'https://www.carestore.co.kr/welfare/B03180081503', checkedAt: '2026-09-12' },
     ],
   },
   {
@@ -113,16 +89,8 @@ export const verifiedBatch2: Product[] = [
     maxQuantityPerCycle: 1,
     imageRightsConfirmed: false,
     verificationSources: [
-      {
-        label: '이로움 정상 유통·급여가 확인',
-        url: 'https://eroumcare.com/shop/search.php?ca_id=&itmodel=&page=5&q=&qbasic=&qexplan=&qid=&qname=1&qorder=&qsort=&qtag=',
-        checkedAt: '2026-09-12',
-      },
-      {
-        label: '급여코드·가격·유통중 교차검증',
-        url: 'https://www.carestore.co.kr/welfare/B03180025012',
-        checkedAt: '2026-09-12',
-      },
+      { label: '이로움 정상 유통·급여가 확인', url: 'https://eroumcare.com/shop/search.php?ca_id=&itmodel=&page=5&q=&qbasic=&qexplan=&qid=&qname=1&qorder=&qsort=&qtag=', checkedAt: '2026-09-12' },
+      { label: '급여코드·가격·유통중 교차검증', url: 'https://www.carestore.co.kr/welfare/B03180025012', checkedAt: '2026-09-12' },
     ],
   },
   {
@@ -144,16 +112,8 @@ export const verifiedBatch2: Product[] = [
     maxQuantityPerCycle: 10,
     imageRightsConfirmed: false,
     verificationSources: [
-      {
-        label: '이로움 정상 유통·급여가 확인',
-        url: 'https://eroumcare.com/shop/search.php?ca_id=&itmodel=1&page=13&q=&qbasic=1&qexplan=1&qid=1&qname=1&qorder=&qsort=&qtag=1',
-        checkedAt: '2026-09-12',
-      },
-      {
-        label: '급여코드·가격·규격 교차검증',
-        url: 'https://noble-one.com/product/ash-103/1383/display/1/',
-        checkedAt: '2026-09-12',
-      },
+      { label: '이로움 정상 유통·급여가 확인', url: 'https://eroumcare.com/shop/search.php?ca_id=&itmodel=1&page=13&q=&qbasic=1&qexplan=1&qid=1&qname=1&qorder=&qsort=&qtag=1', checkedAt: '2026-09-12' },
+      { label: '급여코드·가격·유통중 교차검증', url: 'https://www.carestore.co.kr/welfare/F18030060004', checkedAt: '2026-09-12' },
     ],
   },
   {
@@ -175,16 +135,8 @@ export const verifiedBatch2: Product[] = [
     maxQuantityPerCycle: 1,
     imageRightsConfirmed: false,
     verificationSources: [
-      {
-        label: '이로움 정상 유통·급여가 확인',
-        url: 'https://eroumcare.com/shop/search.php',
-        checkedAt: '2026-09-12',
-      },
-      {
-        label: '제조사·급여코드·가격 교차검증',
-        url: 'https://amemall.co.kr/product/%EC%9D%B4%EB%8F%99%EB%B3%80%EA%B8%B0-apt-101/416/',
-        checkedAt: '2026-09-12',
-      },
+      { label: '이로움 정상 유통·급여가 확인', url: 'https://eroumcare.com/shop/search.php', checkedAt: '2026-09-12' },
+      { label: '급여코드·가격·유통중 교차검증', url: 'https://www.carestore.co.kr/welfare/T03030060001', checkedAt: '2026-09-12' },
     ],
   },
   {
@@ -206,16 +158,8 @@ export const verifiedBatch2: Product[] = [
     maxQuantityPerCycle: 5,
     imageRightsConfirmed: false,
     verificationSources: [
-      {
-        label: '이로움 정상 유통·급여가·규격 확인',
-        url: 'https://eroumcare.com/shop/search.php',
-        checkedAt: '2026-09-12',
-      },
-      {
-        label: '급여코드·가격 교차검증',
-        url: 'https://noble-one.com/product/da-006/1285',
-        checkedAt: '2026-09-12',
-      },
+      { label: '이로움 정상 유통·급여가·규격 확인', url: 'https://eroumcare.com/shop/search.php', checkedAt: '2026-09-12' },
+      { label: '급여코드·가격·유통중 교차검증', url: 'https://www.carestore.co.kr/welfare/F30031036108', checkedAt: '2026-09-12' },
     ],
   },
 ];
