@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import './product-media.css';
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:5000';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
