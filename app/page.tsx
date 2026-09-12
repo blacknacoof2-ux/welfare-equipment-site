@@ -1,5 +1,5 @@
 import CopayCalculator from '@/components/CopayCalculator';
-import { categories } from '@/lib/categories';
+import { categories } from '@/lib/all-categories';
 import { getCopays, getPriceSuffix, publishedProducts } from '@/lib/products';
 
 const formatter = new Intl.NumberFormat('ko-KR');
@@ -62,6 +62,7 @@ export default function HomePage() {
         <div className="section-heading">
           <p className="eyebrow">CATEGORY</p>
           <h2>필요한 복지용구부터 찾아보세요</h2>
+          <p className="muted">2026년 공단 급여대상 중 현재 제품이 존재하는 주요 구입·대여·구입/대여 품목을 기준으로 구성합니다.</p>
         </div>
         <div className="category-grid">
           {categories.map((category) => {
@@ -70,7 +71,7 @@ export default function HomePage() {
               <a className="category-card" href={`/categories/${category.slug}`} key={category.slug}>
                 <span>{category.name}</span>
                 <p>{category.shortDescription}</p>
-                <b>{count > 0 ? `검증상품 ${count}개 · ` : ''}제품 보기 →</b>
+                <b>{count > 0 ? `검증상품 ${count}개 · ` : '검증 진행중 · '}제품 보기 →</b>
               </a>
             );
           })}
@@ -109,7 +110,7 @@ export default function HomePage() {
         <div>
           <p className="eyebrow">GUIDE</p>
           <h2>급여가격보다 중요한 건 실제 본인부담금입니다</h2>
-          <p>일반 대상자는 15%, 감경 대상자는 9% 또는 6% 기준으로 확인할 수 있습니다. 제품별 급여가격과 함께 실제 부담 수준을 이해하기 쉽게 정리합니다.</p>
+          <p>일반 대상자는 15%, 감경 대상자는 9% 또는 6% 기준으로 확인할 수 있습니다. 제품별 급여가격 또는 월 대여가격과 함께 실제 부담 수준을 이해하기 쉽게 정리합니다.</p>
         </div>
         <a className="button primary" href="/guide/copay">본인부담금 안내 보기</a>
       </section>
