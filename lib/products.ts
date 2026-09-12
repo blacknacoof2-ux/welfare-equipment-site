@@ -1,5 +1,6 @@
 import { verifiedBatch2 } from './products-batch2';
 import { verifiedBatch3 } from './products-batch3';
+import { verifiedBatch4 } from './products-batch4';
 import { validateProductCatalog } from './validate-products';
 
 export type ProductStatus =
@@ -125,6 +126,7 @@ export const products: Product[] = [
   },
   ...verifiedBatch2,
   ...verifiedBatch3,
+  ...verifiedBatch4,
 ];
 
 validateProductCatalog(products);
