@@ -2,6 +2,7 @@ import { verifiedBatch2 } from './products-batch2';
 import { verifiedBatch3 } from './products-batch3';
 import { verifiedBatch4 } from './products-batch4';
 import { verifiedBatch5 } from './products-batch5';
+import { verifiedBatch6 } from './products-batch6';
 import { pendingBatch6 } from './products-batch6-pending';
 import { pendingBathChairs } from './products-batch7-pending-bath';
 import { pendingSafetyHandles } from './products-batch8-pending-safety-handles';
@@ -152,6 +153,7 @@ export const products: Product[] = [
   ...verifiedBatch3,
   ...verifiedBatch4,
   ...verifiedBatch5,
+  ...verifiedBatch6,
   ...pendingBatch6,
   ...pendingBathChairs,
   ...pendingSafetyHandles,
