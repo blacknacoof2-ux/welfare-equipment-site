@@ -64,24 +64,105 @@ export function ProductGallery({ product }: { product: Product }) {
     );
   }
 
+  const detailUrls = urls.slice(1);
+
   return (
     <div className="product-gallery">
       <div className="product-gallery-main">
         <img src={urls[0]} alt={`${product.name} 대표 이미지`} />
       </div>
-      {urls.length > 1 && (
+
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          gap: 12,
+          marginTop: 10,
+          fontSize: 12,
+          color: '#667085',
+        }}
+      >
+        <span>등록 이미지 {urls.length}장</span>
+        {detailUrls.length > 0 && <span>아래에서 상세 이미지를 크게 확인할 수 있습니다.</span>}
+      </div>
+
+      {detailUrls.length > 0 && (
         <div className="product-gallery-thumbs">
-          {urls.slice(1, 6).map((url, index) => (
-            <div className="product-gallery-thumb" key={`${url}-${index}`}>
-              <img src={url} alt={`${product.name} 상세 이미지 ${index + 2}`} loading="lazy" />
-            </div>
+          {detailUrls.slice(0, 8).map((url, index) => (
+            <a className="product-gallery-thumb" href={`#detail-image-${product.slug}-${index + 1}`} key={`${url}-${index}`}>
+              <img src={url} alt={`${product.name} 상세 이미지 미리보기 ${index + 1}`} loading="lazy" />
+            </a>
           ))}
         </div>
       )}
+
       {sourceUrl && (
         <p className="image-note">
           {sourceLabel} · <a href={sourceUrl} target="_blank" rel="noreferrer">제품 출처 확인</a>
         </p>
+      )}
+
+      {detailUrls.length > 0 ? (
+        <section
+          aria-label={`${product.name} 제품 상세 이미지`}
+          style={{
+            marginTop: 28,
+            paddingTop: 22,
+            borderTop: '1px solid #e2e8f0',
+          }}
+        >
+          <div style={{ marginBottom: 14 }}>
+            <strong style={{ display: 'block', fontSize: 22, letterSpacing: '-0.03em' }}>제품 상세 이미지</strong>
+            <span style={{ display: 'block', marginTop: 4, fontSize: 13, color: '#667085' }}>
+              썸네일이 아니라 원본 비율로 크게 표시합니다.
+            </span>
+          </div>
+          <div style={{ display: 'grid', gap: 18 }}>
+            {detailUrls.map((url, index) => (
+              <figure
+                id={`detail-image-${product.slug}-${index + 1}`}
+                key={`${url}-detail-${index}`}
+                style={{
+                  margin: 0,
+                  overflow: 'hidden',
+                  border: '1px solid #e2e8f0',
+                  borderRadius: 18,
+                  background: '#fff',
+                }}
+              >
+                <img
+                  src={url}
+                  alt={`${product.name} ${product.model} 상세 이미지 ${index + 1}`}
+                  loading="lazy"
+                  style={{
+                    display: 'block',
+                    width: '100%',
+                    height: 'auto',
+                    objectFit: 'contain',
+                  }}
+                />
+                <figcaption style={{ padding: '10px 14px', fontSize: 12, color: '#667085' }}>
+                  {product.name} 상세 이미지 {index + 1}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </section>
+      ) : (
+        <div
+          style={{
+            marginTop: 20,
+            padding: 16,
+            borderRadius: 14,
+            background: '#f8fafc',
+            border: '1px dashed #cbd5e1',
+            color: '#667085',
+            fontSize: 13,
+          }}
+        >
+          이 제품은 현재 대표 이미지 1장만 등록되어 있습니다. 제품 공급처의 추가 상세 이미지를 확인해 순차 보강합니다.
+        </div>
       )}
     </div>
   );
