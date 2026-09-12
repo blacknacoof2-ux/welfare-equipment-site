@@ -13,6 +13,7 @@ import { smallRentalCategoryBatch } from './products-batch13-small-rental-catego
 import { rampBatch } from './products-batch14-ramps';
 import { newBenefitTypeBatch } from './products-batch15-new-benefit-types';
 import { smallGapBatch } from './products-batch16-small-gaps';
+import { currentSafetyHandleCandidates } from './products-batch17-safety-handles-current';
 import { validateProductCatalog } from './validate-products';
 
 export type ProductStatus =
@@ -171,6 +172,7 @@ export const products: Product[] = [
   ...rampBatch,
   ...newBenefitTypeBatch,
   ...smallGapBatch,
+  ...currentSafetyHandleCandidates,
 ];
 
 validateProductCatalog(products);
