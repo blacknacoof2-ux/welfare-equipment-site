@@ -40,12 +40,12 @@ if errorlevel 1 (
   )
 )
 
-echo [1/4] Node version:
+echo [1/5] Node version:
 node --version
 call npm --version
 
 echo.
-echo [2/4] Installing/updating project dependencies...
+echo [2/5] Installing/updating project dependencies...
 call npm install
 if errorlevel 1 (
   echo [ERROR] npm install failed.
@@ -54,10 +54,19 @@ if errorlevel 1 (
 )
 
 echo.
-echo [3/4] Starting development server on port 5000...
+echo [3/5] Checking port 5000...
+powershell -NoProfile -ExecutionPolicy Bypass -Command "$p=(Get-NetTCPConnection -LocalPort 5000 -State Listen -ErrorAction SilentlyContinue | Select-Object -First 1 -ExpandProperty OwningProcess); if($p){$proc=Get-Process -Id $p -ErrorAction SilentlyContinue; if($proc -and $proc.ProcessName -eq 'node'){Write-Host ('[INFO] Stopping existing Node server PID ' + $p + ' on port 5000...'); Stop-Process -Id $p -Force; Start-Sleep -Seconds 1}else{Write-Host ('[ERROR] Port 5000 is used by a non-Node process. PID=' + $p); exit 2}}"
+if errorlevel 2 (
+  echo [ERROR] Port 5000 is occupied by another program. Close it manually and try again.
+  pause
+  exit /b 2
+)
+
+echo.
+echo [4/5] Starting development server on port 5000...
 start "Welfare Equipment Site :5000" cmd /k "cd /d ""%~dp0"" && npm run dev:5000"
 
-echo [4/4] Waiting for the server and opening the browser...
+echo [5/5] Waiting for the server and opening the browser...
 timeout /t 6 /nobreak >nul
 start "" "http://localhost:5000"
 
