@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import { ProductImage } from '@/components/ProductMedia';
 import { categories, getCategoryBySlug } from '@/lib/all-categories';
 import { getCopays, getPriceSuffix, publishedProducts } from '@/lib/products';
 
@@ -29,7 +30,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
   if (!category) notFound();
 
   const products = publishedProducts.filter((product) => product.category === category.name);
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:5000';
   const categoryUrl = `${baseUrl}/categories/${category.slug}`;
 
   const breadcrumbLd = {
@@ -100,13 +101,16 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
             const copays = getCopays(product.benefitPrice);
             const suffix = getPriceSuffix(product);
             return (
-              <a className="content-card" href={`/products/${product.slug}`} key={product.slug}>
-                <small>{product.manufacturer}</small>
-                <h2>{product.name}</h2>
-                <p>{product.material}</p>
-                <p className="muted">{product.dimensions}{product.weightKg !== undefined ? ` · ${product.weightKg}kg` : ''}</p>
-                <strong>본인부담금 {formatter.format(copays.copay6)}원{suffix}부터</strong>
-                <p className="muted">15% {formatter.format(copays.copay15)}원{suffix} · 9% {formatter.format(copays.copay9)}원{suffix} · 6% {formatter.format(copays.copay6)}원{suffix}</p>
+              <a className="content-card product-card" href={`/products/${product.slug}`} key={product.slug}>
+                <ProductImage product={product} />
+                <div className="product-card-body">
+                  <small>{product.manufacturer}</small>
+                  <h2>{product.name}</h2>
+                  <p>{product.material}</p>
+                  <p className="muted">{product.dimensions}{product.weightKg !== undefined ? ` · ${product.weightKg}kg` : ''}</p>
+                  <strong>본인부담금 {formatter.format(copays.copay6)}원{suffix}부터</strong>
+                  <p className="muted">15% {formatter.format(copays.copay15)}원{suffix} · 9% {formatter.format(copays.copay9)}원{suffix} · 6% {formatter.format(copays.copay6)}원{suffix}</p>
+                </div>
               </a>
             );
           })}
@@ -126,9 +130,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
 
       <div className="content-card" style={{ marginTop: 32 }}>
         <h2>{category.name} 선택할 때 확인할 4가지</h2>
-        <ol>
-          {category.selectionTips.map((tip) => <li key={tip}>{tip}</li>)}
-        </ol>
+        <ol>{category.selectionTips.map((tip) => <li key={tip}>{tip}</li>)}</ol>
       </div>
 
       <div style={{ marginTop: 32 }}>
@@ -146,13 +148,11 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
 
       <div className="content-card" style={{ marginTop: 32 }}>
         <h2>다른 복지용구도 함께 확인하세요</h2>
-        <p>
-          {categories.filter((item) => item.slug !== category.slug).map((item, index, list) => (
-            <span key={item.slug}>
-              <a href={`/categories/${item.slug}`}>{item.name}</a>{index < list.length - 1 ? ' · ' : ''}
-            </span>
-          ))}
-        </p>
+        <p>{categories.filter((item) => item.slug !== category.slug).map((item, index, list) => (
+          <span key={item.slug}>
+            <a href={`/categories/${item.slug}`}>{item.name}</a>{index < list.length - 1 ? ' · ' : ''}
+          </span>
+        ))}</p>
       </div>
     </section>
   );
