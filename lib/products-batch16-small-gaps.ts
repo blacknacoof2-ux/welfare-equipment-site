@@ -1,6 +1,9 @@
 import type { Product } from './products';
 
 const checkedAt = '2026-09-12';
+const currentNhOfficial =
+  'https://www.nhis.or.kr/lm/lmxsrv/law/lawFullContent.do?SEQ=1603&SEQ_HISTORY=';
+const historicalNotice = 'https://koa.or.kr/bbs/download.php?code=insurance&number=31899';
 
 export const smallGapBatch: Product[] = [
   {
@@ -13,9 +16,9 @@ export const smallGapBatch: Product[] = [
     benefitPrice: 34600,
     benefitMode: 'RENTAL',
     status: 'PENDING_EROUM_VERIFICATION',
-    sourceUrl: 'https://www.data.go.kr/data/15153624/fileData.do?recommendDataYn=Y',
+    sourceUrl: currentNhOfficial,
     sourceCheckedAt: checkedAt,
-    description: '영화의료기 이동욕조 대여 급여제품입니다. 급여코드와 월 대여 급여가격을 확인했으며 이로움 현재 정상 유통 확인 전까지 비공개합니다.',
+    description: '영화의료기 이동욕조 대여 급여제품 후보입니다. 현행 공단 고시의 이동욕조 4개 품목수와 고시 이력의 제품코드·월 대여가격을 대조했으며, 이로움 현재 정상 유통 및 현행 제품표 직접 확인 전까지 비공개합니다.',
     dimensions: '83 × 135 × 83cm',
     weightKg: 3.3,
     purchaseCycleYears: 5,
@@ -23,13 +26,13 @@ export const smallGapBatch: Product[] = [
     imageRightsConfirmed: false,
     verificationSources: [
       {
-        label: '공공데이터포털 복지용구 제품 코드·규격 확인',
-        url: 'https://www.data.go.kr/data/15153624/fileData.do?recommendDataYn=Y',
+        label: 'NHIS 2026-09-01 현행 고시 이동욕조 공식 품목수 확인',
+        url: currentNhOfficial,
         checkedAt,
       },
       {
-        label: '고시 이력 월 대여 급여가격 확인',
-        url: 'https://koa.or.kr/bbs/download.php?code=insurance&number=31899',
+        label: '고시 이력 제품코드·월 대여 급여가격 확인',
+        url: historicalNotice,
         checkedAt,
       },
     ],
@@ -46,19 +49,24 @@ export const smallGapBatch: Product[] = [
     status: 'PENDING_EROUM_VERIFICATION',
     sourceUrl: 'https://www.carestore.co.kr/welfare/C18151060101',
     sourceCheckedAt: checkedAt,
-    description: 'GPS 기반 배회감지기 대여 급여제품입니다. 현행 공식 품목수 대조와 코드·가격 확인을 완료했으며, 이로움 현재 유통 여부 최종 확인 전까지 비공개합니다.',
+    description: 'GPS 기반 배회감지기 대여 급여제품 후보입니다. 현행 공단 고시는 배회감지기 5개를 유지하고 있으며 코드·가격 이력도 확인했습니다. 이로움 현재 유통 여부 최종 확인 전까지 비공개합니다.',
     purchaseCycleYears: 5,
     maxQuantityPerCycle: 1,
     imageRightsConfirmed: false,
     verificationSources: [
       {
-        label: '급여코드·월 대여가격 확인',
+        label: '제품코드·월 대여가격 및 유통상태 참고',
         url: 'https://www.carestore.co.kr/welfare/C18151060101',
         checkedAt,
       },
       {
-        label: '고시 목록 제품코드·가격 교차확인',
-        url: 'https://koa.or.kr/bbs/download.php?code=insurance&number=31899',
+        label: 'NHIS 2026-09-01 현행 고시 배회감지기 공식 품목수 확인',
+        url: currentNhOfficial,
+        checkedAt,
+      },
+      {
+        label: '고시 이력 제품코드·월 대여가격 확인',
+        url: historicalNotice,
         checkedAt,
       },
     ],
@@ -77,21 +85,21 @@ export const smallGapBatch: Product[] = [
     benefitPrice: Number(benefitPrice),
     benefitMode: 'RENTAL' as const,
     status: 'PENDING_EROUM_VERIFICATION' as const,
-    sourceUrl: 'https://www.data.go.kr/data/15153624/fileData.do?recommendDataYn=Y',
+    sourceUrl: currentNhOfficial,
     sourceCheckedAt: checkedAt,
-    description: `${String(name)} 실외용 경사로 대여 급여제품입니다. 공식 제품코드·월 대여가격을 확인했으며 이로움 현재 유통 확인 전까지 비공개합니다.`,
+    description: `${String(name)} 실외용 경사로 대여 급여제품 후보입니다. 현행 공단 고시의 실외용 경사로 5개 품목수와 고시 이력의 제품코드·월 대여가격을 대조했으며 이로움 현재 유통 확인 전까지 비공개합니다.`,
     purchaseCycleYears: 8,
     maxQuantityPerCycle: 1,
     imageRightsConfirmed: false,
     verificationSources: [
       {
-        label: '공단 복지용구 공공데이터 제품코드·가격 확인',
-        url: 'https://www.data.go.kr/data/15153624/fileData.do?recommendDataYn=Y',
+        label: 'NHIS 2026-09-01 현행 고시 실외용 경사로 공식 품목수 확인',
+        url: currentNhOfficial,
         checkedAt,
       },
       {
-        label: '고시 제품목록 코드·가격 교차확인',
-        url: 'https://koa.or.kr/bbs/download.php?code=insurance&number=31899',
+        label: '고시 이력 제품코드·월 대여가격 확인',
+        url: historicalNotice,
         checkedAt,
       },
     ],
