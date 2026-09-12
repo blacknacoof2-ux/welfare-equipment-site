@@ -66,6 +66,21 @@ export const supplementalDetailImageSets: Record<string, SupplementalDetailImage
       'https://joa3817.cafe24.com/joa/img/YGM3.jpg',
     ],
   },
+  'samb-portable-toilet': {
+    sourceLabel: 'SAMB 이동변기 제품 상세 자료',
+    sourceUrl: 'https://ddoga.co.kr/store/product/129348448',
+    urls: [
+      'https://shopby-images.cdn-nhncommerce.com/PARTNER/20260306/PARTNER_10016343/20260306093817ece828aa970f423b9c6881b15c7ee85e/GIjZiUXwWfT-dl9NWyWHjg.jpg',
+    ],
+  },
+  'ds-801a-manual-wheelchair': {
+    sourceLabel: 'DS-801A 기능·규격 상세 자료',
+    sourceUrl: 'https://careshield.kr/169/?idx=1107',
+    urls: [
+      'https://cdn-optimized.imweb.me/upload/S201901205c43e2a37e5fa/11dc9f69e9072.jpg?w=1920',
+      'https://contents.sixshop.com/thumbnails/uploadedFiles/66867/product/image_1756868349129_1000.jpg',
+    ],
+  },
 };
 
 export function getSupplementalDetailImages(slug: string) {
