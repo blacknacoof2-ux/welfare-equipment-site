@@ -7,6 +7,11 @@ import { pendingBatch6 } from './products-batch6-pending';
 import { pendingBathChairs } from './products-batch7-pending-bath';
 import { pendingSafetyHandles } from './products-batch8-pending-safety-handles';
 import { portableToiletBatch } from './products-batch10-portable-toilets';
+import { bedpanBatch } from './products-batch11-bedpans';
+import { bathChairCompleteBatch } from './products-batch12-bath-chairs-complete';
+import { smallRentalCategoryBatch } from './products-batch13-small-rental-categories';
+import { rampBatch } from './products-batch14-ramps';
+import { newBenefitTypeBatch } from './products-batch15-new-benefit-types';
 import { validateProductCatalog } from './validate-products';
 
 export type ProductStatus =
@@ -159,6 +164,11 @@ export const products: Product[] = [
   ...pendingBathChairs,
   ...pendingSafetyHandles,
   ...portableToiletBatch,
+  ...bedpanBatch,
+  ...bathChairCompleteBatch,
+  ...smallRentalCategoryBatch,
+  ...rampBatch,
+  ...newBenefitTypeBatch,
 ];
 
 validateProductCatalog(products);
