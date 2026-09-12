@@ -11,6 +11,8 @@ export type ProductStatus =
   | 'OUT_OF_STOCK'
   | 'TEMP_OUT_OF_STOCK';
 
+export type BenefitMode = 'PURCHASE' | 'RENTAL' | 'PURCHASE_OR_RENTAL';
+
 export type VerificationSource = {
   label: string;
   url: string;
@@ -25,6 +27,8 @@ export type Product = {
   benefitCode: string;
   category: string;
   benefitPrice: number;
+  benefitMode?: BenefitMode;
+  rentalMonthlyPrice?: number;
   status: ProductStatus;
   sourceUrl: string;
   sourceCheckedAt: string;
@@ -53,6 +57,18 @@ export function getCopays(benefitPrice: number) {
   };
 }
 
+export function getBenefitMode(product: Product): BenefitMode {
+  return product.benefitMode ?? 'PURCHASE';
+}
+
+export function getPrimaryPriceLabel(product: Product) {
+  return getBenefitMode(product) === 'RENTAL' ? '월 대여 급여가격' : '급여가격';
+}
+
+export function getPriceSuffix(product: Product) {
+  return getBenefitMode(product) === 'RENTAL' ? '/월' : '';
+}
+
 export function isPublishable(product: Product) {
   return product.status === 'ACTIVE';
 }
@@ -62,6 +78,8 @@ export function isPublishable(product: Product) {
 // 2) 급여코드와 급여가격은 별도 급여 데이터와 교차검증합니다.
 // 3) 제품 이미지는 제조사/공급사로부터 사용권이 확인된 경우에만 imageUrl을 활성화합니다.
 // 4) 사이트 가격 표시는 15% / 9% / 6% 본인부담금만 사용하며 0%는 노출하지 않습니다.
+// 5) 대여품목은 benefitPrice를 월 대여 급여가격으로 저장하고 /월 단위를 표시합니다.
+// 6) 구입·대여 가능 제품은 benefitPrice에 구입가격, rentalMonthlyPrice에 월 대여가격을 저장할 수 있습니다.
 export const products: Product[] = [
   {
     slug: 'wag02-adult-walker',
