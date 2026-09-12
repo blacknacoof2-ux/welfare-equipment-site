@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next';
-import { categories } from '@/lib/categories';
+import { categories } from '@/lib/all-categories';
 import { publishedProducts } from '@/lib/products';
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -14,12 +14,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/compare/wag02-vs-sporty`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
   ];
 
-  const categoryPages: MetadataRoute.Sitemap = categories.map((category) => ({
-    url: `${baseUrl}/categories/${category.slug}`,
-    lastModified: now,
-    changeFrequency: 'weekly',
-    priority: category.slug === 'adult-walker' ? 0.9 : 0.8,
-  }));
+  const categoryPages: MetadataRoute.Sitemap = categories
+    .filter((category) => publishedProducts.some((product) => product.category === category.name))
+    .map((category) => ({
+      url: `${baseUrl}/categories/${category.slug}`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: category.slug === 'adult-walker' ? 0.9 : 0.8,
+    }));
 
   const productPages: MetadataRoute.Sitemap = publishedProducts.map((product) => ({
     url: `${baseUrl}/products/${product.slug}`,
