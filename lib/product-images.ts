@@ -40,8 +40,26 @@ export const productImageSets: Record<string, ProductImageSet> = {
     'https://www.yoyangmart.com/files/images/BOFEEL-10-sang.jpg',
     'https://shopby-images.cdn-nhncommerce.com/PARTNER/20260306/PARTNER_10016343/202603061441333e7659f85b4646308462a7970197a57f/7s4bk242dCMhHpR9a-bG6A.jpg',
   ]),
+  'asc-502-bath-chair': contractImage('ASC-502 제품 이미지', 'https://www.wells.or.kr/520/?idx=451', [
+    'https://cdn.imweb.me/upload/S202203306f891414d0399/a1a56903fa30a.png',
+  ]),
+  'iu-bath-chair': contractImage('IU 목욕의자 제품 이미지', 'https://careshield.kr/47/?idx=285', [
+    'https://cdn.imweb.me/thumbnail/20200910/6f2cfa105bada.jpg',
+  ]),
   'ash-103-safety-handle': contractImage('ASH-103 제품 이미지', 'https://eroumcare.com/shop/search.php', [
     'https://shopby-images.cdn-nhncommerce.com/Mall-No-SFqz/PARTNER/20260226/PARTNER_10016343/202602261806267ec9570ea4874a1fa90aa3ece930c984/8O5MtJ5R5DlqddguUQxzEQ.jpg',
+  ]),
+  'msp-0002-safety-handle': contractImage('MSP-0002 제품 이미지', 'https://www.wells.or.kr/705057299/?idx=2456', [
+    'https://cdn.imweb.me/thumbnail/20221118/93cc76a951b1a.jpg',
+  ]),
+  'dgp-0006-safety-handle': contractImage('DGP-0006 제품 이미지', 'https://maumieum.co.kr/product/%EC%95%88%EC%A0%84%EC%86%90%EC%9E%A1%EC%9D%B4-dgp-0006-%EB%B3%B5%EC%A7%80%EC%9A%A9%EA%B5%AC-%EC%8B%A4%EB%B2%84%EC%9A%A9%ED%92%88/892', [
+    'https://ai.esmplus.com/ninanomall/welfare/safety/sf-dgp0006-01.jpg',
+  ]),
+  'dgp-0002-safety-handle': contractImage('DGP-0002 제품 이미지', 'https://silverwells.kr/50/?idx=3427', [
+    'https://cdn.imweb.me/upload/S202203306f891414d0399/0f68456b57e92.png',
+  ]),
+  'cd-10-safety-handle': contractImage('CD-10 제품 이미지', 'https://caremall.kr/product/detail.html?cate_no=150&display_group=1&product_no=845', [
+    'https://nulchan.co.kr/web/product/extra/big/202501/bf9f0c022dfd4e4d345fa13546064c9d.jpg',
   ]),
   'apt-101-portable-toilet': contractImage('APT-101 제품 이미지', 'https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000300', [
     'https://godomall.speedycdn.net/e9c45f52a146ba8cbf23a3fd8738b016/goods/1000000300/image/detail/1000000300_detail_076.JPG',
