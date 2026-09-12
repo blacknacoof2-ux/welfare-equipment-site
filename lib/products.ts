@@ -2,10 +2,12 @@ import { verifiedBatch2 } from './products-batch2';
 import { verifiedBatch3 } from './products-batch3';
 import { verifiedBatch4 } from './products-batch4';
 import { verifiedBatch5 } from './products-batch5';
+import { pendingBatch6 } from './products-batch6-pending';
 import { validateProductCatalog } from './validate-products';
 
 export type ProductStatus =
   | 'ACTIVE'
+  | 'PENDING_EROUM_VERIFICATION'
   | 'DISCONTINUED'
   | 'NOT_DISTRIBUTED'
   | 'OUT_OF_STOCK'
@@ -75,11 +77,12 @@ export function isPublishable(product: Product) {
 
 // 등록 원칙
 // 1) 이로움 기준 단종 / 비유통 / 품절 / 일시품절은 게시하지 않습니다.
-// 2) 급여코드와 급여가격은 별도 급여 데이터와 교차검증합니다.
-// 3) 제품 이미지는 제조사/공급사로부터 사용권이 확인된 경우에만 imageUrl을 활성화합니다.
-// 4) 사이트 가격 표시는 15% / 9% / 6% 본인부담금만 사용하며 0%는 노출하지 않습니다.
-// 5) 대여품목은 benefitPrice를 월 대여 급여가격으로 저장하고 /월 단위를 표시합니다.
-// 6) 구입·대여 가능 제품은 benefitPrice에 구입가격, rentalMonthlyPrice에 월 대여가격을 저장할 수 있습니다.
+// 2) 이로움에서 직접 정상유통 확인이 끝나지 않은 제품은 PENDING_EROUM_VERIFICATION으로 보관하고 공개하지 않습니다.
+// 3) 급여코드와 급여가격은 별도 급여 데이터와 교차검증합니다.
+// 4) 제품 이미지는 제조사/공급사로부터 사용권이 확인된 경우에만 imageUrl을 활성화합니다.
+// 5) 사이트 가격 표시는 15% / 9% / 6% 본인부담금만 사용하며 0%는 노출하지 않습니다.
+// 6) 대여품목은 benefitPrice를 월 대여 급여가격으로 저장하고 /월 단위를 표시합니다.
+// 7) 구입·대여 가능 제품은 benefitPrice에 구입가격, rentalMonthlyPrice에 월 대여가격을 저장할 수 있습니다.
 export const products: Product[] = [
   {
     slug: 'wag02-adult-walker',
@@ -147,8 +150,12 @@ export const products: Product[] = [
   ...verifiedBatch3,
   ...verifiedBatch4,
   ...verifiedBatch5,
+  ...pendingBatch6,
 ];
 
 validateProductCatalog(products);
 
 export const publishedProducts = products.filter(isPublishable);
+export const pendingEroumVerificationProducts = products.filter(
+  (product) => product.status === 'PENDING_EROUM_VERIFICATION',
+);
