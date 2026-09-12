@@ -1,4 +1,5 @@
 import type { Product } from '@/lib/products';
+import { getSupplementalDetailImages } from '@/lib/product-detail-images';
 import { getAuthorizedProductImages } from '@/lib/product-images';
 
 type ProductImageProps = {
@@ -53,7 +54,12 @@ export function ProductImage({ product, variant = 'card' }: ProductImageProps) {
 }
 
 export function ProductGallery({ product }: { product: Product }) {
-  const { urls, sourceLabel, sourceUrl } = getDisplayImages(product);
+  const primary = getDisplayImages(product);
+  const supplemental = getSupplementalDetailImages(product.slug);
+  const urls = Array.from(new Set([
+    ...primary.urls,
+    ...(supplemental?.urls ?? []),
+  ]));
 
   if (urls.length === 0) {
     return (
@@ -97,9 +103,14 @@ export function ProductGallery({ product }: { product: Product }) {
         </div>
       )}
 
-      {sourceUrl && (
+      {primary.sourceUrl && (
         <p className="image-note">
-          {sourceLabel} · <a href={sourceUrl} target="_blank" rel="noreferrer">제품 출처 확인</a>
+          {primary.sourceLabel} · <a href={primary.sourceUrl} target="_blank" rel="noreferrer">대표 이미지 출처</a>
+        </p>
+      )}
+      {supplemental?.sourceUrl && (
+        <p className="image-note">
+          {supplemental.sourceLabel} · <a href={supplemental.sourceUrl} target="_blank" rel="noreferrer">상세 이미지 출처</a>
         </p>
       )}
 
@@ -115,7 +126,7 @@ export function ProductGallery({ product }: { product: Product }) {
           <div style={{ marginBottom: 14 }}>
             <strong style={{ display: 'block', fontSize: 22, letterSpacing: '-0.03em' }}>제품 상세 이미지</strong>
             <span style={{ display: 'block', marginTop: 4, fontSize: 13, color: '#667085' }}>
-              썸네일이 아니라 원본 비율로 크게 표시합니다.
+              제품 구조·기능·규격 이미지를 원본 비율로 크게 표시합니다.
             </span>
           </div>
           <div style={{ display: 'grid', gap: 18 }}>
@@ -161,7 +172,7 @@ export function ProductGallery({ product }: { product: Product }) {
             fontSize: 13,
           }}
         >
-          이 제품은 현재 대표 이미지 1장만 등록되어 있습니다. 제품 공급처의 추가 상세 이미지를 확인해 순차 보강합니다.
+          이 제품은 현재 대표 이미지 1장만 등록되어 있습니다. 모델이 정확히 일치하는 제품 공급 자료를 확인한 뒤 상세 이미지를 추가합니다.
         </div>
       )}
     </div>
