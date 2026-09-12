@@ -1,4 +1,5 @@
 import type { Product } from './products';
+import { officialCatalogTargets } from './catalog-targets';
 
 function isEroumSource(url: string) {
   return /(^|\.)eroumcare\.com\//i.test(new URL(url).hostname + '/');
@@ -16,8 +17,15 @@ function isBenefitVerificationSource(url: string) {
 export function validateProductCatalog(products: Product[]) {
   const slugs = new Set<string>();
   const benefitCodes = new Set<string>();
+  const categoryCounts = new Map<string, number>();
 
   for (const product of products) {
+    if (!(product.category in officialCatalogTargets)) {
+      throw new Error(`Unknown official welfare category: ${product.category} (${product.slug})`);
+    }
+
+    categoryCounts.set(product.category, (categoryCounts.get(product.category) ?? 0) + 1);
+
     if (slugs.has(product.slug)) {
       throw new Error(`Duplicate product slug: ${product.slug}`);
     }
@@ -63,6 +71,15 @@ export function validateProductCatalog(products: Product[]) {
 
     if (product.imageRightsConfirmed && !product.imageUrl) {
       throw new Error(`Image rights confirmed but imageUrl missing: ${product.slug}`);
+    }
+  }
+
+  for (const [category, count] of categoryCounts) {
+    const officialTarget = officialCatalogTargets[category as keyof typeof officialCatalogTargets];
+    if (count > officialTarget) {
+      throw new Error(
+        `Catalog exceeds official target: ${category} has ${count}, official target ${officialTarget}`,
+      );
     }
   }
 }
