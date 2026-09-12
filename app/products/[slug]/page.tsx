@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import ProductCard from '@/components/ProductCard';
+import ProductDetailContent from '@/components/ProductDetailContent';
 import { ProductGallery } from '@/components/ProductMedia';
 import { categories } from '@/lib/all-categories';
 import { getBenefitModeEmoji, getBenefitModeLabel, getCategoryEmoji } from '@/lib/category-ui';
@@ -129,6 +130,8 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           </div>
         </div>
       </div>
+
+      <ProductDetailContent product={product} />
 
       <div className="content-card" style={{ marginTop: 28 }}>
         <h2>{getBenefitModeEmoji(benefitMode)} {benefitMode === 'RENTAL' ? '월 대여 본인부담금' : '본인부담금'}</h2>
