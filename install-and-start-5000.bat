@@ -42,7 +42,7 @@ if errorlevel 1 (
 
 echo [1/4] Node version:
 node --version
-npm --version
+call npm --version
 
 echo.
 echo [2/4] Installing/updating project dependencies...
