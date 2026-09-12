@@ -1,15 +1,5 @@
 import CopayCalculator from '@/components/CopayCalculator';
-
-const categories = [
-  ['성인용보행기', '보행 안정과 이동을 돕는 대표 복지용구'],
-  ['목욕의자', '욕실 낙상 위험을 줄이는 목욕 보조용품'],
-  ['안전손잡이', '침실·욕실·현관 이동을 돕는 안전용품'],
-  ['이동변기', '거동이 불편한 수급자의 배변 보조용품'],
-  ['미끄럼방지용품', '미끄럼방지매트·액·양말 등'],
-  ['욕창예방방석', '장시간 착석 시 압력 분산을 돕는 용품'],
-  ['욕창예방매트리스', '침상 생활자의 압력 분산을 위한 용품'],
-  ['지팡이', '일상 보행을 보조하는 이동 지원용품'],
-];
+import { categories } from '@/lib/categories';
 
 export default function HomePage() {
   return (
@@ -28,7 +18,7 @@ export default function HomePage() {
           <strong>상품 등록 원칙</strong>
           <ul>
             <li>이로움 정상 유통 상태 확인</li>
-            <li>단종 · 비유통 · 품절 제외</li>
+            <li>단종 · 비유통 · 품절 · 일시품절 제외</li>
             <li>제품명 · 모델 · 급여코드 교차검증</li>
             <li>15% · 9% · 6% 본인부담금 표시</li>
           </ul>
@@ -41,10 +31,10 @@ export default function HomePage() {
           <h2>필요한 복지용구부터 찾아보세요</h2>
         </div>
         <div className="category-grid">
-          {categories.map(([name, description]) => (
-            <a className="category-card" href={`/products?category=${encodeURIComponent(name)}`} key={name}>
-              <span>{name}</span>
-              <p>{description}</p>
+          {categories.map((category) => (
+            <a className="category-card" href={`/categories/${category.slug}`} key={category.slug}>
+              <span>{category.name}</span>
+              <p>{category.shortDescription}</p>
               <b>제품 보기 →</b>
             </a>
           ))}
