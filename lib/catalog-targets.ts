@@ -36,7 +36,7 @@ export const officialCatalogTargets = {
 
 export type OfficialCatalogCategory = keyof typeof officialCatalogTargets;
 
-export const OFFICIAL_CATALOG_TOTAL = Object.values(officialCatalogTargets).reduce(
+export const OFFICIAL_CATALOG_TOTAL = Object.values(officialCatalogTargets).reduce<number>(
   (sum, count) => sum + count,
   0,
 );
