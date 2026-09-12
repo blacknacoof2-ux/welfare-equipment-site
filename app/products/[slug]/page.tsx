@@ -1,7 +1,10 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { ProductGallery, ProductImage } from '@/components/ProductMedia';
+import ProductCard from '@/components/ProductCard';
+import { ProductGallery } from '@/components/ProductMedia';
 import { categories } from '@/lib/all-categories';
+import { getBenefitModeEmoji, getBenefitModeLabel, getCategoryEmoji } from '@/lib/category-ui';
+import { getAuthorizedProductImages } from '@/lib/product-images';
 import {
   getBenefitMode,
   getCopays,
@@ -21,10 +24,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const product = publishedProducts.find((item) => item.slug === slug);
   if (!product) return {};
   const modeText = getBenefitMode(product) === 'RENTAL' ? '월 대여 본인부담금' : '본인부담금';
+  const imageSet = getAuthorizedProductImages(product);
   return {
     title: `${product.name} ${product.model} ${modeText}·급여가격`,
-    description: `${product.name} ${product.model}의 급여가격, 15%·9%·6% 본인부담금, 제조사, 급여코드, 규격과 유통상태를 확인하세요.`,
+    description: `${product.name} ${product.model}의 급여가격, 15%·9%·6% 본인부담금, 제조사, 급여코드, 규격과 제품 이미지를 확인하세요.`,
     alternates: { canonical: `/products/${product.slug}` },
+    openGraph: imageSet?.urls[0] ? { images: [{ url: imageSet.urls[0], alt: `${product.name} ${product.model}` }] } : undefined,
   };
 }
 
@@ -45,9 +50,13 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:5000';
   const categoryUrl = category ? `${baseUrl}/categories/${category.slug}` : `${baseUrl}/products`;
   const productUrl = `${baseUrl}/products/${product.slug}`;
+  const imageSet = getAuthorizedProductImages(product);
+  const structuredImages = imageSet?.urls ?? [];
+  const categoryEmoji = getCategoryEmoji(product.category);
 
   const additionalProperty = [
     { '@type': 'PropertyValue', name: '급여코드', value: product.benefitCode },
+    { '@type': 'PropertyValue', name: '급여방식', value: getBenefitModeLabel(benefitMode) },
     { '@type': 'PropertyValue', name: primaryPriceLabel, value: `${product.benefitPrice} KRW${priceSuffix}` },
     { '@type': 'PropertyValue', name: `15% 본인부담금${priceSuffix}`, value: `${copays.copay15} KRW${priceSuffix}` },
     { '@type': 'PropertyValue', name: `9% 본인부담금${priceSuffix}`, value: `${copays.copay9} KRW${priceSuffix}` },
@@ -62,10 +71,6 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       { '@type': 'PropertyValue', name: '월 대여 6% 본인부담금', value: `${rentalCopays.copay6} KRW/월` },
     );
   }
-
-  const structuredImages = product.imageRightsConfirmed
-    ? Array.from(new Set([...(product.imageUrls ?? []), ...(product.imageUrl ? [product.imageUrl] : [])]))
-    : [];
 
   const productLd = {
     '@context': 'https://schema.org',
@@ -103,15 +108,21 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       <div className="product-detail-hero">
         <ProductGallery product={product} />
         <div className="product-detail-copy">
-          <p className="eyebrow">{product.category}</p>
+          <div className="detail-badges">
+            <span className="category-chip"><span aria-hidden="true">{categoryEmoji}</span>{product.category}</span>
+            <span className={`benefit-mode-badge mode-${benefitMode.toLowerCase()}`}>
+              <span aria-hidden="true">{getBenefitModeEmoji(benefitMode)}</span>{getBenefitModeLabel(benefitMode)}
+            </span>
+          </div>
           <h1>{product.name} <span className="muted">{product.model}</span></h1>
           <p>{product.description}</p>
           <div className="product-price-highlight">
-            <span>본인부담금 6%부터</span>
+            <span>{benefitMode === 'RENTAL' ? '월 본인부담금 6%부터' : '본인부담금 6%부터'}</span>
             <strong>{formatter.format(copays.copay6)}원{priceSuffix}</strong>
             <small>9% {formatter.format(copays.copay9)}원{priceSuffix} · 15% {formatter.format(copays.copay15)}원{priceSuffix}</small>
           </div>
           <div className="product-quick-info">
+            <span>급여방식 <strong>{getBenefitModeLabel(benefitMode)}</strong></span>
             <span>급여코드 <strong>{product.benefitCode}</strong></span>
             <span>제조·공급사 <strong>{product.manufacturer}</strong></span>
             <span>유통상태 <strong>정상 유통 확인</strong></span>
@@ -120,7 +131,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       </div>
 
       <div className="content-card" style={{ marginTop: 28 }}>
-        <h2>{benefitMode === 'RENTAL' ? '월 대여 본인부담금' : '본인부담금'}</h2>
+        <h2>{getBenefitModeEmoji(benefitMode)} {benefitMode === 'RENTAL' ? '월 대여 본인부담금' : '본인부담금'}</h2>
         <p className="muted">사이트에서는 0%를 제외하고 15%·9%·6% 기준만 표시합니다.</p>
         <table className="price-table">
           <tbody>
@@ -134,7 +145,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
       {product.rentalMonthlyPrice && rentalCopays && (
         <div className="content-card" style={{ marginTop: 20 }}>
-          <h2>월 대여 시 본인부담금</h2>
+          <h2>🔁 월 대여 시 본인부담금</h2>
           <table className="price-table">
             <tbody>
               <tr><th>월 대여 급여가격</th><td>{formatter.format(product.rentalMonthlyPrice)}원/월</td></tr>
@@ -147,10 +158,10 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       )}
 
       <div className="content-card" style={{ marginTop: 20 }}>
-        <h2>제품 상세정보</h2>
+        <h2>{categoryEmoji} 제품 상세정보</h2>
         <table className="price-table">
           <tbody>
-            <tr><th>급여방식</th><td>{benefitMode === 'PURCHASE' ? '구입' : benefitMode === 'RENTAL' ? '대여' : '구입 또는 대여'}</td></tr>
+            <tr><th>급여방식</th><td>{getBenefitModeLabel(benefitMode)}</td></tr>
             <tr><th>제조·공급사</th><td>{product.manufacturer}</td></tr>
             <tr><th>모델명</th><td>{product.model}</td></tr>
             <tr><th>급여코드</th><td>{product.benefitCode}</td></tr>
@@ -167,29 +178,16 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
       {relatedProducts.length > 0 && (
         <div style={{ marginTop: 28 }}>
-          <h2>같은 {product.category} 제품 비교</h2>
+          <h2>{categoryEmoji} 같은 {product.category} 제품 비교</h2>
           <div className="product-list">
-            {relatedProducts.map((item) => {
-              const relatedCopays = getCopays(item.benefitPrice);
-              const relatedSuffix = getPriceSuffix(item);
-              return (
-                <a className="content-card product-card" href={`/products/${item.slug}`} key={item.slug}>
-                  <ProductImage product={item} />
-                  <div className="product-card-body">
-                    <small>{item.manufacturer}</small>
-                    <h2>{item.name}</h2>
-                    <strong>본인부담금 6% {formatter.format(relatedCopays.copay6)}원{relatedSuffix}부터</strong>
-                  </div>
-                </a>
-              );
-            })}
+            {relatedProducts.map((item) => <ProductCard product={item} key={item.slug} />)}
           </div>
         </div>
       )}
 
       <div className="content-card" style={{ marginTop: 28 }}>
         <h2>검증 기록</h2>
-        <p className="muted">이로움 유통 상태와 급여코드·급여가격을 서로 다른 출처로 교차 확인한 기록입니다.</p>
+        <p className="muted">유통 상태와 급여코드·급여가격을 교차 확인한 기록입니다.</p>
         <ul>
           {product.verificationSources.map((source) => (
             <li key={source.url} style={{ marginBottom: 10 }}>
