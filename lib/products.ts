@@ -1,5 +1,6 @@
 import { verifiedBatch2 } from './products-batch2';
 import { verifiedBatch3 } from './products-batch3';
+import { validateProductCatalog } from './validate-products';
 
 export type ProductStatus =
   | 'ACTIVE'
@@ -125,5 +126,7 @@ export const products: Product[] = [
   ...verifiedBatch2,
   ...verifiedBatch3,
 ];
+
+validateProductCatalog(products);
 
 export const publishedProducts = products.filter(isPublishable);
