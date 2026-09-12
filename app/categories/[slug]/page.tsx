@@ -64,6 +64,17 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
         </div>
       )}
 
+      {category.slug === 'adult-walker' && products.length >= 2 && (
+        <div className="guide-block" style={{ marginTop: 32 }}>
+          <div>
+            <p className="eyebrow">COMPARE</p>
+            <h2>WAG02와 SPORTY, 어떤 차이가 있을까요?</h2>
+            <p>급여가격·본인부담금·무게·재질·규격을 한 화면에서 비교할 수 있습니다.</p>
+          </div>
+          <a className="button primary" href="/compare/wag02-vs-sporty">두 제품 비교하기</a>
+        </div>
+      )}
+
       <div className="content-card" style={{ marginTop: 32 }}>
         <h2>{category.name} 선택 전 확인할 것</h2>
         <p>가격만 비교하지 말고 사용자의 키와 체형, 실제 사용 장소, 보관 공간, 제품 무게와 접이 방식 등을 함께 확인하세요. 급여코드와 현재 유통 상태가 맞는지도 구매 전 다시 확인하는 것이 좋습니다.</p>
