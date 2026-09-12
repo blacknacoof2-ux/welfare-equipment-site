@@ -1,4 +1,5 @@
 import type { MetadataRoute } from 'next';
+import { categories } from '@/lib/categories';
 import { publishedProducts } from '@/lib/products';
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -11,6 +12,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/guide/copay`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
   ];
 
+  const categoryPages: MetadataRoute.Sitemap = categories.map((category) => ({
+    url: `${baseUrl}/categories/${category.slug}`,
+    lastModified: now,
+    changeFrequency: 'weekly',
+    priority: category.slug === 'adult-walker' ? 0.9 : 0.8,
+  }));
+
   const productPages: MetadataRoute.Sitemap = publishedProducts.map((product) => ({
     url: `${baseUrl}/products/${product.slug}`,
     lastModified: new Date(product.sourceCheckedAt),
@@ -18,5 +26,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  return [...staticPages, ...productPages];
+  return [...staticPages, ...categoryPages, ...productPages];
 }
