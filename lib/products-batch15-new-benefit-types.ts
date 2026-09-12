@@ -9,7 +9,7 @@ export const newBenefitTypeBatch: Product[] = [
     model: 'DCC1WA1A',
     manufacturer: '(주)에스엠디솔루션',
     benefitCode: 'B06121162101',
-    category: '구강세척기',
+    category: '구강세척기(마우스피스형)',
     benefitPrice: 440000,
     status: 'PENDING_EROUM_VERIFICATION',
     sourceUrl: 'https://www.carestore.co.kr/welfare/B06121162101',
