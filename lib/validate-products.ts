@@ -1,5 +1,18 @@
 import type { Product } from './products';
 
+function isEroumSource(url: string) {
+  return /(^|\.)eroumcare\.com\//i.test(new URL(url).hostname + '/');
+}
+
+function isBenefitVerificationSource(url: string) {
+  const hostname = new URL(url).hostname;
+  return (
+    hostname.endsWith('nhis.or.kr') ||
+    hostname.endsWith('longtermcare.or.kr') ||
+    hostname.endsWith('carestore.co.kr')
+  );
+}
+
 export function validateProductCatalog(products: Product[]) {
   const slugs = new Set<string>();
   const benefitCodes = new Set<string>();
@@ -19,7 +32,10 @@ export function validateProductCatalog(products: Product[]) {
       throw new Error(`Invalid benefit price: ${product.slug}`);
     }
 
-    if (product.rentalMonthlyPrice !== undefined && (!Number.isFinite(product.rentalMonthlyPrice) || product.rentalMonthlyPrice <= 0)) {
+    if (
+      product.rentalMonthlyPrice !== undefined &&
+      (!Number.isFinite(product.rentalMonthlyPrice) || product.rentalMonthlyPrice <= 0)
+    ) {
       throw new Error(`Invalid rental monthly price: ${product.slug}`);
     }
 
@@ -31,8 +47,18 @@ export function validateProductCatalog(products: Product[]) {
       throw new Error(`Invalid sourceCheckedAt: ${product.slug}`);
     }
 
-    if (product.status === 'ACTIVE' && product.verificationSources.length < 2) {
-      throw new Error(`ACTIVE product requires at least two verification sources: ${product.slug}`);
+    if (product.status === 'ACTIVE') {
+      if (product.verificationSources.length < 2) {
+        throw new Error(`ACTIVE product requires at least two verification sources: ${product.slug}`);
+      }
+
+      const urls = product.verificationSources.map((source) => source.url);
+      if (!urls.some(isEroumSource)) {
+        throw new Error(`ACTIVE product requires current Eroum verification: ${product.slug}`);
+      }
+      if (!urls.some(isBenefitVerificationSource)) {
+        throw new Error(`ACTIVE product requires benefit-code/price verification: ${product.slug}`);
+      }
     }
 
     if (product.imageRightsConfirmed && !product.imageUrl) {
