@@ -53,9 +53,20 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
     })),
   };
 
+  const faqLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: category.faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+    })),
+  };
+
   return (
     <section className="section">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
       {products.length > 0 && (
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListLd) }} />
       )}
@@ -90,7 +101,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
                 <small>{product.manufacturer}</small>
                 <h2>{product.name}</h2>
                 <p>{product.material}</p>
-                <p className="muted">{product.dimensions}{product.weightKg ? ` · ${product.weightKg}kg` : ''}</p>
+                <p className="muted">{product.dimensions}{product.weightKg !== undefined ? ` · ${product.weightKg}kg` : ''}</p>
                 <strong>본인부담금 {formatter.format(copays.copay6)}원부터</strong>
                 <p className="muted">15% {formatter.format(copays.copay15)}원 · 9% {formatter.format(copays.copay9)}원 · 6% {formatter.format(copays.copay6)}원</p>
               </a>
@@ -111,11 +122,26 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
       )}
 
       <div className="content-card" style={{ marginTop: 32 }}>
-        <h2>{category.name} 선택 전 확인할 것</h2>
-        <p>가격만 비교하지 말고 사용자의 신체 상태, 실제 사용 장소, 보관 공간, 제품 규격과 무게를 함께 확인하세요. 급여코드와 현재 유통 상태가 맞는지도 구매 전 다시 확인하는 것이 좋습니다.</p>
+        <h2>{category.name} 선택할 때 확인할 4가지</h2>
+        <ol>
+          {category.selectionTips.map((tip) => <li key={tip}>{tip}</li>)}
+        </ol>
       </div>
 
-      <div className="content-card" style={{ marginTop: 20 }}>
+      <div style={{ marginTop: 32 }}>
+        <p className="eyebrow">FAQ</p>
+        <h2>{category.name} 자주 묻는 질문</h2>
+        <div className="product-list">
+          {category.faqs.map((faq) => (
+            <div className="content-card" key={faq.question}>
+              <h3>{faq.question}</h3>
+              <p>{faq.answer}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="content-card" style={{ marginTop: 32 }}>
         <h2>다른 복지용구도 함께 확인하세요</h2>
         <p>
           {categories.filter((item) => item.slug !== category.slug).map((item, index, list) => (
