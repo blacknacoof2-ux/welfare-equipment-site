@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { ProductImage } from '@/components/ProductMedia';
 import { getCopays, getPriceSuffix, publishedProducts } from '@/lib/products';
 
 export const metadata: Metadata = {
@@ -22,13 +23,8 @@ export default async function ProductsPage({
     if (!categoryMatches) return false;
     if (!query) return true;
 
-    return [
-      product.name,
-      product.model,
-      product.manufacturer,
-      product.benefitCode,
-      product.category,
-    ].some((value) => value.toLocaleLowerCase('ko-KR').includes(query));
+    return [product.name, product.model, product.manufacturer, product.benefitCode, product.category]
+      .some((value) => value.toLocaleLowerCase('ko-KR').includes(query));
   });
 
   return (
@@ -52,9 +48,7 @@ export default async function ProductsPage({
         </div>
       </form>
 
-      {q && (
-        <p><strong>“{q}” 검색결과 {filtered.length}개</strong></p>
-      )}
+      {q && <p><strong>“{q}” 검색결과 {filtered.length}개</strong></p>}
 
       {filtered.length === 0 ? (
         <div className="empty-state">
@@ -67,13 +61,16 @@ export default async function ProductsPage({
             const copays = getCopays(product.benefitPrice);
             const suffix = getPriceSuffix(product);
             return (
-              <a className="content-card" href={`/products/${product.slug}`} key={product.slug}>
-                <small>{product.category}</small>
-                <h2>{product.name}</h2>
-                <p>{product.manufacturer} · {product.model}</p>
-                <p className="muted">급여코드 {product.benefitCode}</p>
-                <strong>본인부담금 {formatter.format(copays.copay6)}원{suffix}부터</strong>
-                <p className="muted">15% {formatter.format(copays.copay15)}원{suffix} · 9% {formatter.format(copays.copay9)}원{suffix} · 6% {formatter.format(copays.copay6)}원{suffix}</p>
+              <a className="content-card product-card" href={`/products/${product.slug}`} key={product.slug}>
+                <ProductImage product={product} />
+                <div className="product-card-body">
+                  <small>{product.category}</small>
+                  <h2>{product.name}</h2>
+                  <p>{product.manufacturer} · {product.model}</p>
+                  <p className="muted">급여코드 {product.benefitCode}</p>
+                  <strong>본인부담금 {formatter.format(copays.copay6)}원{suffix}부터</strong>
+                  <p className="muted">15% {formatter.format(copays.copay15)}원{suffix} · 9% {formatter.format(copays.copay9)}원{suffix} · 6% {formatter.format(copays.copay6)}원{suffix}</p>
+                </div>
               </a>
             );
           })}
