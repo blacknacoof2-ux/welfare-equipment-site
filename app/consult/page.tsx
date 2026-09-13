@@ -5,8 +5,8 @@ import { getProductMedia } from '@/lib/product-images';
 import { getBenefitMode, getPriceSuffix, publishedProducts } from '@/lib/products';
 
 export const metadata: Metadata = {
-  title: '수급자 맞춤 복지용구 상담·추천',
-  description: '불편한 상황과 사용환경을 입력하면 정상 유통 복지용구를 추천하고 상담 장바구니에 담아 장기요양인정서 확인 상담으로 이어집니다.',
+  title: '수급자 맞춤 복지용구 AI 셋업 추천',
+  description: '수급자 기본정보와 보행·낙상·욕실·화장실·침실 상태를 입력하면 정상 유통 복지용구를 생활공간별 세트로 추천하고 같은 품목 제품도 비교할 수 있습니다.',
   alternates: { canonical: '/consult' },
 };
 
@@ -14,6 +14,7 @@ export default function ConsultPage() {
   const candidates = publishedProducts.map((product) => ({
     slug: product.slug,
     title: getProductDisplayTitle(product),
+    model: product.model,
     manufacturer: product.manufacturer,
     benefitCode: product.benefitCode,
     benefitPrice: product.benefitPrice,
@@ -23,6 +24,7 @@ export default function ConsultPage() {
     imageUrl: getProductMedia(product)?.heroUrl,
     description: product.description,
     dimensions: product.dimensions,
+    material: product.material,
     weightKg: product.weightKg,
   }));
 
