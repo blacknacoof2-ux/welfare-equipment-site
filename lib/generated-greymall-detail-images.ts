@@ -12,3 +12,5 @@ export type GeneratedGreymallDetailImageSet = {
 export const GREYMALL_DETAIL_SYNC_CHECKED_AT = '';
 
 export const generatedGreymallDetailImageSetsBySlug: Record<string, GeneratedGreymallDetailImageSet> = {};
+// Temporary compatibility alias while the generated sync migrates from model-keyed to public-slug-keyed data.
+export const generatedGreymallDetailImageSetsByModel = generatedGreymallDetailImageSetsBySlug;
