@@ -10,7 +10,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: baseUrl, lastModified: now, changeFrequency: 'daily', priority: 1 },
     { url: `${baseUrl}/products`, lastModified: now, changeFrequency: 'daily', priority: 0.9 },
     { url: `${baseUrl}/consult`, lastModified: now, changeFrequency: 'weekly', priority: 0.95 },
-    { url: `${baseUrl}/compare`, lastModified: now, changeFrequency: 'weekly', priority: 0.9 },
     { url: `${baseUrl}/guide/welfare-equipment`, lastModified: now, changeFrequency: 'monthly', priority: 0.9 },
     { url: `${baseUrl}/guide/copay`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/compare/wag02-vs-sporty`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },

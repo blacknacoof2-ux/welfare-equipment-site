@@ -10,42 +10,8 @@ export type ConsultCartItem = {
   imageUrl?: string;
 };
 
-export type RecipientDraft = {
-  recipientName: string;
-  recognitionNumber: string;
-  birthDate: string;
-  careGrade: string;
-  validityStartDate: string;
-};
-
-export type CareConditionDraft = {
-  walkingStatus: string;
-  legStrength: string;
-  sitStand: string;
-  fallRisk: string;
-  bathroomRisk: string;
-  bathingHelp: string;
-  toiletDifficulty: string;
-  threshold: string;
-  bedMobility: string;
-  caregiver: string;
-  place: 'home' | 'outdoor' | 'both';
-  priority: 'fit' | 'light' | 'cost';
-  notes: string;
-};
-
-export type ConsultationDraft = {
-  recipient: RecipientDraft;
-  conditions: CareConditionDraft;
-  needs: string;
-  recommendedSetTitle?: string;
-  recommendedCategories?: string[];
-  savedAt: string;
-};
-
 export const CONSULT_CART_KEY = 'atomcare-consult-cart-v1';
 export const CONSULT_NEEDS_KEY = 'atomcare-consult-needs-v1';
-export const CONSULT_DRAFT_KEY = 'atomcare-consult-draft-v1';
 export const CONSULT_CART_EVENT = 'atomcare-consult-cart-changed';
 
 export function readConsultCart(): ConsultCartItem[] {
@@ -73,26 +39,4 @@ export function addConsultCartItem(item: ConsultCartItem) {
 
 export function removeConsultCartItem(benefitCode: string) {
   writeConsultCart(readConsultCart().filter((item) => item.benefitCode !== benefitCode));
-}
-
-export function writeConsultationDraft(draft: ConsultationDraft) {
-  if (typeof window === 'undefined') return;
-  // 수급자 인정번호·생년월일은 장기 보관하지 않고 현재 탭의 sessionStorage에만 둔다.
-  window.sessionStorage.setItem(CONSULT_DRAFT_KEY, JSON.stringify(draft));
-}
-
-export function readConsultationDraft(): ConsultationDraft | null {
-  if (typeof window === 'undefined') return null;
-  try {
-    const parsed = JSON.parse(window.sessionStorage.getItem(CONSULT_DRAFT_KEY) ?? 'null');
-    if (!parsed || typeof parsed !== 'object') return null;
-    return parsed as ConsultationDraft;
-  } catch {
-    return null;
-  }
-}
-
-export function clearConsultationDraft() {
-  if (typeof window === 'undefined') return;
-  window.sessionStorage.removeItem(CONSULT_DRAFT_KEY);
 }
