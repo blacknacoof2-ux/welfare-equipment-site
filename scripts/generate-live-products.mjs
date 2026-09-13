@@ -67,9 +67,10 @@ function clean(value) {
 }
 
 function toProduct(row, checkedAt) {
-  const material = parseMaterial(row.eroumResultText || '');
-  const dimensions = parseDimensions(row.eroumResultText || '');
-  const weightKg = parseWeightKg(row.eroumResultText || '');
+  const primaryText = row.eroumPrimaryResultText || row.eroumResultText || '';
+  const material = parseMaterial(primaryText);
+  const dimensions = parseDimensions(primaryText);
+  const weightKg = parseWeightKg(primaryText);
   const purchaseCycleYears = parseYears(row.durability || '');
   const maxQuantityPerCycle = parseQuantity(row.benefitLimit || '');
   const suffix = suffixByCategory[row.category] || 'welfare-product';
@@ -117,10 +118,13 @@ const verified = JSON.parse(await fs.readFile(INPUT, 'utf8'));
 const checkedAt = verified.checkedAt || new Date().toISOString().slice(0, 10);
 const rows = verified.products || [];
 
+// Exact benefit-code search may legitimately return the base product plus package,
+// installation, rental or assistive-device variants. verify-eroum-catalog.mjs already
+// resolves those to the first/base product, so any resultCount >= 1 is acceptable here.
 const publishable = rows.filter(
   (row) =>
     row.eroumStatus === 'ACTIVE' &&
-    row.eroumResultCount === 1 &&
+    (row.eroumResultCount ?? 0) >= 1 &&
     row.eroumPriceMatchesCarestore !== false &&
     Boolean(row.eroumImageUrl),
 );
@@ -129,14 +133,14 @@ const excluded = rows.filter((row) => row.eroumStatus !== 'ACTIVE');
 const review = rows.filter(
   (row) =>
     row.eroumStatus === 'ACTIVE' &&
-    (row.eroumResultCount !== 1 || row.eroumPriceMatchesCarestore === false || !row.eroumImageUrl),
+    (row.eroumPriceMatchesCarestore === false || !row.eroumImageUrl || !row.eroumNameMatched),
 );
 
 const products = publishable.map((row) => toProduct(row, checkedAt));
 const exclusionMap = Object.fromEntries(excluded.map((row) => [row.benefitCode, row.eroumStatus]));
 
 const header = `// AUTO-GENERATED from Carestore benefit data + exact benefit-code verification on Eroum.\n// Do not hand-edit individual rows. Curated product data in products.ts overrides matching benefit codes.\nimport type { Product, ProductStatus } from './products';\n\n`;
-const source = `${header}export const GENERATED_CATALOG_CHECKED_AT = ${JSON.stringify(checkedAt)};\n\nexport const generatedLiveProducts: Product[] = ${JSON.stringify(products, null, 2)};\n\nexport const generatedEroumExclusions: Record<string, ProductStatus | 'NOT_FOUND' | 'AMBIGUOUS' | 'ERROR'> = ${JSON.stringify(exclusionMap, null, 2)};\n`;
+const source = `${header}export const GENERATED_CATALOG_CHECKED_AT = ${JSON.stringify(checkedAt)};\n\nexport const generatedLiveProducts: Product[] = ${JSON.stringify(products, null, 2)};\n\nexport const generatedEroumExclusions: Record<string, ProductStatus | 'NOT_FOUND' | 'ERROR'> = ${JSON.stringify(exclusionMap, null, 2)};\n`;
 
 await fs.mkdir(path.dirname(OUTPUT), { recursive: true });
 await fs.writeFile(OUTPUT, source, 'utf8');
