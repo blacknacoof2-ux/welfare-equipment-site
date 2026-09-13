@@ -1,7 +1,76 @@
 import type { Product } from './products';
 
 const checkedAt = '2026-09-12';
+const verifiedCheckedAt = '2026-09-13';
 const carestore = (code: string) => `https://www.carestore.co.kr/welfare/${code}`;
+
+const eroumPage19 =
+  'https://eroumcare.com/shop/search.php?ca_id=&itmodel=1&page=19&q=&qbasic=1&qexplan=1&qid=1&qname=1&qorder=&qsort=&qtag=1';
+const eroumPage20 =
+  'https://eroumcare.com/shop/search.php?ca_id=&itmodel=&page=20&pttag=&q=&qbasic=&qexplan=&qid=&qname=1&qorder=&qsort=&qtag=';
+
+const verifiedCurrent: Record<
+  string,
+  Pick<Product, 'description' | 'material' | 'dimensions' | 'weightKg' | 'sourceUrl' | 'verificationSources'>
+> = {
+  F18030060113: {
+    description: '천연목 손잡이와 아연합금 고정부를 사용하는 41cm 벽부착형 일자 안전손잡이입니다. 실내 이동과 기립 시 손을 짚어 균형을 잡는 용도로 사용합니다.',
+    material: '천연목, 아연합금',
+    dimensions: '41 × 5.5cm / 손잡이직경 3.5cm',
+    weightKg: 0.6,
+    sourceUrl: eroumPage19,
+    verificationSources: [
+      {
+        label: '이로움 현재 정상 유통·급여가·규격 확인',
+        url: eroumPage19,
+        checkedAt: verifiedCheckedAt,
+      },
+      {
+        label: '급여코드·가격·공급업체 교차검증',
+        url: carestore('F18030060113'),
+        checkedAt: verifiedCheckedAt,
+      },
+    ],
+  },
+  F18030045119: {
+    description: '스테인리스와 ABS수지를 사용한 55cm 벽부착형 일자 안전손잡이입니다. 욕실·화장실 등에서 이동과 자세 변경 시 손잡이로 사용할 수 있습니다.',
+    material: '스테인리스, ABS수지',
+    dimensions: '55 × 7.4cm / 손잡이둘레 32Φ',
+    weightKg: 0.69,
+    sourceUrl: eroumPage19,
+    verificationSources: [
+      {
+        label: '이로움 현재 정상 유통·급여가·규격 확인',
+        url: eroumPage19,
+        checkedAt: verifiedCheckedAt,
+      },
+      {
+        label: '급여코드·가격 교차검증',
+        url: carestore('F18030045119'),
+        checkedAt: verifiedCheckedAt,
+      },
+    ],
+  },
+  F18030045118: {
+    description: '스테인리스와 ABS수지를 사용한 50cm 벽부착형 일자 안전손잡이입니다. 욕실·화장실 등에서 기립과 이동 시 안정적인 지지를 돕습니다.',
+    material: '스테인리스, ABS수지',
+    dimensions: '50 × 11cm / 손잡이둘레 32Φ',
+    weightKg: 0.64,
+    sourceUrl: eroumPage20,
+    verificationSources: [
+      {
+        label: '이로움 현재 정상 유통·급여가·규격 확인',
+        url: eroumPage20,
+        checkedAt: verifiedCheckedAt,
+      },
+      {
+        label: '급여코드·가격 교차검증',
+        url: carestore('F18030045118'),
+        checkedAt: verifiedCheckedAt,
+      },
+    ],
+  },
+};
 
 const rows: Array<[string, string, string, number]> = [
   ['에스원', '주식회사 나래', 'F18031141101', 84900],
@@ -106,26 +175,36 @@ const rows: Array<[string, string, string, number]> = [
 ];
 
 export const currentSafetyHandleCandidates: Product[] = rows.map(
-  ([name, manufacturer, benefitCode, benefitPrice]) => ({
-    slug: `${benefitCode.toLowerCase()}-safety-handle`,
-    name,
-    model: name,
-    manufacturer,
-    benefitCode,
-    category: '안전손잡이',
-    benefitPrice,
-    status: 'PENDING_EROUM_VERIFICATION',
-    sourceUrl: carestore(benefitCode),
-    sourceCheckedAt: checkedAt,
-    description: `${name} 안전손잡이 급여제품입니다. 2026-09 케어스토어에서 유통중·급여코드·급여가를 확인했으며, 이로움 현재 정상유통 최종 확인 전까지 사이트에는 공개하지 않습니다.`,
-    maxQuantityPerCycle: 10,
-    imageRightsConfirmed: false,
-    verificationSources: [
-      {
-        label: '2026-09 급여코드·급여가·유통중 교차확인',
-        url: carestore(benefitCode),
-        checkedAt,
-      },
-    ],
-  }),
+  ([name, manufacturer, benefitCode, benefitPrice]) => {
+    const verified = verifiedCurrent[benefitCode];
+
+    return {
+      slug: `${benefitCode.toLowerCase()}-safety-handle`,
+      name,
+      model: name,
+      manufacturer,
+      benefitCode,
+      category: '안전손잡이',
+      benefitPrice,
+      status: verified ? 'ACTIVE' : 'PENDING_EROUM_VERIFICATION',
+      sourceUrl: verified?.sourceUrl ?? carestore(benefitCode),
+      sourceCheckedAt: verified ? verifiedCheckedAt : checkedAt,
+      description:
+        verified?.description ??
+        `${name} 안전손잡이 급여제품입니다. 2026-09 케어스토어에서 유통중·급여코드·급여가를 확인했으며, 이로움 현재 정상유통 최종 확인 전까지 사이트에는 공개하지 않습니다.`,
+      material: verified?.material,
+      dimensions: verified?.dimensions,
+      weightKg: verified?.weightKg,
+      maxQuantityPerCycle: 10,
+      imageRightsConfirmed: false,
+      verificationSources:
+        verified?.verificationSources ?? [
+          {
+            label: '2026-09 급여코드·급여가·유통중 교차확인',
+            url: carestore(benefitCode),
+            checkedAt,
+          },
+        ],
+    } as Product;
+  },
 );
