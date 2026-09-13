@@ -86,6 +86,33 @@ function extractResultText(plain) {
   return plain.slice(0, 2500);
 }
 
+function extractPrimaryResultText(resultText, productName, resultCount) {
+  if (!resultText || !resultCount || resultCount <= 1) return resultText;
+
+  // Exact benefit-code searches sometimes return the ordinary product plus a package,
+  // rental, installation or assistive-device duplicate. Eroum orders the ordinary
+  // product first in these results. When the model name repeats, the second model
+  // occurrence is the cleanest card boundary and prevents a later package status
+  // from contaminating the base product's status.
+  const lower = resultText.toLowerCase();
+  const needle = productName.toLowerCase();
+  const first = lower.indexOf(needle);
+  if (first >= 0) {
+    const second = lower.indexOf(needle, first + needle.length);
+    if (second > first) return resultText.slice(0, second).trim();
+  }
+
+  // Fallback: keep enough of the first result to include its price/status but avoid
+  // most later package cards. This is only used for punctuation/name variants.
+  const priceMatches = [...resultText.matchAll(/[0-9][0-9,]*\s*원\s*급여가/g)];
+  if (priceMatches.length >= 2) {
+    const secondPrice = priceMatches[1].index ?? resultText.length;
+    const boundary = Math.max(0, secondPrice - 220);
+    return resultText.slice(0, boundary).trim();
+  }
+  return resultText;
+}
+
 function parseResultCount(plain) {
   const match = plain.match(/전체분류\s*\((\d+)\)/);
   return match ? Number(match[1]) : null;
@@ -142,13 +169,13 @@ function imageCandidates(html, productName) {
   return unique.slice(0, 12);
 }
 
-function classify(resultCount, resultText) {
+function classify(resultCount, primaryResultText) {
   if (resultCount === 0) return 'NOT_FOUND';
-  if (resultCount !== 1 && resultCount !== null) return 'AMBIGUOUS';
-  if (/단종/.test(resultText)) return 'DISCONTINUED';
-  if (/비유통\s*상품/.test(resultText)) return 'NOT_DISTRIBUTED';
-  if (/일시품절/.test(resultText)) return 'TEMP_OUT_OF_STOCK';
-  if (/품절/.test(resultText)) return 'OUT_OF_STOCK';
+  if (resultCount === null) return 'ERROR';
+  if (/단종/.test(primaryResultText)) return 'DISCONTINUED';
+  if (/비유통\s*상품/.test(primaryResultText)) return 'NOT_DISTRIBUTED';
+  if (/일시품절/.test(primaryResultText)) return 'TEMP_OUT_OF_STOCK';
+  if (/품절/.test(primaryResultText)) return 'OUT_OF_STOCK';
   return 'ACTIVE';
 }
 
@@ -186,10 +213,11 @@ const verified = await mapLimit(inputProducts, 8, async (product) => {
   const plain = htmlToText(html);
   const resultCount = parseResultCount(plain);
   const resultText = extractResultText(plain);
+  const primaryResultText = extractPrimaryResultText(resultText, product.name, resultCount);
   const candidates = imageCandidates(html, product.name);
-  const eroumStatus = classify(resultCount, resultText);
-  const eroumPrice = parsePrice(resultText);
-  const normalizedResult = normalize(resultText);
+  const eroumStatus = classify(resultCount, primaryResultText);
+  const eroumPrice = parsePrice(primaryResultText);
+  const normalizedResult = normalize(primaryResultText);
   const normalizedName = normalize(product.name);
   const nameMatched = normalizedName.length >= 2 && normalizedResult.includes(normalizedName);
 
@@ -211,7 +239,8 @@ const verified = await mapLimit(inputProducts, 8, async (product) => {
       eroumPrice !== null && product.benefitPrice !== null ? eroumPrice === product.benefitPrice : null,
     eroumImageUrl: candidates[0]?.url ?? null,
     eroumImageCandidates: candidates,
-    eroumResultText: resultText.slice(0, 1400),
+    eroumPrimaryResultText: primaryResultText.slice(0, 1400),
+    eroumResultText: resultText.slice(0, 2200),
   };
 });
 
@@ -224,7 +253,7 @@ for (const product of verified) {
   byCategory[product.category] = (byCategory[product.category] ?? 0) + 1;
   if (product.eroumStatus === 'ACTIVE') {
     byCategoryActive[product.category] = (byCategoryActive[product.category] ?? 0) + 1;
-    if (product.eroumResultCount !== 1 || !product.eroumNameMatched || product.eroumPriceMatchesCarestore === false) {
+    if (!product.eroumNameMatched || product.eroumPriceMatchesCarestore === false || !product.eroumImageUrl) {
       issues.push({
         benefitCode: product.benefitCode,
         name: product.name,
@@ -233,6 +262,7 @@ for (const product of verified) {
         eroumNameMatched: product.eroumNameMatched,
         carestorePrice: product.benefitPrice,
         eroumPrice: product.eroumPrice,
+        hasImage: Boolean(product.eroumImageUrl),
         eroumSearchUrl: product.eroumSearchUrl,
       });
     }
