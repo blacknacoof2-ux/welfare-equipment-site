@@ -6,6 +6,7 @@ on:
     paths:
       - 'scripts/sync-carestore-catalog.mjs'
       - 'scripts/verify-eroum-catalog.mjs'
+      - 'scripts/generate-live-products.mjs'
       - '.github/workflows/catalog-snapshot.yml'
   workflow_dispatch:
 
@@ -31,6 +32,9 @@ jobs:
       - name: Verify every catalog product against Eroum
         run: node scripts/verify-eroum-catalog.mjs
 
+      - name: Build generated live product catalog
+        run: node scripts/generate-live-products.mjs
+
       - name: Upload catalog snapshots
         uses: actions/upload-artifact@v4
         with:
@@ -38,4 +42,5 @@ jobs:
           path: |
             artifacts/carestore-catalog.json
             artifacts/eroum-verified-catalog.json
+            artifacts/generated-live-products.ts
           if-no-files-found: error
