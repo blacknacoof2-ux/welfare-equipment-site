@@ -20,7 +20,7 @@ export const catalogProgress = Object.entries(officialCatalogTargets).map(([cate
   ).length;
 
   // ACTIVE/PENDING/유통제외 상태는 현행 공식 목록에 속하는 제품으로 계산합니다.
-  // REMOVED_FROM_BENEFIT_LIST는 과거 기록이므로 현행 723개 커버리지에서는 제외합니다.
+  // REMOVED_FROM_BENEFIT_LIST는 과거 기록이므로 현행 724개 커버리지에서는 제외합니다.
   const accounted = active + pending + excluded;
 
   return {
