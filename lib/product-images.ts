@@ -7,7 +7,7 @@ export type ProductMediaSet = {
   detailUrls: string[];
   sourceLabel: string;
   sourceUrl: string;
-  usageBasis: 'CONTRACT_AUTHORIZED' | 'SUPPLIER_AUTHORIZED' | 'OWNED';
+  usageBasis: 'CONTRACT_AUTHORIZED' | 'SUPPLIER_AUTHORIZED' | 'OWNED' | 'PUBLIC_REFERENCE';
   detailSourceLabel?: string;
   detailSourceUrl?: string;
 };
@@ -32,6 +32,21 @@ const contractMedia = (
   sourceLabel,
   sourceUrl,
   usageBasis: 'CONTRACT_AUTHORIZED',
+});
+
+const publicReferenceMedia = (
+  sourceLabel: string,
+  sourceUrl: string,
+  heroUrl: string,
+  galleryUrls: string[] = [],
+  detailUrls: string[] = [],
+): ProductMediaSet => ({
+  heroUrl,
+  galleryUrls,
+  detailUrls,
+  sourceLabel,
+  sourceUrl,
+  usageBasis: 'PUBLIC_REFERENCE',
 });
 
 const unique = (urls: string[]) => Array.from(new Set(urls.filter(Boolean)));
@@ -237,6 +252,21 @@ export const productMediaSets: Record<string, ProductMediaSet> = {
       'https://gagaon.com/data/editor/2511/afabad899fdcf314d7e5668eda1855c6_1762239539_6711.jpg',
       'https://gagaon.com/data/editor/2511/afabad899fdcf314d7e5668eda1855c6_1762239541_1844.jpg',
     ],
+  ),
+  'f18030060113-safety-handle': publicReferenceMedia(
+    'ASH-120 제품 이미지',
+    'https://ddoga.co.kr/store/product/129347998',
+    'https://shopby-images.cdn-nhncommerce.com/PARTNER/20251218/PARTNER_10016343/202512180941264b24d8b5b9ab4ff2b05a180276e858c1/afZPgIHGjzf6-lDLfu4OWg.png',
+  ),
+  'f18030045119-safety-handle': publicReferenceMedia(
+    'YGC01 제품 이미지',
+    'https://www.wells.or.kr/197/?idx=66',
+    'https://cdn.imweb.me/thumbnail/20241121/d0efe16fd9854.png',
+  ),
+  'f18030045118-safety-handle': publicReferenceMedia(
+    'YGC001 제품 이미지',
+    'https://www.wells.or.kr/705057299/?idx=1421',
+    'https://cdn.imweb.me/thumbnail/20260208/1559d12907726.png',
   ),
 };
 
