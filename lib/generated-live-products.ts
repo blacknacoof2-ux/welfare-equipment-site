@@ -819,6 +819,39 @@ export const generatedLiveProducts: Product[] = [
     ]
   },
   {
+    "slug": "catalog-b06121162101-oral-washer",
+    "name": "DCC1WA1A(코모랄)",
+    "model": "DCC1WA1A(코모랄)",
+    "manufacturer": "(주)에스엠디솔루션",
+    "benefitCode": "B06121162101",
+    "category": "구강세척기(마우스피스형)",
+    "benefitPrice": 440000,
+    "benefitMode": "PURCHASE",
+    "status": "ACTIVE",
+    "sourceUrl": "https://eroumcare.com/shop/search.php?ca_id=&itmaker=&itmodel=&pttag=&q=B06121162101&qbasic=&qexplan=&qid=1&qname=&qorder=&qsort=&qtag=",
+    "sourceCheckedAt": "2026-09-13",
+    "description": "DCC1WA1A(코모랄) 구강세척기(마우스피스형) 장기요양 복지용구 급여제품입니다. 이로움 현재 정상유통과 급여가격을 확인한 제품입니다.",
+    "material": "ABS, PET, 실리콘, TPU",
+    "dimensions": "W41.7XD13XH32.49 cm",
+    "weightKg": 5.5,
+    "purchaseCycleYears": 5,
+    "maxQuantityPerCycle": 1,
+    "imageUrl": "https://eroumcare.com/data/item/1756453294/thumb-6rWs6rCV7IS47LKZ6riw_7L2U66qo656E_400x400.jpg",
+    "imageRightsConfirmed": true,
+    "verificationSources": [
+      {
+        "label": "이로움 급여코드 정확검색 정상유통·급여가 확인",
+        "url": "https://eroumcare.com/shop/search.php?ca_id=&itmaker=&itmodel=&pttag=&q=B06121162101&qbasic=&qexplan=&qid=1&qname=&qorder=&qsort=&qtag=",
+        "checkedAt": "2026-09-13"
+      },
+      {
+        "label": "급여코드·가격·유통정보 교차확인",
+        "url": "https://www.carestore.co.kr/welfare/B06121162101",
+        "checkedAt": "2026-09-13"
+      }
+    ]
+  },
+  {
     "slug": "catalog-b03180001501-bath-chair",
     "name": "라온아띠 KCS-811",
     "model": "라온아띠 KCS-811",
@@ -11233,6 +11266,7 @@ export const generatedEroumExclusions: Record<string, ProductStatus | 'NOT_FOUND
   "F24000088607": "TEMP_OUT_OF_STOCK",
   "F24000088610": "TEMP_OUT_OF_STOCK",
   "F24001007601": "NOT_DISTRIBUTED",
+  "T09091161101": "DISCONTINUED",
   "B03180060002": "DISCONTINUED",
   "B03180060003": "DISCONTINUED",
   "B03180191001": "OUT_OF_STOCK",
