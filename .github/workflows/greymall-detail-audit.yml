@@ -1,0 +1,33 @@
+name: Greymall Detail Image Audit
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/sync-greymall-detail-images.mjs'
+      - '.github/workflows/greymall-detail-audit.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Crawl exact-model Greymall detail images
+        run: node scripts/sync-greymall-detail-images.mjs
+      - name: Upload audit result
+        uses: actions/upload-artifact@v4
+        with:
+          name: greymall-detail-audit
+          path: |
+            artifacts/greymall-detail-images-audit.json
+            lib/generated-greymall-detail-images.ts
+          if-no-files-found: error
