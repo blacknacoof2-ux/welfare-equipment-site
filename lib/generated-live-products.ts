@@ -1,4 +1,4 @@
-// AUTO-GENERATED from Carestore benefit data + exact benefit-code verification on Eroum.
+// AUTO-GENERATED from Carestore/NHIS benefit data + exact benefit-code verification on Eroum.
 // Do not hand-edit individual rows. Curated product data in products.ts overrides matching benefit codes.
 import type { Product, ProductStatus } from './products';
 
