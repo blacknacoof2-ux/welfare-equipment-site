@@ -44,6 +44,18 @@ function normalizeCompact(value = '') {
   return value.normalize('NFKC').toUpperCase().replace(/[^0-9A-Z가-힣]/g, '');
 }
 
+// 일부 그레이몰 상품명은 동일 모델의 로마숫자 III를 숫자 3으로 표기합니다.
+// 예: 사이트 AD-Ⅲ TPU L/V ↔ 그레이몰 AD-3 TPU L/V.
+// AD 계열에 한정해 두 표기를 안전하게 동등 후보로 취급합니다.
+function compactModelAliases(value = '') {
+  const compact = normalizeCompact(value);
+  if (!compact) return [];
+  const aliases = new Set([compact]);
+  if (compact.startsWith('ADIII')) aliases.add(`AD3${compact.slice('ADIII'.length)}`);
+  if (compact.startsWith('AD3')) aliases.add(`ADIII${compact.slice('AD3'.length)}`);
+  return [...aliases];
+}
+
 function normalizeReadable(value = '') {
   return value.normalize('NFKC').toUpperCase().replace(/\s+/g, ' ').trim();
 }
@@ -141,23 +153,33 @@ function shortModelBoundaryMatch(model, title) {
 
 function modelMatchesTitle(product, title) {
   const model = String(product.model ?? '').trim();
-  const compactModel = normalizeCompact(model);
-  const compactTitle = normalizeCompact(title);
-  if (!compactModel || !compactTitle) return false;
-  if (compactModel.length >= 4) return compactTitle.includes(compactModel);
+  const modelAliases = compactModelAliases(model);
+  const titleAliases = compactModelAliases(title);
+  if (!modelAliases.length || !titleAliases.length) return false;
+  if (modelAliases.some((alias) => alias.length >= 4 && titleAliases.some((candidate) => candidate.includes(alias)))) return true;
   return shortModelBoundaryMatch(model, title);
 }
 
-function scoreListingMatch(product, title) {
-  const model = normalizeCompact(product.model);
-  const name = normalizeCompact(product.name);
-  const candidate = normalizeCompact(title);
+function scoreAliasPair(sourceAliases, candidateAliases) {
   let score = 0;
-  if (candidate === model) score += 100;
-  if (name && candidate === name) score += 100;
-  if (candidate.startsWith(model)) score += 50;
-  if (name.length >= 4 && candidate.includes(name)) score += 30;
-  if (candidate.includes(model)) score += 20;
+  for (const source of sourceAliases) {
+    for (const candidate of candidateAliases) {
+      if (candidate === source) score = Math.max(score, 100);
+      if (candidate.startsWith(source)) score = Math.max(score, 50);
+      if (source.length >= 4 && candidate.includes(source)) score = Math.max(score, 30);
+    }
+  }
+  return score;
+}
+
+function scoreListingMatch(product, title) {
+  const modelAliases = compactModelAliases(product.model);
+  const nameAliases = compactModelAliases(product.name);
+  const candidateAliases = compactModelAliases(title);
+  let score = scoreAliasPair(modelAliases, candidateAliases);
+  if (nameAliases.some((name) => candidateAliases.includes(name))) score += 100;
+  if (nameAliases.some((name) => name.length >= 4 && candidateAliases.some((candidate) => candidate.includes(name)))) score += 30;
+  if (modelAliases.some((model) => candidateAliases.some((candidate) => candidate.includes(model)))) score += 20;
   return score;
 }
 
@@ -239,8 +261,13 @@ function extractDetailImages(html) {
   while ((match = cssPattern.exec(segment))) candidates.push(match[2]);
   while ((match = absolutePattern.exec(segment))) candidates.push(match[0]);
 
+  // 구형 그레이몰 editor 경로는 상세영역 밖 스크립트에 포함되는 경우가 있어 전체 HTML에서도 수집합니다.
   const editorPattern = /(?:https?:)?\/\/[^\s"'<>]+\/data\/editor\/goods\/[^\s"'<>]+\.(?:jpe?g|png|webp|gif)(?:\?[^\s"'<>]*)?/gi;
   while ((match = editorPattern.exec(html))) candidates.push(match[0]);
+
+  // 신규 Greymall 상세페이지는 shopimg CDN uploads 경로를 사용하며, DOM 상세영역 밖 데이터에 URL이 실릴 수 있습니다.
+  const shopimgPattern = /(?:https?:)?\/\/cdn\.shopimg\.greyscale\.co\.kr\/uploads\/[^\s"'<>]+\.(?:jpe?g|png|webp|gif)(?:\?[^\s"'<>]*)?/gi;
+  while ((match = shopimgPattern.exec(html))) candidates.push(match[0]);
 
   const urls = [];
   const seen = new Set();
