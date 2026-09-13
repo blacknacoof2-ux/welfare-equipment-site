@@ -17,14 +17,20 @@ function isBenefitVerificationSource(url: string) {
 export function validateProductCatalog(products: Product[]) {
   const slugs = new Set<string>();
   const benefitCodes = new Set<string>();
-  const categoryCounts = new Map<string, number>();
+  const currentCatalogCounts = new Map<string, number>();
 
   for (const product of products) {
     if (!(product.category in officialCatalogTargets)) {
       throw new Error(`Unknown official welfare category: ${product.category} (${product.slug})`);
     }
 
-    categoryCounts.set(product.category, (categoryCounts.get(product.category) ?? 0) + 1);
+    // 과거 원장 보존용 항목은 현행 고시의 공식 제품 수에 포함하지 않습니다.
+    if (product.status !== 'REMOVED_FROM_BENEFIT_LIST') {
+      currentCatalogCounts.set(
+        product.category,
+        (currentCatalogCounts.get(product.category) ?? 0) + 1,
+      );
+    }
 
     if (slugs.has(product.slug)) {
       throw new Error(`Duplicate product slug: ${product.slug}`);
@@ -74,12 +80,15 @@ export function validateProductCatalog(products: Product[]) {
     }
   }
 
-  for (const [category, count] of categoryCounts) {
+  const excesses: string[] = [];
+  for (const [category, count] of currentCatalogCounts) {
     const officialTarget = officialCatalogTargets[category as keyof typeof officialCatalogTargets];
     if (count > officialTarget) {
-      throw new Error(
-        `Catalog exceeds official target: ${category} has ${count}, official target ${officialTarget}`,
-      );
+      excesses.push(`${category} has ${count}, official target ${officialTarget}`);
     }
+  }
+
+  if (excesses.length > 0) {
+    throw new Error(`Catalog exceeds official target: ${excesses.join(' | ')}`);
   }
 }
