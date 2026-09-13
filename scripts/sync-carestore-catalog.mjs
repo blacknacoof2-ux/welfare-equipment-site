@@ -175,19 +175,28 @@ async function mapLimit(items, limit, worker) {
 }
 
 const mainHtml = await fetchText(START);
-const categoryUrls = discoverCategoryUrls(mainHtml);
-if (categoryUrls.length === 0) throw new Error('No Carestore welfare category URLs discovered.');
-console.log(`[catalog-sync] categories=${categoryUrls.length}`);
+const linkedCategoryUrls = discoverCategoryUrls(mainHtml);
+// Carestore's navigation currently exposes the classic categories, while newer or
+// less-used benefit types can exist on sequential item pages without being linked.
+// Probe a bounded range so oral washers, diaper sensors, tag-type wander detectors,
+// manual beds and future adjacent categories are not silently omitted.
+const probedCategoryUrls = Array.from({ length: 30 }, (_, index) => `${START}?item=${101 + index}`);
+const categoryUrls = [...new Set([...linkedCategoryUrls, ...probedCategoryUrls])];
+if (linkedCategoryUrls.length === 0) throw new Error('No Carestore welfare category URLs discovered.');
+console.log(`[catalog-sync] linkedCategories=${linkedCategoryUrls.length} probedCategoryPages=${categoryUrls.length}`);
 
-const categoryPages = await mapLimit(categoryUrls, 6, async (url) => ({ url, html: await fetchText(url) }));
+const categoryPages = await mapLimit(categoryUrls, 8, async (url) => ({ url, html: await fetchText(url) }));
 const productUrlSet = new Set();
+const productiveCategoryUrls = [];
 for (const page of categoryPages) {
   if (!page?.html) continue;
-  for (const url of discoverProductUrls(page.html)) productUrlSet.add(url);
+  const found = discoverProductUrls(page.html);
+  if (found.length > 0) productiveCategoryUrls.push(page.url);
+  for (const url of found) productUrlSet.add(url);
 }
 const productUrls = [...productUrlSet].sort();
 if (productUrls.length < 100) throw new Error(`Too few Carestore product URLs discovered: ${productUrls.length}`);
-console.log(`[catalog-sync] productLinks=${productUrls.length}`);
+console.log(`[catalog-sync] productiveCategoryPages=${productiveCategoryUrls.length} productLinks=${productUrls.length}`);
 
 let completed = 0;
 const parsed = await mapLimit(productUrls, 10, async (url) => {
@@ -217,7 +226,8 @@ for (const product of products) {
 const snapshot = {
   generatedAt: new Date().toISOString(),
   source: START,
-  categoryUrls,
+  linkedCategoryUrls,
+  productiveCategoryUrls,
   totals: {
     discoveredProductLinks: productUrls.length,
     parsedProducts: products.length,
