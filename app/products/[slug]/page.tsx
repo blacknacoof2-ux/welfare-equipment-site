@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const priceSuffix = getPriceSuffix(product);
   const copays = getCopays(product.benefitPrice);
   const media = getProductMedia(product);
-  const description = `${displayTitle}(${product.benefitCode}) ${product.category}. ${product.manufacturer}. ${getPrimaryPriceLabel(product)} ${formatter.format(product.benefitPrice)}원${priceSuffix}, 본인부담금 6% ${formatter.format(copays.copay6)}원${priceSuffix}·9% ${formatter.format(copays.copay9)}원${priceSuffix}·15% ${formatter.format(copays.copay15)}원${priceSuffix}.`;
+  const description = `${displayTitle}(${product.benefitCode}) ${product.category}. ${product.manufacturer}. ${getPrimaryPriceLabel(product)} ${formatter.format(product.benefitPrice)}원${priceSuffix}, 본인부담금 15% ${formatter.format(copays.copay15)}원${priceSuffix}·9% ${formatter.format(copays.copay9)}원${priceSuffix}·6% ${formatter.format(copays.copay6)}원${priceSuffix}.`;
 
   return {
     title: `${displayTitle} ${modeText}·급여가격`,
@@ -146,9 +146,9 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           </h1>
           <p>{product.description}</p>
           <div className="product-price-highlight">
-            <span>{benefitMode === 'RENTAL' ? '월 본인부담금 6%부터' : '본인부담금 6%부터'}</span>
-            <strong>{formatter.format(copays.copay6)}원{priceSuffix}</strong>
-            <small>9% {formatter.format(copays.copay9)}원{priceSuffix} · 15% {formatter.format(copays.copay15)}원{priceSuffix}</small>
+            <span>{benefitMode === 'RENTAL' ? '월 일반 본인부담금 15%' : '일반 본인부담금 15%'}</span>
+            <strong>{formatter.format(copays.copay15)}원{priceSuffix}</strong>
+            <small>감경 9% {formatter.format(copays.copay9)}원{priceSuffix} · 감경 6% {formatter.format(copays.copay6)}원{priceSuffix}</small>
           </div>
           <div className="product-quick-info">
             <span>급여방식 <strong>{getBenefitModeLabel(benefitMode)}</strong></span>
