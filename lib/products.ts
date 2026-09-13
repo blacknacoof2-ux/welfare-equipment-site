@@ -23,7 +23,8 @@ export type ProductStatus =
   | 'DISCONTINUED'
   | 'NOT_DISTRIBUTED'
   | 'OUT_OF_STOCK'
-  | 'TEMP_OUT_OF_STOCK';
+  | 'TEMP_OUT_OF_STOCK'
+  | 'REMOVED_FROM_BENEFIT_LIST';
 
 export type BenefitMode = 'PURCHASE' | 'RENTAL' | 'PURCHASE_OR_RENTAL';
 
@@ -101,6 +102,7 @@ export function isPublishable(product: Product) {
 // 6) 사이트 가격 표시는 15% / 9% / 6% 본인부담금만 사용하며 0%는 노출하지 않습니다.
 // 7) 대여품목은 benefitPrice를 월 대여 급여가격으로 저장하고 /월 단위를 표시합니다.
 // 8) 구입·대여 가능 제품은 benefitPrice에 구입가격, rentalMonthlyPrice에 월 대여가격을 저장할 수 있습니다.
+// 9) 현행 보건복지부 급여목록에서 빠진 과거 제품은 REMOVED_FROM_BENEFIT_LIST로 보존하되 현행 공식 제품 수에는 포함하지 않습니다.
 export const products: Product[] = [
   {
     slug: 'wag02-adult-walker',
