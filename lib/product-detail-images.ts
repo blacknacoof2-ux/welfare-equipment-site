@@ -82,18 +82,25 @@ export const supplementalDetailImageSets: Record<string, SupplementalDetailImage
       'https://ai.esmplus.com/ninanomall/welfare/stick/st-isa-03.jpg',
     ],
   },
-  'ygm3-indoor-ramp': {
-    sourceLabel: 'YGM3 설치방법 상세 자료',
-    sourceUrl: 'https://ddoga.co.kr/store/product/129348587',
-    urls: [
-      'https://joa3817.cafe24.com/joa/img/YGM3.jpg',
-    ],
-  },
   'samb-portable-toilet': {
     sourceLabel: 'SAMB 이동변기 제품 상세 자료',
     sourceUrl: 'https://ddoga.co.kr/store/product/129348448',
     urls: [
       'https://shopby-images.cdn-nhncommerce.com/PARTNER/20260306/PARTNER_10016343/20260306093817ece828aa970f423b9c6881b15c7ee85e/GIjZiUXwWfT-dl9NWyWHjg.jpg',
+    ],
+  },
+  'abp-105-bedpan-urinal': {
+    sourceLabel: 'ABP-105 포함 간이변기 규격 비교표',
+    sourceUrl: 'https://www.greymall.co.kr/intro/sizelist.php',
+    urls: [
+      'https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/skin/front/moment/img/banner/8b3ece2d9a5e8fd675f2e769402b4d60_98269.png',
+    ],
+  },
+  'ygm3-indoor-ramp': {
+    sourceLabel: 'YGM3 설치방법 상세 자료',
+    sourceUrl: 'https://ddoga.co.kr/store/product/129348587',
+    urls: [
+      'https://joa3817.cafe24.com/joa/img/YGM3.jpg',
     ],
   },
   'ds-801a-manual-wheelchair': {
