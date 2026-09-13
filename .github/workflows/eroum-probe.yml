@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'scripts/test-eroum-search.mjs'
+      - 'scripts/test-eroum-fallback.mjs'
       - '.github/workflows/eroum-probe.yml'
   workflow_dispatch:
 
@@ -24,3 +25,5 @@ jobs:
           node-version: 22
       - name: Probe Eroum exact code search
         run: node scripts/test-eroum-search.mjs
+      - name: Probe Eroum model-name fallback search
+        run: node scripts/test-eroum-fallback.mjs
