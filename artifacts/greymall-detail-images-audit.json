@@ -3,11 +3,11 @@
   "source": "https://www.greymall.co.kr",
   "greymallIndexedProducts": 793,
   "totalUniqueModels": 352,
-  "detailImageCount": 677,
+  "detailImageCount": 821,
   "counts": {
-    "NO_DETAIL_IMAGES": 35,
-    "COMPLETE": 235,
-    "NO_GREYMALL_MATCH": 80,
+    "COMPLETE": 265,
+    "NO_GREYMALL_MATCH": 79,
+    "NO_DETAIL_IMAGES": 6,
     "EXCLUDED_UNAVAILABLE": 1,
     "AMBIGUOUS_MATCH": 1
   },
@@ -20,10 +20,13 @@
       "benefitCode": "T03060060101",
       "category": "간이변기",
       "result": {
-        "status": "NO_DETAIL_IMAGES",
+        "status": "COMPLETE",
         "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000173",
         "listingTitle": "ABP-105 (남성용)",
-        "pageTitle": "ABP-105 (남성용)"
+        "pageTitle": "ABP-105 (남성용)",
+        "urls": [
+          "https://cdn.shopimg.greyscale.co.kr/uploads/002/004/ame/ABP-105_251205.jpg"
+        ]
       }
     },
     {
@@ -34,10 +37,13 @@
       "benefitCode": "T03060060102",
       "category": "간이변기",
       "result": {
-        "status": "NO_DETAIL_IMAGES",
+        "status": "COMPLETE",
         "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000174",
         "listingTitle": "ABP-106 (여성용)",
-        "pageTitle": "ABP-106 (여성용)"
+        "pageTitle": "ABP-106 (여성용)",
+        "urls": [
+          "https://cdn.shopimg.greyscale.co.kr/uploads/002/004/ame/ABP-106_251205.jpg"
+        ]
       }
     },
     {
@@ -48,10 +54,13 @@
       "benefitCode": "T03060060001",
       "category": "간이변기",
       "result": {
-        "status": "NO_DETAIL_IMAGES",
+        "status": "COMPLETE",
         "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000172",
         "listingTitle": "ABP-101 (공용)",
-        "pageTitle": "ABP-101 (공용)"
+        "pageTitle": "ABP-101 (공용)",
+        "urls": [
+          "https://cdn.shopimg.greyscale.co.kr/uploads/002/004/ame/ABP-101_251205.png"
+        ]
       }
     },
     {
@@ -178,7 +187,9 @@
           "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/2ccd111d162ba3dcaf0cd89a962ea818_093659.jpg",
           "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221208/ASW-101_02_145146.jpg",
           "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221208/ASW-101_03_145151.jpg",
-          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221208/ASW-101_05_145203.jpg"
+          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221208/ASW-101_05_145203.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/006/ame/ASW-101_01_251208.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/006/ame/ASW-101_04_251208.jpg"
         ]
       }
     },
@@ -196,7 +207,9 @@
         "pageTitle": "ASW-102",
         "urls": [
           "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/2ccd111d162ba3dcaf0cd89a962ea818_093715.jpg",
-          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221208/ASW-102_03_150043.jpg"
+          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221208/ASW-102_03_150043.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/006/ame/ASW-102_01_251208.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/006/ame/ASW-102_02_251208.jpg"
         ]
       }
     },
@@ -214,7 +227,9 @@
         "pageTitle": "ASW-103",
         "urls": [
           "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/2ccd111d162ba3dcaf0cd89a962ea818_093724.jpg",
-          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221208/ASW-103_03_150721.jpg"
+          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221208/ASW-103_03_150721.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/006/ame/ASW-103_01_251208.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/006/ame/ASW-103_02_251208.jpg"
         ]
       }
     },
@@ -232,7 +247,9 @@
         "pageTitle": "ASW-104",
         "urls": [
           "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/2ccd111d162ba3dcaf0cd89a962ea818_093735.jpg",
-          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221208/ASW-104_03_151529.jpg"
+          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221208/ASW-104_03_151529.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/006/ame/ASW-104_01_251208.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/006/ame/ASW-104_02_251208.jpg"
         ]
       }
     },
@@ -442,10 +459,13 @@
       "benefitCode": "B03180060004",
       "category": "목욕의자",
       "result": {
-        "status": "NO_DETAIL_IMAGES",
+        "status": "COMPLETE",
         "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000162",
         "listingTitle": "ASC-502",
-        "pageTitle": "ASC-502"
+        "pageTitle": "ASC-502",
+        "urls": [
+          "https://cdn.shopimg.greyscale.co.kr/uploads/002/001/ame/ASC-502_251205.jpg"
+        ]
       }
     },
     {
@@ -456,10 +476,15 @@
       "benefitCode": "B03180025015",
       "category": "목욕의자",
       "result": {
-        "status": "NO_DETAIL_IMAGES",
+        "status": "COMPLETE",
         "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000008848",
         "listingTitle": "BFSC-112",
-        "pageTitle": "BFSC-112"
+        "pageTitle": "BFSC-112",
+        "urls": [
+          "https://cdn.shopimg.greyscale.co.kr/uploads/002/001/BFSC-112/BFSC-112_01.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/002/001/BFSC-112/BFSF-112_02.gif",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/002/001/BFSC-112/BFSC-112_03_260119.jpg"
+        ]
       }
     },
     {
@@ -869,10 +894,13 @@
       "benefitCode": "F30031151105",
       "category": "미끄럼방지용품",
       "result": {
-        "status": "NO_DETAIL_IMAGES",
+        "status": "COMPLETE",
         "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000008765",
         "listingTitle": "BLS-800 (90.6cm*60.6cm)",
-        "pageTitle": "BLS-800 (90.6cm*60.6cm)"
+        "pageTitle": "BLS-800 (90.6cm*60.6cm)",
+        "urls": [
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/005/BLS-800/BLS-800.jpg"
+        ]
       }
     },
     {
@@ -969,7 +997,8 @@
         "listingTitle": "FHC-VSA02",
         "pageTitle": "FHC-VSA02",
         "urls": [
-          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/1f486de7fa23bc95bf44af4495724e07_093226.jpg"
+          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/1f486de7fa23bc95bf44af4495724e07_093226.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/004/FHC-VSA02/FHC-VSA02_251022.jpg"
         ]
       }
     },
@@ -1401,10 +1430,20 @@
       "benefitCode": "F30031220103",
       "category": "미끄럼방지용품",
       "result": {
-        "status": "NO_DETAIL_IMAGES",
+        "status": "COMPLETE",
         "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000008761",
         "listingTitle": "SKC-03 (97cm*66.7cm)",
-        "pageTitle": "SKC-03 (97cm*66.7cm)"
+        "pageTitle": "SKC-03 (97cm*66.7cm)",
+        "urls": [
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/001/SKC-03/SKC-03-06.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/001/SKC-03/SKC-03-05.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/001/SKC-03/SKC-03-18.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/001/SKC-03/SKC-03-23.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/001/SKC-03/SKC-03-31.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/001/SKC-03/SKC-03-27.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/001/SKC-03/SKC-03-33.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/001/SKC-03/SKC-03-26.jpg"
+        ]
       }
     },
     {
@@ -1727,10 +1766,13 @@
       "benefitCode": "F30091039116",
       "category": "미끄럼방지용품",
       "result": {
-        "status": "NO_DETAIL_IMAGES",
+        "status": "COMPLETE",
         "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000008766",
         "listingTitle": "YH-801",
-        "pageTitle": "YH-801"
+        "pageTitle": "YH-801",
+        "urls": [
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/004/YH-801/YH-801.jpg"
+        ]
       }
     },
     {
@@ -1888,10 +1930,14 @@
       "benefitCode": "M06090158001",
       "category": "성인용보행기",
       "result": {
-        "status": "NO_DETAIL_IMAGES",
+        "status": "COMPLETE",
         "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000008764",
         "listingTitle": "장수(SK-120)",
-        "pageTitle": "장수(SK-120)"
+        "pageTitle": "장수(SK-120)",
+        "urls": [
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/001/SK-120/SK-120_01.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/001/SK-120/SK-120_02.jpg?v=2"
+        ]
       }
     },
     {
@@ -1924,10 +1970,13 @@
       "benefitCode": "M06060060001",
       "category": "성인용보행기",
       "result": {
-        "status": "NO_DETAIL_IMAGES",
+        "status": "COMPLETE",
         "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000213",
         "listingTitle": "AWT-501",
-        "pageTitle": "AWT-501"
+        "pageTitle": "AWT-501",
+        "urls": [
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/001/ame/AWT-501_251205.jpg"
+        ]
       }
     },
     {
@@ -2483,7 +2532,11 @@
         "pageTitle": "케어핸들 - 2",
         "urls": [
           "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/062e0b3633c97b502ebeb0b9c43e3bf1_100457.jpg",
-          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/c8cf59b6ed82998e93ec844d6ac54e38_103439.jpg"
+          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/c8cf59b6ed82998e93ec844d6ac54e38_103439.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/003/carehandle-2/carehandle-2_250522_01.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/003/carehandle-2/carehandle-2_250522_02.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/003/carehandle-2/carehandle-2_250522_03.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/003/carehandle-2/carehandle-2_250522_04.jpg"
         ]
       }
     },
@@ -2501,7 +2554,11 @@
         "pageTitle": "케어핸들 2-G",
         "urls": [
           "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/062e0b3633c97b502ebeb0b9c43e3bf1_100457.jpg",
-          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/c8cf59b6ed82998e93ec844d6ac54e38_103439.jpg"
+          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/c8cf59b6ed82998e93ec844d6ac54e38_103439.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/003/carehandle2-G/carehandle2-G_250522_01.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/003/carehandle2-G/carehandle2-G_250522_02.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/003/carehandle2-G/carehandle2-G_250522_03.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/003/carehandle2-G/carehandle2-G_250522_04.jpg"
         ]
       }
     },
@@ -2519,7 +2576,9 @@
         "pageTitle": "ASH-102 (120cm)",
         "urls": [
           "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/062e0b3633c97b502ebeb0b9c43e3bf1_093950.jpg",
-          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221208/ASH-102_03_164047.jpg"
+          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221208/ASH-102_03_164047.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/003/ame/ASH-102_01_251208.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/003/ame/ASH-102_02_251208.jpg"
         ]
       }
     },
@@ -2537,7 +2596,9 @@
         "pageTitle": "ASH-103 (60cm)",
         "urls": [
           "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/062e0b3633c97b502ebeb0b9c43e3bf1_094001.jpg",
-          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221208/ASH-103_03_165247.jpg"
+          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221208/ASH-103_03_165247.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/003/ame/ASH-103_01_251208.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/003/ame/ASH-103_02_251208.jpg?v=2"
         ]
       }
     },
@@ -2555,7 +2616,9 @@
         "pageTitle": "ASH-104 (41cm)",
         "urls": [
           "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/062e0b3633c97b502ebeb0b9c43e3bf1_094027.jpg",
-          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/ASH-104_03_083144.jpg"
+          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/ASH-104_03_083144.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/003/ame/ASH-104_01_251208.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/003/ame/ASH-104_02_251208.jpg"
         ]
       }
     },
@@ -2573,7 +2636,9 @@
         "pageTitle": "ASH-105 (60cm)",
         "urls": [
           "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/062e0b3633c97b502ebeb0b9c43e3bf1_094050.jpg",
-          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/ASH-105_03_110035.jpg"
+          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/ASH-105_03_110035.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/003/ame/ASH-105_01_251208.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/003/ame/ASH-105_02_251208.jpg?v=2"
         ]
       }
     },
@@ -2591,7 +2656,9 @@
         "pageTitle": "ASH-106 (41cm)",
         "urls": [
           "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/062e0b3633c97b502ebeb0b9c43e3bf1_094103.jpg",
-          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/ASH-106_03_111144.jpg"
+          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/ASH-106_03_111144.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/003/ame/ASH-106_01_251208.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/003/ame/ASH-106_02_251208.jpg"
         ]
       }
     },
@@ -2609,7 +2676,9 @@
         "pageTitle": "ASH-107 (41cm)",
         "urls": [
           "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/062e0b3633c97b502ebeb0b9c43e3bf1_094116.jpg",
-          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/ASH-107_03_113351.jpg"
+          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/ASH-107_03_113351.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/003/ame/ASH-107_01_251208.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/003/ame/ASH-107_02_251208.jpg"
         ]
       }
     },
@@ -2627,7 +2696,9 @@
         "pageTitle": "ASH-108 (60cm)",
         "urls": [
           "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/062e0b3633c97b502ebeb0b9c43e3bf1_094134.jpg",
-          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/ASH-108_03_114124.jpg"
+          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/ASH-108_03_114124.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/003/ame/ASH-108_01_251208.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/003/ame/ASH-108_02_251208.jpg"
         ]
       }
     },
@@ -2645,7 +2716,9 @@
         "pageTitle": "ASH-109 (41cm)",
         "urls": [
           "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/062e0b3633c97b502ebeb0b9c43e3bf1_094159.jpg",
-          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/ASH-109_03_114923.jpg"
+          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/ASH-109_03_114923.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/003/ame/ASH-109_01_251205.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/003/ame/ASH-109_02_251205.jpg"
         ]
       }
     },
@@ -2663,7 +2736,9 @@
         "pageTitle": "ASH-110 (60cm)",
         "urls": [
           "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/062e0b3633c97b502ebeb0b9c43e3bf1_094230.jpg",
-          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/ASH-110_03_115740.jpg"
+          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/ASH-110_03_115740.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/003/ame/ASH-110_01_251205.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/003/ame/ASH-110_02_251205.jpg"
         ]
       }
     },
@@ -2681,7 +2756,8 @@
         "pageTitle": "ASH-111 (120cm)",
         "urls": [
           "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/062e0b3633c97b502ebeb0b9c43e3bf1_094249.jpg",
-          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/ASH-111_03_120611.jpg"
+          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/ASH-111_03_120611.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/003/ame/ASH-111_251205.jpg"
         ]
       }
     },
@@ -2699,7 +2775,9 @@
         "pageTitle": "ASH-120 (41cm)",
         "urls": [
           "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/062e0b3633c97b502ebeb0b9c43e3bf1_094300.jpg",
-          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/ASH-120_03_121415.jpg"
+          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/ASH-120_03_121415.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/003/ame/ASH-120_01_251205.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/003/ame/ASH-120_02_251205.jpg"
         ]
       }
     },
@@ -2717,7 +2795,9 @@
         "pageTitle": "ASH-201",
         "urls": [
           "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/062e0b3633c97b502ebeb0b9c43e3bf1_100521.jpg",
-          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/ASH-201_03_130433.jpg"
+          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/ASH-201_03_130433.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/003/ame/ASH-201_01_251205.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/003/ame/ASH-201_02_251205.jpg"
         ]
       }
     },
@@ -2921,10 +3001,17 @@
       "benefitCode": "F18030025005",
       "category": "안전손잡이",
       "result": {
-        "status": "NO_DETAIL_IMAGES",
+        "status": "COMPLETE",
         "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000636",
         "listingTitle": "BFSH10",
-        "pageTitle": "BFSH10"
+        "pageTitle": "BFSH10",
+        "urls": [
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/003/BFSH10/BFSH10_01.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/003/BFSH10/BFSH10_02.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/003/BFSH10/BFSH10_03.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/003/BFSH10/BFSH10_04.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/003/BFSH10/BFSH10_05.jpg"
+        ]
       }
     },
     {
@@ -3125,10 +3212,14 @@
       "benefitCode": "F18031026114",
       "category": "안전손잡이",
       "result": {
-        "status": "NO_DETAIL_IMAGES",
+        "status": "COMPLETE",
         "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000008744",
         "listingTitle": "CSH-5000",
-        "pageTitle": "CSH-5000"
+        "pageTitle": "CSH-5000",
+        "urls": [
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/003/001/Cebien/CSH-5000_Detail01.jpg?v=01",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/003/001/Cebien/CSH-5000_Detail02.jpg"
+        ]
       }
     },
     {
@@ -3144,7 +3235,8 @@
         "listingTitle": "CV100",
         "pageTitle": "CV100",
         "urls": [
-          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230220/448dcd7e804cf1abf2ec0f75cf75b024_163602.jpg"
+          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230220/448dcd7e804cf1abf2ec0f75cf75b024_163602.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/003/cv100/cv100_260130.jpg"
         ]
       }
     },
@@ -3161,7 +3253,8 @@
         "listingTitle": "CV200",
         "pageTitle": "CV200",
         "urls": [
-          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230220/448dcd7e804cf1abf2ec0f75cf75b024_170926.jpg"
+          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230220/448dcd7e804cf1abf2ec0f75cf75b024_170926.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/003/003/CV200/CV200_251029.jpg"
         ]
       }
     },
@@ -3356,7 +3449,11 @@
         "pageTitle": "FHC03",
         "urls": [
           "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/062e0b3633c97b502ebeb0b9c43e3bf1_100322.jpg",
-          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/FHC03_03_162216.jpg"
+          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/FHC03_03_162216.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/003/FHC03/FHC03_250522_01.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/003/FHC03/FHC03_250522_02.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/003/FHC03/FHC03_250522_03.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/003/FHC03/FHC03_250522_04.jpg"
         ]
       }
     },
@@ -3396,10 +3493,16 @@
       "benefitCode": "F18030034016",
       "category": "안전손잡이",
       "result": {
-        "status": "NO_DETAIL_IMAGES",
+        "status": "COMPLETE",
         "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000707",
         "listingTitle": "MSH-505",
-        "pageTitle": "MSH-505"
+        "pageTitle": "MSH-505",
+        "urls": [
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/003/MSH-505/MSH-505_250522_01.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/003/MSH-505/MSH-505_250522_02.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/003/MSH-505/MSH-505_250522_03.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/003/MSH-505/MSH-505_250522_04.jpg"
+        ]
       }
     },
     {
@@ -3410,10 +3513,14 @@
       "benefitCode": "F18030034017",
       "category": "안전손잡이",
       "result": {
-        "status": "NO_DETAIL_IMAGES",
+        "status": "COMPLETE",
         "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000008732",
         "listingTitle": "MSH-508",
-        "pageTitle": "MSH-508"
+        "pageTitle": "MSH-508",
+        "urls": [
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/003/mctec/MSH-50801.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/003/mctec/MSH-50802.jpg"
+        ]
       }
     },
     {
@@ -3733,7 +3840,11 @@
         "listingTitle": "YGM03",
         "pageTitle": "YGM03",
         "urls": [
-          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230221/97620865d4f00b8095b7b07cffbe9966_115052.jpg"
+          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230221/97620865d4f00b8095b7b07cffbe9966_115052.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/003/YGM03/YGM03_250522_01.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/003/YGM03/YGM03_250522_02.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/003/YGM03/YGM03_250522_03.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/003/YGM03/YGM03_250522_04.jpg"
         ]
       }
     },
@@ -3881,10 +3992,13 @@
       "benefitCode": "T09061080106",
       "category": "요실금팬티",
       "result": {
-        "status": "NO_DETAIL_IMAGES",
+        "status": "COMPLETE",
         "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000008760",
         "listingTitle": "숨 주머니 W-50cc (50cc)",
-        "pageTitle": "숨 주머니 W-50cc (50cc)"
+        "pageTitle": "숨 주머니 W-50cc (50cc)",
+        "urls": [
+          "https://cdn.shopimg.greyscale.co.kr/uploads/002/005/W-50/W-50cc.jpg"
+        ]
       }
     },
     {
@@ -3951,10 +4065,13 @@
       "benefitCode": "T09060185001",
       "category": "요실금팬티",
       "result": {
-        "status": "NO_DETAIL_IMAGES",
+        "status": "COMPLETE",
         "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000616",
         "listingTitle": "CURA-L1 (30cc)",
-        "pageTitle": "CURA-L1 (30cc)"
+        "pageTitle": "CURA-L1 (30cc)",
+        "urls": [
+          "https://cdn.shopimg.greyscale.co.kr/uploads/002/005/CURA-L1/CURA-L1_250814.jpg?v=1"
+        ]
       }
     },
     {
@@ -4016,10 +4133,13 @@
       "benefitCode": "T09060220001",
       "category": "요실금팬티",
       "result": {
-        "status": "NO_DETAIL_IMAGES",
+        "status": "COMPLETE",
         "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000008758",
         "listingTitle": "GHP-01 (80cc)",
-        "pageTitle": "GHP-01 (80cc)"
+        "pageTitle": "GHP-01 (80cc)",
+        "urls": [
+          "https://cdn.shopimg.greyscale.co.kr/uploads/002/005/GHP-01/GHP-01_250916.jpg"
+        ]
       }
     },
     {
@@ -4030,10 +4150,13 @@
       "benefitCode": "T09061171103",
       "category": "요실금팬티",
       "result": {
-        "status": "NO_DETAIL_IMAGES",
+        "status": "COMPLETE",
         "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000008759",
         "listingTitle": "GHP-03 (150cc)",
-        "pageTitle": "GHP-03 (150cc)"
+        "pageTitle": "GHP-03 (150cc)",
+        "urls": [
+          "https://cdn.shopimg.greyscale.co.kr/uploads/002/005/GHP-03/GHP-03.jpg"
+        ]
       }
     },
     {
@@ -4204,10 +4327,13 @@
       "benefitCode": "T09060149003",
       "category": "요실금팬티",
       "result": {
-        "status": "NO_DETAIL_IMAGES",
+        "status": "COMPLETE",
         "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000008838",
         "listingTitle": "NSBS-PT50 (50cc)",
-        "pageTitle": "NSBS-PT50 (50cc)"
+        "pageTitle": "NSBS-PT50 (50cc)",
+        "urls": [
+          "https://cdn.shopimg.greyscale.co.kr/uploads/002/005/NSBS-PT50/NSBS-PT50.jpg?v=8"
+        ]
       }
     },
     {
@@ -4229,10 +4355,13 @@
       "benefitCode": "T09061217101",
       "category": "요실금팬티",
       "result": {
-        "status": "NO_DETAIL_IMAGES",
+        "status": "COMPLETE",
         "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000008755",
         "listingTitle": "SMB-01 (80cc)",
-        "pageTitle": "SMB-01 (80cc)"
+        "pageTitle": "SMB-01 (80cc)",
+        "urls": [
+          "https://cdn.shopimg.greyscale.co.kr/uploads/002/005/SMB-01/SMB-01.jpg?v=1"
+        ]
       }
     },
     {
@@ -4243,10 +4372,13 @@
       "benefitCode": "T09061080105",
       "category": "요실금팬티",
       "result": {
-        "status": "NO_DETAIL_IMAGES",
+        "status": "COMPLETE",
         "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000008837",
         "listingTitle": "SOOM F-50cc (50cc)",
-        "pageTitle": "SOOM F-50cc (50cc)"
+        "pageTitle": "SOOM F-50cc (50cc)",
+        "urls": [
+          "https://cdn.shopimg.greyscale.co.kr/uploads/002/005/F-50cc/F-50cc.jpg?v=1"
+        ]
       }
     },
     {
@@ -4370,7 +4502,8 @@
           "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/AD-1330MUTEBioDouble_01_111137.jpg",
           "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/AD-1330MUTEBioDouble_02_111144.jpg",
           "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/AD-1330MUTEBioDouble_03_111152.jpg",
-          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/AD-1330MUTEBioDouble_04_111159.jpg"
+          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/AD-1330MUTEBioDouble_04_111159.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/003/002/AB02/DSC07272.jpg"
         ]
       }
     },
@@ -4391,7 +4524,8 @@
           "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/AD-1330MUTEFOAM_01_112925.jpg",
           "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/AD-1330MUTEFOAM_02_112941.jpg",
           "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/AD-1330MUTEFOAM_03_112948.jpg",
-          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/AD-1330MUTEFOAM_04_112958.jpg"
+          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/AD-1330MUTEFOAM_04_112958.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/003/002/AB02/DSC07272.jpg"
         ]
       }
     },
@@ -4408,7 +4542,8 @@
         "listingTitle": "AD-1300 MUTE PURPLE",
         "pageTitle": "AD-1300 MUTE PURPLE",
         "urls": [
-          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260323/fa5d07ec6f8954d9108a0f2c541c616a_155303.jpg"
+          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260323/fa5d07ec6f8954d9108a0f2c541c616a_155303.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/003/002/AB02/DSC07272.jpg"
         ]
       }
     },
@@ -4420,10 +4555,13 @@
       "benefitCode": "H12060030103",
       "category": "욕창예방매트리스",
       "result": {
-        "status": "NO_DETAIL_IMAGES",
+        "status": "COMPLETE",
         "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000624",
         "listingTitle": "AD-1800 Turning",
-        "pageTitle": "AD-1800 Turning"
+        "pageTitle": "AD-1800 Turning",
+        "urls": [
+          "https://cdn.shopimg.greyscale.co.kr/uploads/003/002/AB02/DSC07272.jpg"
+        ]
       }
     },
     {
@@ -4441,7 +4579,8 @@
         "urls": [
           "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/241016/0ded3c54d84433b86c4943bf0868b799_165421.jpg",
           "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/241017/655b39b826d41607fe0b7a727bd97e1d_105600.jpg",
-          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/241016/dbbae5123cb2e0c73ecda18e7cb3fb75_165500.jpg"
+          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/241016/dbbae5123cb2e0c73ecda18e7cb3fb75_165500.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/003/002/AB02/DSC07272.jpg"
         ]
       }
     },
@@ -4464,10 +4603,13 @@
       "benefitCode": "H12060030012",
       "category": "욕창예방매트리스",
       "result": {
-        "status": "NO_DETAIL_IMAGES",
+        "status": "COMPLETE",
         "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000625",
         "listingTitle": "AD-III TPU BEAM",
-        "pageTitle": "AD-III TPU BEAM"
+        "pageTitle": "AD-III TPU BEAM",
+        "urls": [
+          "https://cdn.shopimg.greyscale.co.kr/uploads/003/002/AB02/DSC07272.jpg"
+        ]
       }
     },
     {
@@ -4478,7 +4620,18 @@
       "benefitCode": "H12060030114",
       "category": "욕창예방매트리스",
       "result": {
-        "status": "NO_GREYMALL_MATCH"
+        "status": "COMPLETE",
+        "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000192",
+        "listingTitle": "AD-3 TPU L/V",
+        "pageTitle": "AD-3 TPU L/V",
+        "urls": [
+          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/ffd1db714e1151c198c4f0d9645cef02_102421.jpg",
+          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/AD-3TPULV_01_114902.jpg",
+          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/AD-3TPULV_02_114908.jpg",
+          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/AD-3TPULV_03_114918.jpg",
+          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/AD-3TPULV_04_114925.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/003/002/AB02/DSC07272.jpg"
+        ]
       }
     },
     {
@@ -4495,7 +4648,8 @@
         "pageTitle": "AD-III BIDET",
         "urls": [
           "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260911/f8911375cc231ce78f371f684cb6766a_092628.jpg",
-          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260911/8546bfcdec1ceb743f57a164597da539_092635.jpg"
+          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260911/8546bfcdec1ceb743f57a164597da539_092635.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/003/002/AB02/DSC07272.jpg"
         ]
       }
     },
@@ -4515,7 +4669,8 @@
           "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/ffd1db714e1151c198c4f0d9645cef02_102501.jpg",
           "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/Glory-MC1_01_123932.jpg",
           "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/Glory-MC1_02_123941.jpg",
-          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/Glory-MC1_03_123949.jpg"
+          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/Glory-MC1_03_123949.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/003/002/AB02/DSC07272.jpg"
         ]
       }
     },
@@ -4534,7 +4689,8 @@
         "urls": [
           "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/ffd1db714e1151c198c4f0d9645cef02_102525.jpg",
           "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230504/4da362f80ba952b294d44164e6afabbf_110633.jpg",
-          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/GR-1004H_03_125550.jpg"
+          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/GR-1004H_03_125550.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/003/002/AB02/DSC07272.jpg"
         ]
       }
     },
@@ -4555,7 +4711,8 @@
           "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/HG-100M1TPU_01_130940.jpg",
           "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/HG-100M1TPU_02_130949.jpg",
           "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/HG-100M1TPU_03_130955.jpg",
-          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/HG-100M1TPU_04_131002.jpg"
+          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/HG-100M1TPU_04_131002.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/003/002/AB02/DSC07272.jpg"
         ]
       }
     },
@@ -4575,7 +4732,8 @@
           "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/ffd1db714e1151c198c4f0d9645cef02_102736.jpg",
           "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230504/0293afc17e5791eb8a6bfbf2ee46462f_115524.jpg",
           "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230504/41c02eda9748bf4b8189218cba14b21e_115524.jpg",
-          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/HG-100MC2_04_133632.jpg"
+          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/HG-100MC2_04_133632.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/003/002/AB02/DSC07272.jpg"
         ]
       }
     },
@@ -4593,7 +4751,8 @@
         "pageTitle": "SM-DUB-002",
         "urls": [
           "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260911/25bf82666911d46f14e68ff3c12f6fd6_090558.jpg",
-          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260911/0d12d0e15eb7bf509bce4de9968fc24a_090605.jpg"
+          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260911/0d12d0e15eb7bf509bce4de9968fc24a_090605.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/003/002/AB02/DSC07272.jpg"
         ]
       }
     },
@@ -4612,7 +4771,9 @@
         "urls": [
           "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/ffd1db714e1151c198c4f0d9645cef02_102817.jpg",
           "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230504/c47094c64010667c6506c58ecfaac929_112446.jpg",
-          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/YH-0301_04_135529.jpg"
+          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/YH-0301_04_135529.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/003/003/YH-0301/YH-0301_2_250820.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/003/002/AB02/DSC07272.jpg"
         ]
       }
     },
@@ -4630,7 +4791,9 @@
         "pageTitle": "YH-0302",
         "urls": [
           "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/ffd1db714e1151c198c4f0d9645cef02_102918.jpg",
-          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/YH-0302_04_142837.jpg"
+          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/YH-0302_04_142837.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/003/003/YH-0302/YH-0302_250818.jpg?v=18",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/003/002/AB02/DSC07272.jpg"
         ]
       }
     },
@@ -4648,7 +4811,9 @@
         "pageTitle": "YH-0305",
         "urls": [
           "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/ffd1db714e1151c198c4f0d9645cef02_102758.jpg",
-          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/YH-0305_04_135917.jpg"
+          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/YH-0305_04_135917.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/003/003/YH-0305/YH-0305_250818.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/003/002/AB02/DSC07272.jpg"
         ]
       }
     },
@@ -4666,7 +4831,9 @@
         "pageTitle": "YH-3&1",
         "urls": [
           "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/ffd1db714e1151c198c4f0d9645cef02_102918.jpg",
-          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/YH-0302_04_142837.jpg"
+          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/YH-0302_04_142837.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/003/YH-3_1/YH-3_1_260130.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/003/002/AB02/DSC07272.jpg"
         ]
       }
     },
@@ -4685,7 +4852,9 @@
         "urls": [
           "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/651df4dba33aff5306ab30cc65ad8d33_094212.jpg",
           "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/ABM-101_02_114723.jpg",
-          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/ABM-101_04_114725.jpg"
+          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/ABM-101_04_114725.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/011/ame/ABM-101_01_251205.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/011/ame/ABM-101_03_251205.jpg"
         ]
       }
     },
@@ -4918,7 +5087,9 @@
         "pageTitle": "APT-101",
         "urls": [
           "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221214/bbb802014e65f5379ab6ad9dd18164a9_120722.gif",
-          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/240405/ac3c3b063b62b950800aab85ff9bc1e7_151025.jpg"
+          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/240405/ac3c3b063b62b950800aab85ff9bc1e7_151025.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/002/002/ame/APT-101_01_251205.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/002/002/ame/APT-101_03_251205.jpg"
         ]
       }
     },
@@ -4990,7 +5161,9 @@
           "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221214/390540c1b2bbe51d5a6f7c55a6b9b41d_121900.gif",
           "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221214/d58908041264cb4879001ddb298833c4_121904.jpg",
           "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221214/6b5734a731318a29215f29a2ef2b6be4_121910.gif",
-          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/231221/ec2ce4ea952b8177a84738bfc4cc38ea_110859.jpg"
+          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/231221/ec2ce4ea952b8177a84738bfc4cc38ea_110859.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/002/002/ame/APT-210_01_251205.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/002/002/ame/APT-210_06_251205.jpg?v=3"
         ]
       }
     },
@@ -5002,10 +5175,13 @@
       "benefitCode": "T03030232003",
       "category": "이동변기",
       "result": {
-        "status": "NO_DETAIL_IMAGES",
+        "status": "COMPLETE",
         "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000008841",
         "listingTitle": "APT-301",
-        "pageTitle": "APT-301"
+        "pageTitle": "APT-301",
+        "urls": [
+          "https://cdn.shopimg.greyscale.co.kr/uploads/002/002/APT-301/APT-301.jpg?v=2"
+        ]
       }
     },
     {
@@ -5086,7 +5262,8 @@
         "pageTitle": "BFMB8",
         "urls": [
           "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/241104/8f798cc25ea7eecb23ba4bdf74d3b874_143459.jpg",
-          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/241104/d0b5deeda136e3baa42ae6aec5011654_143459.gif"
+          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/241104/d0b5deeda136e3baa42ae6aec5011654_143459.gif",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/002/002/BFMB8/BFMB8_03.jpg"
         ]
       }
     },
@@ -5186,10 +5363,23 @@
       "benefitCode": "M30030195501",
       "category": "자세변환용구",
       "result": {
-        "status": "NO_DETAIL_IMAGES",
+        "status": "COMPLETE",
         "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000008854",
         "listingTitle": "AB02",
-        "pageTitle": "AB02"
+        "pageTitle": "AB02",
+        "urls": [
+          "https://cdn.shopimg.greyscale.co.kr/uploads/003/002/AB02/DSC07272.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/003/002/AB02/DSC07276.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/003/002/AB02/DSC07277.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/003/002/AB02/DSC07278.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/003/002/AB02/DSC07279.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/003/002/AB02/DSC07280.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/003/002/AB02/DSC07281.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/003/002/AB02/DSC07284.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/003/002/AB02/DSC07286.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/003/002/AB02/DSC07288.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/003/002/AB02/AB02.jpg"
+        ]
       }
     },
     {
@@ -5266,7 +5456,10 @@
         "pageTitle": "DYJ-03",
         "urls": [
           "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230913/7fa1c9afd21e7bc040a4cadd981ecaf1_112011.jpg",
-          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230913/DYJ-03_GIF_112012.gif"
+          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230913/DYJ-03_GIF_112012.gif",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/003/002/DYJ-03/Notice_250919.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/003/002/DYJ-03/DYJ-03_02_250919.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/003/002/DYJ-03/DYJ-03_04_250919.jpg?v=1"
         ]
       }
     },
@@ -5337,7 +5530,8 @@
         "listingTitle": "MTS75",
         "pageTitle": "MTS75",
         "urls": [
-          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221213/d0c786fe0c76f9096435d3d50420d776_111117.jpg"
+          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221213/d0c786fe0c76f9096435d3d50420d776_111117.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/003/002/MTS/MTS75_250725.jpg"
         ]
       }
     },
@@ -5466,7 +5660,8 @@
           "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230724/a03a192ee1effb7d54a95a096bde87ea_164315.jpg",
           "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230724/37d53672b222891543a255946333870e_164316.jpg",
           "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230724/8d0f09133221d42c08cfb6d943fbeedb_164513.jpg",
-          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230724/85c70757b22442666b52864107f72bdd_162917.jpg"
+          "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230724/85c70757b22442666b52864107f72bdd_162917.jpg",
+          "https://cdn.shopimg.greyscale.co.kr/uploads/003/002/AB02/DSC07272.jpg"
         ]
       }
     },
@@ -5478,10 +5673,13 @@
       "benefitCode": "M03031086001",
       "category": "지팡이",
       "result": {
-        "status": "NO_DETAIL_IMAGES",
+        "status": "COMPLETE",
         "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000646",
         "listingTitle": "나래-1000",
-        "pageTitle": "나래-1000"
+        "pageTitle": "나래-1000",
+        "urls": [
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/002/Narae-1000/narae-1000_251126.jpg"
+        ]
       }
     },
     {
@@ -5650,10 +5848,13 @@
       "benefitCode": "M03031147601",
       "category": "지팡이",
       "result": {
-        "status": "NO_DETAIL_IMAGES",
+        "status": "COMPLETE",
         "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000008796",
         "listingTitle": "Chunji (천지)",
-        "pageTitle": "Chunji (천지)"
+        "pageTitle": "Chunji (천지)",
+        "urls": [
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/002/Chunji/Chunji_250925.jpg"
+        ]
       }
     },
     {
@@ -5723,10 +5924,13 @@
       "benefitCode": "M03030132007",
       "category": "지팡이",
       "result": {
-        "status": "NO_DETAIL_IMAGES",
+        "status": "COMPLETE",
         "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000008675",
         "listingTitle": "LC",
-        "pageTitle": "LC"
+        "pageTitle": "LC",
+        "urls": [
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/002/LC/LC_250926.jpg?v=2"
+        ]
       }
     },
     {
@@ -5851,10 +6055,13 @@
       "benefitCode": "M03030202501",
       "category": "지팡이",
       "result": {
-        "status": "NO_DETAIL_IMAGES",
+        "status": "COMPLETE",
         "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000008762",
         "listingTitle": "투웨이스틱 (TW-0128)",
-        "pageTitle": "투웨이스틱 (TW-0128)"
+        "pageTitle": "투웨이스틱 (TW-0128)",
+        "urls": [
+          "https://cdn.shopimg.greyscale.co.kr/uploads/001/002/TW-0128/TW-0128.jpg?v=3"
+        ]
       }
     }
   ]
