@@ -66,6 +66,22 @@ function clean(value) {
   return value === null || value === undefined || value === '' ? undefined : value;
 }
 
+function secondaryVerificationSource(row, checkedAt) {
+  if (!row.carestoreUrl) return undefined;
+  if (row.sourceType === 'NHIS_OFFICIAL_SEED') {
+    return {
+      label: '국민건강보험 현행 급여목록 제품코드 기준',
+      url: row.carestoreUrl,
+      checkedAt,
+    };
+  }
+  return {
+    label: '급여코드·가격·유통정보 교차확인',
+    url: row.carestoreUrl,
+    checkedAt,
+  };
+}
+
 function toProduct(row, checkedAt) {
   const primaryText = row.eroumPrimaryResultText || row.eroumResultText || '';
   const material = parseMaterial(primaryText);
@@ -75,6 +91,7 @@ function toProduct(row, checkedAt) {
   const maxQuantityPerCycle = parseQuantity(row.benefitLimit || '');
   const suffix = suffixByCategory[row.category] || 'welfare-product';
   const rentalMonthlyPrice = row.benefitMode === 'PURCHASE_OR_RENTAL' ? row.rentalMonthlyPrice : undefined;
+  const secondary = secondaryVerificationSource(row, checkedAt);
 
   return Object.fromEntries(
     Object.entries({
@@ -104,11 +121,7 @@ function toProduct(row, checkedAt) {
           url: row.eroumSearchUrl,
           checkedAt,
         },
-        {
-          label: '급여코드·가격·유통정보 교차확인',
-          url: row.carestoreUrl,
-          checkedAt,
-        },
+        ...(secondary ? [secondary] : []),
       ],
     }).filter(([, value]) => clean(value) !== undefined),
   );
@@ -139,7 +152,7 @@ const review = rows.filter(
 const products = publishable.map((row) => toProduct(row, checkedAt));
 const exclusionMap = Object.fromEntries(excluded.map((row) => [row.benefitCode, row.eroumStatus]));
 
-const header = `// AUTO-GENERATED from Carestore benefit data + exact benefit-code verification on Eroum.\n// Do not hand-edit individual rows. Curated product data in products.ts overrides matching benefit codes.\nimport type { Product, ProductStatus } from './products';\n\n`;
+const header = `// AUTO-GENERATED from Carestore/NHIS benefit data + exact benefit-code verification on Eroum.\n// Do not hand-edit individual rows. Curated product data in products.ts overrides matching benefit codes.\nimport type { Product, ProductStatus } from './products';\n\n`;
 const source = `${header}export const GENERATED_CATALOG_CHECKED_AT = ${JSON.stringify(checkedAt)};\n\nexport const generatedLiveProducts: Product[] = ${JSON.stringify(products, null, 2)};\n\nexport const generatedEroumExclusions: Record<string, ProductStatus | 'NOT_FOUND' | 'ERROR'> = ${JSON.stringify(exclusionMap, null, 2)};\n`;
 
 await fs.mkdir(path.dirname(OUTPUT), { recursive: true });
@@ -154,10 +167,11 @@ console.log(JSON.stringify({
     benefitCode: row.benefitCode,
     name: row.name,
     category: row.category,
+    sourceType: row.sourceType,
     eroumStatus: row.eroumStatus,
     eroumResultCount: row.eroumResultCount,
     eroumNameMatched: row.eroumNameMatched,
-    carestorePrice: row.benefitPrice,
+    sourcePrice: row.benefitPrice,
     eroumPrice: row.eroumPrice,
     hasImage: Boolean(row.eroumImageUrl),
   })),
