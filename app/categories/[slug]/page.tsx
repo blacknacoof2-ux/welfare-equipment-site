@@ -1,9 +1,11 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import AdultWalkerRecommender, { type WalkerCandidate } from '@/components/AdultWalkerRecommender';
 import ProductCard from '@/components/ProductCard';
 import { categories, getCategoryBySlug } from '@/lib/all-categories';
 import { getCategoryEmoji } from '@/lib/category-ui';
 import { getProductDisplayTitle } from '@/lib/product-display';
+import { getProductMedia } from '@/lib/product-images';
 import { getBenefitMode, publishedProducts } from '@/lib/products';
 
 export function generateStaticParams() {
@@ -17,7 +19,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const hasProducts = publishedProducts.some((product) => product.category === category.name);
   return {
     title: category.seoTitle,
-    description: category.seoDescription,
+    description: category.slug === 'adult-walker'
+      ? `${category.seoDescription} 키·문폭·사용환경·차량 적재 조건을 입력해 나에게 맞는 성인용보행기를 추천순으로 확인하세요.`
+      : category.seoDescription,
     keywords: category.keywords,
     alternates: { canonical: `/categories/${category.slug}` },
     robots: hasProducts ? undefined : { index: false, follow: true },
@@ -36,6 +40,19 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:5000';
   const categoryUrl = `${baseUrl}/categories/${category.slug}`;
   const emoji = getCategoryEmoji(category.name);
+  const walkerCandidates: WalkerCandidate[] = category.slug === 'adult-walker'
+    ? products.map((product) => ({
+      slug: product.slug,
+      title: getProductDisplayTitle(product),
+      manufacturer: product.manufacturer,
+      benefitCode: product.benefitCode,
+      benefitPrice: product.benefitPrice,
+      dimensions: product.dimensions,
+      weightKg: product.weightKg,
+      description: product.description,
+      imageUrl: getProductMedia(product)?.heroUrl,
+    }))
+    : [];
 
   const breadcrumbLd = {
     '@context': 'https://schema.org',
@@ -102,6 +119,10 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
         <h2>{emoji} {category.name} 본인부담금 확인 방법</h2>
         <p className="muted">제품의 급여가격 또는 월 대여 급여가격을 기준으로 일반 15%, 감경 9%, 감경 6% 금액을 계산합니다. 이 사이트는 0% 금액은 표시하지 않습니다.</p>
       </div>
+
+      {category.slug === 'adult-walker' && walkerCandidates.length > 0 && (
+        <AdultWalkerRecommender candidates={walkerCandidates} />
+      )}
 
       <div style={{ marginTop: 32 }}>
         <p className="eyebrow">VERIFIED PRODUCTS</p>
