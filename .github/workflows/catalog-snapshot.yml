@@ -1,0 +1,35 @@
+name: Catalog Snapshot
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/sync-carestore-catalog.mjs'
+      - '.github/workflows/catalog-snapshot.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Generate Carestore catalog snapshot
+        run: node scripts/sync-carestore-catalog.mjs
+
+      - name: Upload catalog snapshot
+        uses: actions/upload-artifact@v4
+        with:
+          name: carestore-catalog
+          path: artifacts/carestore-catalog.json
+          if-no-files-found: error
