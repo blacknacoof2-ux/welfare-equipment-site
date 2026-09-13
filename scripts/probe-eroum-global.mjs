@@ -14,42 +14,38 @@ function plainText(html) {
     .trim();
 }
 
-for (const page of [1, 2, 10, 50]) {
+function productImages(html) {
+  const rows = [];
+  for (const match of html.matchAll(/<img\b([^>]*)>/gi)) {
+    const attrs = match[1];
+    const src = attrs.match(/(?:data-src|src)=["']([^"']+)["']/i)?.[1] || '';
+    if (!/(?:data\/item|mall\.eroumcare\.com\/data\/item)/i.test(src)) continue;
+    const alt = attrs.match(/alt=["']([^"']*)["']/i)?.[1] || '';
+    rows.push({ index: match.index, src, alt, attrs });
+  }
+  return rows;
+}
+
+for (const page of [1]) {
   const params = new URLSearchParams({
-    ca_id: '',
-    itmaker: '',
-    itmodel: '',
-    page: String(page),
-    pttag: '',
-    q: '',
-    qbasic: '',
-    qexplan: '',
-    qid: '',
-    qname: '1',
-    qorder: '',
-    qsort: '',
-    qtag: '',
+    ca_id: '', itmaker: '', itmodel: '', page: String(page), pttag: '', q: '',
+    qbasic: '', qexplan: '', qid: '', qname: '1', qorder: '', qsort: '', qtag: '',
   });
   const url = `https://eroumcare.com/shop/search.php?${params.toString()}`;
   const response = await fetch(url, {
     headers: { 'user-agent': USER_AGENT, 'accept-language': 'ko-KR,ko;q=0.9' },
   });
   const html = await response.text();
-  const text = plainText(html);
-  const start = text.indexOf('최근등록순');
-  const end = text.indexOf('회사소개', Math.max(0, start));
-  const result = start >= 0 ? text.slice(start, end > start ? end : start + 7000) : text.slice(0, 7000);
-  const counts = [...text.matchAll(/전체분류\s*\((\d+)\)/g)].map((m) => Number(m[1]));
-  const imageUrls = [...html.matchAll(/(?:src|data-src)=["']([^"']+)["']/gi)]
-    .map((m) => m[1])
-    .filter((src) => /(?:data\/item|mall\.eroumcare\.com\/data\/item)/i.test(src));
-  console.log(JSON.stringify({
-    page,
-    status: response.status,
-    htmlLength: html.length,
-    counts,
-    imageCount: new Set(imageUrls).size,
-    imageSample: [...new Set(imageUrls)].slice(0, 10),
-    result: result.slice(0, 6500),
-  }, null, 2));
+  const images = productImages(html);
+  console.log(JSON.stringify({ page, status: response.status, imageCount: images.length }, null, 2));
+  for (const image of images.slice(0, 4)) {
+    const raw = html.slice(Math.max(0, image.index - 1800), Math.min(html.length, image.index + 3500));
+    console.log(JSON.stringify({
+      src: image.src,
+      alt: image.alt,
+      attrs: image.attrs,
+      raw,
+      text: plainText(raw),
+    }, null, 2));
+  }
 }
