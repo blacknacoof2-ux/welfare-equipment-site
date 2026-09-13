@@ -1,0 +1,61 @@
+export const OFFICIAL_CATALOG_SOURCE_URL =
+  'https://www.nhis.or.kr/lm/lmxsrv/law/lawFullContent.do?SEQ=1603&SEQ_HISTORY=';
+
+export const officialSeedProducts = [
+  {
+    name: 'CS06BHB01D',
+    model: 'CS06BHB01D',
+    manufacturer: '솔루엠',
+    benefitCode: 'C18211271601',
+    category: '배회감지기(태그형)',
+    benefitPrice: 15100,
+    benefitMode: 'PURCHASE',
+    rentalMonthlyPrice: null,
+    carestoreStatus: 'DISTRIBUTED',
+    carestoreDistributionText: '유통중',
+    carestoreUrl: 'https://www.carestore.co.kr/welfare/C18211271601',
+    carestoreUpdatedAt: '2026-08-06',
+    origin: '베트남',
+    durability: '태그형 2년',
+    benefitLimit: '태그형 2개',
+    sourceType: 'CARESTORE_DIRECT_SEED',
+  },
+
+  // 수동침대는 Carestore 전시장 카테고리 탐색에서 누락되어 NHIS 공식 목록의
+  // 직전 현행표를 seed로 사용하고, 최종 공개 여부와 현재 가격은 Eroum 급여코드
+  // 정확검색 결과가 결정한다. 2026-09-01 현행 고시의 수동침대 목표 수는 13개다.
+  ...[
+    ['SHB-100', '소화', 'S03060033001', 40900],
+    ['SHB-200', '소화', 'S03060033002', 43300],
+    ['SHB101', '소화', 'S03060033003', 42100],
+    ['SHB201', '소화', 'S03060033004', 44300],
+    ['SB-341AD', '신창의료기공업사', 'S03060052002', 44300],
+    ['MCP-201', '엠씨텍', 'S03060034001', 44300],
+    ['CB-301', '케어손', 'S03060032001', 38100],
+    ['CB-202', '케어손', 'S03060032003', 40900],
+    ['TB-512DB', '태동프라임', 'S03060048001', 41500],
+    ['PB-20C', '푸메', 'S03060094001', 44100],
+    ['HB-103', '한국베드메디칼', 'S03060051001', 39200],
+    ['HB-202', '한국베드메디칼', 'S03060051002', 38200],
+    ['HB-301', '한국베드메디칼', 'S03060051003', 28000],
+    ['HB-9001B', '한국베드메디칼', 'S03060051005', 39000],
+    ['HB-9002B', '한국베드메디칼', 'S03060051007', 40500],
+  ].map(([name, manufacturer, benefitCode, benefitPrice]) => ({
+    name,
+    model: name,
+    manufacturer,
+    benefitCode,
+    category: '수동침대',
+    benefitPrice,
+    benefitMode: 'RENTAL',
+    rentalMonthlyPrice: null,
+    carestoreStatus: 'OFFICIAL_SEED',
+    carestoreDistributionText: '',
+    carestoreUrl: OFFICIAL_CATALOG_SOURCE_URL,
+    carestoreUpdatedAt: null,
+    origin: null,
+    durability: '10년',
+    benefitLimit: '1대',
+    sourceType: 'NHIS_OFFICIAL_SEED',
+  })),
+];
