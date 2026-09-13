@@ -63,9 +63,9 @@ export default function ProductDetailVisual({ product }: { product: Product }) {
           </div>
 
           <div className="detail-visual-copays" aria-label={`${title} 본인부담금`}>
-            <div><span>감경 6%</span><strong>{formatter.format(copays.copay6)}원{suffix}</strong></div>
-            <div><span>감경 9%</span><strong>{formatter.format(copays.copay9)}원{suffix}</strong></div>
             <div><span>일반 15%</span><strong>{formatter.format(copays.copay15)}원{suffix}</strong></div>
+            <div><span>감경 9%</span><strong>{formatter.format(copays.copay9)}원{suffix}</strong></div>
+            <div><span>감경 6%</span><strong>{formatter.format(copays.copay6)}원{suffix}</strong></div>
           </div>
         </div>
       </div>
