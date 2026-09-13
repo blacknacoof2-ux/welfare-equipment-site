@@ -2,10 +2,11 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import ProductCard from '@/components/ProductCard';
 import ProductDetailContent from '@/components/ProductDetailContent';
-import { ProductGallery } from '@/components/ProductMedia';
+import { ProductDetailMedia, ProductHeroGallery } from '@/components/ProductMedia';
 import { categories } from '@/lib/all-categories';
 import { getBenefitModeEmoji, getBenefitModeLabel, getCategoryEmoji } from '@/lib/category-ui';
-import { getAuthorizedProductImages } from '@/lib/product-images';
+import { getProductDisplayTitle, isSameProductNameAndModel } from '@/lib/product-display';
+import { getProductMedia } from '@/lib/product-images';
 import {
   getBenefitMode,
   getCopays,
@@ -24,13 +25,16 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const product = publishedProducts.find((item) => item.slug === slug);
   if (!product) return {};
+
+  const displayTitle = getProductDisplayTitle(product);
   const modeText = getBenefitMode(product) === 'RENTAL' ? '월 대여 본인부담금' : '본인부담금';
-  const imageSet = getAuthorizedProductImages(product);
+  const media = getProductMedia(product);
+
   return {
-    title: `${product.name} ${product.model} ${modeText}·급여가격`,
-    description: `${product.name} ${product.model}의 급여가격, 15%·9%·6% 본인부담금, 제조사, 급여코드, 규격과 제품 이미지를 확인하세요.`,
+    title: `${displayTitle} ${modeText}·급여가격`,
+    description: `${displayTitle}의 급여가격, 15%·9%·6% 본인부담금, 제조사, 급여코드, 규격과 제품 이미지를 확인하세요.`,
     alternates: { canonical: `/products/${product.slug}` },
-    openGraph: imageSet?.urls[0] ? { images: [{ url: imageSet.urls[0], alt: `${product.name} ${product.model}` }] } : undefined,
+    openGraph: media?.heroUrl ? { images: [{ url: media.heroUrl, alt: `${displayTitle} 제품사진` }] } : undefined,
   };
 }
 
@@ -39,6 +43,8 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   const product = publishedProducts.find((item) => item.slug === slug);
   if (!product) notFound();
 
+  const displayTitle = getProductDisplayTitle(product);
+  const showModelBesideName = !isSameProductNameAndModel(product);
   const benefitMode = getBenefitMode(product);
   const copays = getCopays(product.benefitPrice);
   const priceSuffix = getPriceSuffix(product);
@@ -51,8 +57,10 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:5000';
   const categoryUrl = category ? `${baseUrl}/categories/${category.slug}` : `${baseUrl}/products`;
   const productUrl = `${baseUrl}/products/${product.slug}`;
-  const imageSet = getAuthorizedProductImages(product);
-  const structuredImages = imageSet?.urls ?? [];
+  const media = getProductMedia(product);
+  const structuredImages = media
+    ? [media.heroUrl, ...media.galleryUrls, ...media.detailUrls]
+    : [];
   const categoryEmoji = getCategoryEmoji(product.category);
 
   const additionalProperty = [
@@ -76,7 +84,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   const productLd = {
     '@context': 'https://schema.org',
     '@type': 'Product',
-    name: product.name,
+    name: displayTitle,
     model: product.model,
     brand: { '@type': 'Brand', name: product.manufacturer },
     category: product.category,
@@ -93,7 +101,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: '홈', item: baseUrl },
       { '@type': 'ListItem', position: 2, name: product.category, item: categoryUrl },
-      { '@type': 'ListItem', position: 3, name: product.name, item: productUrl },
+      { '@type': 'ListItem', position: 3, name: displayTitle, item: productUrl },
     ],
   };
 
@@ -103,11 +111,11 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
 
       <nav aria-label="breadcrumb" className="muted" style={{ marginBottom: 16 }}>
-        <a href="/">홈</a> · {category ? <a href={`/categories/${category.slug}`}>{product.category}</a> : <a href="/products">복지용구</a>} · <span>{product.name}</span>
+        <a href="/">홈</a> · {category ? <a href={`/categories/${category.slug}`}>{product.category}</a> : <a href="/products">복지용구</a>} · <span>{displayTitle}</span>
       </nav>
 
       <div className="product-detail-hero">
-        <ProductGallery product={product} />
+        <ProductHeroGallery product={product} />
         <div className="product-detail-copy">
           <div className="detail-badges">
             <span className="category-chip"><span aria-hidden="true">{categoryEmoji}</span>{product.category}</span>
@@ -115,7 +123,10 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               <span aria-hidden="true">{getBenefitModeEmoji(benefitMode)}</span>{getBenefitModeLabel(benefitMode)}
             </span>
           </div>
-          <h1>{product.name} <span className="muted">{product.model}</span></h1>
+          <h1>
+            {product.name}
+            {showModelBesideName && <span className="muted"> {product.model}</span>}
+          </h1>
           <p>{product.description}</p>
           <div className="product-price-highlight">
             <span>{benefitMode === 'RENTAL' ? '월 본인부담금 6%부터' : '본인부담금 6%부터'}</span>
@@ -132,6 +143,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       </div>
 
       <ProductDetailContent product={product} />
+      <ProductDetailMedia product={product} />
 
       <div className="content-card" style={{ marginTop: 28 }}>
         <h2>{getBenefitModeEmoji(benefitMode)} {benefitMode === 'RENTAL' ? '월 대여 본인부담금' : '본인부담금'}</h2>
