@@ -23,32 +23,6 @@ function pending(name: string, manufacturer: string, code: string, price: number
   };
 }
 
-function removed(name: string, manufacturer: string, code: string, price: number): Product {
-  return {
-    slug: `${code.toLowerCase()}-bath-chair`,
-    name,
-    model: name,
-    manufacturer,
-    benefitCode: code,
-    category: '목욕의자',
-    benefitPrice: price,
-    status: 'REMOVED_FROM_BENEFIT_LIST',
-    sourceUrl: 'https://www.nhis.or.kr/lm/lmxsrv/law/lawFullContent.do?SEQ=1603&SEQ_HISTORY=601911',
-    sourceCheckedAt: checkedAt,
-    description: `${name}은(는) 과거 후보 원장에는 있었으나 2026-09-01 현행 복지용구 급여제품 목록에는 포함되지 않아 공개 대상에서 제외합니다.`,
-    purchaseCycleYears: 5,
-    maxQuantityPerCycle: 1,
-    imageRightsConfirmed: false,
-    verificationSources: [
-      {
-        label: '2026-09-01 현행 복지용구 급여제품 목록 대조',
-        url: 'https://www.nhis.or.kr/lm/lmxsrv/law/lawFullContent.do?SEQ=1603&SEQ_HISTORY=601911',
-        checkedAt,
-      },
-    ],
-  };
-}
-
 export const bathChairCompleteBatch: Product[] = [
   pending('라온아띠 KCS-811', '코리아케어서프라이', 'B03180001501', 350000),
   pending('BOFEEL 8', '보필', 'B03180025104', 178000),
@@ -56,7 +30,7 @@ export const bathChairCompleteBatch: Product[] = [
   pending('ASC-501', '(주)에이엠이', 'B03180060005', 153000),
   pending('BOFEEL11', '보필', 'B03180025014', 187000),
   pending('SMC-01', '세종메디컬', 'B03181159601', 153000),
-  removed('CSC-1000', '세비앙', 'B03180191001', 187000),
+  pending('CSC-1000', '세비앙', 'B03180191001', 187000),
   pending('SK-390L(블루,레드)', '삼원스카이', 'B03180006003', 180000),
   pending('MTCA', '민택산업', 'B03180049001', 720000),
   pending('KT-130', '케어맥스코리아', 'B03180088602', 166000),
@@ -66,5 +40,5 @@ export const bathChairCompleteBatch: Product[] = [
   pending('Clean49', '(주)리스케어', 'B03180088502', 657000),
   pending('ASC-103', '(주)에이엠이', 'B03180060003', 165000),
   pending('NYC-01', '주식회사 남양금속', 'B03180200001', 165000),
-  removed('HANGANG10000', '(주)미라클메디', 'B03180217501', 175000),
+  pending('HANGANG10000', '(주)미라클메디', 'B03180217501', 175000),
 ];
