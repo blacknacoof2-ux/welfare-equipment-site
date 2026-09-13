@@ -24,6 +24,20 @@ export const supplementalDetailImageSets: Record<string, SupplementalDetailImage
       'https://shopby-images.cdn-nhncommerce.com/PARTNER/20260306/PARTNER_10016343/2026030614411927476813d63a4fa1987ab1be76564dc4/lxwMn_102745_9.jpg',
     ],
   },
+  'iu-bath-chair': {
+    sourceLabel: 'IU 목욕의자 원터치 접이·높이조절 상세 자료',
+    sourceUrl: 'https://m.swmedi.co.kr/product/%EC%BC%80%EC%96%B4%EB%A7%A5%EC%8A%A4-%EB%AA%A9%EC%9A%95%EC%9D%98%EC%9E%90-iu-%EC%9B%90%ED%84%B0%EC%B9%98%EC%A0%91%EC%9D%B4%EC%8B%9D%ED%8C%94%EA%B1%B8%EC%9D%B4%EC%8A%A4%EC%9C%99%EB%86%92%EC%9D%B4%EC%A1%B0%EC%A0%88/27728/',
+    urls: [
+      'https://m.swmedi.co.kr/web/product/big/202503/5bc611c8fb398093becd27a5bd7fa69c.jpg',
+    ],
+  },
+  'ash-103-safety-handle': {
+    sourceLabel: 'ASH-103 제품사양·설치형 상세 자료',
+    sourceUrl: 'https://eonecare.co.kr/product/%EB%B2%BD%EB%B6%80%EC%B0%A9%ED%98%95-%EC%95%88%EC%A0%84%EC%86%90%EC%9E%A1%EC%9D%B4-ash-103-60cm-%EC%9B%90%EB%AA%A9-%EC%9E%A5%EC%95%A0%EC%9D%B8%EC%9A%A9%EC%86%90%EC%9E%A1%EC%9D%B4-%EB%B3%B4%EC%A1%B0%EC%86%90%EC%9E%A1%EC%9D%B4-%EC%95%88%EC%A0%84%EB%B0%94/1660/',
+    urls: [
+      'https://gi.esmplus.com/tktkfkd/ASH-10301010.jpg',
+    ],
+  },
   'msp-0002-safety-handle': {
     sourceLabel: 'MSP-0002 스탠드형 안전손잡이 상세 자료',
     sourceUrl: 'https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000500',
@@ -50,6 +64,15 @@ export const supplementalDetailImageSets: Record<string, SupplementalDetailImage
     sourceUrl: 'https://nulchan.co.kr/product/%EA%B5%AD%EC%82%B0-%EC%95%88%EC%A0%84%EC%86%90%EC%9E%A1%EC%9D%B4-%EA%B8%B0%EB%91%A5%ED%98%95-cd-10-%EC%96%B4%EB%A5%B4%EC%8B%A0-%EB%85%B8%EC%9D%B8-%EB%B3%B4%EC%A1%B0-%EC%B9%A8%EB%8C%80-%EC%95%88%EC%A0%84%EB%B4%89-%EC%B2%9C%EC%A0%95%ED%98%95-%EB%B4%89%EC%86%90%EC%9E%A1%EC%9D%B4-%EC%9E%A5%EA%B8%B0%EC%9A%94%EC%96%91-%EB%B3%B5%EC%A7%80%EC%9A%A9%EA%B5%AC/1073/',
     urls: [
       'https://nulchan.co.kr/web/product/extra/big/202501/bf9f0c022dfd4e4d345fa13546064c9d.jpg',
+    ],
+  },
+  'ss-carbon-cane': {
+    sourceLabel: 'SS 카본 지팡이 제품·기능 상세 자료',
+    sourceUrl: 'https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000288',
+    urls: [
+      'https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/240320/4d53e50673f43acfa9ead97b7c9c48ee_100845.jpg',
+      'https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/240320/56663df5b41051664bc4bfa3037f1ba8_100920.jpg',
+      'https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221214/d6bfed6902e4328adbc26dc7fdc13d42_074410.jpg',
     ],
   },
   'isa-carbon-cane': {
