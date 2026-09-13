@@ -21,25 +21,27 @@ export default function CatalogAuditPage() {
       <p className="eyebrow">INTERNAL CATALOG AUDIT</p>
       <h1>복지용구 전체 상품 업데이트 진행률</h1>
       <p className="muted">
-        기준: {OFFICIAL_CATALOG_NOTICE} · 시행 {OFFICIAL_CATALOG_EFFECTIVE_DATE} · 공식 목표 {summary.target}개
+        기준: {OFFICIAL_CATALOG_NOTICE} · 시행 {OFFICIAL_CATALOG_EFFECTIVE_DATE} · 현행 공식 목표 {summary.target}개
       </p>
 
       <div className="content-card" style={{ marginTop: 24 }}>
         <h2>전체 현황</h2>
         <table className="price-table">
           <tbody>
-            <tr><th>공식 급여제품</th><td>{summary.target}개</td></tr>
+            <tr><th>현행 공식 급여제품</th><td>{summary.target}개</td></tr>
             <tr><th>ACTIVE</th><td>{summary.active}개</td></tr>
             <tr><th>이로움 확인 대기</th><td>{summary.pending}개</td></tr>
-            <tr><th>단종·비유통·품절 제외</th><td>{summary.excluded}개</td></tr>
-            <tr><th>현재 원장 반영</th><td>{summary.accounted}개 ({totalCoverage}%)</td></tr>
+            <tr><th>현행 급여목록 내 유통·품절 제외</th><td>{summary.excluded}개</td></tr>
+            <tr><th>현행 공식 원장 반영</th><td>{summary.accounted}개 ({totalCoverage}%)</td></tr>
             <tr><th>아직 미등록</th><td><strong>{summary.missing}개</strong></td></tr>
+            <tr><th>과거 급여목록 제거 기록</th><td>{summary.removed}개</td></tr>
           </tbody>
         </table>
         <p className="muted" style={{ marginTop: 16 }}>
           ACTIVE는 이로움 현재 유통 확인과 급여코드·급여가격 교차검증을 모두 통과한 제품만 포함합니다.
+          현행 고시에서 빠진 과거 제품은 별도 기록으로 보존하지만 공식 723개 진행률에는 포함하지 않습니다.
         </p>
-        <p><a href={OFFICIAL_CATALOG_SOURCE_URL} rel="noreferrer" target="_blank">공단 공식 고시 확인 →</a></p>
+        <p><a href={OFFICIAL_CATALOG_SOURCE_URL} rel="noreferrer" target="_blank">공식 고시 확인 →</a></p>
       </div>
 
       <div className="content-card" style={{ marginTop: 24, overflowX: 'auto' }}>
@@ -51,7 +53,8 @@ export default function CatalogAuditPage() {
               <th>공식</th>
               <th>ACTIVE</th>
               <th>대기</th>
-              <th>제외</th>
+              <th>유통 제외</th>
+              <th>고시 제거</th>
               <th>미등록</th>
               <th>반영률</th>
             </tr>
@@ -64,6 +67,7 @@ export default function CatalogAuditPage() {
                 <td>{item.active}</td>
                 <td>{item.pending}</td>
                 <td>{item.excluded}</td>
+                <td>{item.removed}</td>
                 <td><strong>{item.missing}</strong></td>
                 <td>{item.coverage}%</td>
               </tr>
