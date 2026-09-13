@@ -1,3 +1,5 @@
+import { generatedGreymallDetailImageSetsByModel } from './generated-greymall-detail-images';
+
 export type SupplementalDetailImageSet = {
   sourceLabel: string;
   sourceUrl: string;
@@ -113,6 +115,27 @@ export const supplementalDetailImageSets: Record<string, SupplementalDetailImage
   },
 };
 
-export function getSupplementalDetailImages(slug: string) {
-  return supplementalDetailImageSets[slug] ?? null;
+function unique(urls: string[]) {
+  return Array.from(new Set(urls.filter(Boolean)));
+}
+
+export function getSupplementalDetailImages(slug: string, model?: string): SupplementalDetailImageSet | null {
+  const curated = supplementalDetailImageSets[slug] ?? null;
+  const greymall = model ? generatedGreymallDetailImageSetsByModel[model] ?? null : null;
+
+  if (!curated && !greymall) return null;
+  if (!curated && greymall) {
+    return {
+      sourceLabel: greymall.sourceLabel,
+      sourceUrl: greymall.sourceUrl,
+      urls: unique(greymall.urls),
+    };
+  }
+  if (curated && !greymall) return curated;
+
+  return {
+    sourceLabel: `${curated!.sourceLabel} · ${greymall!.sourceLabel}`,
+    sourceUrl: greymall!.sourceUrl,
+    urls: unique([...curated!.urls, ...greymall!.urls]),
+  };
 }
