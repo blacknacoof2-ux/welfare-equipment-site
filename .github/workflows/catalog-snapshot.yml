@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'scripts/sync-carestore-catalog.mjs'
+      - 'scripts/official-seed-products.mjs'
       - 'scripts/verify-eroum-catalog.mjs'
       - 'scripts/generate-live-products.mjs'
       - '.github/workflows/catalog-snapshot.yml'
