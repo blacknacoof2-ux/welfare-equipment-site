@@ -95,8 +95,6 @@ function parseCards(html, page) {
     const isDiscontinued = /단종/.test(text);
     const isTemporaryOut = /일시품절/.test(text);
     const isOut = !isTemporaryOut && /품절/.test(text);
-    // Eroum also carries 장애인 보장구 and explicitly non-benefit products in the
-    // same storefront. They are outside the long-term-care welfare-equipment catalog.
     const isAssistiveDevice = /(?:^|\s|\[)보장구(?:\]|\s|$)|#보장구|#비급여|(?:^|\s)비급여(?:\s|$)/i.test(text);
     const hasPositiveBenefitPrice = benefitPrice !== null && benefitPrice > 0;
     const liveBenefit = hasPositiveBenefitPrice
@@ -242,3 +240,7 @@ console.log(JSON.stringify({
   unmatchedSample: output.unmatched.slice(0, 50),
 }, null, 2));
 console.log(`[eroum-global-audit] wrote ${OUTPUT}`);
+
+if (output.unmatchedLiveCards > 0) {
+  throw new Error(`Global Eroum audit found ${output.unmatchedLiveCards} unmatched live long-term-care benefit product card(s).`);
+}
