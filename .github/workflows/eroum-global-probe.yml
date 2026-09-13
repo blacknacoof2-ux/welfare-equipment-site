@@ -1,0 +1,26 @@
+name: Eroum Global Probe
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/probe-eroum-global.mjs'
+      - '.github/workflows/eroum-global-probe.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Probe Eroum global pages
+        run: node scripts/probe-eroum-global.mjs
