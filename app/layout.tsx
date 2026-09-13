@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import ConsultCartLink from '@/components/ConsultCartLink';
 import { validatePublishedCatalog } from '@/lib/validate-published-catalog';
 import { validatePublishedProductImages } from '@/lib/validate-published-images';
 import './globals.css';
@@ -47,13 +46,12 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <header className="site-header">
           <a className="brand" href="/">ATOM CARE <span>복지용구</span></a>
           <nav aria-label="주요 메뉴">
-            <a href="/consult"><strong>맞춤 추천</strong></a>
+            <a href="/consult"><strong>AI 맞춤 추천</strong></a>
             <a href="/#purchase">구입</a>
             <a href="/#rental">대여</a>
             <a href="/#categories">품목 찾기</a>
             <a href="/#calculator">본인부담금</a>
             <a href="/products">전체 제품</a>
-            <ConsultCartLink />
             <a href="/guide/copay">급여안내</a>
           </nav>
         </header>
