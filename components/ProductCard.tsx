@@ -1,5 +1,6 @@
 import { ProductImage } from '@/components/ProductMedia';
 import { getBenefitModeEmoji, getBenefitModeLabel, getCategoryEmoji } from '@/lib/category-ui';
+import { isSameProductNameAndModel } from '@/lib/product-display';
 import { getBenefitMode, getCopays, getPriceSuffix, type Product } from '@/lib/products';
 
 const formatter = new Intl.NumberFormat('ko-KR');
@@ -8,6 +9,7 @@ export default function ProductCard({ product, showCode = false }: { product: Pr
   const mode = getBenefitMode(product);
   const copays = getCopays(product.benefitPrice);
   const suffix = getPriceSuffix(product);
+  const showModel = !isSameProductNameAndModel(product);
 
   return (
     <a className="content-card product-card" href={`/products/${product.slug}`}>
@@ -20,7 +22,7 @@ export default function ProductCard({ product, showCode = false }: { product: Pr
           </span>
         </div>
         <h2>{product.name}</h2>
-        <p className="product-maker">{product.manufacturer} · {product.model}</p>
+        <p className="product-maker">{product.manufacturer}{showModel ? ` · ${product.model}` : ''}</p>
         {showCode && <p className="muted product-code">급여코드 {product.benefitCode}</p>}
         <div className="card-price-block">
           <span>본인부담금 6%부터</span>
