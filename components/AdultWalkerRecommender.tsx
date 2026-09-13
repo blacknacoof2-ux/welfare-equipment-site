@@ -221,7 +221,7 @@ export default function AdultWalkerRecommender({ candidates }: { candidates: Wal
     const minPrice = prices.length ? Math.min(...prices) : 0;
     const maxPrice = prices.length ? Math.max(...prices) : 0;
 
-    return candidates
+    const topMatches = candidates
       .map((candidate) => scoreCandidate(candidate, {
         heightCm,
         doorwayCm,
@@ -234,6 +234,15 @@ export default function AdultWalkerRecommender({ candidates }: { candidates: Wal
       }))
       .sort((a, b) => b.score - a.score || (a.weightKg ?? 999) - (b.weightKg ?? 999) || a.benefitPrice - b.benefitPrice)
       .slice(0, 5);
+
+    return topMatches.sort((a, b) => {
+      const aUnderTenThousand = copay15(a.benefitPrice) < 10000 ? 1 : 0;
+      const bUnderTenThousand = copay15(b.benefitPrice) < 10000 ? 1 : 0;
+      return aUnderTenThousand - bUnderTenThousand
+        || b.score - a.score
+        || (a.weightKg ?? 999) - (b.weightKg ?? 999)
+        || a.benefitPrice - b.benefitPrice;
+    });
   }, [candidates, doorway, environment, height, priority, seatNeeded, transportNeed]);
 
   return (
