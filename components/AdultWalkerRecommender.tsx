@@ -28,8 +28,8 @@ type ScoredCandidate = WalkerCandidate & {
 
 const formatter = new Intl.NumberFormat('ko-KR');
 
-function copay6(price: number) {
-  return Math.floor((price * 0.06) / 10) * 10;
+function copay15(price: number) {
+  return Math.floor((price * 0.15) / 10) * 10;
 }
 
 function normalizeCm(value: number, unit?: string, source?: string) {
@@ -96,13 +96,13 @@ function scoreCandidate(
         : targetHandle - handleRange[1];
       if (gap <= 3) {
         score += 15;
-        reasons.push(`손잡이 조절범위가 예상 적정 높이에 가깝습니다.`);
+        reasons.push('손잡이 조절범위가 예상 적정 높이에 가깝습니다.');
       } else if (gap <= 6) {
         score += 7;
-        reasons.push(`손잡이 높이는 사용 전 직접 맞춤 확인이 권장됩니다.`);
+        reasons.push('손잡이 높이는 사용 전 직접 맞춤 확인이 권장됩니다.');
       } else {
         score -= 16;
-        cautions.push(`키 기준 예상 손잡이 높이와 제품 조절범위 차이가 큽니다.`);
+        cautions.push('키 기준 예상 손잡이 높이와 제품 조절범위 차이가 큽니다.');
       }
     }
   } else {
@@ -119,7 +119,7 @@ function scoreCandidate(
       reasons.push(`폭 약 ${widthCm}cm로 문폭 통과 여유가 비교적 충분합니다.`);
     } else if (clearance >= 2) {
       score += 4;
-      reasons.push(`문폭 통과는 가능 범위지만 손·프레임 간섭 여유를 확인하세요.`);
+      reasons.push('문폭 통과는 가능 범위지만 손·프레임 간섭 여유를 확인하세요.');
     } else if (clearance >= 0) {
       score -= 8;
       cautions.push(`제품 폭과 문폭 차이가 ${clearance.toFixed(1)}cm 정도라 실제 통과 확인이 필요합니다.`);
@@ -320,7 +320,7 @@ export default function AdultWalkerRecommender({ candidates }: { candidates: Wal
                   {candidate.handleRange && <span>손잡이 {candidate.handleRange[0]}~{candidate.handleRange[1]}cm</span>}
                   {candidate.widthCm && <span>폭 약 {candidate.widthCm}cm</span>}
                   {candidate.weightKg !== undefined && <span>중량 {candidate.weightKg}kg</span>}
-                  <span>6% 부담 {formatter.format(copay6(candidate.benefitPrice))}원부터</span>
+                  <span>일반 15% 부담 {formatter.format(copay15(candidate.benefitPrice))}원</span>
                 </div>
                 {candidate.reasons.length > 0 && (
                   <ul className="walker-reasons">
