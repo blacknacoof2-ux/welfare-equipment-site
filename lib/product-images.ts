@@ -275,7 +275,7 @@ export const productImageSets = productMediaSets;
 
 export function getProductMedia(product: Product): ProductMediaSet | null {
   const explicit = productMediaSets[product.slug];
-  const supplemental = getSupplementalDetailImages(product.slug);
+  const supplemental = getSupplementalDetailImages(product.slug, product.model);
 
   if (explicit) {
     const galleryUrls = unique(explicit.galleryUrls).filter((url) => url !== explicit.heroUrl);
