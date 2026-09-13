@@ -20,6 +20,26 @@ export const officialSeedProducts = [
     benefitLimit: '태그형 2개',
     sourceType: 'CARESTORE_DIRECT_SEED',
   },
+  {
+    // Carestore direct product page is current but this model is not linked from
+    // the category navigation, so the Eroum reverse audit is used to retain it.
+    name: 'LC',
+    model: 'LC',
+    manufacturer: '아이온',
+    benefitCode: 'M03030132007',
+    category: '지팡이',
+    benefitPrice: 72500,
+    benefitMode: 'PURCHASE',
+    rentalMonthlyPrice: null,
+    carestoreStatus: 'DISTRIBUTED',
+    carestoreDistributionText: '유통중',
+    carestoreUrl: 'https://www.carestore.co.kr/welfare/M03030132007',
+    carestoreUpdatedAt: '2026-08-25',
+    origin: '대한민국',
+    durability: '2년',
+    benefitLimit: '1개',
+    sourceType: 'CARESTORE_DIRECT_SEED',
+  },
 
   // 수동침대는 Carestore 전시장 카테고리 탐색에서 누락되어 NHIS 공식 목록의
   // 직전 현행표를 seed로 사용하고, 최종 공개 여부와 현재 가격은 Eroum 급여코드
