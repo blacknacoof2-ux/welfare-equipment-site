@@ -1,32 +1,47 @@
-name: Greymall Detail Image Audit
+name: Greymall Detail Image Sync
 
 on:
   workflow_dispatch:
   push:
+    branches: [main]
     paths:
       - 'scripts/sync-greymall-detail-images.mjs'
       - '.github/workflows/greymall-detail-audit.yml'
 
 concurrency:
-  group: greymall-detail-image-audit
+  group: greymall-detail-image-sync
   cancel-in-progress: true
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
-  audit:
+  sync:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Crawl exact-model Greymall detail images
+
+      - name: Crawl exact-model Greymall DETAIL images
         run: node scripts/sync-greymall-detail-images.mjs
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Build
+        run: npm run build
+
       - name: Upload audit result
         uses: actions/upload-artifact@v4
         with:
@@ -35,3 +50,16 @@ jobs:
             artifacts/greymall-detail-images-audit.json
             lib/generated-greymall-detail-images.ts
           if-no-files-found: error
+
+      - name: Publish generated DETAIL image registry
+        shell: bash
+        run: |
+          if git diff --quiet -- lib/generated-greymall-detail-images.ts artifacts/greymall-detail-images-audit.json; then
+            echo 'No Greymall detail-image changes.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add lib/generated-greymall-detail-images.ts artifacts/greymall-detail-images-audit.json
+          git commit -m 'data: sync Greymall detail images'
+          git push
