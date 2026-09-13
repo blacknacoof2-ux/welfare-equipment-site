@@ -9,8 +9,2329 @@ export type GeneratedGreymallDetailImageSet = {
   checkedAt: string;
 };
 
-export const GREYMALL_DETAIL_SYNC_CHECKED_AT = '';
+export const GREYMALL_DETAIL_SYNC_CHECKED_AT = "2026-09-13";
 
-export const generatedGreymallDetailImageSetsBySlug: Record<string, GeneratedGreymallDetailImageSet> = {};
-// Temporary compatibility alias while the generated sync migrates from model-keyed to public-slug-keyed data.
-export const generatedGreymallDetailImageSetsByModel = generatedGreymallDetailImageSetsBySlug;
+export const generatedGreymallDetailImageSetsByModel: Record<string, GeneratedGreymallDetailImageSet> = {
+  "BFTL4": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000175",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/BFTL4_072826.png"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "BFTL5": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000176",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/BFTL5_01_073417.png",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/BFTL5_02_073418.png"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "HD-B-001": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000621",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230526/HD-B-001_112312.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "HD-UM-001": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000178",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230526/HD-UM-001_112513.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "나이팅게일단차해소기 20": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000008939",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260618/fa5d07ec6f8954d9108a0f2c541c616a_180239.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "ASW-101": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000109",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/2ccd111d162ba3dcaf0cd89a962ea818_093659.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221208/ASW-101_02_145146.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221208/ASW-101_03_145151.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221208/ASW-101_05_145203.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "ASW-102": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000110",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/2ccd111d162ba3dcaf0cd89a962ea818_093715.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221208/ASW-102_03_150043.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "ASW-103": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000111",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/2ccd111d162ba3dcaf0cd89a962ea818_093724.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221208/ASW-103_03_150721.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "ASW-104": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000112",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/2ccd111d162ba3dcaf0cd89a962ea818_093735.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221208/ASW-104_03_151529.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "TRA-H10": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000115",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/2ccd111d162ba3dcaf0cd89a962ea818_093803.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221208/TRA-H10_01_153749.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221208/TRA-H10_02_153755.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221208/TRA-H10_03_153759.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "TRA-H20": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000587",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230327/TRA-H20_151147.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "TRA-H30": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000588",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230327/TRA-H30_151358.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "라온아띠 KCS-811": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000008624",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/241030/f75d818951fa313a4ec67c05feef2b71_083155.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "ASC-501": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000008616",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/241028/ccee96aa576eb8fc7768236fb471e967_082030.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/241018/218acd24f81ab63b07d5fdfb6dc33e83_135321.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/241018/000bf663391bbce815790754ed31d03b_135321.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "BOFEEL 8": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000163",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230530/BOFEEL-8_104612.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "BOFEEL10": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000165",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230509/cbb6e2db261dc7dbf6c6904f18314dad_102613.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230509/6cea3d19fac69b93e8c19234a89a02a5_102614.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "BOFEEL11": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000921",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/240405/98a16326f7c02bf412261bed1e6dcfa4_170211.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/240405/eb4806decbca5e65336b798bbf2d6111_170212.gif",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/240405/eada6f990d33c28fdeea783f1b5b8e6d_170212.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "BOFEEL9": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000164",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/231226/3bbe4ffd946e7d47045349abbe542337_115729.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "Clean49": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000008676",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260706/8eb1f7b5fdde41ecb91477d2c58c26f0_093745.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "PN-L4152101D": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000672",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260818/422f4027ebfde21ae1ef7003688c3c3a_083435.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260818/a29cddbb698537f5281fa7ed7fbaac62_083443.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260818/8a27d43ff4d25aecd121e1b80805e129_083451.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "PT-300": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000170",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230530/PT-300_135932.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "나이팅게일-B": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000185",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/05761d3c30a704689da0f5b56124b5c5_103326.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/5033114ca0623cd589708d6373a5f0da_102449.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/3cffa172e5b5b7cecd2e766598e5d957_102450.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/c6f57cbd731da9c333cfa5b34db30c80_102451.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "나이팅게일축광(대)": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000008641",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/05761d3c30a704689da0f5b56124b5c5_103326.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/241104/d9476d75fba24da3ea92ba77e3bc07c7_162508.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "나이팅게일축광(소)": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000714",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/05761d3c30a704689da0f5b56124b5c5_103326.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/241104/6ca9dab13546f3cd6b11cd5a2235f667_164655.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "나이팅게일축광(중)": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000713",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/05761d3c30a704689da0f5b56124b5c5_103326.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/241104/0b408c499a3462084a729dfd6fe49ca3_164747.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "논슬립200": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000982",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/240329/05761d3c30a704689da0f5b56124b5c5_082443.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/240619/f00e1543445c1c47f399a03c9dd902ed_163706.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/240619/59b25afdb7c8a240f618f3e257d1f053_163707.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/240619/da1b08a0bdffdaeee71710ab4f32c515_163708.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/240619/9bd149ccf1b0392d4022d8d3143948b6_163708.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/240619/c0acd99867b359aa334aecfa039e0d90_163709.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "덧신S": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000105",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/1f486de7fa23bc95bf44af4495724e07_093544.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/241104/76f1510941e1d8c542effa95308df9ac_131347.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221208/2fbd45ccfa08b6aa57310d4f64ce035a_142113.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "바이오 스타 논슬립매트 Ⅲ": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000507",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230504/11401e2684f51819f5a7df600acf6412_155019.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "온삭스": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000008615",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/250224/b87e2609afff186c51c56b6fdf98dff7_101052.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "위풋 논슬립 돌돌이 양말 양면": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000612",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/1f486de7fa23bc95bf44af4495724e07_093404.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260729/58a1bb94f0da645799772eb430dc49ae_085121.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "ASM-102": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000891",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/240216/a0c83f4e8109f5adcc70edfd722e3640_093030.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "BLS-900": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000008754",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260512/fa5d07ec6f8954d9108a0f2c541c616a_182813.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "DA-006": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000531",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/240329/05761d3c30a704689da0f5b56124b5c5_082641.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230526/40a447a95b7b3e2e230bb192e83b9c14_093136.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "DM-100S": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000505",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230504/5d788156596c0754e9fc1a06a3f86ea2_152442.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "DM-120L": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000008620",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/241028/d1db0b42b24d91b94f37b6c0731a347c_082634.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/241028/fb694b24c66a62ec97559dd87a31febf_082635.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "FHC-VSA02": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000001010",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/1f486de7fa23bc95bf44af4495724e07_093226.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "KH-101": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000095",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/1f486de7fa23bc95bf44af4495724e07_093226.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221208/KH-101_01_130053.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221208/KH-101_02_130059.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221208/KH-101_03_130105.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "KH-102": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000477",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/1f486de7fa23bc95bf44af4495724e07_093249.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230111/36a0bd88ea88724efabd225eba79a400_114706.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230111/44599336eb2abef814c7778dac386580_114707.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "KH-103": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000478",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/1f486de7fa23bc95bf44af4495724e07_093226.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230111/1f27a2e924de1260d5c4218470928ab1_145918.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230111/0adb9a95edf30ad20a4f1138133e1560_145924.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "KH-104": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000479",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/1f486de7fa23bc95bf44af4495724e07_093226.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230111/6f33283ff14e502b048f02b5521f7a8f_152621.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230111/213b6fbf68105b662284b8528c40e6de_152622.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "KH-105": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000096",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/1f486de7fa23bc95bf44af4495724e07_093249.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221208/KH-105_01_131515.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221208/KH-105_02_131525.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221208/KH-105_03_131531.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "KH-108": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000480",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/1f486de7fa23bc95bf44af4495724e07_093226.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230111/82c6df77271fd024c90c4ebad03cded8_164311.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230111/285715f13f50df72b675c1d99091d6a2_164311.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "KH-109": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000097",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/1f486de7fa23bc95bf44af4495724e07_093311.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221208/KH-109_01_132224.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221208/KH-109_02_132230.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221208/KH-109_03_132236.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "KH-110": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000481",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/1f486de7fa23bc95bf44af4495724e07_093226.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230111/7f4bfc52ede65608076e9fed151ae209_173040.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230111/48f6833cf062b059af951f3264eb50f9_173041.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "KH-111": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000482",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/1f486de7fa23bc95bf44af4495724e07_093544.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230112/cd3b903dbcc9ae4ef0dc31afabd53267_105835.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230112/fdd5d4c0853776395fdc62ae8fe72a4c_105836.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "NEO-1": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000581",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230324/NEO-1_151609.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "NEO-10": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000008609",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/241016/9a9b2b0bf802d6dd9dcc335aed4aadda_085329.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/241016/2a9a868d2c0a3a044b9079caf74347d4_085330.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "NEO-2": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000582",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230327/NEO-2_081241.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "NEO-3": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000584",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230327/NEO-3_145801.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "NEO-6": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000670",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230420/67660240820d31aaaf51ed58fe8c2745_115132.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "NEO-7": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000001027",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/240711/ba9b9741e4d6c5ec93cff4fd852eead8_103320.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/240711/f1c0f9d18edffdea2c29913f807f4ab9_103330.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/240711/e987e8c7c9e2c1e92f3ba1c90b038ce3_103345.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "NEO-8": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000008607",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/241015/22d575acb4ea0ceac07d806d10ad2791_160328.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/241015/be7e64d981aa0f8fa9a5cf8e23b640d4_160328.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "NEO-9": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000008608",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/241015/ba738235392fa84bb04af7e193df7096_170343.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/241015/9ad892a3dba6da432a331c2c38155085_170344.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "NSAM-0190": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000508",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230504/d2beeacfb5c8b7abe6f4597edeab41a3_154329.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "NT-6001": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000985",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/240621/5f9bf17e775eef0635d03db5a16d541a_155842.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/240621/8dba6b46cb9a0f02e11e8ef0fa356254_155843.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "SC-2500": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000180",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/05761d3c30a704689da0f5b56124b5c5_103211.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/SC-2500_01_093055.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230523/SC-2500_02_091759.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/SC-2500_03_093057.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "SKM-500 마블": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000181",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/05761d3c30a704689da0f5b56124b5c5_103231.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/54301446c7b6c669aaa3582d4f70368c_094533.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/82b2fa5e859259c8d061aa694ad134da_094533.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/3594c0f62f7a90f7d26a03e488ae04ef_094534.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "SW-지압plus": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000912",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/240329/05761d3c30a704689da0f5b56124b5c5_082443.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/240328/23cb58110a0609089d48469c9411390d_103217.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/240328/702251f305a3162e5cf4b7aab3d27416_103237.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/3e321ca8151226dc3bbb12e9cf083459_101312.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "SW-M1": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000182",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/05761d3c30a704689da0f5b56124b5c5_103248.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230504/305fc89cd92c6aaf620f6da69ec8a3ff_160147.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/SW-M1_03_095606.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "SW-M260": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000183",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/05761d3c30a704689da0f5b56124b5c5_103308.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/240910/6f0bf86399fa055b460d4845177c3fd2_095030.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/3e321ca8151226dc3bbb12e9cf083459_101312.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "SW-SM02": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000510",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/240402/1e35356761a425ceb22c6091dd7fbc06_105218.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "SW-SM03": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000008617",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/241028/d1db0b42b24d91b94f37b6c0731a347c_082729.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260223/f352554ae4052789a9659eef28c7ce37_082029.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260223/0c70dbb31342694b2d1d64a9f5fe3931_082042.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "YH-001": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000099",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/1f486de7fa23bc95bf44af4495724e07_093345.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221208/YH-001_01_133853.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230502/YH-001_02_154230.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221208/YH-001_03_133911.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "YH-003": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000100",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/1f486de7fa23bc95bf44af4495724e07_093404.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221208/YH-003_01_134905.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221208/YH-003_02_134915.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221208/YH-003_03_134923.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "YH-004": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000483",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/1f486de7fa23bc95bf44af4495724e07_093404.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230112/ddd357274596f8b5726eb6aab58f4708_140743.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230112/fce51fda9ccd7b58f8faea187defb8dd_114310.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "YH-007": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000101",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/1f486de7fa23bc95bf44af4495724e07_093419.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221208/YH-007_01_135604.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221208/YH-007_02_135615.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221208/YH-007_03_135625.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "YH-008": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000102",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/1f486de7fa23bc95bf44af4495724e07_093439.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221208/YH-008_01_140221.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221208/YH-008_02_140230.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221208/YH-008_03_140239.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "YH-010": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000103",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/1f486de7fa23bc95bf44af4495724e07_093508.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221208/YH-010_01_140847.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221208/YH-010_02_140853.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221208/YH-010_03_140859.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "YH-11": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000484",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/1f486de7fa23bc95bf44af4495724e07_093404.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230112/4f32552d6673537f3ae5ce401b4d2072_141216.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230411/ef175997df87f4121a025e499951d4c4_160138.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "YH-12": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000485",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/1f486de7fa23bc95bf44af4495724e07_093404.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230112/e111e3b28ce6085b26f3fdbb9af42f95_145156.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230411/07d937ad6be6dd2d439f6626ebf956fd_172204.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "YH-201": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000486",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/1f486de7fa23bc95bf44af4495724e07_093249.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230112/325173f16c09b3954e4e558de02b355b_145510.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230116/ee7518fed51668ab872029baa0ea295b_090659.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "YH-805": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000008677",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/250409/c4981a5f97a8d46b0a9a479d4eabdfcf_145834.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "나이스워커4S": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000229",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230526/4c94f3bfe34d044932065f39b2ac75c4_134055.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "뉴라이트스텝": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000230",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230526/e5f3236b023d45175b7c6ca488d7b69a_145041.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "동행(sk-130)": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000008621",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/241101/25b404e4bb8e0aaee2287f5d8b169a07_170114.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "실버카 아라": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000008884",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260406/fa5d07ec6f8954d9108a0f2c541c616a_135320.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "실버카-KS120": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000233",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221213/6a9b2cee5d127503823325f520d3738c_041435.png",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230217/a3f8838a70f2bbae7fad03b02213c928_131347.png"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "PHW-07": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000220",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/241129/3036ac1002e27e8594cb1ee24afae114_141443.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "SKB-101W": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000451",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/250408/480964ad68210ff89450f5cc02a52079_105533.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "SLT-10": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000919",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260707/3c59c1e579afcd7c52a25f37577c0074_134232.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260707/3955432e87051539dc2d1da9cac36625_134242.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "SPORTY": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000008882",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260406/6bdcf817ed9223b3bd086c2870aeb87a_132120.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "WAG02": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000008875",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260323/fa5d07ec6f8954d9108a0f2c541c616a_131917.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260323/a78cfc49e1edb66d4ef2d8b9f42efe00_131926.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260323/ce3d83cdc0949c674b8c9a556ada5b2f_131938.gif",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260323/de8122ac019a6734af8e95c16709a5c0_131946.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260323/e47f549bf3dbcd5247b23ff71d5b48ae_131955.gif",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260323/106466ad6b061b2cf7f4fb27e029e5e5_132001.gif",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260323/1736b3e34bc8261a5980dd869d780a95_132009.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260323/e3f35b6205cf0918bc42fa2dfb1adb72_132015.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260323/0a02cb4cb3fa30b89f5402a32078109b_132022.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "HAL48(22D)": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000774",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230220/f8897370ee6367ce704bc3c50ea7a90c_123722.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230707/7c1aa99f58f34a0fb6b0c9cce76282fa_153246.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230220/ab0c9c31fcf9292fbf7e5b4ca4dd185c_123756.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230531/88808ef7b1c266ad765c532d56654792_174516.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230531/7c83c96660381bc62a2831bf0b543fa4_174517.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221223/30bc2c0c4a1dcc97ed4cf8157237d70d_163707.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "MF-22D": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000276",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230707/b834d37a89a70a2fe97e53a846814364_154828.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230707/7c1aa99f58f34a0fb6b0c9cce76282fa_141602.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230927/739d43f648201076e6eb3b2c7de972f4_102600.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221223/30bc2c0c4a1dcc97ed4cf8157237d70d_163611.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "MIKI-JTN": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000463",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221228/1133b930740591f1315e987ea2fd639e_142610.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230531/41d8e4aa72e5be7529c2f12a8e54d63a_154615.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221223/30bc2c0c4a1dcc97ed4cf8157237d70d_164449.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "MIKI-PB": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000462",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221228/1133b930740591f1315e987ea2fd639e_142541.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/231213/1f838e9d7001388b5b66cd841421d048_105639.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221223/30bc2c0c4a1dcc97ed4cf8157237d70d_164434.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "MiKi-W": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000460",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221228/1133b930740591f1315e987ea2fd639e_142445.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230808/80030d9e31c6361a7ebfca9b7fcb29ce_091233.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221223/30bc2c0c4a1dcc97ed4cf8157237d70d_163555.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "MIRAGE-7(22D)-B": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000264",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230707/b834d37a89a70a2fe97e53a846814364_154828.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230707/7c1aa99f58f34a0fb6b0c9cce76282fa_134323.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230707/35d5f6f7bd6a0abc01e8189d9e22cf62_134331.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221214/Mirage-7(22D)-B_02_011649.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230531/Mirage-7(22D)-B_03_175953.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221223/30bc2c0c4a1dcc97ed4cf8157237d70d_164410.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "Mirage22D": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000269",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230220/f8897370ee6367ce704bc3c50ea7a90c_121612.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230707/7c1aa99f58f34a0fb6b0c9cce76282fa_143249.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230220/4eb79b395964d6f57bd4ce71ccebf979_121613.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230220/1d49cc1ede580600a08b1c4e21c0cc09_121613.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230220/3a6dafe7b7227a4498e688caa71ae653_121614.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230220/22cf973acd7f02182d9f764a1f738cfb_121615.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230220/6d4ff42db165617e95d4262c92f0558a_121616.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230220/d7c014841a783e28abfd6ee0f61f3b2f_121616.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221223/30bc2c0c4a1dcc97ed4cf8157237d70d_163949.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "MIRAGE22D-P": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000279",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230707/b834d37a89a70a2fe97e53a846814364_154828.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230707/7c1aa99f58f34a0fb6b0c9cce76282fa_142913.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230707/Mirage22D-P_00_02_142913.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221214/Mirage22D-P_02_042624.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221214/Mirage22D-P_03_042625.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221223/30bc2c0c4a1dcc97ed4cf8157237d70d_163456.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "에스원": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000565",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230322/a7f6f5ab907b1a974cdf528ef462f10c_170054.png",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230322/67a4d20841a29c1e6b4a9aae77c5e308_170055.png",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230322/c19b8853d9caad78e62667c0f8f3afb7_170055.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "케어 핸들-2": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000188",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/062e0b3633c97b502ebeb0b9c43e3bf1_100457.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/c8cf59b6ed82998e93ec844d6ac54e38_103439.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "케어핸들 2-G": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000880",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/062e0b3633c97b502ebeb0b9c43e3bf1_100457.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/c8cf59b6ed82998e93ec844d6ac54e38_103439.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "ASH-102": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000119",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/062e0b3633c97b502ebeb0b9c43e3bf1_093950.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221208/ASH-102_03_164047.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "ASH-103": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000120",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/062e0b3633c97b502ebeb0b9c43e3bf1_094001.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221208/ASH-103_03_165247.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "ASH-104": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000121",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/062e0b3633c97b502ebeb0b9c43e3bf1_094027.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/ASH-104_03_083144.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "ASH-105": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000122",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/062e0b3633c97b502ebeb0b9c43e3bf1_094050.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/ASH-105_03_110035.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "ASH-106": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000123",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/062e0b3633c97b502ebeb0b9c43e3bf1_094103.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/ASH-106_03_111144.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "ASH-107": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000124",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/062e0b3633c97b502ebeb0b9c43e3bf1_094116.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/ASH-107_03_113351.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "ASH-108": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000125",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/062e0b3633c97b502ebeb0b9c43e3bf1_094134.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/ASH-108_03_114124.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "ASH-109": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000126",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/062e0b3633c97b502ebeb0b9c43e3bf1_094159.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/ASH-109_03_114923.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "ASH-110": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000128",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/062e0b3633c97b502ebeb0b9c43e3bf1_094230.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/ASH-110_03_115740.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "ASH-111": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000129",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/062e0b3633c97b502ebeb0b9c43e3bf1_094249.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/ASH-111_03_120611.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "ASH-120": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000130",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/062e0b3633c97b502ebeb0b9c43e3bf1_094300.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/ASH-120_03_121415.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "ASH-201": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000197",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/062e0b3633c97b502ebeb0b9c43e3bf1_100521.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/ASH-201_03_130433.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "ASH-211": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000008618",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230220/448dcd7e804cf1abf2ec0f75cf75b024_170926.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/241021/bb432b05243dc315fd8b0d2663e1e981_113704.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "ASH-212": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000008886",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260406/76de773baf4aef30951ba9e3bc62e761_145720.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260406/a78cfc49e1edb66d4ef2d8b9f42efe00_145729.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260406/ce3d83cdc0949c674b8c9a556ada5b2f_145737.gif",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260406/de8122ac019a6734af8e95c16709a5c0_145744.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260406/e47f549bf3dbcd5247b23ff71d5b48ae_145752.gif",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260406/106466ad6b061b2cf7f4fb27e029e5e5_145801.gif",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260406/1736b3e34bc8261a5980dd869d780a95_145808.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260406/e3f35b6205cf0918bc42fa2dfb1adb72_145816.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260406/0a02cb4cb3fa30b89f5402a32078109b_145823.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260406/01a3f56d17e52f2469c7596525417cba_145830.gif",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260406/b2a23992e23112687b2d7c5ddd5a1359_145836.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260406/757353f8a8250e90efceacb367cccf20_145845.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "ASH-304": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000981",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/240618/fb22d85da7bc999fb7875faff9e9676a_163234.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/240618/7788b56ff2dab877266fa42563162f0e_163235.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/240618/760a1fe64175052a23b1e8a9cf6d66e8_163236.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/240618/9694842a13eb2bc630bcf3329cf3ab4c_164633.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "ASH-401": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000008887",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260406/76de773baf4aef30951ba9e3bc62e761_150722.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260406/a78cfc49e1edb66d4ef2d8b9f42efe00_150730.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260406/ce3d83cdc0949c674b8c9a556ada5b2f_150737.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260406/de8122ac019a6734af8e95c16709a5c0_150743.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260406/e47f549bf3dbcd5247b23ff71d5b48ae_150750.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260406/106466ad6b061b2cf7f4fb27e029e5e5_150756.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260406/1736b3e34bc8261a5980dd869d780a95_150806.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "ASH-402": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000008876",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260323/76de773baf4aef30951ba9e3bc62e761_135416.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260323/a78cfc49e1edb66d4ef2d8b9f42efe00_135527.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260323/ce3d83cdc0949c674b8c9a556ada5b2f_135539.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260323/de8122ac019a6734af8e95c16709a5c0_135547.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260323/e47f549bf3dbcd5247b23ff71d5b48ae_135555.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "ASH-501": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000008888",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260406/76de773baf4aef30951ba9e3bc62e761_151427.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260406/a78cfc49e1edb66d4ef2d8b9f42efe00_151433.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260406/ce3d83cdc0949c674b8c9a556ada5b2f_151439.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260406/de8122ac019a6734af8e95c16709a5c0_151446.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260406/e47f549bf3dbcd5247b23ff71d5b48ae_151452.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260406/106466ad6b061b2cf7f4fb27e029e5e5_151501.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "ASH-502": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000008889",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260406/76de773baf4aef30951ba9e3bc62e761_153413.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260406/a78cfc49e1edb66d4ef2d8b9f42efe00_153421.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260406/ce3d83cdc0949c674b8c9a556ada5b2f_153428.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260406/de8122ac019a6734af8e95c16709a5c0_153435.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260406/e47f549bf3dbcd5247b23ff71d5b48ae_153442.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260406/106466ad6b061b2cf7f4fb27e029e5e5_153449.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "ASH-503": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000008890",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260406/76de773baf4aef30951ba9e3bc62e761_153827.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260406/a78cfc49e1edb66d4ef2d8b9f42efe00_153834.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260406/ce3d83cdc0949c674b8c9a556ada5b2f_153840.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260406/de8122ac019a6734af8e95c16709a5c0_153846.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260406/e47f549bf3dbcd5247b23ff71d5b48ae_153852.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "BFSH-202": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000008916",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260615/76de773baf4aef30951ba9e3bc62e761_145608.png"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "CC1200": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000131",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/062e0b3633c97b502ebeb0b9c43e3bf1_094311.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/CC1200_01_124403.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/CC1200_02_124409.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/CC1200_03_124416.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "CD-10": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000008919",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260615/76de773baf4aef30951ba9e3bc62e761_174510.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "CE400": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000132",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/062e0b3633c97b502ebeb0b9c43e3bf1_094325.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/CE400_01_125823.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/CE400_02_125831.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/CE400_03_125837.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "CE460": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000135",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/062e0b3633c97b502ebeb0b9c43e3bf1_094419.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/CE460_01_141011.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/CE460_02_141019.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/CE460_03_141027.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "CE600": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000136",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/062e0b3633c97b502ebeb0b9c43e3bf1_094500.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/CE600_01_141716.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/CE600_02_141722.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/CE600_03_141728.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "CL300": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000138",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/062e0b3633c97b502ebeb0b9c43e3bf1_094555.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/CL300_01_142738.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/CL300_02_142751.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/CL300_03_142758.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "CL600": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000140",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/062e0b3633c97b502ebeb0b9c43e3bf1_094720.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230530/cc3ffe8decb0a119d13fcc20bbd8efd9_162432.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/CL600_03_143758.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "CP600": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000512",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230220/CP600(0)_093417.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230530/3a35a320ca7e5750e5e8875e3c4b31e3_162019.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "CP660": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000513",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230220/CP660(0)_111908.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230530/7f097dd7c4ebaf92fd70eae9beac834d_161702.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "CP800": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000520",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230220/448dcd7e804cf1abf2ec0f75cf75b024_162548.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230530/0b25db84fc1cfbd18671da1bd995d41a_160207.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "CV100": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000521",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230220/448dcd7e804cf1abf2ec0f75cf75b024_163602.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "CV200": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000522",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230220/448dcd7e804cf1abf2ec0f75cf75b024_170926.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "CW400": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000142",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/062e0b3633c97b502ebeb0b9c43e3bf1_094839.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/CW400_01_145041.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/CW400_02_145048.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/CW400_03_145054.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "DGP-0002": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000145",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/062e0b3633c97b502ebeb0b9c43e3bf1_095023.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/DGP-0002_01_151516.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/DGP-0002_02_151522.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/DGP-0002_03_151530.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "DGP-0003": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000147",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/062e0b3633c97b502ebeb0b9c43e3bf1_100140.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/DGP-0003_01_153029.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/DGP-0003_02_153038.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/DGP-0003_03_153044.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "DGP-0004": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000148",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/062e0b3633c97b502ebeb0b9c43e3bf1_100156.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/DGP-0004_01_154040.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/DGP-0004_02_154047.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/DGP-0004_03_154053.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "DGP-0005": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000150",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/062e0b3633c97b502ebeb0b9c43e3bf1_100230.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230531/3ef67b2cd5caa727ab820493b0b97a68_114239.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/DGP-0005_03_154803.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "DGP-0006": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000152",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/062e0b3633c97b502ebeb0b9c43e3bf1_100257.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230508/2c7ea2615390b63a26d4b981deb39493_130635.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/DGP-0006_03_160114.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "DGP-0007": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000153",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/062e0b3633c97b502ebeb0b9c43e3bf1_100309.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230508/993a114ca1d59bed2d5b5142ab342040_131741.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/DGP-0007_03_161026.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "DM-310": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000008902",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/062e0b3633c97b502ebeb0b9c43e3bf1_094555.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260512/76de773baf4aef30951ba9e3bc62e761_172335.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "FHC03": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000154",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/062e0b3633c97b502ebeb0b9c43e3bf1_100322.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/FHC03_03_162216.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "LK-ST200": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000008915",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260615/76de773baf4aef30951ba9e3bc62e761_143040.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260406/a78cfc49e1edb66d4ef2d8b9f42efe00_145729.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260406/ce3d83cdc0949c674b8c9a556ada5b2f_145737.gif",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260406/de8122ac019a6734af8e95c16709a5c0_145744.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260406/e47f549bf3dbcd5247b23ff71d5b48ae_145752.gif",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260406/106466ad6b061b2cf7f4fb27e029e5e5_145801.gif",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260406/1736b3e34bc8261a5980dd869d780a95_145808.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260406/e3f35b6205cf0918bc42fa2dfb1adb72_145816.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260406/0a02cb4cb3fa30b89f5402a32078109b_145823.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260406/01a3f56d17e52f2469c7596525417cba_145830.gif",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260406/b2a23992e23112687b2d7c5ddd5a1359_145836.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260406/757353f8a8250e90efceacb367cccf20_145845.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "MSP-0002": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000500",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230217/85481074943ac563deac29343aa5677b_091602.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230217/27a6c6e1ed581cd61873588138f67e62_091603.png",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230217/7e778888ca95dd235d6ac2d702e357a0_091604.png",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230217/3a24038fd3fad934d1b503a3bdbe4195_091605.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230217/29d1d9f1e1bf6437238ae272f00a2f8b_091605.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230217/beee46741d043dc48e4736629151cf54_091606.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230217/beb7672024b553fd7fe63ed71b4d5498_091607.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230217/115a15919f50001fcd2052fb8c5b5f65_091607.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230217/e4fb80282ceca75f8d3e2f499b1eb83a_091608.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "MSP-0003": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000503",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230217/19a694880cc5462b1de691cdcfc97a6f_102107.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230217/02MSP-0003_102107.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230217/03MSP-0003_102108.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230217/04MSP-0003_102109.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230217/05MSP-0003_102109.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230217/06MSP-0003_103239.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230217/07MSP-0003_102111.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "MSP-0005": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000504",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230217/MSP-0005(0)_153433.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230217/MSP-0005(1)_153434.png",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230217/MSP-0005(2)_153435.png",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230217/MSP-0005(3)_153435.png",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230217/MSP-0005(4)_153436.png"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "NSBS-LS4475": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000571",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230509/226a60068dd5f53295598ef140bdceed_083601.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230509/0ae61088f404b2c1d83bb56c09965d7e_083601.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "URB-SG001[B]": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000008940",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260623/6bdcf817ed9223b3bd086c2870aeb87a_131032.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260623/16b78c8b52e4360bfa9611ae177d3005_131043.gif",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260623/103658ca5052240945153a4b9d1d32a3_131058.gif",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260623/3f1f952d74ee1f3b750ba62ed4b6da94_131204.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "URB-SG001[G]": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000008862",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260623/6bdcf817ed9223b3bd086c2870aeb87a_131703.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260623/16b78c8b52e4360bfa9611ae177d3005_131732.gif",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260623/103658ca5052240945153a4b9d1d32a3_131738.gif",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260623/3f1f952d74ee1f3b750ba62ed4b6da94_131744.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "WA-T100": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000515",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230220/5a9067323bd2dac3889528e8e9437e24_173543.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230509/7b3e3f6458980a14d78f4690500379c4_083135.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "YGA001": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000527",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230531/c1d936f1fd04014c14618d38fb2acf07_103851.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "YGA002": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000528",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230531/770d3972dcc9825d3f517c567a875216_104858.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "YGA003": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000529",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230531/e1b322c3423453220483cf7bc7097314_105933.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "YGA02": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000516",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230220/448dcd7e804cf1abf2ec0f75cf75b024_152052.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230621/b45c9763fee062dc206b69ad91c55140_102241.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "YGA03": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000523",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230220/ef22b2af5dc47f7db2951cffd5f40035_180152.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230531/62659de662dc77c8f168b368f2a6b1e1_093226.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "YGC001": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000517",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230220/448dcd7e804cf1abf2ec0f75cf75b024_153647.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230508/7cc01da99e02e9278891ffef50281190_162350.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "YGC01": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000524",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230221/ef76a55c2c8108191f150e2fc7c7005b_112628.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230508/b4bcf60ad2526cdf216810d6cc393e55_165148.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "YGH002": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000530",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230222/YGH002(0)_091720.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230531/YGH002_110430.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "YGH02": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000518",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230220/448dcd7e804cf1abf2ec0f75cf75b024_155740.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230509/69938e51144b065ccc17aba5a0df067a_081859.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "YGM03": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000525",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230221/97620865d4f00b8095b7b07cffbe9966_115052.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "YGP-001": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000008877",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260323/76de773baf4aef30951ba9e3bc62e761_143132.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "YGW-L": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000519",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230220/448dcd7e804cf1abf2ec0f75cf75b024_161753.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230531/ee9e96677ad7f0336e81939e1bab2c83_102404.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "YGW-T": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000514",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230220/448dcd7e804cf1abf2ec0f75cf75b024_141859.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230509/ef0a74913af6c852f65f0212b40ca175_082746.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "맥시텐셀": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000690",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230629/8f521a3b311b46013a55d0c9cfb82467_161403.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "효(孝)팬티-003": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000618",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230329/e34b0449eca74f09d81acdd869ccb7e6_163350.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "APM-002": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000608",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230328/APM-002_174133.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "CURA-M2": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000837",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/250213/4963cb43c990e0334642db2c88c9c3dc_093032.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "EM500트렁크30cc": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000606",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230328/3a9e7f0af092db1198ccef736617cff1_172549.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "FM700 데일리트렁크 50cc": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000691",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230629/31bd636a522fe51176b3a6628665938b_162217.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "LP-011 보나수 30cc": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000310",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221214/a3864269e03a38851f497372dd88ce91_150306.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221214/b2b14c5d31d11ce759254975271c5048_150307.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221214/729c8c056d4eecfdbd69ca8fe26b1035_150308.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "LP-021 보나수 50cc": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000311",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221214/c59fe389ece75198577b3c0935ece85b_151406.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221214/c68b544beef0781de2e0e75ee7c53d1c_151407.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221214/9b026f4a01450adbbb35fcc499170e5e_151407.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "MSIP-002": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000293",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221214/f93dcdfe8f6653b9373f8113f50813b8_091910.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221214/e467e6b076eb3728b4f829598f3f6a8c_091911.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221214/67ea18665066869f9480b2d0f7835dfd_091919.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "MSPT-001": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000990",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/240626/562c11c077b485431dbf889c414d25f4_160211.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/240626/f1fdccf23bd68888ebf46b70425dc014_160211.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/240626/8aa7246735d2a44b80a277dfe131e123_160212.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/240626/c48047d86215e623d36ec0062649c490_160427.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "MSPT-003": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000986",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/240624/7eaf9a4ee280e36adc7905cb6d7ceba6_163001.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/240624/c709f6f1d9c536865586b33bbf9c62c7_163002.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/240624/8caf81b278b3ab21e93a0431635a1713_163003.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/240624/6b79db30399baa0888b126cb18e1f33e_163003.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/240624/badd027876dd4949468e52e768b4f106_163004.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/240626/c48047d86215e623d36ec0062649c490_160600.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "NSBS-PT150": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000877",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/231228/63e7ee98d35e1a93423f16af45fae3ca_103742.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "SOOM F-80cc": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000692",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230630/4de27a1c0361a73c8a0e7af798fdc543_125940.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "SOOM M-130cc": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000874",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/231222/SOOMM-130cc_145756.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "WDR-02": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000902",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/240321/c8858c76ce3d0e26f9269366b416b6e6_125927.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/240321/b31d690e7fc402f6bea5b48713d00ec8_125939.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "WHR-01": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000308",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221214/b8ad9eeea2e467e1d5d544392277c414_142440.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221214/6f597a0c02ad2321b99bc24071077f77_142441.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221214/65d6d7b3ee766a01045c687c9a704a9d_142442.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "AD-1300 MUTE Bio Double": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000190",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/ffd1db714e1151c198c4f0d9645cef02_102319.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/AD-1330MUTEBioDouble_01_111137.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/AD-1330MUTEBioDouble_02_111144.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/AD-1330MUTEBioDouble_03_111152.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/AD-1330MUTEBioDouble_04_111159.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "AD-1300 MUTE FOAM": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000191",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/ffd1db714e1151c198c4f0d9645cef02_102351.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/AD-1330MUTEFOAM_01_112925.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/AD-1330MUTEFOAM_02_112941.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/AD-1330MUTEFOAM_03_112948.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/AD-1330MUTEFOAM_04_112958.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "AD-1300 MUTE PURPLE": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000008879",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260323/fa5d07ec6f8954d9108a0f2c541c616a_155303.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "AD-7 MUTE": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000008613",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/241016/0ded3c54d84433b86c4943bf0868b799_165421.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/241017/655b39b826d41607fe0b7a727bd97e1d_105600.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/241016/dbbae5123cb2e0c73ecda18e7cb3fb75_165500.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "AD-Ⅲ-Bidet": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000626",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260911/f8911375cc231ce78f371f684cb6766a_092628.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260911/8546bfcdec1ceb743f57a164597da539_092635.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "Glory-MC1": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000195",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/ffd1db714e1151c198c4f0d9645cef02_102501.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/Glory-MC1_01_123932.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/Glory-MC1_02_123941.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/Glory-MC1_03_123949.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "GR-1004H": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000196",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/ffd1db714e1151c198c4f0d9645cef02_102525.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230504/4da362f80ba952b294d44164e6afabbf_110633.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/GR-1004H_03_125550.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "HG-100 M1 TPU": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000199",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/ffd1db714e1151c198c4f0d9645cef02_102601.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/HG-100M1TPU_01_130940.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/HG-100M1TPU_02_130949.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/HG-100M1TPU_03_130955.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/HG-100M1TPU_04_131002.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "HG-100 MC2": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000203",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/ffd1db714e1151c198c4f0d9645cef02_102736.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230504/0293afc17e5791eb8a6bfbf2ee46462f_115524.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230504/41c02eda9748bf4b8189218cba14b21e_115524.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/HG-100MC2_04_133632.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "SM-DUB-002": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000623",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260911/25bf82666911d46f14e68ff3c12f6fd6_090558.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260911/0d12d0e15eb7bf509bce4de9968fc24a_090605.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "YH-0301": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000205",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/ffd1db714e1151c198c4f0d9645cef02_102817.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230504/c47094c64010667c6506c58ecfaac929_112446.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/YH-0301_04_135529.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "YH-0302": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000207",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/ffd1db714e1151c198c4f0d9645cef02_102918.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/YH-0302_04_142837.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "YH-0305": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000204",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/ffd1db714e1151c198c4f0d9645cef02_102758.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/YH-0305_04_135917.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "YH-3&1": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000008614",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/ffd1db714e1151c198c4f0d9645cef02_102918.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221212/YH-0302_04_142837.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "ABM-101": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000127",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/651df4dba33aff5306ab30cc65ad8d33_094212.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/ABM-101_02_114723.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/ABM-101_04_114725.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "BLESSON1": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000573",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230323/Blesson1_01_163021.png",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230323/Blesson1_02_163021.png",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230323/Blesson1_03_163022.png",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230323/Blesson1_04_163022.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "CD-04": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000137",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/651df4dba33aff5306ab30cc65ad8d33_094525.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/CD-04_01_142255.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/CD-04_02_142256.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/CD-04_03_142257.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/CD-04_04_142258.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "CD-07": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000008606",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/241027/722bce20710dd9c05f3ea78a4ed8082a_220051.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/241015/0450001b1037c9db65ddb449174f2276_155655.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/241015/100e72ac3951005b583d1d503196e6e1_155433.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "Glory-2": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000141",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/651df4dba33aff5306ab30cc65ad8d33_094803.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/Glory-2_01_144459.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/Glory-2_02_144500.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/Glory-2_03_144501.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "NSBS-4WAY88": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000769",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/231004/d47c50d5812e867d849b19b8bcfdd64b_082928.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230927/6faf1a5b5ab8242fb46ba019e3805744_171053.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "NSBS-bm1416": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000149",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221215/651df4dba33aff5306ab30cc65ad8d33_100217.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/NSBS-bm1416_01_154010.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/NSBS-bm1416_02_154011.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221209/NSBS-bm1416_03_154012.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "NSBS-TM3WAY": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000008909",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260518/fa5d07ec6f8954d9108a0f2c541c616a_143457.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "YH-CR01": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000574",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230324/YH-CR01_01_080436.png",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230324/YH-CR01_02_080437.png",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230324/YH-CR01_03_080437.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "YH-CR02": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000579",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230504/be10cba893b222b3e7e49d20e8ab2b95_100428.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "APT-101": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000300",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221214/bbb802014e65f5379ab6ad9dd18164a9_120722.gif",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/240405/ac3c3b063b62b950800aab85ff9bc1e7_151025.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "APT-103": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000920",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/240405/06a197ead045dddd0ba96e8fab293aa5_145253.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/240405/c21ab5726c5a7a940377819b71a094d7_145315.gif",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/240405/8f300a7e7d3fdaa29ce7e55ba929d27b_150441.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/240405/d9493c4c66fda6e71043f9c70b282f8a_150442.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "APT-126": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000008907",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260518/76de773baf4aef30951ba9e3bc62e761_135232.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260518/a78cfc49e1edb66d4ef2d8b9f42efe00_135240.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260518/ce3d83cdc0949c674b8c9a556ada5b2f_135248.gif",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260518/de8122ac019a6734af8e95c16709a5c0_135257.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260518/e47f549bf3dbcd5247b23ff71d5b48ae_135307.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "APT-210": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000302",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221214/390540c1b2bbe51d5a6f7c55a6b9b41d_121900.gif",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221214/d58908041264cb4879001ddb298833c4_121904.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221214/6b5734a731318a29215f29a2ef2b6be4_121910.gif",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/231221/ec2ce4ea952b8177a84738bfc4cc38ea_110859.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "BFMB20": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000550",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230316/d89c13a0f6d673f677841b2556e32e87_161436.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230316/KakaoTalk_20230316_110731344_161437.gif"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "BFMB4": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000369",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/240605/25ae85ef1c046fc752a19fa055922e0b_104853.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221217/497ec2223c568519e8bf252196dca213_014138.gif",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221217/478658046c870d021bd665ca87fef6d4_014146.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221217/d47475c310ca21c5571e53803a8a926a_014154.gif",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/240605/d7d4f1186fd820199f240e865e42e966_104905.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/240605/b977c7c11214d47f46f2ff79d3902902_105011.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "BFMB5": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000322",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230807/1b93c6a72bef2ab5f4ebfbb2c5ca7a9f_110431.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230807/03ad9f55ec2f9dc93aa80413fccd0525_110431.gif",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230807/3584259657f2ea2a8b08f1759f9a0d5f_110432.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230807/9db7e3d8e12b54e238ba4fb4159f572c_110432.gif",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230807/909f02121c4540b6779737a840f9eea5_110432.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230807/de96cfdfe2c296b81dbaf27b6cfec600_110433.gif",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230807/b20ac68beae88ee22ff7dd0d05ccebec_110433.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230807/2063dce86f12b6d3cacc563f633915a0_110704.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "BFMB8": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000321",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/241104/8f798cc25ea7eecb23ba4bdf74d3b874_143459.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/241104/d0b5deeda136e3baa42ae6aec5011654_143459.gif"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "PT-100": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000371",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/240826/a77c71e8529b2856d74baaf44015da2f_155315.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221217/501e3b444afaf5baacf2a27e6ec2b85e_020641.gif",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221217/eabad500ca785f035358efdc3a0d3e55_020657.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221217/f462154f81d8755c824b6645fbff1400_020714.gif",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221217/1249e32390d9fcc09245c32dc2054026_020733.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221217/9e7bbcad6d12548fe6eaf954d2a38953_020740.gif",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221217/177a2aab238ae8b8368df65000a649fc_020749.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221217/a1b730426ced44cc7eb13244224e6cca_020812.gif",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230526/89599b4feb7838890b70d0ef8b24b6a3_163737.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221217/5ed657be9fe1cc1042f77bf5c732efc1_020829.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "SAMB": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000372",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230526/98583a02ba1196b3148ea15bfbd00341_150507.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221217/d4540daceda4146bec77d4494484b68e_021442.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "ATA-4030": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000548",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230316/ATA-4030_01_090250.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230316/ATA-4030_02_090251.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230316/ATA-4030_03_090251.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230316/ATA-4030_04_090252.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "ATA-7030": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000549",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230316/ATA-7030_01_092638.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230316/ATA-7030_02_092639.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230316/ATA-7030_03_092639.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230316/ATA-7030_04_092640.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "CP-01": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000541",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230314/CP-01_01_152512.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230314/CP-01_02_152513.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230314/CP-01_03_152518.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230314/CP-01_04_152519.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "DYJ-03": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000761",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230913/7fa1c9afd21e7bc040a4cadd981ecaf1_112011.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230913/DYJ-03_GIF_112012.gif"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "MPG-05": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000543",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230314/MPG-05_01_154825.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230314/MPG-05_02_154826.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230314/MPG-05_03_154827.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "MPG-06": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000544",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230504/29aa3a1ee4f24b42c55db39f694918a5_093512.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "MPG-07": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000547",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260716/dfdca8491646fbfdcc3c039340683c18_111919.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260716/5a4b67d041b4345098df47e8f3782584_111924.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "MTS75": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000242",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221213/d0c786fe0c76f9096435d3d50420d776_111117.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "NSBS-PC5033": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000545",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230504/4c539227abefc8e92c325d3a872a42ef_091251.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "SW-J1": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000243",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221213/3d88185a0ce502a56f105b0e7df37ea9_104135.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221213/5fe6c1b8967181a9c23a96695a3e42c2_104142.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221213/cdc1fa875842d9b7b70627ccfe16701f_111205.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "SW-J2": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000546",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260602/e124844f96a9929c66c97e8733a50564_084203.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/260602/fe45380b5a5fe56b58e5ac8502f207da_084205.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "SOWHA 1": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000317",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230724/a03a192ee1effb7d54a95a096bde87ea_164315.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230724/37d53672b222891543a255946333870e_164316.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230724/8d0f09133221d42c08cfb6d943fbeedb_164513.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230724/85c70757b22442666b52864107f72bdd_162917.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "나래-4000": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000291",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230724/1dc23ed30609bedded549ffc162e578b_150259.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230724/d17379ef853533ff6d3b92b4a7991859_150300.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221214/321f2f90b70945c7a9abdf464554d8d7_080325.gif",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230724/18d7959a820e4f0f9ca185e6e0176de1_150639.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221214/e510c64981bd5605fd0f5f363a598194_080334.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "백건 남자 지팡이-01": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000284",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221214/5f5918f262200c93d140e98d7eb464a5_070951.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221214/b7a2f4c9fe3593678dd4eb6f5ef2595a_071004.gif",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221214/364e19b90d75672e4b29ef0d6909cc89_071025.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230807/cb0e2b69e5b6c783d97e086498a98849_120034.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "백건 여자 지팡이-01": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000283",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221214/ca3ec6766c7d56d440a11bcff433c6bc_070514.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221214/1bb71fca60b883e5a6c4811f7579bc6b_070520.gif",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221214/2920fa849d41cf7b0280ba649062dc6c_070534.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221214/64e6061df37b76a7921d988bfdfd9c4b_070534.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "백건 여자 지팡이-02": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000282",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221214/344db202f674a484246bb35cc395a10c_070028.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221214/6efe4beea51a5d1123beee2f76fcb72d_070034.gif",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221214/5d7f8bcdf95fc7fba3f8b74025b75a0a_070047.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221214/004dee225c5c8d9d4e9f514c56aa3807_070048.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "사랑해": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000286",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230504/28560c44c95a175977aa7f8a00a87f02_132816.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221214/dff2ac1e9828c1c91384d9477ece5423_072450.gif",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230531/6ef43c0534bc759151a609f23182d3d6_154449.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221214/567a0e03164e0d3e9bf2862677c2eb8e_072507.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "아이온 사발지팡이": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000287",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221214/add59de8bd4782e120141cc56f16219b_073014.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221214/c6f227f9401c2c7a42854ce11f8dc3f3_073022.gif",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230531/2891e558a489816b6eda807fafc48592_115201.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221214/6a0da0c0a3378ec92b5735af50f73606_073032.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "이틱": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000285",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221214/690ac302956925ff61588cdf6e25e6e3_071522.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221214/702a4c528b9ef8626905c7b148c39560_071528.gif",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230531/6af2e35b7e6d6f0374cb28f1631da6c3_155411.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221214/4d00f3557f130d2c8dfd343c0b02ee48_071542.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "BS": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000700",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/240819/b5ca3fa48dc9a969080acbb04499d41a_090218.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "EL-40S": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000535",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230314/EL-40S_01_110727.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230314/EL-40S_02_110728.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230504/EL-40S_03_145020.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "ILA": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000297",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/250203/896c68aadb494c7230009dd461589570_150018.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230106/4ae22b0d821321225ce257f0543eef94_173401.gif",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/250203/9b869f9504725c9d71cf5b521a1d70a6_150351.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230106/94745e5dfe0a789ccdf9f4548b2de72a_173823.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "ISA": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000290",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/240201/1_083712.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221214/1fefb0ddd0e70bc8c7d73646a658008d_075839.gif",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/240201/2_083735.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221214/efa0eb3f201a406e863bd84a840b7849_075848.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "LS-20F": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000280",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221214/8dfcfcc2bf01ba0d31125807382a7ff1_064127.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221214/c46540d3b29d95419c09c90c9a1600dc_064133.gif",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221214/c0660216a09faf4e8a054f38a167f9f8_064140.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221214/3cc0a771b815e944f650f610286b3cde_064203.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "NS": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000695",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/240819/ff2c86fa3295cdec1c433f3874640150_103027.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "SF": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000289",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221214/1f9cc77d268df629a933dc64e32fdc1f_075215.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221214/d0f4c7c9b4f091668222fbe4efaab031_075221.gif",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/231012/c2ba16e1c3c11bdbdbeaf64f6381097c_132008.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221214/9643bb72d127aedd38c5e585438bff20_075235.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "SKL-020": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000536",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/250203/1e24d3a3d02760c0f983b4dc776290e6_145522.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "SKL-030": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000537",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230314/SKL-030_01_113021.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230314/SKL-030_02_113021.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230314/SKL-030_03_113022.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/230504/SKL-030_04_144457.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  },
+  "SS": {
+    "sourceLabel": "그레이몰 동일모델 상세페이지 이미지",
+    "sourceUrl": "https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000288",
+    "urls": [
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/240320/4d53e50673f43acfa9ead97b7c9c48ee_100845.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221214/c941c88feded8fdad5de1ab407a7bfb1_074602.gif",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/240320/56663df5b41051664bc4bfa3037f1ba8_100920.jpg",
+      "https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221214/d6bfed6902e4328adbc26dc7fdc13d42_074410.jpg"
+    ],
+    "checkedAt": "2026-09-13"
+  }
+};
