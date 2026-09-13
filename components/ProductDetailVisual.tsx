@@ -1,3 +1,4 @@
+import AddToConsultCart from '@/components/AddToConsultCart';
 import { getBenefitModeEmoji, getBenefitModeLabel } from '@/lib/category-ui';
 import { getProductDisplayTitle } from '@/lib/product-display';
 import { getProductMedia } from '@/lib/product-images';
@@ -67,6 +68,18 @@ export default function ProductDetailVisual({ product }: { product: Product }) {
             <div><span>감경 9%</span><strong>{formatter.format(copays.copay9)}원{suffix}</strong></div>
             <div><span>감경 6%</span><strong>{formatter.format(copays.copay6)}원{suffix}</strong></div>
           </div>
+
+          <AddToConsultCart item={{
+            slug: product.slug,
+            title,
+            manufacturer: product.manufacturer,
+            benefitCode: product.benefitCode,
+            benefitPrice: product.benefitPrice,
+            category: product.category,
+            benefitMode: mode,
+            priceSuffix: suffix,
+            imageUrl: media.heroUrl,
+          }} />
         </div>
       </div>
     </section>
