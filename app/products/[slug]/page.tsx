@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import ProductCard from '@/components/ProductCard';
 import ProductDetailContent from '@/components/ProductDetailContent';
+import ProductDetailVisual from '@/components/ProductDetailVisual';
 import { ProductDetailMedia, ProductHeroGallery } from '@/components/ProductMedia';
 import { categories } from '@/lib/all-categories';
 import { getBenefitModeEmoji, getBenefitModeLabel, getCategoryEmoji } from '@/lib/category-ui';
@@ -27,14 +28,29 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!product) return {};
 
   const displayTitle = getProductDisplayTitle(product);
-  const modeText = getBenefitMode(product) === 'RENTAL' ? '월 대여 본인부담금' : '본인부담금';
+  const mode = getBenefitMode(product);
+  const modeText = mode === 'RENTAL' ? '월 대여 본인부담금' : '본인부담금';
+  const priceSuffix = getPriceSuffix(product);
+  const copays = getCopays(product.benefitPrice);
   const media = getProductMedia(product);
+  const description = `${displayTitle}(${product.benefitCode}) ${product.category}. ${product.manufacturer}. ${getPrimaryPriceLabel(product)} ${formatter.format(product.benefitPrice)}원${priceSuffix}, 본인부담금 6% ${formatter.format(copays.copay6)}원${priceSuffix}·9% ${formatter.format(copays.copay9)}원${priceSuffix}·15% ${formatter.format(copays.copay15)}원${priceSuffix}.`;
 
   return {
     title: `${displayTitle} ${modeText}·급여가격`,
-    description: `${displayTitle}의 급여가격, 15%·9%·6% 본인부담금, 제조사, 급여코드, 규격과 제품 이미지를 확인하세요.`,
+    description,
     alternates: { canonical: `/products/${product.slug}` },
-    openGraph: media?.heroUrl ? { images: [{ url: media.heroUrl, alt: `${displayTitle} 제품사진` }] } : undefined,
+    openGraph: {
+      title: `${displayTitle} | ${product.category}`,
+      description,
+      type: 'website',
+      ...(media?.heroUrl ? { images: [{ url: media.heroUrl, alt: `${displayTitle} 제품사진` }] } : {}),
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${displayTitle} | ${product.category}`,
+      description,
+      ...(media?.heroUrl ? { images: [media.heroUrl] } : {}),
+    },
   };
 }
 
@@ -87,6 +103,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
     name: displayTitle,
     model: product.model,
     brand: { '@type': 'Brand', name: product.manufacturer },
+    manufacturer: { '@type': 'Organization', name: product.manufacturer },
     category: product.category,
     description: product.description,
     sku: product.benefitCode,
@@ -142,8 +159,9 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
         </div>
       </div>
 
-      <ProductDetailContent product={product} />
+      <ProductDetailVisual product={product} />
       <ProductDetailMedia product={product} />
+      <ProductDetailContent product={product} />
 
       <div className="content-card" style={{ marginTop: 28 }}>
         <h2>{getBenefitModeEmoji(benefitMode)} {benefitMode === 'RENTAL' ? '월 대여 본인부담금' : '본인부담금'}</h2>
