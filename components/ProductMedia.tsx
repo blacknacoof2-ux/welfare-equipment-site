@@ -7,6 +7,16 @@ type ProductImageProps = {
   variant?: 'card' | 'detail';
 };
 
+// Some supplier HERO assets are long-form sales sheets rather than a clean product cut.
+// Keep product-only overrides here so cards and detail HERO areas always lead with the product itself.
+const PRODUCT_ONLY_HERO_OVERRIDES: Record<string, string> = {
+  'slt-10-silver-walker': 'https://bestlifeplus.com/web/product/big/202407/7a3d9516f76ebe0374234c7947c88529.png',
+};
+
+function getDisplayHeroUrl(product: Product, fallback?: string) {
+  return PRODUCT_ONLY_HERO_OVERRIDES[product.slug] ?? fallback;
+}
+
 function Placeholder({ product, variant }: ProductImageProps) {
   return (
     <div className={`product-image-placeholder ${variant === 'detail' ? 'detail' : ''}`}>
@@ -19,13 +29,14 @@ function Placeholder({ product, variant }: ProductImageProps) {
 
 export function ProductImage({ product, variant = 'card' }: ProductImageProps) {
   const media = getProductMedia(product);
-  if (!media?.heroUrl) return <Placeholder product={product} variant={variant} />;
+  const heroUrl = getDisplayHeroUrl(product, media?.heroUrl);
+  if (!heroUrl) return <Placeholder product={product} variant={variant} />;
 
   const title = getProductDisplayTitle(product);
   return (
     <div className={`product-image-wrap ${variant === 'detail' ? 'detail' : ''}`}>
       <img
-        src={media.heroUrl}
+        src={heroUrl}
         alt={`${title} ${product.category} 제품사진`}
         loading={variant === 'card' ? 'lazy' : 'eager'}
       />
@@ -35,7 +46,8 @@ export function ProductImage({ product, variant = 'card' }: ProductImageProps) {
 
 export function ProductHeroGallery({ product }: { product: Product }) {
   const media = getProductMedia(product);
-  if (!media?.heroUrl) {
+  const heroUrl = getDisplayHeroUrl(product, media?.heroUrl);
+  if (!heroUrl) {
     return (
       <div>
         <Placeholder product={product} variant="detail" />
@@ -45,26 +57,22 @@ export function ProductHeroGallery({ product }: { product: Product }) {
   }
 
   const title = getProductDisplayTitle(product);
+  const galleryUrls = (media?.galleryUrls ?? []).filter((url) => url !== heroUrl);
+
   return (
     <div className="product-gallery">
       <div className="product-gallery-main">
-        <img src={media.heroUrl} alt={`${title} 대표 제품사진`} />
+        <img src={heroUrl} alt={`${title} 대표 제품사진`} />
       </div>
 
-      {media.galleryUrls.length > 0 && (
+      {galleryUrls.length > 0 && (
         <div className="product-gallery-thumbs" aria-label={`${title} 추가 제품사진`}>
-          {media.galleryUrls.slice(0, 8).map((url, index) => (
+          {galleryUrls.slice(0, 8).map((url, index) => (
             <div className="product-gallery-thumb" key={`${url}-${index}`}>
               <img src={url} alt={`${title} 제품사진 ${index + 2}`} loading="lazy" />
             </div>
           ))}
         </div>
-      )}
-
-      {media.sourceUrl && (
-        <p className="image-note">
-          {media.sourceLabel} · <a href={media.sourceUrl} target="_blank" rel="noreferrer">대표 이미지 출처</a>
-        </p>
       )}
     </div>
   );
@@ -77,7 +85,11 @@ export function ProductGallery({ product }: { product: Product }) {
 
 export function ProductDetailMedia({ product }: { product: Product }) {
   const media = getProductMedia(product);
-  if (!media?.detailUrls.length) return null;
+  const heroUrl = getDisplayHeroUrl(product, media?.heroUrl);
+  const detailUrls = (media?.detailUrls ?? []).filter(
+    (url) => url !== heroUrl && !(media?.galleryUrls ?? []).includes(url),
+  );
+  if (!detailUrls.length) return null;
 
   const title = getProductDisplayTitle(product);
   return (
@@ -89,7 +101,7 @@ export function ProductDetailMedia({ product }: { product: Product }) {
       </p>
 
       <div style={{ display: 'grid', gap: 22, marginTop: 20 }}>
-        {media.detailUrls.map((url, index) => (
+        {detailUrls.map((url, index) => (
           <figure
             id={`detail-image-${product.slug}-${index + 1}`}
             key={`${url}-detail-${index}`}
@@ -105,7 +117,7 @@ export function ProductDetailMedia({ product }: { product: Product }) {
         ))}
       </div>
 
-      {media.detailSourceUrl && (
+      {media?.detailSourceUrl && (
         <p className="image-note" style={{ marginTop: 14 }}>
           {media.detailSourceLabel} · <a href={media.detailSourceUrl} target="_blank" rel="noreferrer">상세 이미지 출처</a>
         </p>
