@@ -1,3 +1,4 @@
+import { generatedEroumExclusions, generatedLiveProducts } from './generated-live-products';
 import { verifiedBatch2 } from './products-batch2';
 import { verifiedBatch3 } from './products-batch3';
 import { verifiedBatch4 } from './products-batch4';
@@ -103,6 +104,7 @@ export function isPublishable(product: Product) {
 // 7) 대여품목은 benefitPrice를 월 대여 급여가격으로 저장하고 /월 단위를 표시합니다.
 // 8) 구입·대여 가능 제품은 benefitPrice에 구입가격, rentalMonthlyPrice에 월 대여가격을 저장할 수 있습니다.
 // 9) 현행 보건복지부 급여목록에서 빠진 과거 제품은 REMOVED_FROM_BENEFIT_LIST로 보존하되 현행 공식 제품 수에는 포함하지 않습니다.
+// 10) 공개 상품은 Carestore 급여정보와 이로움 급여코드 정확검색을 전수 교차검증한 자동 원장을 우선 기준으로 합니다.
 export const products: Product[] = [
   {
     slug: 'wag02-adult-walker',
@@ -195,7 +197,52 @@ export const products: Product[] = [
 
 validateProductCatalog(products);
 
-export const publishedProducts = products.filter(isPublishable);
+function mergeCuratedAndVerifiedLiveProducts() {
+  const generatedByCode = new Map(
+    generatedLiveProducts.map((product) => [product.benefitCode, product] as const),
+  );
+  const merged: Product[] = [];
+
+  for (const curated of products) {
+    if (!isPublishable(curated)) continue;
+
+    const live = generatedByCode.get(curated.benefitCode);
+    if (live) {
+      // Keep hand-curated slug/specification/detail copy where it is richer, but the
+      // current Eroum verification, benefit price/mode and verified product image win.
+      merged.push({
+        ...live,
+        ...curated,
+        benefitPrice: live.benefitPrice,
+        benefitMode: live.benefitMode,
+        rentalMonthlyPrice: live.rentalMonthlyPrice ?? curated.rentalMonthlyPrice,
+        status: 'ACTIVE',
+        sourceUrl: live.sourceUrl,
+        sourceCheckedAt: live.sourceCheckedAt,
+        imageUrl: curated.imageUrl ?? live.imageUrl,
+        imageUrls: curated.imageUrls ?? live.imageUrls,
+        imageRightsConfirmed: Boolean(curated.imageRightsConfirmed || live.imageRightsConfirmed),
+        verificationSources: live.verificationSources,
+      });
+      generatedByCode.delete(curated.benefitCode);
+      continue;
+    }
+
+    // A previously published manual record is hidden as soon as the current exact
+    // Eroum audit classifies it as non-distributed, discontinued, sold out, temporarily
+    // sold out, or no longer findable. Manual ACTIVE records outside the automated
+    // Carestore source (new/special categories) are retained until their own audit runs.
+    if (generatedEroumExclusions[curated.benefitCode]) continue;
+    merged.push(curated);
+  }
+
+  for (const live of generatedByCode.values()) merged.push(live);
+  return merged;
+}
+
+export const publishedProducts = mergeCuratedAndVerifiedLiveProducts();
 export const pendingEroumVerificationProducts = products.filter(
   (product) => product.status === 'PENDING_EROUM_VERIFICATION',
 );
+
+export const verifiedLiveCatalogCount = generatedLiveProducts.length;
