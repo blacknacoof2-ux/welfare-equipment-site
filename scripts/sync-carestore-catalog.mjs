@@ -1,5 +1,6 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import { officialSeedProducts } from './official-seed-products.mjs';
 
 const BASE = 'https://www.carestore.co.kr';
 const START = `${BASE}/welfare`;
@@ -152,6 +153,7 @@ function parseProduct(url, html) {
     origin: origin || null,
     durability: durability || null,
     benefitLimit: limit || null,
+    sourceType: 'CARESTORE_DISCOVERED',
   };
 }
 
@@ -178,8 +180,9 @@ const mainHtml = await fetchText(START);
 const linkedCategoryUrls = discoverCategoryUrls(mainHtml);
 // Carestore's navigation currently exposes the classic categories, while newer or
 // less-used benefit types can exist on sequential item pages without being linked.
-// Probe a bounded range so oral washers, diaper sensors, tag-type wander detectors,
-// manual beds and future adjacent categories are not silently omitted.
+// Probe a bounded range so oral washers, diaper sensors and future adjacent categories
+// are not silently omitted. Categories that Carestore does not expose at all are added
+// through officialSeedProducts and still must pass Eroum exact-code verification.
 const probedCategoryUrls = Array.from({ length: 30 }, (_, index) => `${START}?item=${101 + index}`);
 const categoryUrls = [...new Set([...linkedCategoryUrls, ...probedCategoryUrls])];
 if (linkedCategoryUrls.length === 0) throw new Error('No Carestore welfare category URLs discovered.');
@@ -211,16 +214,23 @@ const parsed = await mapLimit(productUrls, 10, async (url) => {
 });
 
 const errors = parsed.filter((item) => item?.error);
-const products = parsed
-  .filter((item) => item && !item.error && item.benefitCode && item.name && item.category)
+const discoveredProducts = parsed.filter(
+  (item) => item && !item.error && item.benefitCode && item.name && item.category,
+);
+// Prefer a live Carestore record when the same benefit code is also present in the
+// official seed list. Seeds only fill categories/rows the Carestore navigation misses.
+const products = [...discoveredProducts, ...officialSeedProducts]
   .filter((item, index, all) => all.findIndex((x) => x.benefitCode === item.benefitCode) === index)
   .sort((a, b) => `${a.category}:${a.name}`.localeCompare(`${b.category}:${b.name}`, 'ko'));
 
 const byCategory = {};
 const byStatus = {};
+const bySourceType = {};
 for (const product of products) {
   byCategory[product.category] = (byCategory[product.category] ?? 0) + 1;
   byStatus[product.carestoreStatus] = (byStatus[product.carestoreStatus] ?? 0) + 1;
+  const sourceType = product.sourceType || 'UNKNOWN';
+  bySourceType[sourceType] = (bySourceType[sourceType] ?? 0) + 1;
 }
 
 const snapshot = {
@@ -230,10 +240,13 @@ const snapshot = {
   productiveCategoryUrls,
   totals: {
     discoveredProductLinks: productUrls.length,
-    parsedProducts: products.length,
+    discoveredProducts: discoveredProducts.length,
+    officialSeedProducts: officialSeedProducts.length,
+    catalogRecords: products.length,
     errors: errors.length,
     byCategory,
     byStatus,
+    bySourceType,
   },
   errors,
   products,
