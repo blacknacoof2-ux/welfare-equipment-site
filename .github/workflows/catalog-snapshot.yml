@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'scripts/sync-carestore-catalog.mjs'
+      - 'scripts/verify-eroum-catalog.mjs'
       - '.github/workflows/catalog-snapshot.yml'
   workflow_dispatch:
 
@@ -14,7 +15,7 @@ permissions:
 jobs:
   snapshot:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 25
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -27,9 +28,14 @@ jobs:
       - name: Generate Carestore catalog snapshot
         run: node scripts/sync-carestore-catalog.mjs
 
-      - name: Upload catalog snapshot
+      - name: Verify every catalog product against Eroum
+        run: node scripts/verify-eroum-catalog.mjs
+
+      - name: Upload catalog snapshots
         uses: actions/upload-artifact@v4
         with:
-          name: carestore-catalog
-          path: artifacts/carestore-catalog.json
+          name: verified-welfare-catalog
+          path: |
+            artifacts/carestore-catalog.json
+            artifacts/eroum-verified-catalog.json
           if-no-files-found: error
