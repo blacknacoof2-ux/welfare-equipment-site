@@ -5,10 +5,21 @@ export const runtime = 'nodejs';
 
 const allowedTypes = new Set(['image/jpeg', 'image/png', 'image/webp', 'application/pdf']);
 const maxFileBytes = 10 * 1024 * 1024;
+const maxJsonTextBytes = 32 * 1024;
 
 function text(formData: FormData, key: string) {
   const value = formData.get(key);
   return typeof value === 'string' ? value.trim() : '';
+}
+
+function parseObject(value: string) {
+  if (!value || Buffer.byteLength(value, 'utf8') > maxJsonTextBytes) return null;
+  try {
+    const parsed = JSON.parse(value);
+    return parsed && typeof parsed === 'object' && !Array.isArray(parsed) ? parsed as Record<string, unknown> : null;
+  } catch {
+    return null;
+  }
 }
 
 export async function POST(request: Request) {
@@ -32,10 +43,16 @@ export async function POST(request: Request) {
   const relation = text(formData, 'relation');
   const needs = text(formData, 'needs');
   const items = text(formData, 'items');
+  const recipientData = text(formData, 'recipientData');
+  const conditionData = text(formData, 'conditionData');
+  const recommendationData = text(formData, 'recommendationData');
   const certificate = formData.get('certificate');
 
-  if (!name || !phone || !items || !(certificate instanceof File)) {
-    return NextResponse.json({ message: '이름, 연락처, 상담 제품, 장기요양인정서를 모두 확인해 주세요.' }, { status: 400 });
+  if (!name || !phone || !items || !recipientData || !(certificate instanceof File)) {
+    return NextResponse.json({ message: '신청자 정보, 수급자 정보, 상담 제품, 장기요양인정서를 모두 확인해 주세요.' }, { status: 400 });
+  }
+  if (name.length > 80 || phone.length > 40 || relation.length > 40 || needs.length > 4000) {
+    return NextResponse.json({ message: '입력 내용이 허용 길이를 초과했습니다.' }, { status: 400 });
   }
   if (!allowedTypes.has(certificate.type)) {
     return NextResponse.json({ message: '인정서는 JPG, PNG, WEBP 또는 PDF 파일만 제출할 수 있습니다.' }, { status: 415 });
@@ -51,6 +68,23 @@ export async function POST(request: Request) {
     return NextResponse.json({ message: '상담 장바구니 정보를 확인해 주세요.' }, { status: 400 });
   }
 
+  const recipient = parseObject(recipientData);
+  const conditions = parseObject(conditionData);
+  const recommendation = recommendationData ? parseObject(recommendationData) : {};
+  if (!recipient || !conditions || !recommendation) {
+    return NextResponse.json({ message: '수급자 상태 또는 추천 정보를 확인해 주세요.' }, { status: 400 });
+  }
+
+  const recipientName = typeof recipient.recipientName === 'string' ? recipient.recipientName.trim() : '';
+  const recognitionNumber = typeof recipient.recognitionNumber === 'string' ? recipient.recognitionNumber.trim() : '';
+  const birthDate = typeof recipient.birthDate === 'string' ? recipient.birthDate.trim() : '';
+  const careGrade = typeof recipient.careGrade === 'string' ? recipient.careGrade.trim() : '';
+  const validityStartDate = typeof recipient.validityStartDate === 'string' ? recipient.validityStartDate.trim() : '';
+
+  if (!recipientName || !/^\d{10}$/.test(recognitionNumber) || !birthDate || !careGrade || !validityStartDate) {
+    return NextResponse.json({ message: '수급자명, 인정번호 10자리, 생년월일, 인정등급, 유효기간 시작일을 확인해 주세요.' }, { status: 400 });
+  }
+
   const requestId = `AC-${new Date().toISOString().slice(0, 10).replaceAll('-', '')}-${randomUUID().slice(0, 8).toUpperCase()}`;
   const outbound = new FormData();
   outbound.set('requestId', requestId);
@@ -60,6 +94,9 @@ export async function POST(request: Request) {
   outbound.set('relation', relation);
   outbound.set('needs', needs);
   outbound.set('items', items);
+  outbound.set('recipientData', recipientData);
+  outbound.set('conditionData', conditionData);
+  outbound.set('recommendationData', recommendationData || '{}');
   outbound.set('certificate', certificate, certificate.name);
 
   try {
