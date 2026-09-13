@@ -1,9 +1,12 @@
 import type { Metadata } from 'next';
+import { validatePublishedCatalog } from '@/lib/validate-published-catalog';
 import { validatePublishedProductImages } from '@/lib/validate-published-images';
 import './globals.css';
 import './product-media.css';
+import './catalog-enhancements.css';
 
 validatePublishedProductImages();
+validatePublishedCatalog();
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:5000';
 
