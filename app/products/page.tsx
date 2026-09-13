@@ -42,7 +42,7 @@ export default async function ProductsPage({
     publishedProducts.some((product) => product.category === item.name),
   );
 
-  const makeHref = ({ nextMode = selectedMode, nextPage = 1 }: { nextMode?: BenefitMode; nextPage?: number } = {}) => {
+  const makeHref = ({ nextMode = selectedMode, nextPage = 1 }: { nextMode?: BenefitMode | null; nextPage?: number } = {}) => {
     const params = new URLSearchParams();
     if (category) params.set('category', category);
     if (q?.trim()) params.set('q', q.trim());
@@ -69,7 +69,7 @@ export default async function ProductsPage({
       <p className="muted">정상 유통이 확인된 상품만 노출하며, 품목·구입·대여 여부와 15%·9%·6% 본인부담금을 한 화면에서 확인할 수 있습니다.</p>
 
       <div className="mode-filter-tabs" aria-label="구입 대여 구분">
-        <a className={!selectedMode ? 'active' : ''} href={makeHref({ nextMode: undefined })}>전체</a>
+        <a className={!selectedMode ? 'active' : ''} href={makeHref({ nextMode: null })}>전체</a>
         <a className={selectedMode === 'PURCHASE' ? 'active purchase' : ''} href={makeHref({ nextMode: 'PURCHASE' })}>🛒 구입</a>
         <a className={selectedMode === 'RENTAL' ? 'active rental' : ''} href={makeHref({ nextMode: 'RENTAL' })}>🔁 대여</a>
         <a className={selectedMode === 'PURCHASE_OR_RENTAL' ? 'active mixed' : ''} href={makeHref({ nextMode: 'PURCHASE_OR_RENTAL' })}>↔️ 구입·대여</a>
