@@ -6,6 +6,7 @@ const BASE = 'https://www.carestore.co.kr';
 const START = `${BASE}/welfare`;
 const OUT = path.resolve('artifacts/carestore-catalog.json');
 const USER_AGENT = 'Mozilla/5.0 (compatible; AtomCareCatalogBot/1.0; +https://github.com/blacknacoof2-ux/welfare-equipment-site)';
+const TAG_TYPE_WANDER_CODES = new Set(['C18211271601']);
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -101,8 +102,9 @@ function discoverProductUrls(html) {
   return [...set];
 }
 
-function normalizeCategory(rawCategory, mode, name) {
+function normalizeCategory(rawCategory, mode, name, benefitCode) {
   const category = rawCategory.replace(/\s+/g, ' ').trim();
+  if (TAG_TYPE_WANDER_CODES.has(benefitCode)) return '배회감지기(태그형)';
   if (category === '경사로') return mode === 'RENTAL' ? '경사로(실외용)' : '경사로(실내용)';
   if (category.includes('배회감지기') && /태그/i.test(`${category} ${name}`)) return '배회감지기(태그형)';
   if (category === '구강세척기') return '구강세척기(마우스피스형)';
@@ -130,7 +132,7 @@ function parseProduct(url, html) {
   const benefitMode = hasPurchase && hasRental ? 'PURCHASE_OR_RENTAL' : hasRental ? 'RENTAL' : 'PURCHASE';
   const benefitPrice = benefitMode === 'RENTAL' ? parseMoney(rentalPriceText) : parseMoney(purchasePriceText);
   const rentalMonthlyPrice = hasRental ? parseMoney(rentalPriceText) : null;
-  const category = normalizeCategory(rawCategory, benefitMode, title);
+  const category = normalizeCategory(rawCategory, benefitMode, title, code);
 
   const lowerDistribution = distribution.toLowerCase();
   let carestoreStatus = 'UNKNOWN';
@@ -178,11 +180,6 @@ async function mapLimit(items, limit, worker) {
 
 const mainHtml = await fetchText(START);
 const linkedCategoryUrls = discoverCategoryUrls(mainHtml);
-// Carestore's navigation currently exposes the classic categories, while newer or
-// less-used benefit types can exist on sequential item pages without being linked.
-// Probe a bounded range so oral washers, diaper sensors and future adjacent categories
-// are not silently omitted. Categories that Carestore does not expose at all are added
-// through officialSeedProducts and still must pass Eroum exact-code verification.
 const probedCategoryUrls = Array.from({ length: 30 }, (_, index) => `${START}?item=${101 + index}`);
 const categoryUrls = [...new Set([...linkedCategoryUrls, ...probedCategoryUrls])];
 if (linkedCategoryUrls.length === 0) throw new Error('No Carestore welfare category URLs discovered.');
@@ -217,8 +214,6 @@ const errors = parsed.filter((item) => item?.error);
 const discoveredProducts = parsed.filter(
   (item) => item && !item.error && item.benefitCode && item.name && item.category,
 );
-// Prefer a live Carestore record when the same benefit code is also present in the
-// official seed list. Seeds only fill categories/rows the Carestore navigation misses.
 const products = [...discoveredProducts, ...officialSeedProducts]
   .filter((item, index, all) => all.findIndex((x) => x.benefitCode === item.benefitCode) === index)
   .sort((a, b) => `${a.category}:${a.name}`.localeCompare(`${b.category}:${b.name}`, 'ko'));
