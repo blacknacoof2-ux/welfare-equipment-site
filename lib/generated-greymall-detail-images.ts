@@ -11,4 +11,4 @@ export type GeneratedGreymallDetailImageSet = {
 
 export const GREYMALL_DETAIL_SYNC_CHECKED_AT = '';
 
-export const generatedGreymallDetailImageSetsByModel: Record<string, GeneratedGreymallDetailImageSet> = {};
+export const generatedGreymallDetailImageSetsBySlug: Record<string, GeneratedGreymallDetailImageSet> = {};
