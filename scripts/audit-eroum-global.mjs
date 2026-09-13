@@ -33,21 +33,19 @@ function normalize(value = '') {
     .replace(/[^0-9a-z가-힣]+/g, '');
 }
 
+function canonicalName(value = '') {
+  return normalize(
+    decodeEntities(value)
+      .replace(/\[[^\]]+\]/g, ' ')
+      .replace(/\((?:[^)]*(?:설치|패키지|보장구)[^)]*)\)/gi, ' ')
+      .replace(/\b보장구\b/gi, ' '),
+  );
+}
+
 function buildPageUrl(page) {
   const params = new URLSearchParams({
-    ca_id: '',
-    itmaker: '',
-    itmodel: '',
-    page: String(page),
-    pttag: '',
-    q: '',
-    qbasic: '',
-    qexplan: '',
-    qid: '',
-    qname: '1',
-    qorder: '',
-    qsort: '',
-    qtag: '',
+    ca_id: '', itmaker: '', itmodel: '', page: String(page), pttag: '', q: '',
+    qbasic: '', qexplan: '', qid: '', qname: '1', qorder: '', qsort: '', qtag: '',
   });
   return `https://eroumcare.com/shop/search.php?${params.toString()}`;
 }
@@ -97,8 +95,16 @@ function parseCards(html, page) {
     const isDiscontinued = /단종/.test(text);
     const isTemporaryOut = /일시품절/.test(text);
     const isOut = !isTemporaryOut && /품절/.test(text);
+    // Eroum also carries 장애인 보장구 and explicitly non-benefit products in the
+    // same storefront. They are outside the long-term-care welfare-equipment catalog.
+    const isAssistiveDevice = /(?:^|\s|\[)보장구(?:\]|\s|$)|#보장구|#비급여|(?:^|\s)비급여(?:\s|$)/i.test(text);
     const hasPositiveBenefitPrice = benefitPrice !== null && benefitPrice > 0;
-    const liveBenefit = hasPositiveBenefitPrice && !isNonDistributed && !isDiscontinued && !isTemporaryOut && !isOut;
+    const liveBenefit = hasPositiveBenefitPrice
+      && !isNonDistributed
+      && !isDiscontinued
+      && !isTemporaryOut
+      && !isOut
+      && !isAssistiveDevice;
 
     cards.push({
       page,
@@ -106,12 +112,14 @@ function parseCards(html, page) {
       dataCa,
       name,
       normalizedName: normalize(name),
+      canonicalName: canonicalName(name),
       benefitPrice,
       liveBenefit,
       isNonDistributed,
       isDiscontinued,
       isTemporaryOut,
       isOut,
+      isAssistiveDevice,
       itemUrl: new URL(href, 'https://eroumcare.com/shop/').toString(),
       imageUrl: image ? new URL(image, 'https://eroumcare.com').toString() : null,
       text: text.slice(0, 1400),
@@ -125,7 +133,6 @@ function namesMatch(a, b) {
   if (a === b) return true;
   const short = a.length <= b.length ? a : b;
   const long = a.length > b.length ? a : b;
-  // Avoid accidental matches on very short/generic model tokens.
   return short.length >= 5 && long.includes(short);
 }
 
@@ -138,6 +145,8 @@ const normalizedCandidates = candidates.map((row) => ({
   category: row.category,
   normalizedName: normalize(row.name),
   normalizedModel: normalize(row.model || row.name),
+  canonicalName: canonicalName(row.name),
+  canonicalModel: canonicalName(row.model || row.name),
 }));
 
 const pages = [];
@@ -177,7 +186,9 @@ const unmatched = [];
 for (const card of liveCards) {
   const matches = normalizedCandidates.filter((candidate) =>
     namesMatch(card.normalizedName, candidate.normalizedName)
-      || namesMatch(card.normalizedName, candidate.normalizedModel),
+      || namesMatch(card.normalizedName, candidate.normalizedModel)
+      || namesMatch(card.canonicalName, candidate.canonicalName)
+      || namesMatch(card.canonicalName, candidate.canonicalModel),
   );
   if (matches.length > 0) {
     matched.push({
@@ -198,9 +209,10 @@ const output = {
   stopReason: pages.at(-1)?.stopped ?? 'MAX_PAGES',
   cardsSeen: allCards.length,
   uniqueCards: uniqueCards.length,
-  liveBenefitCards: liveCards.length,
+  longTermCareLiveBenefitCards: liveCards.length,
   matchedLiveCards: matched.length,
   unmatchedLiveCards: unmatched.length,
+  excludedAssistiveDeviceCards: uniqueCards.filter((card) => card.isAssistiveDevice).length,
   pages: byPage,
   unmatched: unmatched.map((card) => ({
     page: card.page,
@@ -223,9 +235,10 @@ console.log(JSON.stringify({
   lastPage: output.lastPage,
   stopReason: output.stopReason,
   uniqueCards: output.uniqueCards,
-  liveBenefitCards: output.liveBenefitCards,
+  longTermCareLiveBenefitCards: output.longTermCareLiveBenefitCards,
   matchedLiveCards: output.matchedLiveCards,
   unmatchedLiveCards: output.unmatchedLiveCards,
+  excludedAssistiveDeviceCards: output.excludedAssistiveDeviceCards,
   unmatchedSample: output.unmatched.slice(0, 50),
 }, null, 2));
 console.log(`[eroum-global-audit] wrote ${OUTPUT}`);
