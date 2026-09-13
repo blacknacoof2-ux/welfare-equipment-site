@@ -7,6 +7,10 @@ on:
       - 'scripts/sync-greymall-detail-images.mjs'
       - '.github/workflows/greymall-detail-audit.yml'
 
+concurrency:
+  group: greymall-detail-image-audit
+  cancel-in-progress: true
+
 permissions:
   contents: read
 
