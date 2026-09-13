@@ -1,10 +1,12 @@
-name: Eroum Global Probe
+name: Eroum Global Audit
 
 on:
   push:
     branches: [main]
     paths:
-      - 'scripts/probe-eroum-global.mjs'
+      - 'scripts/audit-eroum-global.mjs'
+      - 'scripts/sync-carestore-catalog.mjs'
+      - 'scripts/official-seed-products.mjs'
       - '.github/workflows/eroum-global-probe.yml'
   workflow_dispatch:
 
@@ -12,9 +14,9 @@ permissions:
   contents: read
 
 jobs:
-  probe:
+  audit:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 15
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -22,5 +24,13 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Probe Eroum global pages
-        run: node scripts/probe-eroum-global.mjs
+      - name: Build candidate catalog
+        run: node scripts/sync-carestore-catalog.mjs
+      - name: Reverse audit Eroum storefront
+        run: node scripts/audit-eroum-global.mjs
+      - name: Upload reverse audit
+        uses: actions/upload-artifact@v4
+        with:
+          name: eroum-global-audit
+          path: artifacts/eroum-global-audit.json
+          if-no-files-found: error
