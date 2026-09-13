@@ -10,6 +10,7 @@ export default function ProductCard({ product, showCode = false }: { product: Pr
   const copays = getCopays(product.benefitPrice);
   const suffix = getPriceSuffix(product);
   const showModel = !isSameProductNameAndModel(product);
+  const priceLabel = mode === 'RENTAL' ? '월 본인부담금 6%부터' : '본인부담금 6%부터';
 
   return (
     <a className="content-card product-card" href={`/products/${product.slug}`}>
@@ -25,7 +26,7 @@ export default function ProductCard({ product, showCode = false }: { product: Pr
         <p className="product-maker">{product.manufacturer}{showModel ? ` · ${product.model}` : ''}</p>
         {showCode && <p className="muted product-code">급여코드 {product.benefitCode}</p>}
         <div className="card-price-block">
-          <span>본인부담금 6%부터</span>
+          <span>{priceLabel}</span>
           <strong>{formatter.format(copays.copay6)}원{suffix}</strong>
           <small>9% {formatter.format(copays.copay9)}원{suffix} · 15% {formatter.format(copays.copay15)}원{suffix}</small>
         </div>
