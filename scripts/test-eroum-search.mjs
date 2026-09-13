@@ -17,6 +17,22 @@ function text(html) {
     .trim();
 }
 
+function imageCandidates(html, name) {
+  const lower = html.toLowerCase();
+  const idx = lower.indexOf(name.toLowerCase());
+  const segment = idx >= 0 ? html.slice(Math.max(0, idx - 9000), idx + 9000) : html;
+  const urls = [];
+  for (const match of segment.matchAll(/<img\b[^>]*(?:src|data-src)=["']([^"']+)["'][^>]*>/gi)) {
+    try {
+      const url = new URL(match[1], 'https://eroumcare.com').toString();
+      if (!/\.(?:jpe?g|png|webp|gif)(?:\?|$)/i.test(url)) continue;
+      if (/logo|icon|spinner|loading|blank|no[_-]?image|common\/img/i.test(url)) continue;
+      urls.push(url);
+    } catch {}
+  }
+  return [...new Set(urls)].slice(0, 12);
+}
+
 for (const [code, name] of codes) {
   const params = new URLSearchParams({
     ca_id: '',
@@ -50,6 +66,7 @@ for (const [code, name] of codes) {
     containsOutOfStock: plain.includes('품절'),
     containsTemporaryOutOfStock: plain.includes('일시품절'),
     itemLinks: [...new Set(itemLinks)].slice(0, 5),
+    imageCandidates: imageCandidates(html, name),
     around,
   }, null, 2));
 }
