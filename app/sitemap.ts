@@ -3,7 +3,7 @@ import { categories } from '@/lib/all-categories';
 import { publishedProducts } from '@/lib/products';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:5000';
   const now = new Date();
 
   const staticPages: MetadataRoute.Sitemap = [
