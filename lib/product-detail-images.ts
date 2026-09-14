@@ -1,4 +1,5 @@
 import { generatedCarestoreDetailImageSetsByModel } from './generated-carestore-detail-images';
+import { generatedGagaonDetailImageSetsByModel } from './generated-gagaon-detail-images';
 import { generatedGreymallDetailImageSetsByModel } from './generated-greymall-detail-images';
 
 export type SupplementalDetailImageSet = {
@@ -8,7 +9,7 @@ export type SupplementalDetailImageSet = {
 };
 
 // 대표 이미지 외에 제품 구조·기능·설치·규격을 설명하는 모델별 상세 이미지입니다.
-// 모델명이 정확히 일치하는 공개 제품 상세 자료만 등록합니다.
+// 모델명이 정확히 일치하거나 급여코드가 정확히 일치하는 공개 제품 상세 자료만 등록합니다.
 export const supplementalDetailImageSets: Record<string, SupplementalDetailImageSet> = {
   'nice-walker-4s': {
     sourceLabel: '나이스워커4S 기능 상세 자료',
@@ -124,9 +125,10 @@ export function getSupplementalDetailImages(slug: string, model?: string): Suppl
   const curated = supplementalDetailImageSets[slug] ?? null;
   const greymall = model ? generatedGreymallDetailImageSetsByModel[model] ?? null : null;
   const carestore = model ? generatedCarestoreDetailImageSetsByModel[model] ?? null : null;
+  const gagaon = model ? generatedGagaonDetailImageSetsByModel[model] ?? null : null;
 
-  // 우선순위: 수동 검증 자료 > 그레이몰 동일모델 > 케어스토어 급여코드 동일상품 fallback.
-  // 이미 검증된 상세이미지가 있으면 Carestore 이미지를 중복 추가하지 않습니다.
+  // 우선순위: 수동 검증 자료 > 그레이몰 동일모델 > 케어스토어 급여코드 동일상품 > 가가온 급여코드 동일상품.
+  // 앞선 출처에서 검증된 상세이미지가 있으면 뒤 출처 이미지는 중복 추가하지 않습니다.
   if (curated || greymall) {
     if (!curated && greymall) {
       return {
@@ -148,6 +150,14 @@ export function getSupplementalDetailImages(slug: string, model?: string): Suppl
       sourceLabel: carestore.sourceLabel,
       sourceUrl: carestore.sourceUrl,
       urls: unique(carestore.urls),
+    };
+  }
+
+  if (gagaon) {
+    return {
+      sourceLabel: gagaon.sourceLabel,
+      sourceUrl: gagaon.sourceUrl,
+      urls: unique(gagaon.urls),
     };
   }
 
