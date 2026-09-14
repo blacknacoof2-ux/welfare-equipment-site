@@ -2,12 +2,14 @@ import CopayCalculator from '@/components/CopayCalculator';
 import ProductCard from '@/components/ProductCard';
 import { categories } from '@/lib/all-categories';
 import { getCategoryEmoji } from '@/lib/category-ui';
+import { filterBrowseProducts } from '@/lib/product-visibility';
 import { getBenefitMode, publishedProducts } from '@/lib/products';
 
 export default function HomePage() {
-  const purchaseProducts = publishedProducts.filter((product) => getBenefitMode(product) === 'PURCHASE');
-  const rentalProducts = publishedProducts.filter((product) => getBenefitMode(product) === 'RENTAL');
-  const mixedProducts = publishedProducts.filter((product) => getBenefitMode(product) === 'PURCHASE_OR_RENTAL');
+  const browseProducts = filterBrowseProducts(publishedProducts);
+  const purchaseProducts = browseProducts.filter((product) => getBenefitMode(product) === 'PURCHASE');
+  const rentalProducts = browseProducts.filter((product) => getBenefitMode(product) === 'RENTAL');
+  const mixedProducts = browseProducts.filter((product) => getBenefitMode(product) === 'PURCHASE_OR_RENTAL');
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:5000';
 
   const websiteLd = {
@@ -69,7 +71,7 @@ export default function HomePage() {
         </div>
         <div className="category-grid">
           {categories.map((category) => {
-            const count = publishedProducts.filter((product) => product.category === category.name).length;
+            const count = browseProducts.filter((product) => product.category === category.name).length;
             return (
               <a className="category-card" href={`/categories/${category.slug}`} key={category.slug}>
                 <span className="category-emoji" aria-hidden="true">{getCategoryEmoji(category.name)}</span>

@@ -6,6 +6,7 @@ import { categories, getCategoryBySlug } from '@/lib/all-categories';
 import { getCategoryEmoji } from '@/lib/category-ui';
 import { getProductDisplayTitle } from '@/lib/product-display';
 import { getProductMedia } from '@/lib/product-images';
+import { filterBrowseProducts } from '@/lib/product-visibility';
 import { getBenefitMode, publishedProducts } from '@/lib/products';
 
 export function generateStaticParams() {
@@ -16,7 +17,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const category = getCategoryBySlug(slug);
   if (!category) return {};
-  const hasProducts = publishedProducts.some((product) => product.category === category.name);
+  const hasProducts = filterBrowseProducts(publishedProducts).some((product) => product.category === category.name);
   return {
     title: category.seoTitle,
     description: category.slug === 'adult-walker'
@@ -33,7 +34,8 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
   const category = getCategoryBySlug(slug);
   if (!category) notFound();
 
-  const products = publishedProducts.filter((product) => product.category === category.name);
+  const products = filterBrowseProducts(publishedProducts)
+    .filter((product) => product.category === category.name);
   const purchaseCount = products.filter((product) => getBenefitMode(product) === 'PURCHASE').length;
   const rentalCount = products.filter((product) => getBenefitMode(product) === 'RENTAL').length;
   const mixedCount = products.filter((product) => getBenefitMode(product) === 'PURCHASE_OR_RENTAL').length;
