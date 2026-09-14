@@ -1,6 +1,10 @@
 const baseUrl = process.env.AUDIT_BASE_URL ?? 'http://127.0.0.1:5000';
 const expectedProductCount = Number(process.env.EXPECTED_PRODUCT_COUNT ?? 352);
 const searchOnlyModels = ['HM-606', 'HM-608'];
+const representativeImageOverrides = {
+  'catalog-s03090178005-electric-bed': 'thumb-7LKc64WEBEDST30_600x600.jpg',
+  'catalog-s03090183002-electric-bed': 'thumb-SE7030_1_600x600.jpg',
+};
 
 function decodeXml(value) {
   return value
@@ -89,21 +93,31 @@ const results = await mapLimit(productUrls, 20, async (sitemapUrl) => {
   try {
     const response = await fetch(url, { redirect: 'follow' });
     const html = await response.text();
-    const hasDetailImage = html.includes(`id=\"detail-image-${slug}-1\"`) || html.includes(`id='detail-image-${slug}-1'`);
-    const hasDetailHeading = html.includes('제품 상세 이미지');
+    const hasHero = html.includes(`id=\"product-hero-${slug}\"`) || html.includes(`id='product-hero-${slug}'`);
+    const hasSellerDetailImage = html.includes(`id=\"detail-image-${slug}-1\"`) || html.includes(`id='detail-image-${slug}-1'`);
+    const hasSellerDetailHeading = html.includes('제품 상세 이미지');
+    const hasGalleryThumbs = html.includes('product-gallery-thumbs');
+    const expectedOverride = representativeImageOverrides[slug];
+    const overrideOk = !expectedOverride || html.includes(expectedOverride);
     return {
       slug,
       status: response.status,
-      hasDetailImage,
-      hasDetailHeading,
-      ok: response.status === 200 && hasDetailImage && hasDetailHeading,
+      hasHero,
+      hasSellerDetailImage,
+      hasSellerDetailHeading,
+      hasGalleryThumbs,
+      overrideOk,
+      ok: response.status === 200 && hasHero && !hasSellerDetailImage && !hasSellerDetailHeading && !hasGalleryThumbs && overrideOk,
     };
   } catch (error) {
     return {
       slug,
       status: null,
-      hasDetailImage: false,
-      hasDetailHeading: false,
+      hasHero: false,
+      hasSellerDetailImage: false,
+      hasSellerDetailHeading: false,
+      hasGalleryThumbs: false,
+      overrideOk: false,
       ok: false,
       error: error instanceof Error ? error.message : String(error),
     };
@@ -117,8 +131,8 @@ console.log(JSON.stringify({
     sitemapProductUrls: productUrls.length,
     expectedProductCount,
     countMismatch,
-    passed: results.length - failures.length,
-    failed: failures.length,
+    representativeOnlyPassed: results.length - failures.length,
+    representativeOnlyFailed: failures.length,
     searchOnlyVisibilityChecks: browseSurfaces.length * searchOnlyModels.length + searchOnlyModels.length,
     searchOnlyVisibilityFailures: visibilityFailures.length,
   },
