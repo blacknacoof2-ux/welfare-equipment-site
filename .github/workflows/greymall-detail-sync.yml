@@ -1,15 +1,13 @@
-name: Detail Image Sync
+name: Detail Image Fallback Sync
 
 on:
   workflow_dispatch:
   push:
     branches: [main]
     paths:
-      - 'scripts/sync-greymall-detail-images.mjs'
       - 'scripts/sync-carestore-detail-images.mjs'
       - 'lib/product-detail-images.ts'
       - '.github/workflows/greymall-detail-sync.yml'
-      - 'package.json'
 
 permissions:
   contents: write
@@ -32,9 +30,6 @@ jobs:
         with:
           node-version: '22'
 
-      - name: Sync Greymall DETAIL images
-        run: npm run sync:greymall-detail-images
-
       - name: Sync Carestore fallback DETAIL images
         run: node scripts/sync-carestore-detail-images.mjs
 
@@ -44,26 +39,21 @@ jobs:
       - name: Verify build
         run: npm run build
 
-      - name: Commit generated detail image data
+      - name: Commit generated Carestore detail image data
         shell: bash
         run: |
           if git diff --quiet -- \
-            lib/generated-greymall-detail-images.ts \
-            artifacts/greymall-detail-images-audit.json \
             lib/generated-carestore-detail-images.ts \
             artifacts/carestore-detail-images-audit.json; then
-            echo 'No detail-image changes.'
+            echo 'No Carestore detail-image changes.'
             exit 0
           fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add \
-            lib/generated-greymall-detail-images.ts \
-            artifacts/greymall-detail-images-audit.json \
             lib/generated-carestore-detail-images.ts \
             artifacts/carestore-detail-images-audit.json
-          git commit -m 'data: sync product detail images'
-          # Next build may update tracked project config. Generated data is already committed.
+          git commit -m 'data: sync Carestore detail images'
           git restore --worktree .
           git pull --rebase origin main
           git push origin HEAD:main
