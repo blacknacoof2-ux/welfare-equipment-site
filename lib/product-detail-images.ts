@@ -1,3 +1,4 @@
+import { generatedCarestoreDetailImageSetsByModel } from './generated-carestore-detail-images';
 import { generatedGreymallDetailImageSetsByModel } from './generated-greymall-detail-images';
 
 export type SupplementalDetailImageSet = {
@@ -122,20 +123,33 @@ function unique(urls: string[]) {
 export function getSupplementalDetailImages(slug: string, model?: string): SupplementalDetailImageSet | null {
   const curated = supplementalDetailImageSets[slug] ?? null;
   const greymall = model ? generatedGreymallDetailImageSetsByModel[model] ?? null : null;
+  const carestore = model ? generatedCarestoreDetailImageSetsByModel[model] ?? null : null;
 
-  if (!curated && !greymall) return null;
-  if (!curated && greymall) {
+  // 우선순위: 수동 검증 자료 > 그레이몰 동일모델 > 케어스토어 급여코드 동일상품 fallback.
+  // 이미 검증된 상세이미지가 있으면 Carestore 이미지를 중복 추가하지 않습니다.
+  if (curated || greymall) {
+    if (!curated && greymall) {
+      return {
+        sourceLabel: greymall.sourceLabel,
+        sourceUrl: greymall.sourceUrl,
+        urls: unique(greymall.urls),
+      };
+    }
+    if (curated && !greymall) return curated;
     return {
-      sourceLabel: greymall.sourceLabel,
-      sourceUrl: greymall.sourceUrl,
-      urls: unique(greymall.urls),
+      sourceLabel: `${curated!.sourceLabel} · ${greymall!.sourceLabel}`,
+      sourceUrl: greymall!.sourceUrl,
+      urls: unique([...curated!.urls, ...greymall!.urls]),
     };
   }
-  if (curated && !greymall) return curated;
 
-  return {
-    sourceLabel: `${curated!.sourceLabel} · ${greymall!.sourceLabel}`,
-    sourceUrl: greymall!.sourceUrl,
-    urls: unique([...curated!.urls, ...greymall!.urls]),
-  };
+  if (carestore) {
+    return {
+      sourceLabel: carestore.sourceLabel,
+      sourceUrl: carestore.sourceUrl,
+      urls: unique(carestore.urls),
+    };
+  }
+
+  return null;
 }
