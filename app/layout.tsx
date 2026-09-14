@@ -47,6 +47,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <a className="brand" href="/">ATOM CARE <span>복지용구</span></a>
           <nav aria-label="주요 메뉴">
             <a href="/consult"><strong>AI 맞춤 추천</strong></a>
+            <a href="/consult/cart"><strong>신청목록</strong></a>
             <a href="/#purchase">구입</a>
             <a href="/#rental">대여</a>
             <a href="/#categories">품목 찾기</a>
