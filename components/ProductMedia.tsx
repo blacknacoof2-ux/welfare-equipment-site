@@ -7,10 +7,13 @@ type ProductImageProps = {
   variant?: 'card' | 'detail';
 };
 
-// Some supplier HERO assets are long-form sales sheets rather than a clean product cut.
-// Keep product-only overrides here so cards and detail HERO areas always lead with the product itself.
+// 판매몰 상세페이지 캡처·서비스지역·전화번호·판매업체 상호가 포함된 이미지는
+// 사용자 화면에 노출하지 않습니다. 대표 제품컷이 긴 판매용 시트인 경우에는
+// 정확한 동일 모델의 제품 단독 이미지로 교체합니다.
 const PRODUCT_ONLY_HERO_OVERRIDES: Record<string, string> = {
   'slt-10-silver-walker': 'https://bestlifeplus.com/web/product/big/202407/7a3d9516f76ebe0374234c7947c88529.png',
+  'catalog-s03090178005-electric-bed': 'https://gagaon.com/data/item/S03090178005/thumb-7LKc64WEBEDST30_600x600.jpg',
+  'catalog-s03090183002-electric-bed': 'https://gagaon.com/data/item/S03090183002/thumb-SE7030_1_600x600.jpg',
 };
 
 function getDisplayHeroUrl(product: Product, fallback?: string) {
@@ -57,23 +60,14 @@ export function ProductHeroGallery({ product }: { product: Product }) {
   }
 
   const title = getProductDisplayTitle(product);
-  const galleryUrls = (media?.galleryUrls ?? []).filter((url) => url !== heroUrl);
 
+  // 판매업체 상호·연락처가 포함될 수 있는 추가 썸네일/상세 시트는 전부 숨기고
+  // 제품 상세페이지에는 대표 제품사진 한 장만 노출합니다.
   return (
     <div className="product-gallery">
       <div className="product-gallery-main">
-        <img src={heroUrl} alt={`${title} 대표 제품사진`} />
+        <img id={`product-hero-${product.slug}`} src={heroUrl} alt={`${title} 대표 제품사진`} />
       </div>
-
-      {galleryUrls.length > 0 && (
-        <div className="product-gallery-thumbs" aria-label={`${title} 추가 제품사진`}>
-          {galleryUrls.slice(0, 8).map((url, index) => (
-            <div className="product-gallery-thumb" key={`${url}-${index}`}>
-              <img src={url} alt={`${title} 제품사진 ${index + 2}`} loading="lazy" />
-            </div>
-          ))}
-        </div>
-      )}
     </div>
   );
 }
@@ -83,45 +77,9 @@ export function ProductGallery({ product }: { product: Product }) {
   return <ProductHeroGallery product={product} />;
 }
 
-export function ProductDetailMedia({ product }: { product: Product }) {
-  const media = getProductMedia(product);
-  const heroUrl = getDisplayHeroUrl(product, media?.heroUrl);
-  const detailUrls = (media?.detailUrls ?? []).filter(
-    (url) => url !== heroUrl && !(media?.galleryUrls ?? []).includes(url),
-  );
-  if (!detailUrls.length) return null;
-
-  const title = getProductDisplayTitle(product);
-  return (
-    <section className="content-card" style={{ marginTop: 28 }} aria-label={`${title} 제품 상세 이미지`}>
-      <p className="eyebrow" style={{ marginBottom: 6 }}>DETAIL IMAGES</p>
-      <h2 style={{ marginTop: 0 }}>제품 상세 이미지</h2>
-      <p className="muted">
-        규격·기능·설치·사용 설명 이미지는 대표 제품사진과 분리해 아래에 원본 비율로 표시합니다.
-      </p>
-
-      <div style={{ display: 'grid', gap: 22, marginTop: 20 }}>
-        {detailUrls.map((url, index) => (
-          <figure
-            id={`detail-image-${product.slug}-${index + 1}`}
-            key={`${url}-detail-${index}`}
-            style={{ margin: 0, overflow: 'hidden', border: '1px solid #e2e8f0', borderRadius: 18, background: '#fff' }}
-          >
-            <img
-              src={url}
-              alt={`${title} 상세 설명 이미지 ${index + 1}`}
-              loading="lazy"
-              style={{ display: 'block', width: '100%', height: 'auto', objectFit: 'contain' }}
-            />
-          </figure>
-        ))}
-      </div>
-
-      {media?.detailSourceUrl && (
-        <p className="image-note" style={{ marginTop: 14 }}>
-          {media.detailSourceLabel} · <a href={media.detailSourceUrl} target="_blank" rel="noreferrer">상세 이미지 출처</a>
-        </p>
-      )}
-    </section>
-  );
+export function ProductDetailMedia({ product: _product }: { product: Product }) {
+  // 정책: 외부 판매몰에서 가져온 긴 상세이미지는 판매업체명·전화번호·서비스지역 등
+  // 제3자 판매정보가 포함될 수 있으므로 사용자 화면에서는 렌더링하지 않습니다.
+  // 제조사/규격/기능 정보는 구조화된 텍스트 상세정보로만 제공합니다.
+  return null;
 }
