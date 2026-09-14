@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import ProductCard from '@/components/ProductCard';
 import { categories } from '@/lib/all-categories';
+import { filterBrowseProducts } from '@/lib/product-visibility';
 import { getBenefitMode, publishedProducts, type BenefitMode } from '@/lib/products';
 
 export const metadata: Metadata = {
@@ -20,8 +21,10 @@ export default async function ProductsPage({
   const { category, q, mode, page } = await searchParams;
   const query = q?.trim().toLocaleLowerCase('ko-KR') ?? '';
   const selectedMode = mode && validModes.has(mode as BenefitMode) ? mode as BenefitMode : undefined;
+  const browseProducts = filterBrowseProducts(publishedProducts);
+  const sourceProducts = query ? publishedProducts : browseProducts;
 
-  const filtered = publishedProducts.filter((product) => {
+  const filtered = sourceProducts.filter((product) => {
     const categoryMatches = !category || product.category === category;
     const modeMatches = !selectedMode || getBenefitMode(product) === selectedMode;
     if (!categoryMatches || !modeMatches) return false;
@@ -39,7 +42,7 @@ export default async function ProductsPage({
   const paginated = filtered.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE);
 
   const activeCategories = categories.filter((item) =>
-    publishedProducts.some((product) => product.category === item.name),
+    browseProducts.some((product) => product.category === item.name),
   );
 
   const makeHref = ({ nextMode = selectedMode, nextPage = 1 }: { nextMode?: BenefitMode | null; nextPage?: number } = {}) => {
@@ -83,7 +86,7 @@ export default async function ProductsPage({
             <select name="category" defaultValue={category ?? ''}>
               <option value="">전체 품목</option>
               {activeCategories.map((item) => {
-                const count = publishedProducts.filter((product) => product.category === item.name).length;
+                const count = browseProducts.filter((product) => product.category === item.name).length;
                 return <option value={item.name} key={item.slug}>{item.name} ({count})</option>;
               })}
             </select>
@@ -102,7 +105,7 @@ export default async function ProductsPage({
       </form>
 
       <div className="catalog-result-summary">
-        <p><strong>검색 결과 {filtered.length}개</strong> <span className="muted">· 전체 공개 {publishedProducts.length}개</span></p>
+        <p><strong>검색 결과 {filtered.length}개</strong> <span className="muted">· 기본 노출 {browseProducts.length}개</span></p>
         {(category || query || selectedMode) && <a href="/products">필터 초기화</a>}
       </div>
 
