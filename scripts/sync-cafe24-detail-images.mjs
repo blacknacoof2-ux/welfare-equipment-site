@@ -57,6 +57,14 @@ function normalizeCompact(value = '') {
     .replace(/[^0-9A-Z가-힣]/g, '');
 }
 
+function modelBase(value = '') {
+  return String(value)
+    .replace(/\([^)]*\)/g, ' ')
+    .replace(/\[[^\]]*\]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
 function extractGeneratedProducts(source) {
   const token = 'export const generatedLiveProducts: Product[] = ';
   const start = source.indexOf(token);
@@ -128,9 +136,11 @@ function extractProductLinks(html, baseUrl) {
 function pageMatchesProduct(html, product) {
   const decoded = decodeHtml(html);
   if (!decoded.includes(product.benefitCode)) return false;
-  const model = normalizeCompact(product.model);
   const page = normalizeCompact(stripTags(decoded));
-  return model.length < 3 || page.includes(model);
+  const fullModel = normalizeCompact(product.model);
+  const baseModel = normalizeCompact(modelBase(product.model));
+  if (fullModel.length < 3) return true;
+  return page.includes(fullModel) || (baseModel.length >= 3 && page.includes(baseModel));
 }
 
 function extractDetailImages(html, sourceUrl, product) {
@@ -158,11 +168,12 @@ function extractDetailImages(html, sourceUrl, product) {
 async function inspectProduct(product) {
   const attempts = [];
   for (const store of STORES) {
-    const queries = [product.benefitCode, product.model];
+    const queries = [product.benefitCode, modelBase(product.model), product.model];
     const links = [];
     const seen = new Set();
 
     for (const query of queries) {
+      if (!query) continue;
       const searchUrl = `${store}/product/search.html?keyword=${encodeURIComponent(query)}`;
       try {
         const { html } = await fetchText(searchUrl);
