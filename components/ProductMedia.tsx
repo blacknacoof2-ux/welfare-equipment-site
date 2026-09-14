@@ -1,6 +1,7 @@
 import type { Product } from '@/lib/products';
 import { getProductMedia } from '@/lib/product-images';
 import { getProductDisplayTitle } from '@/lib/product-display';
+import { getApprovedDetailImageUrls } from '@/lib/detail-image-policy';
 
 type ProductImageProps = {
   product: Product;
@@ -92,8 +93,8 @@ export function ProductHeroGallery({ product }: { product: Product }) {
 
   const title = getProductDisplayTitle(product);
 
-  // 판매업체 상호·연락처가 포함될 수 있는 추가 썸네일/상세 시트는 전부 숨기고
-  // 제품 상세페이지에는 대표 제품사진 한 장만 노출합니다.
+  // 대표 영역에는 검수된 제품사진 한 장만 노출합니다.
+  // 판매몰 추가 썸네일은 상세 검수 없이 자동 노출하지 않습니다.
   return (
     <div className="product-gallery">
       <div className="product-gallery-main">
@@ -108,9 +109,36 @@ export function ProductGallery({ product }: { product: Product }) {
   return <ProductHeroGallery product={product} />;
 }
 
-export function ProductDetailMedia({ product: _product }: { product: Product }) {
-  // 정책: 외부 판매몰에서 가져온 긴 상세이미지는 판매업체명·전화번호·서비스지역 등
-  // 제3자 판매정보가 포함될 수 있으므로 사용자 화면에서는 렌더링하지 않습니다.
-  // 제조사/규격/기능 정보는 구조화된 텍스트 상세정보로만 제공합니다.
-  return null;
+export function ProductDetailMedia({ product }: { product: Product }) {
+  const media = getProductMedia(product);
+  const detailUrls = getApprovedDetailImageUrls(product, media);
+  if (!detailUrls.length) return null;
+
+  const title = getProductDisplayTitle(product);
+  return (
+    <section className="content-card" style={{ marginTop: 28 }} aria-label={`${title} 제품 상세 이미지`}>
+      <p className="eyebrow" style={{ marginBottom: 6 }}>PRODUCT DETAIL</p>
+      <h2 style={{ marginTop: 0 }}>제품 상세 이미지</h2>
+      <p className="muted">
+        동일 모델로 확인된 기능·규격·사용 설명 이미지만 표시합니다. 판매업체 상호·전화번호·서비스지역·주문 안내가 포함될 가능성이 있는 판매용 상세시트는 제외합니다.
+      </p>
+
+      <div style={{ display: 'grid', gap: 22, marginTop: 20 }}>
+        {detailUrls.map((url, index) => (
+          <figure
+            id={`detail-image-${product.slug}-${index + 1}`}
+            key={`${url}-detail-${index}`}
+            style={{ margin: 0, overflow: 'hidden', border: '1px solid #e2e8f0', borderRadius: 18, background: '#fff' }}
+          >
+            <img
+              src={url}
+              alt={`${title} 상세 설명 이미지 ${index + 1}`}
+              loading="lazy"
+              style={{ display: 'block', width: '100%', height: 'auto', objectFit: 'contain' }}
+            />
+          </figure>
+        ))}
+      </div>
+    </section>
+  );
 }
