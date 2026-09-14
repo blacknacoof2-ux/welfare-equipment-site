@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import CareConsultation from '@/components/CareConsultation';
 import { getProductDisplayTitle } from '@/lib/product-display';
 import { getProductMedia } from '@/lib/product-images';
+import { filterBrowseProducts } from '@/lib/product-visibility';
 import { getBenefitMode, getPriceSuffix, publishedProducts } from '@/lib/products';
 
 export const metadata: Metadata = {
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
 };
 
 export default function ConsultPage() {
-  const candidates = publishedProducts.map((product) => ({
+  const candidates = filterBrowseProducts(publishedProducts).map((product) => ({
     slug: product.slug,
     title: getProductDisplayTitle(product),
     manufacturer: product.manufacturer,
