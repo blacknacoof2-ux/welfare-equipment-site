@@ -6,70 +6,49 @@ type ProductMediaLike = {
   detailUrls?: string[];
 };
 
-// 판매업체 연락처·서비스지역·주문안내가 섞일 가능성이 높은 장문 판매시트는 기본 차단하고,
-// 동일 모델임을 별도 확인한 상세자료만 예외적으로 노출합니다.
-export const MANUALLY_REVIEWED_DETAIL_URLS_BY_SLUG: Record<string, string[]> = {
-  'wag02-adult-walker': [
-    'https://godomall.speedycdn.net/e9c45f52a146ba8cbf23a3fd8738b016/goods/1000008875/image/detail/1000008875_detail_053.jpg',
-  ],
-  'nice-walker-4s': [
-    'https://m.escaremall.com/web/upload/NNEditor/20200128/%EC%83%81%EC%84%B83_shop1_005905.jpg',
-  ],
-  'asc-502-bath-chair': [
-    'https://m.k-medi.co.kr/web/upload/NNEditor/20220809/mobile/01e2a0e4fa860eb6c47a1b2a9ce4ea20_1660021630.jpg',
-    'https://shopby-images.cdn-nhncommerce.com/PARTNER/20260306/PARTNER_10016343/2026030614411927476813d63a4fa1987ab1be76564dc4/uQ3XZ_102745_7.jpg',
-    'https://shopby-images.cdn-nhncommerce.com/PARTNER/20260306/PARTNER_10016343/2026030614411927476813d63a4fa1987ab1be76564dc4/ZQcxi_102745_8.jpg',
-    'https://shopby-images.cdn-nhncommerce.com/PARTNER/20260306/PARTNER_10016343/2026030614411927476813d63a4fa1987ab1be76564dc4/lxwMn_102745_9.jpg',
-  ],
-  'iu-bath-chair': [
-    'https://m.swmedi.co.kr/web/product/big/202503/5bc611c8fb398093becd27a5bd7fa69c.jpg',
-  ],
-};
+// 동일 모델·급여코드로 수집된 상세이미지는 다시 노출하되,
+// 실제 검수에서 판매업체 연락처·서비스지역·주문안내가 확인된 이미지는 명시적으로 차단합니다.
+export const BLOCKED_SELLER_DETAIL_URLS = new Set([
+  // 천년BED ST-30: 판매업체 연락처/서비스지역이 포함된 상세 판매 시트.
+  'https://gagaon.com/data/editor/2602/01b3bea2a86eeb0ba426a4e70c76e8a7_1772165443_1595.jpg',
+]);
 
-const LONG_FORM_SELLER_SHEET_MARKERS = [
-  '/data/editor/',
-  '/editor/goods/',
-  '/web/upload/nneditor/',
-  '/nneditor/',
+// 상품 상세 설명이 아니라 공지/배너/몰 소개 성격이 강한 이미지는 계속 제외합니다.
+const NON_PRODUCT_DETAIL_MARKERS = [
   '/banner/',
   '/intro/',
   'notice_',
+  '/event/',
 ];
 
 function normalize(url: string) {
   return url.trim().toLowerCase();
 }
 
-function isManuallyReviewedDetailImage(product: Product, url: string) {
-  const allowed = MANUALLY_REVIEWED_DETAIL_URLS_BY_SLUG[product.slug] ?? [];
-  return allowed.includes(url);
+function looksLikeImageUrl(url: string) {
+  return /\.(?:webp|png|gif|jpe?g)(?:\?.*)?$/i.test(url);
 }
 
-function isExactCarestoreDetailImage(product: Product, url: string) {
-  const normalized = normalize(url);
-  const benefitCode = product.benefitCode.toLowerCase();
-  return normalized.startsWith('https://www.carestore.co.kr/sscp/dt/')
-    && normalized.includes(`/${benefitCode}/`)
-    && /\.(?:webp|png|jpe?g)(?:\?.*)?$/.test(normalized);
-}
-
-export function isApprovedDetailImageUrl(product: Product, url: string) {
+export function isApprovedDetailImageUrl(_product: Product, url: string) {
   if (!url) return false;
-  if (isManuallyReviewedDetailImage(product, url)) return true;
-  if (isExactCarestoreDetailImage(product, url)) return true;
+  if (BLOCKED_SELLER_DETAIL_URLS.has(url)) return false;
 
   const normalized = normalize(url);
-  if (LONG_FORM_SELLER_SHEET_MARKERS.some((marker) => normalized.includes(marker))) return false;
+  if (!normalized.startsWith('https://')) return false;
+  if (!looksLikeImageUrl(url)) return false;
+  if (NON_PRODUCT_DETAIL_MARKERS.some((marker) => normalized.includes(marker))) return false;
 
-  // 자동으로 수집된 외부 판매몰 이미지는 내용 검수 전에는 노출하지 않습니다.
-  // 새 이미지를 공개하려면 위 수동 검수 목록에 추가하거나, 급여코드 기반 표준 저장소 규칙을 추가합니다.
-  return false;
+  // media.detailUrls 자체가 수집 단계에서 동일 모델명 또는 동일 급여코드로 매칭된 자료입니다.
+  // 과거처럼 /data/editor/ 또는 /NNEditor/ 경로 전체를 차단하면 정상 상세페이지까지 사라지므로
+  // 경로만으로 일괄 차단하지 않고, 실제 문제 이미지 위주로 차단합니다.
+  return true;
 }
 
 export function getApprovedDetailImageUrls(product: Product, media?: ProductMediaLike | null) {
   if (!media) return [];
   const heroUrl = media.heroUrl;
   const galleryUrls = new Set(media.galleryUrls ?? []);
+
   return Array.from(new Set(media.detailUrls ?? []))
     .filter(Boolean)
     .filter((url) => url !== heroUrl && !galleryUrls.has(url))
