@@ -9,11 +9,10 @@
     "https://nulchan.co.kr",
     "https://m.solpluscare.com"
   ],
-  "candidateCount": 43,
+  "candidateCount": 42,
   "detailImageCount": 96,
   "counts": {
-    "COMPLETE": 42,
-    "NO_EXACT_MATCH": 1
+    "COMPLETE": 42
   },
   "entries": [
     {
@@ -560,18 +559,6 @@
     },
     {
       "index": 35,
-      "slug": "catalog-t09060006102-incontinence-underwear",
-      "name": "안심생활해피",
-      "model": "안심생활해피",
-      "benefitCode": "T09060006102",
-      "category": "요실금팬티",
-      "result": {
-        "status": "NO_EXACT_MATCH",
-        "attempts": []
-      }
-    },
-    {
-      "index": 36,
       "slug": "catalog-t09061156104-incontinence-underwear",
       "name": "MDR-04",
       "model": "MDR-04",
@@ -586,7 +573,7 @@
       }
     },
     {
-      "index": 37,
+      "index": 36,
       "slug": "catalog-t09060149001-incontinence-underwear",
       "name": "NSBS-PT200",
       "model": "NSBS-PT200",
@@ -601,7 +588,7 @@
       }
     },
     {
-      "index": 38,
+      "index": 37,
       "slug": "catalog-t09060149004-incontinence-underwear",
       "name": "NSBS-PT30",
       "model": "NSBS-PT30",
@@ -628,7 +615,7 @@
       }
     },
     {
-      "index": 39,
+      "index": 38,
       "slug": "catalog-t09060230005-incontinence-underwear",
       "name": "WDR-03",
       "model": "WDR-03",
@@ -652,7 +639,7 @@
       }
     },
     {
-      "index": 40,
+      "index": 39,
       "slug": "catalog-t09061156105-incontinence-underwear",
       "name": "WDR-04",
       "model": "WDR-04",
@@ -668,7 +655,7 @@
       }
     },
     {
-      "index": 41,
+      "index": 40,
       "slug": "catalog-h12030030010-pressure-cushion",
       "name": "BLESSON 7",
       "model": "BLESSON 7",
@@ -683,7 +670,7 @@
       }
     },
     {
-      "index": 42,
+      "index": 41,
       "slug": "catalog-t03030155001-portable-toilet",
       "name": "NT-CT100",
       "model": "NT-CT100",
@@ -698,7 +685,7 @@
       }
     },
     {
-      "index": 43,
+      "index": 42,
       "slug": "catalog-b03030031004-portable-bath",
       "name": "YH-2014",
       "model": "YH-2014",
