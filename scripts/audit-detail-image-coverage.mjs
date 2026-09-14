@@ -9,6 +9,7 @@ const livePath = path.join(repoRoot, 'lib', 'generated-live-products.ts');
 const greymallPath = path.join(repoRoot, 'lib', 'generated-greymall-detail-images.ts');
 const carestorePath = path.join(repoRoot, 'lib', 'generated-carestore-detail-images.ts');
 const gagaonPath = path.join(repoRoot, 'lib', 'generated-gagaon-detail-images.ts');
+const cafe24Path = path.join(repoRoot, 'lib', 'generated-cafe24-detail-images.ts');
 const curatedPath = path.join(repoRoot, 'lib', 'product-detail-images.ts');
 
 function extractJsonAfter(source, token, endToken) {
@@ -51,11 +52,12 @@ function extractCuratedSlugs(source) {
   return slugs;
 }
 
-const [liveSource, greymallSource, carestoreSource, gagaonSource, curatedSource] = await Promise.all([
+const [liveSource, greymallSource, carestoreSource, gagaonSource, cafe24Source, curatedSource] = await Promise.all([
   readFile(livePath, 'utf8'),
   readFile(greymallPath, 'utf8'),
   readFile(carestorePath, 'utf8'),
   readFile(gagaonPath, 'utf8'),
+  readFile(cafe24Path, 'utf8'),
   readFile(curatedPath, 'utf8'),
 ]);
 
@@ -63,11 +65,12 @@ const products = extractGeneratedProducts(liveSource);
 const greymall = extractRegistry(greymallSource, 'generatedGreymallDetailImageSetsByModel: Record<string, GeneratedGreymallDetailImageSet>');
 const carestore = extractRegistry(carestoreSource, 'generatedCarestoreDetailImageSetsByModel: Record<string, GeneratedCarestoreDetailImageSet>');
 const gagaon = extractRegistry(gagaonSource, 'generatedGagaonDetailImageSetsByModel: Record<string, GeneratedGagaonDetailImageSet>');
+const cafe24 = extractRegistry(cafe24Source, 'generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe24DetailImageSet>');
 const curatedSlugs = extractCuratedSlugs(curatedSource);
 
 const covered = [];
 const uncovered = [];
-const sourceCounts = { CURATED: 0, GREYMALL: 0, CARESTORE: 0, GAGAON: 0 };
+const sourceCounts = { CURATED: 0, GREYMALL: 0, CARESTORE: 0, GAGAON: 0, CAFE24: 0 };
 
 for (const product of products) {
   let source = null;
@@ -75,6 +78,7 @@ for (const product of products) {
   else if (greymall[product.model]?.urls?.length) source = 'GREYMALL';
   else if (carestore[product.model]?.urls?.length) source = 'CARESTORE';
   else if (gagaon[product.model]?.urls?.length) source = 'GAGAON';
+  else if (cafe24[product.model]?.urls?.length) source = 'CAFE24';
 
   if (source) {
     sourceCounts[source] += 1;
