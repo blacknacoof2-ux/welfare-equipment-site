@@ -1,3 +1,4 @@
+import ProductCompareToggle from '@/components/ProductCompareToggle';
 import type { Product } from '@/lib/products';
 import { getProductMedia } from '@/lib/product-images';
 import { getProductDisplayTitle } from '@/lib/product-display';
@@ -82,24 +83,26 @@ export function ProductImage({ product, variant = 'card' }: ProductImageProps) {
 export function ProductHeroGallery({ product }: { product: Product }) {
   const media = getProductMedia(product);
   const heroUrl = getDisplayHeroUrl(product, media?.heroUrl);
+  const title = getProductDisplayTitle(product);
+
   if (!heroUrl) {
     return (
-      <div>
+      <div style={{ display: 'grid', gap: 10 }}>
         <Placeholder product={product} variant="detail" />
         <p className="image-note">대표 제품 이미지를 등록 중입니다.</p>
+        <ProductCompareToggle item={{ slug: product.slug, name: title, category: product.category }} />
       </div>
     );
   }
 
-  const title = getProductDisplayTitle(product);
-
   // 대표 영역에는 검수된 제품사진 한 장만 노출합니다.
   // 판매몰 추가 썸네일은 상세 검수 없이 자동 노출하지 않습니다.
   return (
-    <div className="product-gallery">
+    <div className="product-gallery" style={{ display: 'grid', gap: 10 }}>
       <div className="product-gallery-main">
         <img id={`product-hero-${product.slug}`} src={heroUrl} alt={`${title} 대표 제품사진`} />
       </div>
+      <ProductCompareToggle item={{ slug: product.slug, name: title, category: product.category }} />
     </div>
   );
 }

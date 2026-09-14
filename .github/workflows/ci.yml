@@ -48,3 +48,4 @@ jobs:
           trap 'kill $server_pid || true' EXIT
           npm run audit:rendered-product-pages
           npm run audit:admin-intake
+          npm run audit:product-compare

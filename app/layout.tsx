@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import ProductCompareTray from '@/components/ProductCompareTray';
 import { validatePublishedCatalog } from '@/lib/validate-published-catalog';
 import { validatePublishedProductImages } from '@/lib/validate-published-images';
 import './globals.css';
@@ -48,6 +49,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <nav aria-label="주요 메뉴">
             <a href="/consult"><strong>AI 맞춤 추천</strong></a>
             <a href="/consult/cart"><strong>신청목록</strong></a>
+            <a href="/compare"><strong>제품 비교</strong></a>
             <a href="/#purchase">구입</a>
             <a href="/#rental">대여</a>
             <a href="/#categories">품목 찾기</a>
@@ -57,6 +59,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           </nav>
         </header>
         <main>{children}</main>
+        <ProductCompareTray />
         <footer className="site-footer">
           <strong>주식회사 아톰케어</strong>
           <p>복지용구 제품 정보는 최신 유통상태와 공단 고시를 확인하여 순차적으로 업데이트합니다.</p>
