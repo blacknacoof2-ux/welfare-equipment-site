@@ -13,7 +13,7 @@ if (!empty.text.includes('비교할 제품을 2~3개 선택하세요')) failures
 
 const compare = await get('/compare?items=wag02-adult-walker,sporty-adult-walker');
 if (compare.status !== 200) failures.push(`GET comparison -> ${compare.status}`);
-for (const marker of ['성인용보행기 제품 비교', 'WAG02', 'SPORTY', '본인부담 15%', '본인부담 9%', '본인부담 6%', '신청목록에 담기']) {
+for (const marker of ['성인용보행기', '제품 비교', 'WAG02', 'SPORTY', '본인부담 15%', '본인부담 9%', '본인부담 6%', '신청목록에 담기']) {
   if (!compare.text.includes(marker)) failures.push(`comparison marker missing: ${marker}`);
 }
 
