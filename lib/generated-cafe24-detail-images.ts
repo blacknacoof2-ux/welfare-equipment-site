@@ -14,8 +14,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
     "sourceUrl": "https://noble-one.com/product/urb-pr101/1557/category/57/display/1/",
     "urls": [
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_01.jpg",
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_02.jpg"
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/F24010181001_detail_1.jpg"
     ],
     "checkedAt": "2026-09-14"
   },
@@ -23,8 +22,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
     "sourceUrl": "https://noble-one.com/product/urb-pr102/1558/category/57/display/1/",
     "urls": [
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_01.jpg",
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_02.jpg"
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/F24010181002_detail_1.jpg"
     ],
     "checkedAt": "2026-09-14"
   },
@@ -32,8 +30,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
     "sourceUrl": "https://noble-one.com/product/urb-pr103/1559/category/57/display/1/",
     "urls": [
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_01.jpg",
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_02.jpg"
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/F24010181003_detail_1.jpg"
     ],
     "checkedAt": "2026-09-14"
   },
@@ -41,8 +38,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
     "sourceUrl": "https://noble-one.com/product/urb-pr104/1560/category/57/display/1/",
     "urls": [
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_01.jpg",
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_02.jpg"
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/F24010181004_detail_1.jpg"
     ],
     "checkedAt": "2026-09-14"
   },
@@ -50,8 +46,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
     "sourceUrl": "https://noble-one.com/product/urb-pr105/1561/category/57/display/1/",
     "urls": [
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_01.jpg",
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_02.jpg"
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/F24010181005_detail_1.jpg"
     ],
     "checkedAt": "2026-09-14"
   },
@@ -59,8 +54,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
     "sourceUrl": "https://noble-one.com/product/iu/1541/category/47/display/1/",
     "urls": [
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_01.jpg",
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_02.jpg"
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/B03180088605_detail_1.png"
     ],
     "checkedAt": "2026-09-14"
   },
@@ -68,8 +62,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
     "sourceUrl": "https://noble-one.com/product/kscu01/1267/category/47/display/1/",
     "urls": [
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_01.jpg",
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_02.jpg"
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/B03180195501_detail_1.jpg"
     ],
     "checkedAt": "2026-09-14"
   },
@@ -77,8 +70,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
     "sourceUrl": "https://noble-one.com/product/afm-02/1563/category/51/display/1/",
     "urls": [
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_01.jpg",
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_02.jpg"
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/F30030078003_detail_1.jpg"
     ],
     "checkedAt": "2026-09-14"
   },
@@ -86,8 +78,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
     "sourceUrl": "https://noble-one.com/product/afm-04-%EC%8B%A4%EB%A6%AC%EC%BD%98/1564/category/51/display/1/",
     "urls": [
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_01.jpg",
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_02.jpg"
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/F30030078105_detail_1.jpg"
     ],
     "checkedAt": "2026-09-14"
   },
@@ -95,8 +86,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
     "sourceUrl": "https://noble-one.com/product/bls-600/2094/category/51/display/1/",
     "urls": [
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_01.jpg",
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_02.jpg"
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/F30031151104_detail_1.jpg"
     ],
     "checkedAt": "2026-09-14"
   },
@@ -104,8 +94,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
     "sourceUrl": "https://noble-one.com/product/bls-850/2092/category/51/display/1/",
     "urls": [
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_01.jpg",
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_02.jpg"
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/F30030205004_detail_1.jpg"
     ],
     "checkedAt": "2026-09-14"
   },
@@ -113,8 +102,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
     "sourceUrl": "https://noble-one.com/product/j-s1/1278/category/51/display/1/",
     "urls": [
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_01.jpg",
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_02.jpg"
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/F30031133102_detail_1.png"
     ],
     "checkedAt": "2026-09-14"
   },
@@ -122,8 +110,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
     "sourceUrl": "https://noble-one.com/product/skc-01/1574/category/51/display/1/",
     "urls": [
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_01.jpg",
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_02.jpg"
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/F30031220101_detail_1.jpg"
     ],
     "checkedAt": "2026-09-14"
   },
@@ -131,8 +118,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
     "sourceUrl": "https://noble-one.com/product/skc-02/1575/category/51/display/1/",
     "urls": [
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_01.jpg",
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_02.jpg"
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/F30031220102_detail_1.jpg"
     ],
     "checkedAt": "2026-09-14"
   },
@@ -140,8 +126,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
     "sourceUrl": "https://noble-one.com/product/urb-m101/2091/category/51/display/1/",
     "urls": [
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_01.jpg",
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_02.jpg"
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/F30030181002_detail_1.jpg"
     ],
     "checkedAt": "2026-09-14"
   },
@@ -149,8 +134,10 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
     "sourceUrl": "https://noble-one.com/product/%EC%8A%AC%EB%A6%BC%ED%95%8Fsl-0680ws/1324/category/48/display/1/",
     "urls": [
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_01.jpg",
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_02.jpg"
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/M06091152601_detail_1.jpg",
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/M06091152601_detail_2.jpg",
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/M06091152601_detail_3.jpg",
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/M06091152601_detail_4.jpg"
     ],
     "checkedAt": "2026-09-14"
   },
@@ -158,8 +145,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
     "sourceUrl": "https://noble-one.com/product/exct-01r/1639/category/48/display/1/",
     "urls": [
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_01.jpg",
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_02.jpg"
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/M06090224501_detail_1.jpg"
     ],
     "checkedAt": "2026-09-14"
   },
@@ -167,8 +153,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
     "sourceUrl": "https://noble-one.com/product/handy/2277/category/48/display/1/",
     "urls": [
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_01.jpg",
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_02.jpg"
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/M06091147601_detail_1.jpg"
     ],
     "checkedAt": "2026-09-14"
   },
@@ -176,8 +161,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
     "sourceUrl": "https://noble-one.com/product/ks-300/1637/category/48/display/1/",
     "urls": [
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_01.jpg",
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_02.jpg"
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/M06090005106_detail_1.jpg"
     ],
     "checkedAt": "2026-09-14"
   },
@@ -185,8 +169,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
     "sourceUrl": "https://noble-one.com/product/lets-be-free/2263/category/48/display/1/",
     "urls": [
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_01.jpg",
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_02.jpg"
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/M06060234503_detail_1.jpg"
     ],
     "checkedAt": "2026-09-14"
   },
@@ -194,8 +177,22 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
     "sourceUrl": "https://noble-one.com/product/lets-fly/1333/category/48/display/1/",
     "urls": [
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_01.jpg",
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_02.jpg"
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/M06061146601_detail_1.jpg",
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/M06061146601_detail_2.jpg",
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/M06061146601_detail_5.jpg",
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/M06061146601_detail_6.jpg",
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/M06061146601_detail_7.gif",
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/M06061146601_detail_8.jpg",
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/M06061146601_detail_9.jpg",
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/M06061146601_detail_10.jpg",
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/M06061146601_detail_11.gif",
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/M06061146601_detail_12.jpg",
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/M06061146601_detail_13.gif",
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/M06061146601_detail_14.jpg",
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/M06061146601_detail_15.jpg",
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/M06061146601_detail_16.jpg",
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/M06061146601_detail_17.jpg",
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/M06061146601_detail_18.jpg"
     ],
     "checkedAt": "2026-09-14"
   },
@@ -203,8 +200,18 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
     "sourceUrl": "https://noble-one.com/product/lets-move/1332/category/48/display/1/",
     "urls": [
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_01.jpg",
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_02.jpg"
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/M06061146602_detail_1.jpg",
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/M06061146602_detail_4.jpg",
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/M06061146602_detail_5.jpg",
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/M06061146602_detail_6.gif",
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/M06061146602_detail_7.jpg",
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/M06061146602_detail_8.jpg",
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/M06061146602_detail_9.jpg",
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/M06061146602_detail_10.jpg",
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/M06061146602_detail_11.jpg",
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/M06061146602_detail_12.jpg",
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/M06061146602_detail_13.jpg",
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/M06061146602_detail_14.jpg"
     ],
     "checkedAt": "2026-09-14"
   },
@@ -212,8 +219,6 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
     "sourceUrl": "https://noble-one.com/product/%EC%9C%A0%EB%8B%89%EC%8A%A4-22d-a/1724/category/59/display/1/",
     "urls": [
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_01.jpg",
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_02.jpg",
       "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260506/M18031139103_detail_1.jpg"
     ],
     "checkedAt": "2026-09-14"
@@ -222,8 +227,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
     "sourceUrl": "https://noble-one.com/product/%EC%9C%A0%EB%8B%89%EC%8A%A4-22d-s/1723/category/59/display/1/",
     "urls": [
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_01.jpg",
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_02.jpg"
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/M18031139102_detail_1.jpg"
     ],
     "checkedAt": "2026-09-14"
   },
@@ -231,8 +235,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
     "sourceUrl": "https://noble-one.com/product/mrt-2d/1716/category/59/display/1/",
     "urls": [
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_01.jpg",
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_02.jpg"
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/M18030043027_detail_1.jpg"
     ],
     "checkedAt": "2026-09-14"
   },
@@ -240,8 +243,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
     "sourceUrl": "https://noble-one.com/product/mrt-2dp/1715/category/59/display/1/",
     "urls": [
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_01.jpg",
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_02.jpg"
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/M18030043026_detail_1.jpg"
     ],
     "checkedAt": "2026-09-14"
   },
@@ -249,8 +251,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
     "sourceUrl": "https://noble-one.com/product/mrt-7d/1717/category/59/display/1/",
     "urls": [
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_01.jpg",
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_02.jpg"
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/M18030043028_detail_1.jpg"
     ],
     "checkedAt": "2026-09-14"
   },
@@ -258,8 +259,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
     "sourceUrl": "https://noble-one.com/product/mtx-7dp/1718/category/59/display/1/",
     "urls": [
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_01.jpg",
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_02.jpg"
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/M18030043029_detail_1.jpg"
     ],
     "checkedAt": "2026-09-14"
   },
@@ -267,8 +267,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
     "sourceUrl": "https://noble-one.com/product/dm-320/2087/category/49/display/1/",
     "urls": [
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_01.jpg",
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_02.jpg"
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/F18030233002_detail_1.jpg"
     ],
     "checkedAt": "2026-09-14"
   },
@@ -276,8 +275,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
     "sourceUrl": "https://noble-one.com/product/%EB%93%9C%EB%A6%BC-smd-02/2260/category/56/display/1/",
     "urls": [
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_01.jpg",
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_02.jpg"
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/T09060232005_detail_1.jpg"
     ],
     "checkedAt": "2026-09-14"
   },
@@ -285,8 +283,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
     "sourceUrl": "https://noble-one.com/product/%EB%93%9C%EB%A6%BC-swp-03/2256/category/56/display/1/",
     "urls": [
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_01.jpg",
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_02.jpg"
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/T09060232004_detail_1.jpg"
     ],
     "checkedAt": "2026-09-14"
   },
@@ -294,8 +291,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
     "sourceUrl": "https://noble-one.com/product/%EC%88%A8m-50cc/2259/category/56/display/1/",
     "urls": [
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_01.jpg",
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_02.jpg"
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/T09060225002_detail_1.png"
     ],
     "checkedAt": "2026-09-14"
   },
@@ -303,8 +299,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
     "sourceUrl": "https://noble-one.com/product/mdr-04/1703/category/56/display/1/",
     "urls": [
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_01.jpg",
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_02.jpg"
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/T09061156104_detail_2.jpg"
     ],
     "checkedAt": "2026-09-14"
   },
@@ -312,8 +307,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
     "sourceUrl": "https://noble-one.com/product/nsbs-pt200/1651/category/56/display/1/",
     "urls": [
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_01.jpg",
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_02.jpg"
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/T09060149001_detail_1.jpg"
     ],
     "checkedAt": "2026-09-14"
   },
@@ -321,8 +315,19 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
     "sourceUrl": "https://noble-one.com/product/nsbs-pt30/1653/category/56/display/1/",
     "urls": [
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_01.jpg",
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_02.jpg"
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/T09060149004_detail_1.png",
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/T09060149004_detail_2.png",
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/T09060149004_detail_3.png",
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/T09060149004_detail_4.png",
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/T09060149004_detail_5.png",
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/T09060149004_detail_6.png",
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/T09060149004_detail_7.png",
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/T09060149004_detail_8.png",
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/T09060149004_detail_9.png",
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/T09060149004_detail_10.png",
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/T09060149004_detail_11.png",
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/T09060149004_detail_12.png",
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/T09060149004_detail_13.png"
     ],
     "checkedAt": "2026-09-14"
   },
@@ -330,8 +335,16 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
     "sourceUrl": "https://noble-one.com/product/wdr-03/1660/category/56/display/1/",
     "urls": [
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_01.jpg",
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_02.jpg"
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/T09060230005_detail_1.jpg",
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/T09060230005_detail_2.jpg",
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/T09060230005_detail_3.jpg",
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/T09060230005_detail_4.jpg",
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/T09060230005_detail_5.jpg",
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/T09060230005_detail_6.jpg",
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/T09060230005_detail_7.jpg",
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/T09060230005_detail_8.jpg",
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/T09060230005_detail_9.jpg",
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/T09060230005_detail_10.jpg"
     ],
     "checkedAt": "2026-09-14"
   },
@@ -339,8 +352,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
     "sourceUrl": "https://noble-one.com/product/wdr-04/1704/category/56/display/1/",
     "urls": [
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_01.jpg",
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_02.jpg",
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/T09061156105_detail_2.jpg",
       "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260521/copy-1779343958-3d869a091ab9686c39602b366aff0f01_1773041605_0955.jpg"
     ],
     "checkedAt": "2026-09-14"
@@ -349,8 +361,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
     "sourceUrl": "https://noble-one.com/product/blesson-7/2095/category/53/display/1/",
     "urls": [
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_01.jpg",
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_02.jpg"
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/H12030030010_detail_1.jpg"
     ],
     "checkedAt": "2026-09-14"
   },
@@ -358,8 +369,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
     "sourceUrl": "https://noble-one.com/product/nt-ct100/1443/category/46/display/1/",
     "urls": [
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_01.jpg",
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_02.jpg"
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/T03030155001_detail_1.jpg"
     ],
     "checkedAt": "2026-09-14"
   },
@@ -367,8 +377,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
     "sourceUrl": "https://noble-one.com/product/yh-2014/1750/category/59/display/1/",
     "urls": [
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_01.jpg",
-      "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260707/User_Guide_02.jpg"
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/B03030031004_detail_1.jpg"
     ],
     "checkedAt": "2026-09-14"
   }
