@@ -10,6 +10,33 @@ const manuallyAuditedHeroUrls = new Set([
   'https://carestore.co.kr/welfare/details/images/M03031003103/09.jpg',
 ]);
 
+// 판매업체 연락처/서비스지역이 섞일 수 있는 장문 판매시트는 기본 차단합니다.
+// 아래 4개 제품은 동일 모델의 기능·규격 상세자료로 별도 검수하여 복구한 예외입니다.
+const manuallyReviewedDetailUrlsBySlug = {
+  'wag02-adult-walker': new Set([
+    'https://godomall.speedycdn.net/e9c45f52a146ba8cbf23a3fd8738b016/goods/1000008875/image/detail/1000008875_detail_053.jpg',
+  ]),
+  'nice-walker-4s': new Set([
+    'https://m.escaremall.com/web/upload/NNEditor/20200128/%EC%83%81%EC%84%B83_shop1_005905.jpg',
+  ]),
+  'asc-502-bath-chair': new Set([
+    'https://m.k-medi.co.kr/web/upload/NNEditor/20220809/mobile/01e2a0e4fa860eb6c47a1b2a9ce4ea20_1660021630.jpg',
+    'https://shopby-images.cdn-nhncommerce.com/PARTNER/20260306/PARTNER_10016343/2026030614411927476813d63a4fa1987ab1be76564dc4/uQ3XZ_102745_7.jpg',
+    'https://shopby-images.cdn-nhncommerce.com/PARTNER/20260306/PARTNER_10016343/2026030614411927476813d63a4fa1987ab1be76564dc4/ZQcxi_102745_8.jpg',
+    'https://shopby-images.cdn-nhncommerce.com/PARTNER/20260306/PARTNER_10016343/2026030614411927476813d63a4fa1987ab1be76564dc4/lxwMn_102745_9.jpg',
+  ]),
+  'iu-bath-chair': new Set([
+    'https://m.swmedi.co.kr/web/product/big/202503/5bc611c8fb398093becd27a5bd7fa69c.jpg',
+  ]),
+};
+
+const requiredDetailSlugs = new Set([
+  'wag02-adult-walker',
+  'nice-walker-4s',
+  'asc-502-bath-chair',
+  'iu-bath-chair',
+]);
+
 function decodeXml(value) {
   return value
     .replaceAll('&amp;', '&')
@@ -35,6 +62,15 @@ function extractHeroSrc(html, slug) {
   return match ? decodeHtmlAttribute(match[1]) : null;
 }
 
+function extractDetailSrcs(html, slug) {
+  const escapedSlug = escapeRegExp(slug);
+  const pattern = new RegExp(
+    `<figure[^>]*id=["']detail-image-${escapedSlug}-\\d+["'][^>]*>[\\s\\S]*?<img[^>]*src=["']([^"']+)["']`,
+    'gi',
+  );
+  return Array.from(html.matchAll(pattern), (match) => decodeHtmlAttribute(match[1]));
+}
+
 function isStandardCatalogHero(url) {
   if (!url) return false;
   const normalized = url.toLowerCase();
@@ -50,6 +86,15 @@ function isStandardCatalogHero(url) {
 
 function isApprovedCatalogHero(url) {
   return Boolean(url) && (isStandardCatalogHero(url) || manuallyAuditedHeroUrls.has(url));
+}
+
+function isApprovedRenderedDetail(slug, url) {
+  if (!url) return false;
+  if (manuallyReviewedDetailUrlsBySlug[slug]?.has(url)) return true;
+
+  const normalized = url.toLowerCase();
+  return normalized.startsWith('https://www.carestore.co.kr/sscp/dt/')
+    && /\.(?:webp|png|jpe?g)(?:\?.*)?$/.test(normalized);
 }
 
 async function waitForServer() {
@@ -131,27 +176,31 @@ const results = await mapLimit(productUrls, 20, async (sitemapUrl) => {
     const response = await fetch(url, { redirect: 'follow' });
     const html = await response.text();
     const heroUrl = extractHeroSrc(html, slug);
+    const detailUrls = extractDetailSrcs(html, slug);
     const hasHero = Boolean(heroUrl);
     const approvedHero = isApprovedCatalogHero(heroUrl);
     const manualHero = Boolean(heroUrl && manuallyAuditedHeroUrls.has(heroUrl));
-    const hasSellerDetailImage = html.includes(`id=\"detail-image-${slug}-1\"`) || html.includes(`id='detail-image-${slug}-1'`);
-    const hasSellerDetailHeading = html.includes('제품 상세 이미지');
+    const hasDetailHeading = html.includes('제품 상세 이미지');
+    const detailPolicyFailures = detailUrls.filter((detailUrl) => !isApprovedRenderedDetail(slug, detailUrl));
+    const detailHeadingConsistent = detailUrls.length > 0 ? hasDetailHeading : !hasDetailHeading;
     const hasGalleryThumbs = html.includes('product-gallery-thumbs');
     return {
       slug,
       status: response.status,
       heroUrl,
+      detailUrls,
       hasHero,
       approvedHero,
       manualHero,
-      hasSellerDetailImage,
-      hasSellerDetailHeading,
+      hasDetailHeading,
+      detailHeadingConsistent,
+      detailPolicyFailures,
       hasGalleryThumbs,
       ok: response.status === 200
         && hasHero
         && approvedHero
-        && !hasSellerDetailImage
-        && !hasSellerDetailHeading
+        && detailPolicyFailures.length === 0
+        && detailHeadingConsistent
         && !hasGalleryThumbs,
     };
   } catch (error) {
@@ -159,11 +208,13 @@ const results = await mapLimit(productUrls, 20, async (sitemapUrl) => {
       slug,
       status: null,
       heroUrl: null,
+      detailUrls: [],
       hasHero: false,
       approvedHero: false,
       manualHero: false,
-      hasSellerDetailImage: false,
-      hasSellerDetailHeading: false,
+      hasDetailHeading: false,
+      detailHeadingConsistent: false,
+      detailPolicyFailures: [],
       hasGalleryThumbs: false,
       ok: false,
       error: error instanceof Error ? error.message : String(error),
@@ -173,7 +224,12 @@ const results = await mapLimit(productUrls, 20, async (sitemapUrl) => {
 
 const failures = results.filter((item) => !item.ok);
 const manualHeroes = results.filter((item) => item.manualHero).map(({ slug, heroUrl }) => ({ slug, heroUrl }));
+const missingRequiredDetail = results
+  .filter((item) => requiredDetailSlugs.has(item.slug) && item.detailUrls.length === 0)
+  .map((item) => item.slug);
 const countMismatch = productUrls.length !== expectedProductCount;
+const detailPagesWithImages = results.filter((item) => item.detailUrls.length > 0).length;
+const renderedDetailImageCount = results.reduce((sum, item) => sum + item.detailUrls.length, 0);
 const sourceCounts = results.reduce((acc, item) => {
   if (!item.heroUrl) {
     acc.MISSING += 1;
@@ -194,16 +250,27 @@ console.log(JSON.stringify({
     sitemapProductUrls: productUrls.length,
     expectedProductCount,
     countMismatch,
-    representativeOnlyPassed: results.length - failures.length,
-    representativeOnlyFailed: failures.length,
+    vettedPageAuditPassed: results.length - failures.length,
+    vettedPageAuditFailed: failures.length,
     approvedHeroSourceCounts: sourceCounts,
     manuallyAuditedHeroCount: manualHeroes.length,
+    detailPagesWithImages,
+    renderedDetailImageCount,
+    requiredDetailProducts: requiredDetailSlugs.size,
+    missingRequiredDetailCount: missingRequiredDetail.length,
     searchOnlyVisibilityChecks: browseSurfaces.length * searchOnlyModels.length + searchOnlyModels.length,
     searchOnlyVisibilityFailures: visibilityFailures.length,
   },
   manualHeroes,
+  missingRequiredDetail,
   visibilityFailures,
   failures,
 }, null, 2));
 
-if (countMismatch || failures.length || manualHeroes.length !== 3 || visibilityFailures.length) process.exitCode = 1;
+if (
+  countMismatch
+  || failures.length
+  || manualHeroes.length !== 3
+  || missingRequiredDetail.length
+  || visibilityFailures.length
+) process.exitCode = 1;
