@@ -16,7 +16,8 @@
     "audit:detail-image-coverage": "node scripts/audit-detail-image-coverage.mjs",
     "audit:detail-image-integrity": "node scripts/audit-detail-image-integrity.mjs",
     "audit:rendered-product-pages": "node scripts/audit-rendered-product-pages.mjs",
-    "audit:admin-intake": "node scripts/audit-admin-intake.mjs"
+    "audit:admin-intake": "node scripts/audit-admin-intake.mjs",
+    "audit:product-compare": "node scripts/audit-product-compare.mjs"
   },
   "dependencies": {
     "next": "16.3.3",
