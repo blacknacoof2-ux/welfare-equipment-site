@@ -8,16 +8,38 @@ type ProductImageProps = {
 };
 
 // 판매몰 상세페이지 캡처·서비스지역·전화번호·판매업체 상호가 포함된 이미지는
-// 사용자 화면에 노출하지 않습니다. 대표 제품컷이 긴 판매용 시트인 경우에는
-// 정확한 동일 모델의 제품 단독 이미지로 교체합니다.
+// 사용자 화면에 노출하지 않습니다. 대표사진은 급여코드가 검증된 상품 원장의
+// 정사각형 썸네일을 최우선으로 사용하고, 없는 경우에만 수동 검증 이미지를 사용합니다.
 const PRODUCT_ONLY_HERO_OVERRIDES: Record<string, string> = {
   'slt-10-silver-walker': 'https://bestlifeplus.com/web/product/big/202407/7a3d9516f76ebe0374234c7947c88529.png',
   'catalog-s03090178005-electric-bed': 'https://gagaon.com/data/item/S03090178005/thumb-7LKc64WEBEDST30_600x600.jpg',
   'catalog-s03090183002-electric-bed': 'https://gagaon.com/data/item/S03090183002/thumb-SE7030_1_600x600.jpg',
 };
 
+function isVerifiedCatalogThumbnail(url?: string) {
+  if (!url) return false;
+  const normalized = url.toLowerCase();
+  const isSquareThumb = normalized.includes('thumb-')
+    && (normalized.includes('400x400') || normalized.includes('600x600'));
+  if (!isSquareThumb) return false;
+
+  return normalized.startsWith('https://eroumcare.com/data/item/')
+    || normalized.startsWith('https://www.eroumcare.com/data/item/')
+    || normalized.startsWith('https://gagaon.com/data/item/')
+    || normalized.startsWith('https://www.gagaon.com/data/item/');
+}
+
+function getVerifiedCatalogHero(product: Product) {
+  const directCandidates = [product.imageUrl, ...(product.imageUrls ?? [])];
+  return directCandidates.find((url) => isVerifiedCatalogThumbnail(url));
+}
+
 function getDisplayHeroUrl(product: Product, fallback?: string) {
-  return PRODUCT_ONLY_HERO_OVERRIDES[product.slug] ?? fallback;
+  // 현재 유통·급여코드 검증 원장에 연결된 정사각형 대표 썸네일을 가장 먼저 사용합니다.
+  // 이 규칙으로 외부 판매몰의 editor/detail/NNEditor 판매용 시트가 대표사진으로 승격되는 것을 막습니다.
+  return getVerifiedCatalogHero(product)
+    ?? PRODUCT_ONLY_HERO_OVERRIDES[product.slug]
+    ?? fallback;
 }
 
 function Placeholder({ product, variant }: ProductImageProps) {
