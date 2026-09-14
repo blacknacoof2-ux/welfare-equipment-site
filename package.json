@@ -12,6 +12,7 @@
     "sync:greymall-detail-images": "node scripts/sync-greymall-detail-images.mjs",
     "sync:carestore-detail-images": "node scripts/sync-carestore-detail-images.mjs",
     "sync:gagaon-detail-images": "node scripts/sync-gagaon-detail-images.mjs",
+    "sync:cafe24-detail-images": "node scripts/sync-cafe24-detail-images.mjs",
     "audit:detail-image-coverage": "node scripts/audit-detail-image-coverage.mjs"
   },
   "dependencies": {
