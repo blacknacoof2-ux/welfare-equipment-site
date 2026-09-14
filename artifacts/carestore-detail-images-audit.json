@@ -1,11 +1,11 @@
 {
   "checkedAt": "2026-09-14",
   "source": "https://www.carestore.co.kr",
-  "candidateCount": 87,
+  "candidateCount": 86,
   "detailImageCount": 26,
   "counts": {
     "COMPLETE": 15,
-    "NO_DETAIL_IMAGES": 72
+    "NO_DETAIL_IMAGES": 71
   },
   "entries": [
     {
@@ -815,18 +815,6 @@
     },
     {
       "index": 64,
-      "slug": "catalog-t09060006102-incontinence-underwear",
-      "name": "안심생활해피",
-      "model": "안심생활해피",
-      "benefitCode": "T09060006102",
-      "category": "요실금팬티",
-      "result": {
-        "status": "NO_DETAIL_IMAGES",
-        "sourceUrl": "https://www.carestore.co.kr/welfare/T09060006102"
-      }
-    },
-    {
-      "index": 65,
       "slug": "catalog-t09061156104-incontinence-underwear",
       "name": "MDR-04",
       "model": "MDR-04",
@@ -838,7 +826,7 @@
       }
     },
     {
-      "index": 66,
+      "index": 65,
       "slug": "catalog-t09061138102-incontinence-underwear",
       "name": "MSPT-002",
       "model": "MSPT-002",
@@ -854,7 +842,7 @@
       }
     },
     {
-      "index": 67,
+      "index": 66,
       "slug": "catalog-t09060149001-incontinence-underwear",
       "name": "NSBS-PT200",
       "model": "NSBS-PT200",
@@ -866,7 +854,7 @@
       }
     },
     {
-      "index": 68,
+      "index": 67,
       "slug": "catalog-t09060149004-incontinence-underwear",
       "name": "NSBS-PT30",
       "model": "NSBS-PT30",
@@ -878,7 +866,7 @@
       }
     },
     {
-      "index": 69,
+      "index": 68,
       "slug": "catalog-t09061094104-incontinence-underwear",
       "name": "NVF-015",
       "model": "NVF-015",
@@ -893,7 +881,7 @@
       }
     },
     {
-      "index": 70,
+      "index": 69,
       "slug": "catalog-t09061217103-incontinence-underwear",
       "name": "SWP-01",
       "model": "SWP-01",
@@ -905,7 +893,7 @@
       }
     },
     {
-      "index": 71,
+      "index": 70,
       "slug": "catalog-t09060230005-incontinence-underwear",
       "name": "WDR-03",
       "model": "WDR-03",
@@ -917,7 +905,7 @@
       }
     },
     {
-      "index": 72,
+      "index": 71,
       "slug": "catalog-t09061156105-incontinence-underwear",
       "name": "WDR-04",
       "model": "WDR-04",
@@ -929,7 +917,7 @@
       }
     },
     {
-      "index": 73,
+      "index": 72,
       "slug": "catalog-h12060030017-pressure-mattress",
       "name": "AD-Ⅲ MUTE Bio Double",
       "model": "AD-Ⅲ MUTE Bio Double",
@@ -941,7 +929,7 @@
       }
     },
     {
-      "index": 74,
+      "index": 73,
       "slug": "catalog-h12030030010-pressure-cushion",
       "name": "BLESSON 7",
       "model": "BLESSON 7",
@@ -953,7 +941,7 @@
       }
     },
     {
-      "index": 75,
+      "index": 74,
       "slug": "catalog-h12031297101-pressure-cushion",
       "name": "Forest Cushion 1088",
       "model": "Forest Cushion 1088",
@@ -965,7 +953,7 @@
       }
     },
     {
-      "index": 76,
+      "index": 75,
       "slug": "catalog-h12030130009-pressure-cushion",
       "name": "Glory-11",
       "model": "Glory-11",
@@ -977,7 +965,7 @@
       }
     },
     {
-      "index": 77,
+      "index": 76,
       "slug": "catalog-t03031261101-portable-toilet",
       "name": "코디-200",
       "model": "코디-200",
@@ -989,7 +977,7 @@
       }
     },
     {
-      "index": 78,
+      "index": 77,
       "slug": "catalog-t03030232001-portable-toilet",
       "name": "APT-106",
       "model": "APT-106",
@@ -1001,7 +989,7 @@
       }
     },
     {
-      "index": 79,
+      "index": 78,
       "slug": "catalog-t03030155001-portable-toilet",
       "name": "NT-CT100",
       "model": "NT-CT100",
@@ -1013,7 +1001,7 @@
       }
     },
     {
-      "index": 80,
+      "index": 79,
       "slug": "catalog-b03030031001-portable-bath",
       "name": "YH-2002",
       "model": "YH-2002",
@@ -1025,7 +1013,7 @@
       }
     },
     {
-      "index": 81,
+      "index": 80,
       "slug": "catalog-b03030031002-portable-bath",
       "name": "YH-2013",
       "model": "YH-2013",
@@ -1037,7 +1025,7 @@
       }
     },
     {
-      "index": 82,
+      "index": 81,
       "slug": "catalog-b03030031004-portable-bath",
       "name": "YH-2014",
       "model": "YH-2014",
@@ -1049,7 +1037,7 @@
       }
     },
     {
-      "index": 83,
+      "index": 82,
       "slug": "catalog-m30030162001-positioning-aid",
       "name": "SW-J3",
       "model": "SW-J3",
@@ -1061,7 +1049,7 @@
       }
     },
     {
-      "index": 84,
+      "index": 83,
       "slug": "catalog-s03090178005-electric-bed",
       "name": "천년BED ST-30",
       "model": "천년BED ST-30",
@@ -1073,7 +1061,7 @@
       }
     },
     {
-      "index": 85,
+      "index": 84,
       "slug": "catalog-s03090200002-electric-bed",
       "name": "NY(S)-Ⅱ",
       "model": "NY(S)-Ⅱ",
@@ -1085,7 +1073,7 @@
       }
     },
     {
-      "index": 86,
+      "index": 85,
       "slug": "catalog-s03090200001-electric-bed",
       "name": "NY(T)-2100",
       "model": "NY(T)-2100",
@@ -1097,7 +1085,7 @@
       }
     },
     {
-      "index": 87,
+      "index": 86,
       "slug": "catalog-s03090183002-electric-bed",
       "name": "SE7030",
       "model": "SE7030",
