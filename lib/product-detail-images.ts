@@ -116,6 +116,15 @@ export const supplementalDetailImageSets: Record<string, SupplementalDetailImage
       'https://contents.sixshop.com/thumbnails/uploadedFiles/66867/product/image_1756868349129_1000.jpg',
     ],
   },
+  'catalog-t09060006102-incontinence-underwear': {
+    sourceLabel: '안심생활해피 (40cc) 동일제품 상세 자료',
+    sourceUrl: 'https://www.greymall.co.kr/goods/goods_view.php?goodsNo=1000000295',
+    urls: [
+      'https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221214/9ce83896e33b6a5e2d6eed2434d9cdbf_102445.jpg',
+      'https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221214/615ab4fd78f570fc482819e62cdd52b0_102446.jpg',
+      'https://cdn-pro-web-250-117.cdn-nhncommerce.com/greyscale_godomall_com/data/editor/goods/221214/b2f6ce2c2afe54d6301599d9e8ee2841_123351.jpg',
+    ],
+  },
 };
 
 function unique(urls: string[]) {
