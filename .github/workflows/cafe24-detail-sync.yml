@@ -1,0 +1,60 @@
+name: Cafe24 Detail Image Sync
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/sync-cafe24-detail-images.mjs'
+      - '.github/workflows/cafe24-detail-sync.yml'
+      - 'package.json'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cafe24-detail-sync
+  cancel-in-progress: true
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Sync exact-code Cafe24 DETAIL images
+        run: npm run sync:cafe24-detail-images
+
+      - name: Verify TypeScript
+        run: npm install && npm run typecheck
+
+      - name: Verify build
+        run: npm run build
+
+      - name: Restore build-only changes
+        shell: bash
+        run: |
+          git restore tsconfig.json 2>/dev/null || true
+
+      - name: Commit generated Cafe24 detail image data
+        shell: bash
+        run: |
+          if git diff --quiet -- lib/generated-cafe24-detail-images.ts artifacts/cafe24-detail-images-audit.json; then
+            echo 'No Cafe24 detail-image changes.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add lib/generated-cafe24-detail-images.ts artifacts/cafe24-detail-images-audit.json
+          git commit -m 'data: sync Cafe24 detail images'
+          git pull --rebase origin main
+          git push origin HEAD:main
