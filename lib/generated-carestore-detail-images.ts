@@ -9,6 +9,138 @@ export type GeneratedCarestoreDetailImageSet = {
   checkedAt: string;
 };
 
-export const CARESTORE_DETAIL_SYNC_CHECKED_AT = "";
+export const CARESTORE_DETAIL_SYNC_CHECKED_AT = "2026-09-14";
 
-export const generatedCarestoreDetailImageSetsByModel: Record<string, GeneratedCarestoreDetailImageSet> = {};
+export const generatedCarestoreDetailImageSetsByModel: Record<string, GeneratedCarestoreDetailImageSet> = {
+  "나이팅게일단차해소기 10": {
+    "sourceLabel": "케어스토어 급여코드 동일상품 상세페이지 이미지",
+    "sourceUrl": "https://www.carestore.co.kr/welfare/F24011067102",
+    "urls": [
+      "https://www.carestore.co.kr/sscp/dt/116/F24011067102/F24011067102_1.webp"
+    ],
+    "checkedAt": "2026-09-14"
+  },
+  "나이팅게일단차해소기 30": {
+    "sourceLabel": "케어스토어 급여코드 동일상품 상세페이지 이미지",
+    "sourceUrl": "https://www.carestore.co.kr/welfare/F24011067103",
+    "urls": [
+      "https://www.carestore.co.kr/sscp/dt/116/F24011067103/F24011067103_1.webp"
+    ],
+    "checkedAt": "2026-09-14"
+  },
+  "DCC1WA1A(코모랄)": {
+    "sourceLabel": "케어스토어 급여코드 동일상품 상세페이지 이미지",
+    "sourceUrl": "https://www.carestore.co.kr/welfare/B06121162101",
+    "urls": [
+      "https://www.carestore.co.kr/sscp/dt/117/B06121162101/B06121162101_1.webp",
+      "https://www.carestore.co.kr/sscp/dt/117/B06121162101/B06121162101_2.webp",
+      "https://www.carestore.co.kr/sscp/dt/117/B06121162101/B06121162101_3.webp",
+      "https://www.carestore.co.kr/sscp/dt/117/B06121162101/B06121162101_4.webp",
+      "https://www.carestore.co.kr/sscp/dt/117/B06121162101/B06121162101_5.webp",
+      "https://www.carestore.co.kr/sscp/dt/117/B06121162101/B06121162101_6.webp",
+      "https://www.carestore.co.kr/sscp/dt/117/B06121162101/B06121162101_7.webp"
+    ],
+    "checkedAt": "2026-09-14"
+  },
+  "꿈치1": {
+    "sourceLabel": "케어스토어 급여코드 동일상품 상세페이지 이미지",
+    "sourceUrl": "https://www.carestore.co.kr/welfare/F30091120109",
+    "urls": [
+      "https://www.carestore.co.kr/sscp/dt/106/F30091120109/F30091120109_1.webp"
+    ],
+    "checkedAt": "2026-09-14"
+  },
+  "꿈치2": {
+    "sourceLabel": "케어스토어 급여코드 동일상품 상세페이지 이미지",
+    "sourceUrl": "https://www.carestore.co.kr/welfare/F30091120108",
+    "urls": [
+      "https://www.carestore.co.kr/sscp/dt/106/F30091120108/F30091120108_1.webp"
+    ],
+    "checkedAt": "2026-09-14"
+  },
+  "NEO-4": {
+    "sourceLabel": "케어스토어 급여코드 동일상품 상세페이지 이미지",
+    "sourceUrl": "https://www.carestore.co.kr/welfare/F30091010104",
+    "urls": [
+      "https://www.carestore.co.kr/sscp/dt/106/F30091010104/F30091010104_1.webp"
+    ],
+    "checkedAt": "2026-09-14"
+  },
+  "SW-SM04(야광)": {
+    "sourceLabel": "케어스토어 급여코드 동일상품 상세페이지 이미지",
+    "sourceUrl": "https://www.carestore.co.kr/welfare/F30031091111",
+    "urls": [
+      "https://www.carestore.co.kr/sscp/dt/106/F30031091111/F30031091111_1.webp",
+      "https://www.carestore.co.kr/sscp/dt/106/F30031091111/F30031091111_2.webp"
+    ],
+    "checkedAt": "2026-09-14"
+  },
+  "HM-606": {
+    "sourceLabel": "케어스토어 급여코드 동일상품 상세페이지 이미지",
+    "sourceUrl": "https://www.carestore.co.kr/welfare/M06061117101",
+    "urls": [
+      "https://www.carestore.co.kr/sscp/dt/104/M06061117101/M06061117101_1_01.webp",
+      "https://www.carestore.co.kr/sscp/dt/104/M06061117101/M06061117101_1_02.webp"
+    ],
+    "checkedAt": "2026-09-14"
+  },
+  "BAL-11": {
+    "sourceLabel": "케어스토어 급여코드 동일상품 상세페이지 이미지",
+    "sourceUrl": "https://www.carestore.co.kr/welfare/M18030111614",
+    "urls": [
+      "https://www.carestore.co.kr/sscp/dt/112/M18030111614/M18030111614_1.webp"
+    ],
+    "checkedAt": "2026-09-14"
+  },
+  "DS-801A": {
+    "sourceLabel": "케어스토어 급여코드 동일상품 상세페이지 이미지",
+    "sourceUrl": "https://www.carestore.co.kr/welfare/M18031074601",
+    "urls": [
+      "https://www.carestore.co.kr/sscp/dt/112/M18031074601/M18031074601_1.webp"
+    ],
+    "checkedAt": "2026-09-14"
+  },
+  "KR-1": {
+    "sourceLabel": "케어스토어 급여코드 동일상품 상세페이지 이미지",
+    "sourceUrl": "https://www.carestore.co.kr/welfare/M18030111101",
+    "urls": [
+      "https://www.carestore.co.kr/sscp/dt/112/M18030111101/M18030111101_1.webp"
+    ],
+    "checkedAt": "2026-09-14"
+  },
+  "MIKI-LT3": {
+    "sourceLabel": "케어스토어 급여코드 동일상품 상세페이지 이미지",
+    "sourceUrl": "https://www.carestore.co.kr/welfare/M18030111613",
+    "urls": [
+      "https://www.carestore.co.kr/sscp/dt/112/M18030111613/M18030111613_1.webp"
+    ],
+    "checkedAt": "2026-09-14"
+  },
+  "MIRAGE7(16D)": {
+    "sourceLabel": "케어스토어 급여코드 동일상품 상세페이지 이미지",
+    "sourceUrl": "https://www.carestore.co.kr/welfare/M18030043101",
+    "urls": [
+      "https://www.carestore.co.kr/sscp/dt/112/M18030043101/M18030043101_1.webp",
+      "https://www.carestore.co.kr/sscp/dt/112/M18030043101/M18030043101_2.webp",
+      "https://www.carestore.co.kr/sscp/dt/112/M18030043101/M18030043101_3.webp"
+    ],
+    "checkedAt": "2026-09-14"
+  },
+  "MSPT-002": {
+    "sourceLabel": "케어스토어 급여코드 동일상품 상세페이지 이미지",
+    "sourceUrl": "https://www.carestore.co.kr/welfare/T09061138102",
+    "urls": [
+      "https://www.carestore.co.kr/sscp/dt/110/T09061138102/T09061138102_1.webp",
+      "https://www.carestore.co.kr/sscp/dt/110/T09061138102/T09061138102_2.webp"
+    ],
+    "checkedAt": "2026-09-14"
+  },
+  "NVF-015": {
+    "sourceLabel": "케어스토어 급여코드 동일상품 상세페이지 이미지",
+    "sourceUrl": "https://www.carestore.co.kr/welfare/T09061094104",
+    "urls": [
+      "https://www.carestore.co.kr/sscp/dt/110/T09061094104/T09061094104_1.webp"
+    ],
+    "checkedAt": "2026-09-14"
+  }
+};
