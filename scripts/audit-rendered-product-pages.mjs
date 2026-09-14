@@ -1,10 +1,14 @@
 const baseUrl = process.env.AUDIT_BASE_URL ?? 'http://127.0.0.1:5000';
 const expectedProductCount = Number(process.env.EXPECTED_PRODUCT_COUNT ?? 352);
 const searchOnlyModels = ['HM-606', 'HM-608'];
-const representativeImageOverrides = {
-  'catalog-s03090178005-electric-bed': 'thumb-7LKc64WEBEDST30_600x600.jpg',
-  'catalog-s03090183002-electric-bed': 'thumb-SE7030_1_600x600.jpg',
-};
+
+// 2026-09-14 전수검수에서 표준 Eroum/Gagaon 400/600 정사각형 썸네일 규칙을 벗어난
+// 3개 제품만 모델·급여코드·이미지 내용을 수동 확인하여 허용합니다.
+const manuallyAuditedHeroUrls = new Set([
+  'https://eroumcare.com/data/item/new/M18030043103.jpg',
+  'https://eroumcare.com/data/item/PRO2021022500577/YHCR02.png',
+  'https://carestore.co.kr/welfare/details/images/M03031003103/09.jpg',
+]);
 
 function decodeXml(value) {
   return value
@@ -13,6 +17,39 @@ function decodeXml(value) {
     .replaceAll('&gt;', '>')
     .replaceAll('&quot;', '"')
     .replaceAll('&#39;', "'");
+}
+
+function decodeHtmlAttribute(value) {
+  return decodeXml(value).replaceAll('&#x2F;', '/');
+}
+
+function escapeRegExp(value) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function extractHeroSrc(html, slug) {
+  const id = escapeRegExp(`product-hero-${slug}`);
+  const idFirst = new RegExp(`<img[^>]*id=["']${id}["'][^>]*src=["']([^"']+)["']`, 'i');
+  const srcFirst = new RegExp(`<img[^>]*src=["']([^"']+)["'][^>]*id=["']${id}["']`, 'i');
+  const match = html.match(idFirst) ?? html.match(srcFirst);
+  return match ? decodeHtmlAttribute(match[1]) : null;
+}
+
+function isStandardCatalogHero(url) {
+  if (!url) return false;
+  const normalized = url.toLowerCase();
+  const isSquareThumb = normalized.includes('thumb-')
+    && (normalized.includes('400x400') || normalized.includes('600x600'));
+  if (!isSquareThumb) return false;
+
+  return normalized.startsWith('https://eroumcare.com/data/item/')
+    || normalized.startsWith('https://www.eroumcare.com/data/item/')
+    || normalized.startsWith('https://gagaon.com/data/item/')
+    || normalized.startsWith('https://www.gagaon.com/data/item/');
+}
+
+function isApprovedCatalogHero(url) {
+  return Boolean(url) && (isStandardCatalogHero(url) || manuallyAuditedHeroUrls.has(url));
 }
 
 async function waitForServer() {
@@ -93,31 +130,41 @@ const results = await mapLimit(productUrls, 20, async (sitemapUrl) => {
   try {
     const response = await fetch(url, { redirect: 'follow' });
     const html = await response.text();
-    const hasHero = html.includes(`id=\"product-hero-${slug}\"`) || html.includes(`id='product-hero-${slug}'`);
+    const heroUrl = extractHeroSrc(html, slug);
+    const hasHero = Boolean(heroUrl);
+    const approvedHero = isApprovedCatalogHero(heroUrl);
+    const manualHero = Boolean(heroUrl && manuallyAuditedHeroUrls.has(heroUrl));
     const hasSellerDetailImage = html.includes(`id=\"detail-image-${slug}-1\"`) || html.includes(`id='detail-image-${slug}-1'`);
     const hasSellerDetailHeading = html.includes('제품 상세 이미지');
     const hasGalleryThumbs = html.includes('product-gallery-thumbs');
-    const expectedOverride = representativeImageOverrides[slug];
-    const overrideOk = !expectedOverride || html.includes(expectedOverride);
     return {
       slug,
       status: response.status,
+      heroUrl,
       hasHero,
+      approvedHero,
+      manualHero,
       hasSellerDetailImage,
       hasSellerDetailHeading,
       hasGalleryThumbs,
-      overrideOk,
-      ok: response.status === 200 && hasHero && !hasSellerDetailImage && !hasSellerDetailHeading && !hasGalleryThumbs && overrideOk,
+      ok: response.status === 200
+        && hasHero
+        && approvedHero
+        && !hasSellerDetailImage
+        && !hasSellerDetailHeading
+        && !hasGalleryThumbs,
     };
   } catch (error) {
     return {
       slug,
       status: null,
+      heroUrl: null,
       hasHero: false,
+      approvedHero: false,
+      manualHero: false,
       hasSellerDetailImage: false,
       hasSellerDetailHeading: false,
       hasGalleryThumbs: false,
-      overrideOk: false,
       ok: false,
       error: error instanceof Error ? error.message : String(error),
     };
@@ -125,7 +172,23 @@ const results = await mapLimit(productUrls, 20, async (sitemapUrl) => {
 });
 
 const failures = results.filter((item) => !item.ok);
+const manualHeroes = results.filter((item) => item.manualHero).map(({ slug, heroUrl }) => ({ slug, heroUrl }));
 const countMismatch = productUrls.length !== expectedProductCount;
+const sourceCounts = results.reduce((acc, item) => {
+  if (!item.heroUrl) {
+    acc.MISSING += 1;
+  } else if (manuallyAuditedHeroUrls.has(item.heroUrl)) {
+    acc.MANUAL += 1;
+  } else if (item.heroUrl.includes('eroumcare.com/data/item/')) {
+    acc.EROUM_STANDARD += 1;
+  } else if (item.heroUrl.includes('gagaon.com/data/item/')) {
+    acc.GAGAON_STANDARD += 1;
+  } else {
+    acc.OTHER += 1;
+  }
+  return acc;
+}, { EROUM_STANDARD: 0, GAGAON_STANDARD: 0, MANUAL: 0, OTHER: 0, MISSING: 0 });
+
 console.log(JSON.stringify({
   summary: {
     sitemapProductUrls: productUrls.length,
@@ -133,11 +196,14 @@ console.log(JSON.stringify({
     countMismatch,
     representativeOnlyPassed: results.length - failures.length,
     representativeOnlyFailed: failures.length,
+    approvedHeroSourceCounts: sourceCounts,
+    manuallyAuditedHeroCount: manualHeroes.length,
     searchOnlyVisibilityChecks: browseSurfaces.length * searchOnlyModels.length + searchOnlyModels.length,
     searchOnlyVisibilityFailures: visibilityFailures.length,
   },
+  manualHeroes,
   visibilityFailures,
   failures,
 }, null, 2));
 
-if (countMismatch || failures.length || visibilityFailures.length) process.exitCode = 1;
+if (countMismatch || failures.length || manualHeroes.length !== 3 || visibilityFailures.length) process.exitCode = 1;

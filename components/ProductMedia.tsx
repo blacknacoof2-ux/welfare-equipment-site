@@ -7,17 +7,48 @@ type ProductImageProps = {
   variant?: 'card' | 'detail';
 };
 
-// 판매몰 상세페이지 캡처·서비스지역·전화번호·판매업체 상호가 포함된 이미지는
-// 사용자 화면에 노출하지 않습니다. 대표 제품컷이 긴 판매용 시트인 경우에는
-// 정확한 동일 모델의 제품 단독 이미지로 교체합니다.
-const PRODUCT_ONLY_HERO_OVERRIDES: Record<string, string> = {
+// 2026-09-14 대표이미지 전수검수 중 표준 400/600 정사각형 썸네일 규칙에서 벗어난 3건만
+// 동일 모델·급여코드를 다시 확인하고 수동으로 고정합니다.
+const MANUALLY_AUDITED_HERO_OVERRIDES: Record<string, string> = {
+  // MIRAGE22D-P: 이로움의 급여코드 자체 파일명으로 연결된 해당 제품 원본.
+  'catalog-m18030043103-manual-wheelchair': 'https://eroumcare.com/data/item/new/M18030043103.jpg',
+  // YH-CR02: 이로움의 해당 상품 ID 폴더에 연결된 동일제품 원본.
+  'catalog-h12030031004-pressure-cushion': 'https://eroumcare.com/data/item/PRO2021022500577/YHCR02.png',
+  // LS-20F: 이로움 GIF 대신 동일 급여코드의 판매업체 연락처/상호가 없는 제품 구조 이미지 사용.
+  'catalog-m03031003103-cane': 'https://carestore.co.kr/welfare/details/images/M03031003103/09.jpg',
+};
+
+// 과거 수동 보정은 검증 원장 썸네일이 없을 때만 fallback으로 사용합니다.
+const PRODUCT_ONLY_HERO_FALLBACKS: Record<string, string> = {
   'slt-10-silver-walker': 'https://bestlifeplus.com/web/product/big/202407/7a3d9516f76ebe0374234c7947c88529.png',
   'catalog-s03090178005-electric-bed': 'https://gagaon.com/data/item/S03090178005/thumb-7LKc64WEBEDST30_600x600.jpg',
   'catalog-s03090183002-electric-bed': 'https://gagaon.com/data/item/S03090183002/thumb-SE7030_1_600x600.jpg',
 };
 
+function isVerifiedCatalogThumbnail(url?: string) {
+  if (!url) return false;
+  const normalized = url.toLowerCase();
+  const isSquareThumb = normalized.includes('thumb-')
+    && (normalized.includes('400x400') || normalized.includes('600x600'));
+  if (!isSquareThumb) return false;
+
+  return normalized.startsWith('https://eroumcare.com/data/item/')
+    || normalized.startsWith('https://www.eroumcare.com/data/item/')
+    || normalized.startsWith('https://gagaon.com/data/item/')
+    || normalized.startsWith('https://www.gagaon.com/data/item/');
+}
+
+function getVerifiedCatalogHero(product: Product) {
+  const directCandidates = [product.imageUrl, ...(product.imageUrls ?? [])];
+  return directCandidates.find((url) => isVerifiedCatalogThumbnail(url));
+}
+
 function getDisplayHeroUrl(product: Product, fallback?: string) {
-  return PRODUCT_ONLY_HERO_OVERRIDES[product.slug] ?? fallback;
+  // 수동 검수 3건 > 현재 유통·급여코드 검증 원장의 표준 대표 썸네일 > 과거 수동 fallback 순서입니다.
+  return MANUALLY_AUDITED_HERO_OVERRIDES[product.slug]
+    ?? getVerifiedCatalogHero(product)
+    ?? PRODUCT_ONLY_HERO_FALLBACKS[product.slug]
+    ?? fallback;
 }
 
 function Placeholder({ product, variant }: ProductImageProps) {
