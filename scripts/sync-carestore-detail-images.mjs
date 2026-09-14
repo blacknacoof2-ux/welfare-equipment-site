@@ -85,7 +85,7 @@ async function fetchText(url, attempt = 1) {
 
 function normalizeImageUrl(raw, sourceUrl) {
   if (!raw) return null;
-  let decoded = decodeHtml(raw.trim()).replace(/^['"]|['"]$/g, '');
+  const decoded = decodeHtml(raw.trim()).replace(/^['"]|['"]$/g, '');
   if (!decoded || decoded.startsWith('data:') || decoded.startsWith('blob:')) return null;
   try {
     const absolute = new URL(decoded, sourceUrl);
@@ -112,9 +112,13 @@ function extractUrls(text, sourceUrl) {
   const decoded = decodeHtml(text);
   const candidates = [];
   const attrPattern = /(?:src|data-src|data-original|data-lazy-src)\s*=\s*["']([^"']+)["']/gi;
+  const srcsetPattern = /\bsrcset\s*=\s*["']([^"']+)["']/gi;
   const absolutePattern = /https?:\/\/[^\s"'<>\\]+/gi;
   let match;
   while ((match = attrPattern.exec(decoded))) candidates.push(match[1]);
+  while ((match = srcsetPattern.exec(decoded))) {
+    for (const candidate of match[1].split(',')) candidates.push(candidate.trim().split(/\s+/)[0]);
+  }
   while ((match = absolutePattern.exec(decoded))) candidates.push(match[0]);
   return candidates
     .map((candidate) => normalizeImageUrl(candidate, sourceUrl))
@@ -125,9 +129,14 @@ function extractDetailImages(html, sourceUrl, product) {
   const decoded = decodeHtml(html);
   const urls = [];
   const seen = new Set();
+  const heroUrls = new Set(
+    [...(product.imageUrls ?? []), ...(product.imageUrl ? [product.imageUrl] : [])]
+      .map((url) => normalizeImageUrl(url, sourceUrl))
+      .filter(Boolean),
+  );
   const push = (candidate) => {
     const url = normalizeImageUrl(candidate, sourceUrl);
-    if (!url || !looksLikeImage(url) || seen.has(url)) return;
+    if (!url || !looksLikeImage(url) || heroUrls.has(url) || seen.has(url)) return;
     seen.add(url);
     urls.push(url);
   };
@@ -141,9 +150,15 @@ function extractDetailImages(html, sourceUrl, product) {
     if (!/상세\s*이미지/i.test(alt)) continue;
     const src = tag.match(/(?:src|data-src|data-original|data-lazy-src)\s*=\s*["']([^"']+)["']/i)?.[1];
     if (src) push(src);
+    const srcset = tag.match(/\bsrcset\s*=\s*["']([^"']+)["']/i)?.[1] ?? '';
+    for (const candidate of srcset.split(',')) {
+      const value = candidate.trim().split(/\s+/)[0];
+      if (value) push(value);
+    }
   }
 
-  // 2) Next/JSON 직렬화 데이터에서 "상세 이미지" 라벨 주변의 CDN URL을 수집합니다.
+  // 2) Next/JSON 직렬화 데이터에서 "상세 이미지" 라벨 주변의 CDN URL만 수집합니다.
+  // 모델명만 파일명에 포함된 이미지는 대표사진일 가능성이 있으므로 fallback으로 쓰지 않습니다.
   const detailNeedles = ['상세 이미지', '상세이미지', 'detail image', 'detailImage', 'detailImages'];
   for (const needle of detailNeedles) {
     let from = 0;
@@ -154,15 +169,6 @@ function extractDetailImages(html, sourceUrl, product) {
       for (const url of extractUrls(segment, sourceUrl)) push(url);
       from = index + needle.length;
     }
-  }
-
-  // 3) 급여코드가 파일명/경로에 포함된 이미지는 동일상품 페이지에서 강한 증거입니다.
-  const allUrls = extractUrls(decoded, sourceUrl);
-  const benefitToken = product.benefitCode.toLowerCase();
-  const modelToken = normalizeCompact(product.model).toLowerCase();
-  for (const url of allUrls) {
-    const lower = decodeURIComponent(url).toLowerCase();
-    if (lower.includes(benefitToken) || (modelToken.length >= 5 && normalizeCompact(lower).toLowerCase().includes(modelToken))) push(url);
   }
 
   return urls;
