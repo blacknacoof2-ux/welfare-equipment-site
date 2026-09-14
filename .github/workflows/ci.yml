@@ -16,7 +16,7 @@ permissions:
 jobs:
   verify:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 20
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -32,8 +32,18 @@ jobs:
       - name: Detail image coverage audit
         run: REQUIRE_FULL_DETAIL=1 npm run audit:detail-image-coverage
 
+      - name: Detail image URL integrity audit
+        run: REQUIRE_REMOTE_DETAIL=1 npm run audit:detail-image-integrity
+
       - name: Typecheck
         run: npm run typecheck
 
       - name: Build
         run: npm run build
+
+      - name: Rendered product page audit
+        run: |
+          npm run start:5000 > /tmp/welfare-site.log 2>&1 &
+          server_pid=$!
+          trap 'kill $server_pid || true' EXIT
+          npm run audit:rendered-product-pages
