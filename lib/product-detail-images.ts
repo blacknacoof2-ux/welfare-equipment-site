@@ -1,3 +1,4 @@
+import { generatedCafe24DetailImageSetsByModel } from './generated-cafe24-detail-images';
 import { generatedCarestoreDetailImageSetsByModel } from './generated-carestore-detail-images';
 import { generatedGagaonDetailImageSetsByModel } from './generated-gagaon-detail-images';
 import { generatedGreymallDetailImageSetsByModel } from './generated-greymall-detail-images';
@@ -126,8 +127,9 @@ export function getSupplementalDetailImages(slug: string, model?: string): Suppl
   const greymall = model ? generatedGreymallDetailImageSetsByModel[model] ?? null : null;
   const carestore = model ? generatedCarestoreDetailImageSetsByModel[model] ?? null : null;
   const gagaon = model ? generatedGagaonDetailImageSetsByModel[model] ?? null : null;
+  const cafe24 = model ? generatedCafe24DetailImageSetsByModel[model] ?? null : null;
 
-  // 우선순위: 수동 검증 자료 > 그레이몰 동일모델 > 케어스토어 급여코드 동일상품 > 가가온 급여코드 동일상품.
+  // 우선순위: 수동 검증 자료 > 그레이몰 동일모델 > 케어스토어 급여코드 동일상품 > 가가온 급여코드 동일상품 > 전문몰 급여코드·동일모델.
   // 앞선 출처에서 검증된 상세이미지가 있으면 뒤 출처 이미지는 중복 추가하지 않습니다.
   if (curated || greymall) {
     if (!curated && greymall) {
@@ -158,6 +160,14 @@ export function getSupplementalDetailImages(slug: string, model?: string): Suppl
       sourceLabel: gagaon.sourceLabel,
       sourceUrl: gagaon.sourceUrl,
       urls: unique(gagaon.urls),
+    };
+  }
+
+  if (cafe24) {
+    return {
+      sourceLabel: cafe24.sourceLabel,
+      sourceUrl: cafe24.sourceUrl,
+      urls: unique(cafe24.urls),
     };
   }
 
