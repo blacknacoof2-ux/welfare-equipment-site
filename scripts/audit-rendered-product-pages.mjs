@@ -1,5 +1,6 @@
 const baseUrl = process.env.AUDIT_BASE_URL ?? 'http://127.0.0.1:5000';
 const expectedProductCount = Number(process.env.EXPECTED_PRODUCT_COUNT ?? 352);
+const searchOnlyModels = ['HM-606', 'HM-608'];
 
 function decodeXml(value) {
   return value
@@ -25,6 +26,13 @@ async function waitForServer() {
   throw lastError ?? new Error(`Server did not become ready: ${baseUrl}`);
 }
 
+async function fetchHtml(pathname) {
+  const response = await fetch(`${baseUrl}${pathname}`, { redirect: 'follow' });
+  const html = await response.text();
+  if (!response.ok) throw new Error(`${pathname} returned ${response.status}`);
+  return html;
+}
+
 async function mapLimit(items, limit, worker) {
   const results = new Array(items.length);
   let cursor = 0;
@@ -40,6 +48,26 @@ async function mapLimit(items, limit, worker) {
 }
 
 await waitForServer();
+
+const visibilityFailures = [];
+const browseSurfaces = [
+  ['home', '/'],
+  ['products', '/products'],
+  ['adult-walker-category', '/categories/adult-walker'],
+  ['consult-ranking', '/consult'],
+];
+
+for (const [surface, pathname] of browseSurfaces) {
+  const html = await fetchHtml(pathname);
+  for (const model of searchOnlyModels) {
+    if (html.includes(model)) visibilityFailures.push({ surface, model, reason: 'VISIBLE_WITHOUT_SEARCH' });
+  }
+}
+
+for (const model of searchOnlyModels) {
+  const html = await fetchHtml(`/products?q=${encodeURIComponent(model)}`);
+  if (!html.includes(model)) visibilityFailures.push({ surface: 'product-search', model, reason: 'MISSING_FROM_SEARCH' });
+}
 
 const sitemapResponse = await fetch(`${baseUrl}/sitemap.xml`);
 if (!sitemapResponse.ok) throw new Error(`sitemap returned ${sitemapResponse.status}`);
@@ -91,8 +119,11 @@ console.log(JSON.stringify({
     countMismatch,
     passed: results.length - failures.length,
     failed: failures.length,
+    searchOnlyVisibilityChecks: browseSurfaces.length * searchOnlyModels.length + searchOnlyModels.length,
+    searchOnlyVisibilityFailures: visibilityFailures.length,
   },
+  visibilityFailures,
   failures,
 }, null, 2));
 
-if (countMismatch || failures.length) process.exitCode = 1;
+if (countMismatch || failures.length || visibilityFailures.length) process.exitCode = 1;
