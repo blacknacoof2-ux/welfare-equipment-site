@@ -141,6 +141,25 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     ],
     "checkedAt": "2026-09-14"
   },
+  "실버카-KS-130(네이비,베이지)": {
+    "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
+    "sourceUrl": "https://noble-one.com/product/%EC%8B%A4%EB%B2%84%EC%B9%B4-ks130/1339/category/48/display/1/",
+    "urls": [
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/M06090005005_detail_2.jpg"
+    ],
+    "checkedAt": "2026-09-14"
+  },
+  "실버카단비(오션블루, 버건디)": {
+    "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
+    "sourceUrl": "https://noble-one.com/product/%EC%8B%A4%EB%B2%84%EC%B9%B4%EB%8B%A8%EB%B9%84/1322/category/48/display/1/",
+    "urls": [
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/M06090005015_detail_2.jpg",
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/M06090005015_detail_3.jpg",
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/M06090005015_detail_4.jpg",
+      "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/M06090005015_detail_5.jpg"
+    ],
+    "checkedAt": "2026-09-14"
+  },
   "EXCT-01R": {
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
     "sourceUrl": "https://noble-one.com/product/exct-01r/1639/category/48/display/1/",

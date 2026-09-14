@@ -10,10 +10,10 @@
     "https://m.solpluscare.com"
   ],
   "candidateCount": 43,
-  "detailImageCount": 91,
+  "detailImageCount": 96,
   "counts": {
-    "COMPLETE": 40,
-    "NO_EXACT_MATCH": 3
+    "COMPLETE": 42,
+    "NO_EXACT_MATCH": 1
   },
   "entries": [
     {
@@ -267,8 +267,11 @@
       "benefitCode": "M06090005005",
       "category": "성인용보행기",
       "result": {
-        "status": "NO_EXACT_MATCH",
-        "attempts": []
+        "status": "COMPLETE",
+        "sourceUrl": "https://noble-one.com/product/%EC%8B%A4%EB%B2%84%EC%B9%B4-ks130/1339/category/48/display/1/",
+        "urls": [
+          "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/M06090005005_detail_2.jpg"
+        ]
       }
     },
     {
@@ -279,8 +282,14 @@
       "benefitCode": "M06090005015",
       "category": "성인용보행기",
       "result": {
-        "status": "NO_EXACT_MATCH",
-        "attempts": []
+        "status": "COMPLETE",
+        "sourceUrl": "https://noble-one.com/product/%EC%8B%A4%EB%B2%84%EC%B9%B4%EB%8B%A8%EB%B9%84/1322/category/48/display/1/",
+        "urls": [
+          "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/M06090005015_detail_2.jpg",
+          "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/M06090005015_detail_3.jpg",
+          "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/M06090005015_detail_4.jpg",
+          "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/M06090005015_detail_5.jpg"
+        ]
       }
     },
     {
