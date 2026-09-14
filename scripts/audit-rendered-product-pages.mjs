@@ -1,10 +1,6 @@
 const baseUrl = process.env.AUDIT_BASE_URL ?? 'http://127.0.0.1:5000';
 const expectedProductCount = Number(process.env.EXPECTED_PRODUCT_COUNT ?? 352);
 const searchOnlyModels = ['HM-606', 'HM-608'];
-const representativeImageOverrides = {
-  'catalog-s03090178005-electric-bed': 'thumb-7LKc64WEBEDST30_600x600.jpg',
-  'catalog-s03090183002-electric-bed': 'thumb-SE7030_1_600x600.jpg',
-};
 
 function decodeXml(value) {
   return value
@@ -13,6 +9,35 @@ function decodeXml(value) {
     .replaceAll('&gt;', '>')
     .replaceAll('&quot;', '"')
     .replaceAll('&#39;', "'");
+}
+
+function decodeHtmlAttribute(value) {
+  return decodeXml(value).replaceAll('&#x2F;', '/');
+}
+
+function escapeRegExp(value) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function extractHeroSrc(html, slug) {
+  const id = escapeRegExp(`product-hero-${slug}`);
+  const idFirst = new RegExp(`<img[^>]*id=["']${id}["'][^>]*src=["']([^"']+)["']`, 'i');
+  const srcFirst = new RegExp(`<img[^>]*src=["']([^"']+)["'][^>]*id=["']${id}["']`, 'i');
+  const match = html.match(idFirst) ?? html.match(srcFirst);
+  return match ? decodeHtmlAttribute(match[1]) : null;
+}
+
+function isApprovedCatalogHero(url) {
+  if (!url) return false;
+  const normalized = url.toLowerCase();
+  const isSquareThumb = normalized.includes('thumb-')
+    && (normalized.includes('400x400') || normalized.includes('600x600'));
+  if (!isSquareThumb) return false;
+
+  return normalized.startsWith('https://eroumcare.com/data/item/')
+    || normalized.startsWith('https://www.eroumcare.com/data/item/')
+    || normalized.startsWith('https://gagaon.com/data/item/')
+    || normalized.startsWith('https://www.gagaon.com/data/item/');
 }
 
 async function waitForServer() {
@@ -93,31 +118,38 @@ const results = await mapLimit(productUrls, 20, async (sitemapUrl) => {
   try {
     const response = await fetch(url, { redirect: 'follow' });
     const html = await response.text();
-    const hasHero = html.includes(`id=\"product-hero-${slug}\"`) || html.includes(`id='product-hero-${slug}'`);
+    const heroUrl = extractHeroSrc(html, slug);
+    const hasHero = Boolean(heroUrl);
+    const approvedHero = isApprovedCatalogHero(heroUrl);
     const hasSellerDetailImage = html.includes(`id=\"detail-image-${slug}-1\"`) || html.includes(`id='detail-image-${slug}-1'`);
     const hasSellerDetailHeading = html.includes('제품 상세 이미지');
     const hasGalleryThumbs = html.includes('product-gallery-thumbs');
-    const expectedOverride = representativeImageOverrides[slug];
-    const overrideOk = !expectedOverride || html.includes(expectedOverride);
     return {
       slug,
       status: response.status,
+      heroUrl,
       hasHero,
+      approvedHero,
       hasSellerDetailImage,
       hasSellerDetailHeading,
       hasGalleryThumbs,
-      overrideOk,
-      ok: response.status === 200 && hasHero && !hasSellerDetailImage && !hasSellerDetailHeading && !hasGalleryThumbs && overrideOk,
+      ok: response.status === 200
+        && hasHero
+        && approvedHero
+        && !hasSellerDetailImage
+        && !hasSellerDetailHeading
+        && !hasGalleryThumbs,
     };
   } catch (error) {
     return {
       slug,
       status: null,
+      heroUrl: null,
       hasHero: false,
+      approvedHero: false,
       hasSellerDetailImage: false,
       hasSellerDetailHeading: false,
       hasGalleryThumbs: false,
-      overrideOk: false,
       ok: false,
       error: error instanceof Error ? error.message : String(error),
     };
@@ -126,6 +158,19 @@ const results = await mapLimit(productUrls, 20, async (sitemapUrl) => {
 
 const failures = results.filter((item) => !item.ok);
 const countMismatch = productUrls.length !== expectedProductCount;
+const sourceCounts = results.reduce((acc, item) => {
+  if (!item.heroUrl) {
+    acc.MISSING += 1;
+  } else if (item.heroUrl.includes('eroumcare.com/data/item/')) {
+    acc.EROUM += 1;
+  } else if (item.heroUrl.includes('gagaon.com/data/item/')) {
+    acc.GAGAON += 1;
+  } else {
+    acc.OTHER += 1;
+  }
+  return acc;
+}, { EROUM: 0, GAGAON: 0, OTHER: 0, MISSING: 0 });
+
 console.log(JSON.stringify({
   summary: {
     sitemapProductUrls: productUrls.length,
@@ -133,6 +178,7 @@ console.log(JSON.stringify({
     countMismatch,
     representativeOnlyPassed: results.length - failures.length,
     representativeOnlyFailed: failures.length,
+    approvedHeroSourceCounts: sourceCounts,
     searchOnlyVisibilityChecks: browseSurfaces.length * searchOnlyModels.length + searchOnlyModels.length,
     searchOnlyVisibilityFailures: visibilityFailures.length,
   },
