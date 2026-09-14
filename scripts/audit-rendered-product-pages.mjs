@@ -2,6 +2,14 @@ const baseUrl = process.env.AUDIT_BASE_URL ?? 'http://127.0.0.1:5000';
 const expectedProductCount = Number(process.env.EXPECTED_PRODUCT_COUNT ?? 352);
 const searchOnlyModels = ['HM-606', 'HM-608'];
 
+// 2026-09-14 전수검수에서 표준 Eroum/Gagaon 400/600 정사각형 썸네일 규칙을 벗어난
+// 3개 제품만 모델·급여코드·이미지 내용을 수동 확인하여 허용합니다.
+const manuallyAuditedHeroUrls = new Set([
+  'https://eroumcare.com/data/item/new/M18030043103.jpg',
+  'https://eroumcare.com/data/item/PRO2021022500577/YHCR02.png',
+  'https://carestore.co.kr/welfare/details/images/M03031003103/09.jpg',
+]);
+
 function decodeXml(value) {
   return value
     .replaceAll('&amp;', '&')
@@ -27,7 +35,7 @@ function extractHeroSrc(html, slug) {
   return match ? decodeHtmlAttribute(match[1]) : null;
 }
 
-function isApprovedCatalogHero(url) {
+function isStandardCatalogHero(url) {
   if (!url) return false;
   const normalized = url.toLowerCase();
   const isSquareThumb = normalized.includes('thumb-')
@@ -38,6 +46,10 @@ function isApprovedCatalogHero(url) {
     || normalized.startsWith('https://www.eroumcare.com/data/item/')
     || normalized.startsWith('https://gagaon.com/data/item/')
     || normalized.startsWith('https://www.gagaon.com/data/item/');
+}
+
+function isApprovedCatalogHero(url) {
+  return Boolean(url) && (isStandardCatalogHero(url) || manuallyAuditedHeroUrls.has(url));
 }
 
 async function waitForServer() {
@@ -121,6 +133,7 @@ const results = await mapLimit(productUrls, 20, async (sitemapUrl) => {
     const heroUrl = extractHeroSrc(html, slug);
     const hasHero = Boolean(heroUrl);
     const approvedHero = isApprovedCatalogHero(heroUrl);
+    const manualHero = Boolean(heroUrl && manuallyAuditedHeroUrls.has(heroUrl));
     const hasSellerDetailImage = html.includes(`id=\"detail-image-${slug}-1\"`) || html.includes(`id='detail-image-${slug}-1'`);
     const hasSellerDetailHeading = html.includes('제품 상세 이미지');
     const hasGalleryThumbs = html.includes('product-gallery-thumbs');
@@ -130,6 +143,7 @@ const results = await mapLimit(productUrls, 20, async (sitemapUrl) => {
       heroUrl,
       hasHero,
       approvedHero,
+      manualHero,
       hasSellerDetailImage,
       hasSellerDetailHeading,
       hasGalleryThumbs,
@@ -147,6 +161,7 @@ const results = await mapLimit(productUrls, 20, async (sitemapUrl) => {
       heroUrl: null,
       hasHero: false,
       approvedHero: false,
+      manualHero: false,
       hasSellerDetailImage: false,
       hasSellerDetailHeading: false,
       hasGalleryThumbs: false,
@@ -157,19 +172,22 @@ const results = await mapLimit(productUrls, 20, async (sitemapUrl) => {
 });
 
 const failures = results.filter((item) => !item.ok);
+const manualHeroes = results.filter((item) => item.manualHero).map(({ slug, heroUrl }) => ({ slug, heroUrl }));
 const countMismatch = productUrls.length !== expectedProductCount;
 const sourceCounts = results.reduce((acc, item) => {
   if (!item.heroUrl) {
     acc.MISSING += 1;
+  } else if (manuallyAuditedHeroUrls.has(item.heroUrl)) {
+    acc.MANUAL += 1;
   } else if (item.heroUrl.includes('eroumcare.com/data/item/')) {
-    acc.EROUM += 1;
+    acc.EROUM_STANDARD += 1;
   } else if (item.heroUrl.includes('gagaon.com/data/item/')) {
-    acc.GAGAON += 1;
+    acc.GAGAON_STANDARD += 1;
   } else {
     acc.OTHER += 1;
   }
   return acc;
-}, { EROUM: 0, GAGAON: 0, OTHER: 0, MISSING: 0 });
+}, { EROUM_STANDARD: 0, GAGAON_STANDARD: 0, MANUAL: 0, OTHER: 0, MISSING: 0 });
 
 console.log(JSON.stringify({
   summary: {
@@ -179,11 +197,13 @@ console.log(JSON.stringify({
     representativeOnlyPassed: results.length - failures.length,
     representativeOnlyFailed: failures.length,
     approvedHeroSourceCounts: sourceCounts,
+    manuallyAuditedHeroCount: manualHeroes.length,
     searchOnlyVisibilityChecks: browseSurfaces.length * searchOnlyModels.length + searchOnlyModels.length,
     searchOnlyVisibilityFailures: visibilityFailures.length,
   },
+  manualHeroes,
   visibilityFailures,
   failures,
 }, null, 2));
 
-if (countMismatch || failures.length || visibilityFailures.length) process.exitCode = 1;
+if (countMismatch || failures.length || manualHeroes.length !== 3 || visibilityFailures.length) process.exitCode = 1;
