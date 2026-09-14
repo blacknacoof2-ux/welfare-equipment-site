@@ -22,6 +22,7 @@ const REQUEST_DELAY_MS = 130;
 const EXCLUDED_WORDS = [
   'logo', 'icon', 'banner', 'btn_', 'button', 'spinner', 'loading', 'arrow', 'review',
   'grade', 'star', 'sns', 'kakao', 'naver', 'facebook', 'instagram', 'youtube', 'noimage',
+  'user_guide', 'user-guide', 'common_guide', 'common-guide', 'shopping_guide', 'shopping-guide',
 ];
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -91,10 +92,17 @@ function normalizeImageUrl(raw, sourceUrl) {
   try { return new URL(decoded, sourceUrl).toString(); } catch { return null; }
 }
 
-function isDetailImage(url) {
+function isDetailImage(url, product) {
   const lower = url.toLowerCase();
   if (EXCLUDED_WORDS.some((word) => lower.includes(word))) return false;
   if (!/\.(?:jpe?g|png|webp|gif)(?:\?|$)/i.test(lower)) return false;
+
+  const code = String(product.benefitCode ?? '').toLowerCase();
+  const nobleProductDetail = lower.includes('gi.esmplus.com/noble3450/welfare_medical_device/detail_images/')
+    && code
+    && lower.includes(code);
+  if (nobleProductDetail) return true;
+
   return lower.includes('/web/upload/nneditor/')
     || lower.includes('/web/product/extra/')
     || lower.includes('/web/upload/ckeditor/')
@@ -132,7 +140,7 @@ function extractDetailImages(html, sourceUrl, product) {
   const seen = new Set();
   const push = (raw) => {
     const url = normalizeImageUrl(raw, sourceUrl);
-    if (!url || !isDetailImage(url) || hero.has(url) || seen.has(url)) return;
+    if (!url || !isDetailImage(url, product) || hero.has(url) || seen.has(url)) return;
     seen.add(url);
     urls.push(url);
   };
