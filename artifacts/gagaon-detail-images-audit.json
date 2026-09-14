@@ -1,0 +1,1599 @@
+{
+  "checkedAt": "2026-09-14",
+  "source": "https://*.gagaon.com",
+  "candidateCount": 72,
+  "detailImageCount": 105,
+  "counts": {
+    "PAGE_MISMATCH": 40,
+    "COMPLETE": 29,
+    "NO_DETAIL_IMAGES": 3
+  },
+  "entries": [
+    {
+      "index": 1,
+      "slug": "catalog-f24010181001-indoor-ramp",
+      "name": "URB-PR101",
+      "model": "URB-PR101",
+      "benefitCode": "F24010181001",
+      "category": "경사로(실내용)",
+      "result": {
+        "status": "PAGE_MISMATCH",
+        "attempts": [
+          {
+            "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=F24010181001",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://kyg02073.gagaon.com/indi/item.php?it_id=F24010181001",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://mireajae.gagaon.com/indi/item.php?it_id=F24010181001",
+            "status": "PAGE_MISMATCH"
+          }
+        ]
+      }
+    },
+    {
+      "index": 2,
+      "slug": "catalog-f24010181002-indoor-ramp",
+      "name": "URB-PR102",
+      "model": "URB-PR102",
+      "benefitCode": "F24010181002",
+      "category": "경사로(실내용)",
+      "result": {
+        "status": "PAGE_MISMATCH",
+        "attempts": [
+          {
+            "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=F24010181002",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://kyg02073.gagaon.com/indi/item.php?it_id=F24010181002",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://mireajae.gagaon.com/indi/item.php?it_id=F24010181002",
+            "status": "PAGE_MISMATCH"
+          }
+        ]
+      }
+    },
+    {
+      "index": 3,
+      "slug": "catalog-f24010181003-indoor-ramp",
+      "name": "URB-PR103",
+      "model": "URB-PR103",
+      "benefitCode": "F24010181003",
+      "category": "경사로(실내용)",
+      "result": {
+        "status": "PAGE_MISMATCH",
+        "attempts": [
+          {
+            "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=F24010181003",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://kyg02073.gagaon.com/indi/item.php?it_id=F24010181003",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://mireajae.gagaon.com/indi/item.php?it_id=F24010181003",
+            "status": "PAGE_MISMATCH"
+          }
+        ]
+      }
+    },
+    {
+      "index": 4,
+      "slug": "catalog-f24010181004-indoor-ramp",
+      "name": "URB-PR104",
+      "model": "URB-PR104",
+      "benefitCode": "F24010181004",
+      "category": "경사로(실내용)",
+      "result": {
+        "status": "PAGE_MISMATCH",
+        "attempts": [
+          {
+            "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=F24010181004",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://kyg02073.gagaon.com/indi/item.php?it_id=F24010181004",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://mireajae.gagaon.com/indi/item.php?it_id=F24010181004",
+            "status": "PAGE_MISMATCH"
+          }
+        ]
+      }
+    },
+    {
+      "index": 5,
+      "slug": "catalog-f24010181005-indoor-ramp",
+      "name": "URB-PR105",
+      "model": "URB-PR105",
+      "benefitCode": "F24010181005",
+      "category": "경사로(실내용)",
+      "result": {
+        "status": "PAGE_MISMATCH",
+        "attempts": [
+          {
+            "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=F24010181005",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://kyg02073.gagaon.com/indi/item.php?it_id=F24010181005",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://mireajae.gagaon.com/indi/item.php?it_id=F24010181005",
+            "status": "PAGE_MISMATCH"
+          }
+        ]
+      }
+    },
+    {
+      "index": 6,
+      "slug": "catalog-f24000045001-indoor-ramp",
+      "name": "YGM2",
+      "model": "YGM2",
+      "benefitCode": "F24000045001",
+      "category": "경사로(실내용)",
+      "result": {
+        "status": "COMPLETE",
+        "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=F24000045001",
+        "urls": [
+          "https://gagaon.com/data/editor/2306/a88505afa85d6105023f4a3fdd953d6f_1686623548_247.jpg",
+          "https://gagaon.com/data/editor/2206/a62ea3487c5d15ab170c870514b2336b_1654840450_9553.jpg",
+          "https://gagaon.com/data/editor/2206/a62ea3487c5d15ab170c870514b2336b_1654840450_9912.jpg"
+        ]
+      }
+    },
+    {
+      "index": 7,
+      "slug": "catalog-f24000045002-indoor-ramp",
+      "name": "YGM3",
+      "model": "YGM3",
+      "benefitCode": "F24000045002",
+      "category": "경사로(실내용)",
+      "result": {
+        "status": "COMPLETE",
+        "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=F24000045002",
+        "urls": [
+          "https://gagaon.com/data/editor/2306/a88505afa85d6105023f4a3fdd953d6f_1686623536_4108.jpg",
+          "https://gagaon.com/data/editor/2206/a62ea3487c5d15ab170c870514b2336b_1654840438_0138.jpg",
+          "https://gagaon.com/data/editor/2206/a62ea3487c5d15ab170c870514b2336b_1654840438_0646.jpg"
+        ]
+      }
+    },
+    {
+      "index": 8,
+      "slug": "catalog-f24000045003-indoor-ramp",
+      "name": "YGM4",
+      "model": "YGM4",
+      "benefitCode": "F24000045003",
+      "category": "경사로(실내용)",
+      "result": {
+        "status": "COMPLETE",
+        "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=F24000045003",
+        "urls": [
+          "https://gagaon.com/data/editor/2306/a88505afa85d6105023f4a3fdd953d6f_1686623517_9667.jpg",
+          "https://gagaon.com/data/editor/2206/a62ea3487c5d15ab170c870514b2336b_1654840424_2414.jpg",
+          "https://gagaon.com/data/editor/2206/a62ea3487c5d15ab170c870514b2336b_1654840424_2761.jpg"
+        ]
+      }
+    },
+    {
+      "index": 9,
+      "slug": "catalog-b03180088605-bath-chair",
+      "name": "IU",
+      "model": "IU",
+      "benefitCode": "B03180088605",
+      "category": "목욕의자",
+      "result": {
+        "status": "PAGE_MISMATCH",
+        "attempts": [
+          {
+            "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=B03180088605",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://kyg02073.gagaon.com/indi/item.php?it_id=B03180088605",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://mireajae.gagaon.com/indi/item.php?it_id=B03180088605",
+            "status": "PAGE_MISMATCH"
+          }
+        ]
+      }
+    },
+    {
+      "index": 10,
+      "slug": "catalog-b03180195501-bath-chair",
+      "name": "KSCU01",
+      "model": "KSCU01",
+      "benefitCode": "B03180195501",
+      "category": "목욕의자",
+      "result": {
+        "status": "PAGE_MISMATCH",
+        "attempts": [
+          {
+            "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=B03180195501",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://kyg02073.gagaon.com/indi/item.php?it_id=B03180195501",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://mireajae.gagaon.com/indi/item.php?it_id=B03180195501",
+            "status": "PAGE_MISMATCH"
+          }
+        ]
+      }
+    },
+    {
+      "index": 11,
+      "slug": "catalog-f30090204001-anti-slip",
+      "name": "위풋 자석 덧신 양면",
+      "model": "위풋 자석 덧신 양면",
+      "benefitCode": "F30090204001",
+      "category": "미끄럼방지용품",
+      "result": {
+        "status": "COMPLETE",
+        "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=F30090204001",
+        "urls": [
+          "https://gagaon.com/data/editor/2505/65564d689346c7a8dcac26ad9266de4d_1747637267_447.jpg"
+        ]
+      }
+    },
+    {
+      "index": 12,
+      "slug": "catalog-f30030078003-anti-slip",
+      "name": "AFM-02",
+      "model": "AFM-02",
+      "benefitCode": "F30030078003",
+      "category": "미끄럼방지용품",
+      "result": {
+        "status": "PAGE_MISMATCH",
+        "attempts": [
+          {
+            "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=F30030078003",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://kyg02073.gagaon.com/indi/item.php?it_id=F30030078003",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://mireajae.gagaon.com/indi/item.php?it_id=F30030078003",
+            "status": "PAGE_MISMATCH"
+          }
+        ]
+      }
+    },
+    {
+      "index": 13,
+      "slug": "catalog-f30030078105-anti-slip",
+      "name": "AFM-04",
+      "model": "AFM-04",
+      "benefitCode": "F30030078105",
+      "category": "미끄럼방지용품",
+      "result": {
+        "status": "PAGE_MISMATCH",
+        "attempts": [
+          {
+            "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=F30030078105",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://kyg02073.gagaon.com/indi/item.php?it_id=F30030078105",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://mireajae.gagaon.com/indi/item.php?it_id=F30030078105",
+            "status": "PAGE_MISMATCH"
+          }
+        ]
+      }
+    },
+    {
+      "index": 14,
+      "slug": "catalog-f30031151104-anti-slip",
+      "name": "BLS-600",
+      "model": "BLS-600",
+      "benefitCode": "F30031151104",
+      "category": "미끄럼방지용품",
+      "result": {
+        "status": "PAGE_MISMATCH",
+        "attempts": [
+          {
+            "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=F30031151104",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://kyg02073.gagaon.com/indi/item.php?it_id=F30031151104",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://mireajae.gagaon.com/indi/item.php?it_id=F30031151104",
+            "status": "PAGE_MISMATCH"
+          }
+        ]
+      }
+    },
+    {
+      "index": 15,
+      "slug": "catalog-f30030205004-anti-slip",
+      "name": "BLS-850",
+      "model": "BLS-850",
+      "benefitCode": "F30030205004",
+      "category": "미끄럼방지용품",
+      "result": {
+        "status": "PAGE_MISMATCH",
+        "attempts": [
+          {
+            "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=F30030205004",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://kyg02073.gagaon.com/indi/item.php?it_id=F30030205004",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://mireajae.gagaon.com/indi/item.php?it_id=F30030205004",
+            "status": "PAGE_MISMATCH"
+          }
+        ]
+      }
+    },
+    {
+      "index": 16,
+      "slug": "catalog-f30031133102-anti-slip",
+      "name": "J-S1",
+      "model": "J-S1",
+      "benefitCode": "F30031133102",
+      "category": "미끄럼방지용품",
+      "result": {
+        "status": "PAGE_MISMATCH",
+        "attempts": [
+          {
+            "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=F30031133102",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://kyg02073.gagaon.com/indi/item.php?it_id=F30031133102",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://mireajae.gagaon.com/indi/item.php?it_id=F30031133102",
+            "status": "PAGE_MISMATCH"
+          }
+        ]
+      }
+    },
+    {
+      "index": 17,
+      "slug": "catalog-f30031220101-anti-slip",
+      "name": "SKC-01",
+      "model": "SKC-01",
+      "benefitCode": "F30031220101",
+      "category": "미끄럼방지용품",
+      "result": {
+        "status": "PAGE_MISMATCH",
+        "attempts": [
+          {
+            "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=F30031220101",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://kyg02073.gagaon.com/indi/item.php?it_id=F30031220101",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://mireajae.gagaon.com/indi/item.php?it_id=F30031220101",
+            "status": "PAGE_MISMATCH"
+          }
+        ]
+      }
+    },
+    {
+      "index": 18,
+      "slug": "catalog-f30031220102-anti-slip",
+      "name": "SKC-02",
+      "model": "SKC-02",
+      "benefitCode": "F30031220102",
+      "category": "미끄럼방지용품",
+      "result": {
+        "status": "PAGE_MISMATCH",
+        "attempts": [
+          {
+            "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=F30031220102",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://kyg02073.gagaon.com/indi/item.php?it_id=F30031220102",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://mireajae.gagaon.com/indi/item.php?it_id=F30031220102",
+            "status": "PAGE_MISMATCH"
+          }
+        ]
+      }
+    },
+    {
+      "index": 19,
+      "slug": "catalog-f30030181002-anti-slip",
+      "name": "URB-M101",
+      "model": "URB-M101",
+      "benefitCode": "F30030181002",
+      "category": "미끄럼방지용품",
+      "result": {
+        "status": "PAGE_MISMATCH",
+        "attempts": [
+          {
+            "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=F30030181002",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://kyg02073.gagaon.com/indi/item.php?it_id=F30030181002",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://mireajae.gagaon.com/indi/item.php?it_id=F30030181002",
+            "status": "PAGE_MISMATCH"
+          }
+        ]
+      }
+    },
+    {
+      "index": 20,
+      "slug": "catalog-m06060238503-adult-walker",
+      "name": "소풍 롤레이터",
+      "model": "소풍 롤레이터",
+      "benefitCode": "M06060238503",
+      "category": "성인용보행기",
+      "result": {
+        "status": "COMPLETE",
+        "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=M06060238503",
+        "urls": [
+          "https://gagaon.com/data/editor/2606/4de1027d433420026de91075b87c3394_1782108932_496.jpg",
+          "https://gagaon.com/data/editor/2606/4de1027d433420026de91075b87c3394_1782108932_8802.jpg",
+          "https://gagaon.com/data/editor/2606/4de1027d433420026de91075b87c3394_1782108933_354.jpg"
+        ]
+      }
+    },
+    {
+      "index": 21,
+      "slug": "catalog-m06091152601-adult-walker",
+      "name": "슬림핏(SL-0680WS)",
+      "model": "슬림핏(SL-0680WS)",
+      "benefitCode": "M06091152601",
+      "category": "성인용보행기",
+      "result": {
+        "status": "PAGE_MISMATCH",
+        "attempts": [
+          {
+            "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=M06091152601",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://kyg02073.gagaon.com/indi/item.php?it_id=M06091152601",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://mireajae.gagaon.com/indi/item.php?it_id=M06091152601",
+            "status": "PAGE_MISMATCH"
+          }
+        ]
+      }
+    },
+    {
+      "index": 22,
+      "slug": "catalog-m06090005005-adult-walker",
+      "name": "실버카-KS-130(네이비,베이지)",
+      "model": "실버카-KS-130(네이비,베이지)",
+      "benefitCode": "M06090005005",
+      "category": "성인용보행기",
+      "result": {
+        "status": "PAGE_MISMATCH",
+        "attempts": [
+          {
+            "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=M06090005005",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://kyg02073.gagaon.com/indi/item.php?it_id=M06090005005",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://mireajae.gagaon.com/indi/item.php?it_id=M06090005005",
+            "status": "PAGE_MISMATCH"
+          }
+        ]
+      }
+    },
+    {
+      "index": 23,
+      "slug": "catalog-m06090005015-adult-walker",
+      "name": "실버카단비(오션블루, 버건디)",
+      "model": "실버카단비(오션블루, 버건디)",
+      "benefitCode": "M06090005015",
+      "category": "성인용보행기",
+      "result": {
+        "status": "PAGE_MISMATCH",
+        "attempts": [
+          {
+            "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=M06090005015",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://kyg02073.gagaon.com/indi/item.php?it_id=M06090005015",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://mireajae.gagaon.com/indi/item.php?it_id=M06090005015",
+            "status": "PAGE_MISMATCH"
+          }
+        ]
+      }
+    },
+    {
+      "index": 24,
+      "slug": "catalog-m06060147501-adult-walker",
+      "name": "카본 로얄파인더",
+      "model": "카본 로얄파인더",
+      "benefitCode": "M06060147501",
+      "category": "성인용보행기",
+      "result": {
+        "status": "COMPLETE",
+        "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=M06060147501",
+        "urls": [
+          "https://gagaon.com/data/editor/2511/bd233ccdf576b62c26544efb5f7c86d0_1762489686_4765.png",
+          "https://gagaon.com/data/editor/2511/bd233ccdf576b62c26544efb5f7c86d0_1762489686_5383.png",
+          "https://gagaon.com/data/editor/2306/25290e1b55dd75ecfa866a0f655afc12_1685666111_278.jpg",
+          "https://gagaon.com/data/editor/2306/25290e1b55dd75ecfa866a0f655afc12_1685666111_9908.jpg"
+        ]
+      }
+    },
+    {
+      "index": 25,
+      "slug": "catalog-m06090158004-adult-walker",
+      "name": "효자2(SK-105)",
+      "model": "효자2(SK-105)",
+      "benefitCode": "M06090158004",
+      "category": "성인용보행기",
+      "result": {
+        "status": "COMPLETE",
+        "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=M06090158004",
+        "urls": [
+          "https://gagaon.com/data/editor/2511/9febc4bf487a904d512e7d192d25fb3d_1763429538_2781.jpg",
+          "https://gagaon.com/data/editor/2509/08e86ff5f6ebde7b8b71463a64e9ec32_1758175883_0833.jpg",
+          "https://gagaon.com/data/editor/2509/08e86ff5f6ebde7b8b71463a64e9ec32_1758175654_6662.jpg",
+          "https://gagaon.com/data/editor/2509/3e0367a3afd960db380eac94198560ff_1758528790_5562.jpg"
+        ]
+      }
+    },
+    {
+      "index": 26,
+      "slug": "catalog-m06090224501-adult-walker",
+      "name": "EXCT-01R",
+      "model": "EXCT-01R",
+      "benefitCode": "M06090224501",
+      "category": "성인용보행기",
+      "result": {
+        "status": "PAGE_MISMATCH",
+        "attempts": [
+          {
+            "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=M06090224501",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://kyg02073.gagaon.com/indi/item.php?it_id=M06090224501",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://mireajae.gagaon.com/indi/item.php?it_id=M06090224501",
+            "status": "PAGE_MISMATCH"
+          }
+        ]
+      }
+    },
+    {
+      "index": 27,
+      "slug": "catalog-m06091147601-adult-walker",
+      "name": "Handy",
+      "model": "Handy",
+      "benefitCode": "M06091147601",
+      "category": "성인용보행기",
+      "result": {
+        "status": "PAGE_MISMATCH",
+        "attempts": [
+          {
+            "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=M06091147601",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://kyg02073.gagaon.com/indi/item.php?it_id=M06091147601",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://mireajae.gagaon.com/indi/item.php?it_id=M06091147601",
+            "status": "PAGE_MISMATCH"
+          }
+        ]
+      }
+    },
+    {
+      "index": 28,
+      "slug": "catalog-m06060177001-adult-walker",
+      "name": "HM-608",
+      "model": "HM-608",
+      "benefitCode": "M06060177001",
+      "category": "성인용보행기",
+      "result": {
+        "status": "COMPLETE",
+        "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=M06060177001",
+        "urls": [
+          "https://gagaon.com/data/editor/2504/3fbcd12e22ea5172fc56ccd91699491b_1746000986_7235.jpg"
+        ]
+      }
+    },
+    {
+      "index": 29,
+      "slug": "catalog-m06090005106-adult-walker",
+      "name": "KS-300",
+      "model": "KS-300",
+      "benefitCode": "M06090005106",
+      "category": "성인용보행기",
+      "result": {
+        "status": "PAGE_MISMATCH",
+        "attempts": [
+          {
+            "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=M06090005106",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://kyg02073.gagaon.com/indi/item.php?it_id=M06090005106",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://mireajae.gagaon.com/indi/item.php?it_id=M06090005106",
+            "status": "PAGE_MISMATCH"
+          }
+        ]
+      }
+    },
+    {
+      "index": 30,
+      "slug": "catalog-m06060234503-adult-walker",
+      "name": "Let's Be Free",
+      "model": "Let's Be Free",
+      "benefitCode": "M06060234503",
+      "category": "성인용보행기",
+      "result": {
+        "status": "PAGE_MISMATCH",
+        "attempts": [
+          {
+            "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=M06060234503",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://kyg02073.gagaon.com/indi/item.php?it_id=M06060234503",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://mireajae.gagaon.com/indi/item.php?it_id=M06060234503",
+            "status": "PAGE_MISMATCH"
+          }
+        ]
+      }
+    },
+    {
+      "index": 31,
+      "slug": "catalog-m06061146601-adult-walker",
+      "name": "Let's Fly",
+      "model": "Let's Fly",
+      "benefitCode": "M06061146601",
+      "category": "성인용보행기",
+      "result": {
+        "status": "PAGE_MISMATCH",
+        "attempts": [
+          {
+            "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=M06061146601",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://kyg02073.gagaon.com/indi/item.php?it_id=M06061146601",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://mireajae.gagaon.com/indi/item.php?it_id=M06061146601",
+            "status": "PAGE_MISMATCH"
+          }
+        ]
+      }
+    },
+    {
+      "index": 32,
+      "slug": "catalog-m06061146602-adult-walker",
+      "name": "Let's Move",
+      "model": "Let's Move",
+      "benefitCode": "M06061146602",
+      "category": "성인용보행기",
+      "result": {
+        "status": "PAGE_MISMATCH",
+        "attempts": [
+          {
+            "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=M06061146602",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://kyg02073.gagaon.com/indi/item.php?it_id=M06061146602",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://mireajae.gagaon.com/indi/item.php?it_id=M06061146602",
+            "status": "PAGE_MISMATCH"
+          }
+        ]
+      }
+    },
+    {
+      "index": 33,
+      "slug": "catalog-m18031139103-manual-wheelchair",
+      "name": "유닉스 22D-A",
+      "model": "유닉스 22D-A",
+      "benefitCode": "M18031139103",
+      "category": "수동휠체어",
+      "result": {
+        "status": "PAGE_MISMATCH",
+        "attempts": [
+          {
+            "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=M18031139103",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://kyg02073.gagaon.com/indi/item.php?it_id=M18031139103",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://mireajae.gagaon.com/indi/item.php?it_id=M18031139103",
+            "status": "PAGE_MISMATCH"
+          }
+        ]
+      }
+    },
+    {
+      "index": 34,
+      "slug": "catalog-m18031139102-manual-wheelchair",
+      "name": "유닉스 22D-S",
+      "model": "유닉스 22D-S",
+      "benefitCode": "M18031139102",
+      "category": "수동휠체어",
+      "result": {
+        "status": "PAGE_MISMATCH",
+        "attempts": [
+          {
+            "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=M18031139102",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://kyg02073.gagaon.com/indi/item.php?it_id=M18031139102",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://mireajae.gagaon.com/indi/item.php?it_id=M18031139102",
+            "status": "PAGE_MISMATCH"
+          }
+        ]
+      }
+    },
+    {
+      "index": 35,
+      "slug": "catalog-m18030043004-manual-wheelchair",
+      "name": "Mirage2(16D)",
+      "model": "Mirage2(16D)",
+      "benefitCode": "M18030043004",
+      "category": "수동휠체어",
+      "result": {
+        "status": "COMPLETE",
+        "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=M18030043004",
+        "urls": [
+          "https://gagaon.com/data/editor/2206/35fb72ef9950cd76eddb086b0e90c63a_1654586465_2033.jpg",
+          "https://gagaon.com/data/editor/2205/1d7779f2e379e488dbfb6c3973844f1e_1653023397_8014.jpg",
+          "https://gagaon.com/data/editor/2209/3c24a2b126e43403d8d6fd4369084d93_1662016846_4242.JPG",
+          "https://gagaon.com/data/editor/2501/d8d360e12dfff7c27ad50627f5f4dfcc_1737609445_2975.jpg"
+        ]
+      }
+    },
+    {
+      "index": 36,
+      "slug": "catalog-m18030043001-manual-wheelchair",
+      "name": "MIRAGE7(22D)",
+      "model": "MIRAGE7(22D)",
+      "benefitCode": "M18030043001",
+      "category": "수동휠체어",
+      "result": {
+        "status": "COMPLETE",
+        "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=M18030043001",
+        "urls": [
+          "https://gagaon.com/data/editor/2206/35fb72ef9950cd76eddb086b0e90c63a_1654585332_4722.jpg",
+          "https://gagaon.com/data/editor/2204/83ee9dfd5b8c05ed3fba7953f3716b9a_1650956457_8453.JPG",
+          "https://gagaon.com/data/editor/2204/83ee9dfd5b8c05ed3fba7953f3716b9a_1650956458_642.JPG",
+          "https://gagaon.com/data/editor/2209/3c24a2b126e43403d8d6fd4369084d93_1662015308_2518.JPG",
+          "https://gagaon.com/data/editor/2501/d8d360e12dfff7c27ad50627f5f4dfcc_1737609538_6552.jpg"
+        ]
+      }
+    },
+    {
+      "index": 37,
+      "slug": "catalog-m18030043027-manual-wheelchair",
+      "name": "MRT-2D",
+      "model": "MRT-2D",
+      "benefitCode": "M18030043027",
+      "category": "수동휠체어",
+      "result": {
+        "status": "NO_DETAIL_IMAGES",
+        "attempts": [
+          {
+            "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=M18030043027",
+            "status": "NO_DETAIL_IMAGES"
+          },
+          {
+            "sourceUrl": "https://kyg02073.gagaon.com/indi/item.php?it_id=M18030043027",
+            "status": "NO_DETAIL_IMAGES"
+          },
+          {
+            "sourceUrl": "https://mireajae.gagaon.com/indi/item.php?it_id=M18030043027",
+            "status": "NO_DETAIL_IMAGES"
+          }
+        ]
+      }
+    },
+    {
+      "index": 38,
+      "slug": "catalog-m18030043026-manual-wheelchair",
+      "name": "MRT-2DP",
+      "model": "MRT-2DP",
+      "benefitCode": "M18030043026",
+      "category": "수동휠체어",
+      "result": {
+        "status": "PAGE_MISMATCH",
+        "attempts": [
+          {
+            "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=M18030043026",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://kyg02073.gagaon.com/indi/item.php?it_id=M18030043026",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://mireajae.gagaon.com/indi/item.php?it_id=M18030043026",
+            "status": "PAGE_MISMATCH"
+          }
+        ]
+      }
+    },
+    {
+      "index": 39,
+      "slug": "catalog-m18030043028-manual-wheelchair",
+      "name": "MRT-7D",
+      "model": "MRT-7D",
+      "benefitCode": "M18030043028",
+      "category": "수동휠체어",
+      "result": {
+        "status": "NO_DETAIL_IMAGES",
+        "attempts": [
+          {
+            "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=M18030043028",
+            "status": "NO_DETAIL_IMAGES"
+          },
+          {
+            "sourceUrl": "https://kyg02073.gagaon.com/indi/item.php?it_id=M18030043028",
+            "status": "NO_DETAIL_IMAGES"
+          },
+          {
+            "sourceUrl": "https://mireajae.gagaon.com/indi/item.php?it_id=M18030043028",
+            "status": "NO_DETAIL_IMAGES"
+          }
+        ]
+      }
+    },
+    {
+      "index": 40,
+      "slug": "catalog-m18030043025-manual-wheelchair",
+      "name": "MRT-7DP",
+      "model": "MRT-7DP",
+      "benefitCode": "M18030043025",
+      "category": "수동휠체어",
+      "result": {
+        "status": "COMPLETE",
+        "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=M18030043025",
+        "urls": [
+          "https://gagaon.com/data/editor/2306/b1135c3d22424e305b388e43016ce2cf_1685605733_9998.jpg",
+          "https://gagaon.com/data/editor/2306/b1135c3d22424e305b388e43016ce2cf_1685605734_0433.jpg",
+          "https://gagaon.com/data/editor/2306/b1135c3d22424e305b388e43016ce2cf_1685605734_129.jpg",
+          "https://gagaon.com/data/editor/2306/b1135c3d22424e305b388e43016ce2cf_1685605734_1815.jpg",
+          "https://gagaon.com/data/editor/2306/b1135c3d22424e305b388e43016ce2cf_1685605734_2364.jpg",
+          "https://gagaon.com/data/editor/2306/b1135c3d22424e305b388e43016ce2cf_1685605734_3084.jpg",
+          "https://gagaon.com/data/editor/2306/b1135c3d22424e305b388e43016ce2cf_1685605734_3573.jpg",
+          "https://gagaon.com/data/editor/2306/b1135c3d22424e305b388e43016ce2cf_1685605734_4443.jpg",
+          "https://gagaon.com/data/editor/2306/b1135c3d22424e305b388e43016ce2cf_1685605734_5114.jpg",
+          "https://gagaon.com/data/editor/2306/b1135c3d22424e305b388e43016ce2cf_1685605734_6397.jpg",
+          "https://gagaon.com/data/editor/2306/b1135c3d22424e305b388e43016ce2cf_1685605740_7107.jpg",
+          "https://gagaon.com/data/editor/2306/b1135c3d22424e305b388e43016ce2cf_1685605740_8207.jpg",
+          "https://gagaon.com/data/editor/2306/b1135c3d22424e305b388e43016ce2cf_1685605740_8976.jpg",
+          "https://gagaon.com/data/editor/2306/b1135c3d22424e305b388e43016ce2cf_1685605740_9425.jpg",
+          "https://gagaon.com/data/editor/2306/b1135c3d22424e305b388e43016ce2cf_1685605740_9877.jpg",
+          "https://gagaon.com/data/editor/2306/b1135c3d22424e305b388e43016ce2cf_1685605741_0375.jpg"
+        ]
+      }
+    },
+    {
+      "index": 41,
+      "slug": "catalog-m18030043029-manual-wheelchair",
+      "name": "MTX-7DP",
+      "model": "MTX-7DP",
+      "benefitCode": "M18030043029",
+      "category": "수동휠체어",
+      "result": {
+        "status": "NO_DETAIL_IMAGES",
+        "attempts": [
+          {
+            "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=M18030043029",
+            "status": "NO_DETAIL_IMAGES"
+          },
+          {
+            "sourceUrl": "https://kyg02073.gagaon.com/indi/item.php?it_id=M18030043029",
+            "status": "NO_DETAIL_IMAGES"
+          },
+          {
+            "sourceUrl": "https://mireajae.gagaon.com/indi/item.php?it_id=M18030043029",
+            "status": "NO_DETAIL_IMAGES"
+          }
+        ]
+      }
+    },
+    {
+      "index": 42,
+      "slug": "catalog-f18030191012-safety-handle",
+      "name": "CV300S",
+      "model": "CV300S",
+      "benefitCode": "F18030191012",
+      "category": "안전손잡이",
+      "result": {
+        "status": "COMPLETE",
+        "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=F18030191012",
+        "urls": [
+          "https://gagaon.com/data/editor/2608/00406c56f1c58084fde8bcfd4e6d04a0_1788164377_1603.jpg"
+        ]
+      }
+    },
+    {
+      "index": 43,
+      "slug": "catalog-f18030233002-safety-handle",
+      "name": "DM-320",
+      "model": "DM-320",
+      "benefitCode": "F18030233002",
+      "category": "안전손잡이",
+      "result": {
+        "status": "PAGE_MISMATCH",
+        "attempts": [
+          {
+            "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=F18030233002",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://kyg02073.gagaon.com/indi/item.php?it_id=F18030233002",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://mireajae.gagaon.com/indi/item.php?it_id=F18030233002",
+            "status": "PAGE_MISMATCH"
+          }
+        ]
+      }
+    },
+    {
+      "index": 44,
+      "slug": "catalog-f18030045039-safety-handle",
+      "name": "YGP-002",
+      "model": "YGP-002",
+      "benefitCode": "F18030045039",
+      "category": "안전손잡이",
+      "result": {
+        "status": "COMPLETE",
+        "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=F18030045039",
+        "urls": [
+          "https://gagaon.com/data/editor/2609/51e0e8ecab1bb8ccfbc023f1ac5a62b2_1788312360_0276.jpg",
+          "https://gagaon.com/data/editor/2609/51e0e8ecab1bb8ccfbc023f1ac5a62b2_1788312362_4563.jpg",
+          "https://gagaon.com/data/editor/2609/51e0e8ecab1bb8ccfbc023f1ac5a62b2_1788312364_5153.jpg",
+          "https://gagaon.com/data/editor/2609/51e0e8ecab1bb8ccfbc023f1ac5a62b2_1788312366_6305.jpg",
+          "https://gagaon.com/data/editor/2609/51e0e8ecab1bb8ccfbc023f1ac5a62b2_1788312368_7975.jpg",
+          "https://gagaon.com/data/editor/2609/51e0e8ecab1bb8ccfbc023f1ac5a62b2_1788312370_7355.jpg",
+          "https://gagaon.com/data/editor/2609/51e0e8ecab1bb8ccfbc023f1ac5a62b2_1788312372_9977.jpg",
+          "https://gagaon.com/data/editor/2609/51e0e8ecab1bb8ccfbc023f1ac5a62b2_1788312378_1503.jpg"
+        ]
+      }
+    },
+    {
+      "index": 45,
+      "slug": "catalog-f18030045040-safety-handle",
+      "name": "YGW001",
+      "model": "YGW001",
+      "benefitCode": "F18030045040",
+      "category": "안전손잡이",
+      "result": {
+        "status": "COMPLETE",
+        "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=F18030045040",
+        "urls": [
+          "https://gagaon.com/data/editor/2609/0cd90731ed080666f02bac5b4892b547_1788238879_8798.jpg",
+          "https://gagaon.com/data/editor/2609/0cd90731ed080666f02bac5b4892b547_1788238883_1495.jpg",
+          "https://gagaon.com/data/editor/2609/0cd90731ed080666f02bac5b4892b547_1788238884_825.jpg",
+          "https://gagaon.com/data/editor/2609/0cd90731ed080666f02bac5b4892b547_1788238889_7396.jpg"
+        ]
+      }
+    },
+    {
+      "index": 46,
+      "slug": "catalog-f18030045041-safety-handle",
+      "name": "YGW002",
+      "model": "YGW002",
+      "benefitCode": "F18030045041",
+      "category": "안전손잡이",
+      "result": {
+        "status": "COMPLETE",
+        "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=F18030045041",
+        "urls": [
+          "https://gagaon.com/data/editor/2609/0cd90731ed080666f02bac5b4892b547_1788238979_6317.jpg",
+          "https://gagaon.com/data/editor/2609/0cd90731ed080666f02bac5b4892b547_1788238981_3807.jpg",
+          "https://gagaon.com/data/editor/2609/0cd90731ed080666f02bac5b4892b547_1788238983_3967.jpg",
+          "https://gagaon.com/data/editor/2609/0cd90731ed080666f02bac5b4892b547_1788238986_8611.jpg"
+        ]
+      }
+    },
+    {
+      "index": 47,
+      "slug": "catalog-f18030045042-safety-handle",
+      "name": "YGW003",
+      "model": "YGW003",
+      "benefitCode": "F18030045042",
+      "category": "안전손잡이",
+      "result": {
+        "status": "COMPLETE",
+        "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=F18030045042",
+        "urls": [
+          "https://gagaon.com/data/editor/2609/0cd90731ed080666f02bac5b4892b547_1788238915_9689.jpg",
+          "https://gagaon.com/data/editor/2609/0cd90731ed080666f02bac5b4892b547_1788238917_7436.jpg",
+          "https://gagaon.com/data/editor/2609/0cd90731ed080666f02bac5b4892b547_1788238919_6271.jpg",
+          "https://gagaon.com/data/editor/2609/0cd90731ed080666f02bac5b4892b547_1788238924_8712.jpg"
+        ]
+      }
+    },
+    {
+      "index": 48,
+      "slug": "catalog-t09060232005-incontinence-underwear",
+      "name": "드림 SMD-02",
+      "model": "드림 SMD-02",
+      "benefitCode": "T09060232005",
+      "category": "요실금팬티",
+      "result": {
+        "status": "PAGE_MISMATCH",
+        "attempts": [
+          {
+            "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=T09060232005",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://kyg02073.gagaon.com/indi/item.php?it_id=T09060232005",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://mireajae.gagaon.com/indi/item.php?it_id=T09060232005",
+            "status": "PAGE_MISMATCH"
+          }
+        ]
+      }
+    },
+    {
+      "index": 49,
+      "slug": "catalog-t09060232004-incontinence-underwear",
+      "name": "드림 SWP-03",
+      "model": "드림 SWP-03",
+      "benefitCode": "T09060232004",
+      "category": "요실금팬티",
+      "result": {
+        "status": "PAGE_MISMATCH",
+        "attempts": [
+          {
+            "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=T09060232004",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://kyg02073.gagaon.com/indi/item.php?it_id=T09060232004",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://mireajae.gagaon.com/indi/item.php?it_id=T09060232004",
+            "status": "PAGE_MISMATCH"
+          }
+        ]
+      }
+    },
+    {
+      "index": 50,
+      "slug": "catalog-t09060225002-incontinence-underwear",
+      "name": "숨M-50cc",
+      "model": "숨M-50cc",
+      "benefitCode": "T09060225002",
+      "category": "요실금팬티",
+      "result": {
+        "status": "PAGE_MISMATCH",
+        "attempts": [
+          {
+            "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=T09060225002",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://kyg02073.gagaon.com/indi/item.php?it_id=T09060225002",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://mireajae.gagaon.com/indi/item.php?it_id=T09060225002",
+            "status": "PAGE_MISMATCH"
+          }
+        ]
+      }
+    },
+    {
+      "index": 51,
+      "slug": "catalog-t09060006102-incontinence-underwear",
+      "name": "안심생활해피",
+      "model": "안심생활해피",
+      "benefitCode": "T09060006102",
+      "category": "요실금팬티",
+      "result": {
+        "status": "PAGE_MISMATCH",
+        "attempts": [
+          {
+            "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=T09060006102",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://kyg02073.gagaon.com/indi/item.php?it_id=T09060006102",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://mireajae.gagaon.com/indi/item.php?it_id=T09060006102",
+            "status": "PAGE_MISMATCH"
+          }
+        ]
+      }
+    },
+    {
+      "index": 52,
+      "slug": "catalog-t09061156104-incontinence-underwear",
+      "name": "MDR-04",
+      "model": "MDR-04",
+      "benefitCode": "T09061156104",
+      "category": "요실금팬티",
+      "result": {
+        "status": "PAGE_MISMATCH",
+        "attempts": [
+          {
+            "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=T09061156104",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://kyg02073.gagaon.com/indi/item.php?it_id=T09061156104",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://mireajae.gagaon.com/indi/item.php?it_id=T09061156104",
+            "status": "PAGE_MISMATCH"
+          }
+        ]
+      }
+    },
+    {
+      "index": 53,
+      "slug": "catalog-t09060149001-incontinence-underwear",
+      "name": "NSBS-PT200",
+      "model": "NSBS-PT200",
+      "benefitCode": "T09060149001",
+      "category": "요실금팬티",
+      "result": {
+        "status": "PAGE_MISMATCH",
+        "attempts": [
+          {
+            "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=T09060149001",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://kyg02073.gagaon.com/indi/item.php?it_id=T09060149001",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://mireajae.gagaon.com/indi/item.php?it_id=T09060149001",
+            "status": "PAGE_MISMATCH"
+          }
+        ]
+      }
+    },
+    {
+      "index": 54,
+      "slug": "catalog-t09060149004-incontinence-underwear",
+      "name": "NSBS-PT30",
+      "model": "NSBS-PT30",
+      "benefitCode": "T09060149004",
+      "category": "요실금팬티",
+      "result": {
+        "status": "PAGE_MISMATCH",
+        "attempts": [
+          {
+            "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=T09060149004",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://kyg02073.gagaon.com/indi/item.php?it_id=T09060149004",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://mireajae.gagaon.com/indi/item.php?it_id=T09060149004",
+            "status": "PAGE_MISMATCH"
+          }
+        ]
+      }
+    },
+    {
+      "index": 55,
+      "slug": "catalog-t09061217103-incontinence-underwear",
+      "name": "SWP-01",
+      "model": "SWP-01",
+      "benefitCode": "T09061217103",
+      "category": "요실금팬티",
+      "result": {
+        "status": "COMPLETE",
+        "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=T09061217103",
+        "urls": [
+          "https://gagaon.com/data/editor/2504/3fbcd12e22ea5172fc56ccd91699491b_1745996614_2605.jpg"
+        ]
+      }
+    },
+    {
+      "index": 56,
+      "slug": "catalog-t09060230005-incontinence-underwear",
+      "name": "WDR-03",
+      "model": "WDR-03",
+      "benefitCode": "T09060230005",
+      "category": "요실금팬티",
+      "result": {
+        "status": "PAGE_MISMATCH",
+        "attempts": [
+          {
+            "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=T09060230005",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://kyg02073.gagaon.com/indi/item.php?it_id=T09060230005",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://mireajae.gagaon.com/indi/item.php?it_id=T09060230005",
+            "status": "PAGE_MISMATCH"
+          }
+        ]
+      }
+    },
+    {
+      "index": 57,
+      "slug": "catalog-t09061156105-incontinence-underwear",
+      "name": "WDR-04",
+      "model": "WDR-04",
+      "benefitCode": "T09061156105",
+      "category": "요실금팬티",
+      "result": {
+        "status": "PAGE_MISMATCH",
+        "attempts": [
+          {
+            "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=T09061156105",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://kyg02073.gagaon.com/indi/item.php?it_id=T09061156105",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://mireajae.gagaon.com/indi/item.php?it_id=T09061156105",
+            "status": "PAGE_MISMATCH"
+          }
+        ]
+      }
+    },
+    {
+      "index": 58,
+      "slug": "catalog-h12060030017-pressure-mattress",
+      "name": "AD-Ⅲ MUTE Bio Double",
+      "model": "AD-Ⅲ MUTE Bio Double",
+      "benefitCode": "H12060030017",
+      "category": "욕창예방매트리스",
+      "result": {
+        "status": "COMPLETE",
+        "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=H12060030017",
+        "urls": [
+          "https://gagaon.com/data/editor/2602/bf7ba745ed6d4444cdea9cb416b0484c_1770624787_6847.jpg"
+        ]
+      }
+    },
+    {
+      "index": 59,
+      "slug": "catalog-h12030030010-pressure-cushion",
+      "name": "BLESSON 7",
+      "model": "BLESSON 7",
+      "benefitCode": "H12030030010",
+      "category": "욕창예방방석",
+      "result": {
+        "status": "PAGE_MISMATCH",
+        "attempts": [
+          {
+            "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=H12030030010",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://kyg02073.gagaon.com/indi/item.php?it_id=H12030030010",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://mireajae.gagaon.com/indi/item.php?it_id=H12030030010",
+            "status": "PAGE_MISMATCH"
+          }
+        ]
+      }
+    },
+    {
+      "index": 60,
+      "slug": "catalog-h12031297101-pressure-cushion",
+      "name": "Forest Cushion 1088",
+      "model": "Forest Cushion 1088",
+      "benefitCode": "H12031297101",
+      "category": "욕창예방방석",
+      "result": {
+        "status": "COMPLETE",
+        "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=H12031297101",
+        "urls": [
+          "https://gagaon.com/data/editor/2609/df3d0a9e72fde9b0f43be9c8d891ce9f_1788327613_679.jpg"
+        ]
+      }
+    },
+    {
+      "index": 61,
+      "slug": "catalog-h12030130009-pressure-cushion",
+      "name": "Glory-11",
+      "model": "Glory-11",
+      "benefitCode": "H12030130009",
+      "category": "욕창예방방석",
+      "result": {
+        "status": "COMPLETE",
+        "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=H12030130009",
+        "urls": [
+          "https://gagaon.com/data/editor/2602/bf7ba745ed6d4444cdea9cb416b0484c_1770614131_3592.jpg"
+        ]
+      }
+    },
+    {
+      "index": 62,
+      "slug": "catalog-t03031261101-portable-toilet",
+      "name": "코디-200",
+      "model": "코디-200",
+      "benefitCode": "T03031261101",
+      "category": "이동변기",
+      "result": {
+        "status": "COMPLETE",
+        "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=T03031261101",
+        "urls": [
+          "https://gagaon.com/data/editor/2608/00406c56f1c58084fde8bcfd4e6d04a0_1788157133_727.jpg"
+        ]
+      }
+    },
+    {
+      "index": 63,
+      "slug": "catalog-t03030232001-portable-toilet",
+      "name": "APT-106",
+      "model": "APT-106",
+      "benefitCode": "T03030232001",
+      "category": "이동변기",
+      "result": {
+        "status": "COMPLETE",
+        "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=T03030232001",
+        "urls": [
+          "https://gagaon.com/data/editor/2609/51e0e8ecab1bb8ccfbc023f1ac5a62b2_1788315193_642.jpg",
+          "https://gagaon.com/data/editor/2609/51e0e8ecab1bb8ccfbc023f1ac5a62b2_1788315226_9822.jpg",
+          "https://gagaon.com/data/editor/2609/51e0e8ecab1bb8ccfbc023f1ac5a62b2_1788315242_0157.jpg",
+          "https://gagaon.com/data/editor/2609/51e0e8ecab1bb8ccfbc023f1ac5a62b2_1788315265_2899.jpg"
+        ]
+      }
+    },
+    {
+      "index": 64,
+      "slug": "catalog-t03030155001-portable-toilet",
+      "name": "NT-CT100",
+      "model": "NT-CT100",
+      "benefitCode": "T03030155001",
+      "category": "이동변기",
+      "result": {
+        "status": "PAGE_MISMATCH",
+        "attempts": [
+          {
+            "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=T03030155001",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://kyg02073.gagaon.com/indi/item.php?it_id=T03030155001",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://mireajae.gagaon.com/indi/item.php?it_id=T03030155001",
+            "status": "PAGE_MISMATCH"
+          }
+        ]
+      }
+    },
+    {
+      "index": 65,
+      "slug": "catalog-b03030031001-portable-bath",
+      "name": "YH-2002",
+      "model": "YH-2002",
+      "benefitCode": "B03030031001",
+      "category": "이동욕조",
+      "result": {
+        "status": "COMPLETE",
+        "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=B03030031001",
+        "urls": [
+          "https://gagaon.com/data/editor/2208/e8b25804a683995ebe7a94dc0c0b044d_1660283460_523.jpg"
+        ]
+      }
+    },
+    {
+      "index": 66,
+      "slug": "catalog-b03030031002-portable-bath",
+      "name": "YH-2013",
+      "model": "YH-2013",
+      "benefitCode": "B03030031002",
+      "category": "이동욕조",
+      "result": {
+        "status": "COMPLETE",
+        "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=B03030031002",
+        "urls": [
+          "https://gagaon.com/data/editor/2205/b353e158fb10a916ebf79bafb04efab4_1652337954_5724.jpg"
+        ]
+      }
+    },
+    {
+      "index": 67,
+      "slug": "catalog-b03030031004-portable-bath",
+      "name": "YH-2014",
+      "model": "YH-2014",
+      "benefitCode": "B03030031004",
+      "category": "이동욕조",
+      "result": {
+        "status": "PAGE_MISMATCH",
+        "attempts": [
+          {
+            "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=B03030031004",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://kyg02073.gagaon.com/indi/item.php?it_id=B03030031004",
+            "status": "PAGE_MISMATCH"
+          },
+          {
+            "sourceUrl": "https://mireajae.gagaon.com/indi/item.php?it_id=B03030031004",
+            "status": "PAGE_MISMATCH"
+          }
+        ]
+      }
+    },
+    {
+      "index": 68,
+      "slug": "catalog-m30030162001-positioning-aid",
+      "name": "SW-J3",
+      "model": "SW-J3",
+      "benefitCode": "M30030162001",
+      "category": "자세변환용구",
+      "result": {
+        "status": "COMPLETE",
+        "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=M30030162001",
+        "urls": [
+          "https://gagaon.com/data/editor/2301/97a08dbca612f157d4b2e8a56985f8cb_1672817257_9938.jpg"
+        ]
+      }
+    },
+    {
+      "index": 69,
+      "slug": "catalog-s03090178005-electric-bed",
+      "name": "천년BED ST-30",
+      "model": "천년BED ST-30",
+      "benefitCode": "S03090178005",
+      "category": "전동침대",
+      "result": {
+        "status": "COMPLETE",
+        "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=S03090178005",
+        "urls": [
+          "https://gagaon.com/data/editor/2602/01b3bea2a86eeb0ba426a4e70c76e8a7_1772165443_1595.jpg"
+        ]
+      }
+    },
+    {
+      "index": 70,
+      "slug": "catalog-s03090200002-electric-bed",
+      "name": "NY(S)-Ⅱ",
+      "model": "NY(S)-Ⅱ",
+      "benefitCode": "S03090200002",
+      "category": "전동침대",
+      "result": {
+        "status": "COMPLETE",
+        "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=S03090200002",
+        "urls": [
+          "https://gagaon.com/data/editor/2511/956de898a163e1ef720b325c055d4701_1764313427_0081.jpg",
+          "https://gagaon.com/data/editor/2511/956de898a163e1ef720b325c055d4701_1764313614_6385.jpg",
+          "https://gagaon.com/data/editor/2511/956de898a163e1ef720b325c055d4701_1764313427_1024.jpg",
+          "https://gagaon.com/data/editor/2511/956de898a163e1ef720b325c055d4701_1764313421_9548.jpg"
+        ]
+      }
+    },
+    {
+      "index": 71,
+      "slug": "catalog-s03090200001-electric-bed",
+      "name": "NY(T)-2100",
+      "model": "NY(T)-2100",
+      "benefitCode": "S03090200001",
+      "category": "전동침대",
+      "result": {
+        "status": "COMPLETE",
+        "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=S03090200001",
+        "urls": [
+          "https://gagaon.com/data/editor/2602/01b3bea2a86eeb0ba426a4e70c76e8a7_1772165354_4718.jpg",
+          "https://gagaon.com/data/editor/2303/d2ef620f6485178f9439411a1c888cdb_1679633641_5084.jpg",
+          "https://gagaon.com/data/editor/2501/5fecea9386487ae86da603bd97501616_1737008619_1581.jpg"
+        ]
+      }
+    },
+    {
+      "index": 72,
+      "slug": "catalog-s03090183002-electric-bed",
+      "name": "SE7030",
+      "model": "SE7030",
+      "benefitCode": "S03090183002",
+      "category": "전동침대",
+      "result": {
+        "status": "COMPLETE",
+        "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=S03090183002",
+        "urls": [
+          "https://gagaon.com/data/editor/2608/fce679beba683b100019299d2e39c56c_1787126244_1888.jpg",
+          "https://gagaon.com/data/editor/2511/afabad899fdcf314d7e5668eda1855c6_1762239538_0255.jpg",
+          "https://gagaon.com/data/editor/2511/afabad899fdcf314d7e5668eda1855c6_1762239539_6711.jpg",
+          "https://gagaon.com/data/editor/2511/afabad899fdcf314d7e5668eda1855c6_1762239541_1844.jpg",
+          "https://gagaon.com/data/editor/2511/afabad899fdcf314d7e5668eda1855c6_1762239543_0706.jpg",
+          "https://gagaon.com/data/editor/2511/afabad899fdcf314d7e5668eda1855c6_1762239546_4476.jpg",
+          "https://gagaon.com/data/editor/2511/afabad899fdcf314d7e5668eda1855c6_1762239547_9067.jpg",
+          "https://gagaon.com/data/editor/2511/afabad899fdcf314d7e5668eda1855c6_1762239549_9996.jpg",
+          "https://gagaon.com/data/editor/2511/afabad899fdcf314d7e5668eda1855c6_1762239551_3473.jpg",
+          "https://gagaon.com/data/editor/2511/afabad899fdcf314d7e5668eda1855c6_1762239553_1949.jpg",
+          "https://gagaon.com/data/editor/2511/afabad899fdcf314d7e5668eda1855c6_1762239555_1555.jpg",
+          "https://gagaon.com/data/editor/2511/afabad899fdcf314d7e5668eda1855c6_1762239559_2448.jpg",
+          "https://gagaon.com/data/editor/2511/afabad899fdcf314d7e5668eda1855c6_1762239562_2326.jpg",
+          "https://gagaon.com/data/editor/2511/afabad899fdcf314d7e5668eda1855c6_1762239563_635.jpg",
+          "https://gagaon.com/data/editor/2511/afabad899fdcf314d7e5668eda1855c6_1762239565_899.jpg",
+          "https://gagaon.com/data/editor/2511/afabad899fdcf314d7e5668eda1855c6_1762239568_3672.jpg",
+          "https://gagaon.com/data/editor/2511/afabad899fdcf314d7e5668eda1855c6_1762239571_1413.jpg"
+        ]
+      }
+    }
+  ]
+}

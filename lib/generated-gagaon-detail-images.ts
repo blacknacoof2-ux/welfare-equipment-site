@@ -8,5 +8,314 @@ export type GeneratedGagaonDetailImageSet = {
   checkedAt: string;
 };
 
-export const GAGAON_DETAIL_SYNC_CHECKED_AT = "";
-export const generatedGagaonDetailImageSetsByModel: Record<string, GeneratedGagaonDetailImageSet> = {};
+export const GAGAON_DETAIL_SYNC_CHECKED_AT = "2026-09-14";
+export const generatedGagaonDetailImageSetsByModel: Record<string, GeneratedGagaonDetailImageSet> = {
+  "YGM2": {
+    "sourceLabel": "가가온 급여코드 동일상품 상세페이지 이미지",
+    "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=F24000045001",
+    "urls": [
+      "https://gagaon.com/data/editor/2306/a88505afa85d6105023f4a3fdd953d6f_1686623548_247.jpg",
+      "https://gagaon.com/data/editor/2206/a62ea3487c5d15ab170c870514b2336b_1654840450_9553.jpg",
+      "https://gagaon.com/data/editor/2206/a62ea3487c5d15ab170c870514b2336b_1654840450_9912.jpg"
+    ],
+    "checkedAt": "2026-09-14"
+  },
+  "YGM3": {
+    "sourceLabel": "가가온 급여코드 동일상품 상세페이지 이미지",
+    "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=F24000045002",
+    "urls": [
+      "https://gagaon.com/data/editor/2306/a88505afa85d6105023f4a3fdd953d6f_1686623536_4108.jpg",
+      "https://gagaon.com/data/editor/2206/a62ea3487c5d15ab170c870514b2336b_1654840438_0138.jpg",
+      "https://gagaon.com/data/editor/2206/a62ea3487c5d15ab170c870514b2336b_1654840438_0646.jpg"
+    ],
+    "checkedAt": "2026-09-14"
+  },
+  "YGM4": {
+    "sourceLabel": "가가온 급여코드 동일상품 상세페이지 이미지",
+    "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=F24000045003",
+    "urls": [
+      "https://gagaon.com/data/editor/2306/a88505afa85d6105023f4a3fdd953d6f_1686623517_9667.jpg",
+      "https://gagaon.com/data/editor/2206/a62ea3487c5d15ab170c870514b2336b_1654840424_2414.jpg",
+      "https://gagaon.com/data/editor/2206/a62ea3487c5d15ab170c870514b2336b_1654840424_2761.jpg"
+    ],
+    "checkedAt": "2026-09-14"
+  },
+  "위풋 자석 덧신 양면": {
+    "sourceLabel": "가가온 급여코드 동일상품 상세페이지 이미지",
+    "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=F30090204001",
+    "urls": [
+      "https://gagaon.com/data/editor/2505/65564d689346c7a8dcac26ad9266de4d_1747637267_447.jpg"
+    ],
+    "checkedAt": "2026-09-14"
+  },
+  "소풍 롤레이터": {
+    "sourceLabel": "가가온 급여코드 동일상품 상세페이지 이미지",
+    "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=M06060238503",
+    "urls": [
+      "https://gagaon.com/data/editor/2606/4de1027d433420026de91075b87c3394_1782108932_496.jpg",
+      "https://gagaon.com/data/editor/2606/4de1027d433420026de91075b87c3394_1782108932_8802.jpg",
+      "https://gagaon.com/data/editor/2606/4de1027d433420026de91075b87c3394_1782108933_354.jpg"
+    ],
+    "checkedAt": "2026-09-14"
+  },
+  "카본 로얄파인더": {
+    "sourceLabel": "가가온 급여코드 동일상품 상세페이지 이미지",
+    "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=M06060147501",
+    "urls": [
+      "https://gagaon.com/data/editor/2511/bd233ccdf576b62c26544efb5f7c86d0_1762489686_4765.png",
+      "https://gagaon.com/data/editor/2511/bd233ccdf576b62c26544efb5f7c86d0_1762489686_5383.png",
+      "https://gagaon.com/data/editor/2306/25290e1b55dd75ecfa866a0f655afc12_1685666111_278.jpg",
+      "https://gagaon.com/data/editor/2306/25290e1b55dd75ecfa866a0f655afc12_1685666111_9908.jpg"
+    ],
+    "checkedAt": "2026-09-14"
+  },
+  "효자2(SK-105)": {
+    "sourceLabel": "가가온 급여코드 동일상품 상세페이지 이미지",
+    "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=M06090158004",
+    "urls": [
+      "https://gagaon.com/data/editor/2511/9febc4bf487a904d512e7d192d25fb3d_1763429538_2781.jpg",
+      "https://gagaon.com/data/editor/2509/08e86ff5f6ebde7b8b71463a64e9ec32_1758175883_0833.jpg",
+      "https://gagaon.com/data/editor/2509/08e86ff5f6ebde7b8b71463a64e9ec32_1758175654_6662.jpg",
+      "https://gagaon.com/data/editor/2509/3e0367a3afd960db380eac94198560ff_1758528790_5562.jpg"
+    ],
+    "checkedAt": "2026-09-14"
+  },
+  "HM-608": {
+    "sourceLabel": "가가온 급여코드 동일상품 상세페이지 이미지",
+    "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=M06060177001",
+    "urls": [
+      "https://gagaon.com/data/editor/2504/3fbcd12e22ea5172fc56ccd91699491b_1746000986_7235.jpg"
+    ],
+    "checkedAt": "2026-09-14"
+  },
+  "Mirage2(16D)": {
+    "sourceLabel": "가가온 급여코드 동일상품 상세페이지 이미지",
+    "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=M18030043004",
+    "urls": [
+      "https://gagaon.com/data/editor/2206/35fb72ef9950cd76eddb086b0e90c63a_1654586465_2033.jpg",
+      "https://gagaon.com/data/editor/2205/1d7779f2e379e488dbfb6c3973844f1e_1653023397_8014.jpg",
+      "https://gagaon.com/data/editor/2209/3c24a2b126e43403d8d6fd4369084d93_1662016846_4242.JPG",
+      "https://gagaon.com/data/editor/2501/d8d360e12dfff7c27ad50627f5f4dfcc_1737609445_2975.jpg"
+    ],
+    "checkedAt": "2026-09-14"
+  },
+  "MIRAGE7(22D)": {
+    "sourceLabel": "가가온 급여코드 동일상품 상세페이지 이미지",
+    "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=M18030043001",
+    "urls": [
+      "https://gagaon.com/data/editor/2206/35fb72ef9950cd76eddb086b0e90c63a_1654585332_4722.jpg",
+      "https://gagaon.com/data/editor/2204/83ee9dfd5b8c05ed3fba7953f3716b9a_1650956457_8453.JPG",
+      "https://gagaon.com/data/editor/2204/83ee9dfd5b8c05ed3fba7953f3716b9a_1650956458_642.JPG",
+      "https://gagaon.com/data/editor/2209/3c24a2b126e43403d8d6fd4369084d93_1662015308_2518.JPG",
+      "https://gagaon.com/data/editor/2501/d8d360e12dfff7c27ad50627f5f4dfcc_1737609538_6552.jpg"
+    ],
+    "checkedAt": "2026-09-14"
+  },
+  "MRT-7DP": {
+    "sourceLabel": "가가온 급여코드 동일상품 상세페이지 이미지",
+    "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=M18030043025",
+    "urls": [
+      "https://gagaon.com/data/editor/2306/b1135c3d22424e305b388e43016ce2cf_1685605733_9998.jpg",
+      "https://gagaon.com/data/editor/2306/b1135c3d22424e305b388e43016ce2cf_1685605734_0433.jpg",
+      "https://gagaon.com/data/editor/2306/b1135c3d22424e305b388e43016ce2cf_1685605734_129.jpg",
+      "https://gagaon.com/data/editor/2306/b1135c3d22424e305b388e43016ce2cf_1685605734_1815.jpg",
+      "https://gagaon.com/data/editor/2306/b1135c3d22424e305b388e43016ce2cf_1685605734_2364.jpg",
+      "https://gagaon.com/data/editor/2306/b1135c3d22424e305b388e43016ce2cf_1685605734_3084.jpg",
+      "https://gagaon.com/data/editor/2306/b1135c3d22424e305b388e43016ce2cf_1685605734_3573.jpg",
+      "https://gagaon.com/data/editor/2306/b1135c3d22424e305b388e43016ce2cf_1685605734_4443.jpg",
+      "https://gagaon.com/data/editor/2306/b1135c3d22424e305b388e43016ce2cf_1685605734_5114.jpg",
+      "https://gagaon.com/data/editor/2306/b1135c3d22424e305b388e43016ce2cf_1685605734_6397.jpg",
+      "https://gagaon.com/data/editor/2306/b1135c3d22424e305b388e43016ce2cf_1685605740_7107.jpg",
+      "https://gagaon.com/data/editor/2306/b1135c3d22424e305b388e43016ce2cf_1685605740_8207.jpg",
+      "https://gagaon.com/data/editor/2306/b1135c3d22424e305b388e43016ce2cf_1685605740_8976.jpg",
+      "https://gagaon.com/data/editor/2306/b1135c3d22424e305b388e43016ce2cf_1685605740_9425.jpg",
+      "https://gagaon.com/data/editor/2306/b1135c3d22424e305b388e43016ce2cf_1685605740_9877.jpg",
+      "https://gagaon.com/data/editor/2306/b1135c3d22424e305b388e43016ce2cf_1685605741_0375.jpg"
+    ],
+    "checkedAt": "2026-09-14"
+  },
+  "CV300S": {
+    "sourceLabel": "가가온 급여코드 동일상품 상세페이지 이미지",
+    "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=F18030191012",
+    "urls": [
+      "https://gagaon.com/data/editor/2608/00406c56f1c58084fde8bcfd4e6d04a0_1788164377_1603.jpg"
+    ],
+    "checkedAt": "2026-09-14"
+  },
+  "YGP-002": {
+    "sourceLabel": "가가온 급여코드 동일상품 상세페이지 이미지",
+    "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=F18030045039",
+    "urls": [
+      "https://gagaon.com/data/editor/2609/51e0e8ecab1bb8ccfbc023f1ac5a62b2_1788312360_0276.jpg",
+      "https://gagaon.com/data/editor/2609/51e0e8ecab1bb8ccfbc023f1ac5a62b2_1788312362_4563.jpg",
+      "https://gagaon.com/data/editor/2609/51e0e8ecab1bb8ccfbc023f1ac5a62b2_1788312364_5153.jpg",
+      "https://gagaon.com/data/editor/2609/51e0e8ecab1bb8ccfbc023f1ac5a62b2_1788312366_6305.jpg",
+      "https://gagaon.com/data/editor/2609/51e0e8ecab1bb8ccfbc023f1ac5a62b2_1788312368_7975.jpg",
+      "https://gagaon.com/data/editor/2609/51e0e8ecab1bb8ccfbc023f1ac5a62b2_1788312370_7355.jpg",
+      "https://gagaon.com/data/editor/2609/51e0e8ecab1bb8ccfbc023f1ac5a62b2_1788312372_9977.jpg",
+      "https://gagaon.com/data/editor/2609/51e0e8ecab1bb8ccfbc023f1ac5a62b2_1788312378_1503.jpg"
+    ],
+    "checkedAt": "2026-09-14"
+  },
+  "YGW001": {
+    "sourceLabel": "가가온 급여코드 동일상품 상세페이지 이미지",
+    "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=F18030045040",
+    "urls": [
+      "https://gagaon.com/data/editor/2609/0cd90731ed080666f02bac5b4892b547_1788238879_8798.jpg",
+      "https://gagaon.com/data/editor/2609/0cd90731ed080666f02bac5b4892b547_1788238883_1495.jpg",
+      "https://gagaon.com/data/editor/2609/0cd90731ed080666f02bac5b4892b547_1788238884_825.jpg",
+      "https://gagaon.com/data/editor/2609/0cd90731ed080666f02bac5b4892b547_1788238889_7396.jpg"
+    ],
+    "checkedAt": "2026-09-14"
+  },
+  "YGW002": {
+    "sourceLabel": "가가온 급여코드 동일상품 상세페이지 이미지",
+    "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=F18030045041",
+    "urls": [
+      "https://gagaon.com/data/editor/2609/0cd90731ed080666f02bac5b4892b547_1788238979_6317.jpg",
+      "https://gagaon.com/data/editor/2609/0cd90731ed080666f02bac5b4892b547_1788238981_3807.jpg",
+      "https://gagaon.com/data/editor/2609/0cd90731ed080666f02bac5b4892b547_1788238983_3967.jpg",
+      "https://gagaon.com/data/editor/2609/0cd90731ed080666f02bac5b4892b547_1788238986_8611.jpg"
+    ],
+    "checkedAt": "2026-09-14"
+  },
+  "YGW003": {
+    "sourceLabel": "가가온 급여코드 동일상품 상세페이지 이미지",
+    "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=F18030045042",
+    "urls": [
+      "https://gagaon.com/data/editor/2609/0cd90731ed080666f02bac5b4892b547_1788238915_9689.jpg",
+      "https://gagaon.com/data/editor/2609/0cd90731ed080666f02bac5b4892b547_1788238917_7436.jpg",
+      "https://gagaon.com/data/editor/2609/0cd90731ed080666f02bac5b4892b547_1788238919_6271.jpg",
+      "https://gagaon.com/data/editor/2609/0cd90731ed080666f02bac5b4892b547_1788238924_8712.jpg"
+    ],
+    "checkedAt": "2026-09-14"
+  },
+  "SWP-01": {
+    "sourceLabel": "가가온 급여코드 동일상품 상세페이지 이미지",
+    "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=T09061217103",
+    "urls": [
+      "https://gagaon.com/data/editor/2504/3fbcd12e22ea5172fc56ccd91699491b_1745996614_2605.jpg"
+    ],
+    "checkedAt": "2026-09-14"
+  },
+  "AD-Ⅲ MUTE Bio Double": {
+    "sourceLabel": "가가온 급여코드 동일상품 상세페이지 이미지",
+    "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=H12060030017",
+    "urls": [
+      "https://gagaon.com/data/editor/2602/bf7ba745ed6d4444cdea9cb416b0484c_1770624787_6847.jpg"
+    ],
+    "checkedAt": "2026-09-14"
+  },
+  "Forest Cushion 1088": {
+    "sourceLabel": "가가온 급여코드 동일상품 상세페이지 이미지",
+    "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=H12031297101",
+    "urls": [
+      "https://gagaon.com/data/editor/2609/df3d0a9e72fde9b0f43be9c8d891ce9f_1788327613_679.jpg"
+    ],
+    "checkedAt": "2026-09-14"
+  },
+  "Glory-11": {
+    "sourceLabel": "가가온 급여코드 동일상품 상세페이지 이미지",
+    "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=H12030130009",
+    "urls": [
+      "https://gagaon.com/data/editor/2602/bf7ba745ed6d4444cdea9cb416b0484c_1770614131_3592.jpg"
+    ],
+    "checkedAt": "2026-09-14"
+  },
+  "코디-200": {
+    "sourceLabel": "가가온 급여코드 동일상품 상세페이지 이미지",
+    "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=T03031261101",
+    "urls": [
+      "https://gagaon.com/data/editor/2608/00406c56f1c58084fde8bcfd4e6d04a0_1788157133_727.jpg"
+    ],
+    "checkedAt": "2026-09-14"
+  },
+  "APT-106": {
+    "sourceLabel": "가가온 급여코드 동일상품 상세페이지 이미지",
+    "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=T03030232001",
+    "urls": [
+      "https://gagaon.com/data/editor/2609/51e0e8ecab1bb8ccfbc023f1ac5a62b2_1788315193_642.jpg",
+      "https://gagaon.com/data/editor/2609/51e0e8ecab1bb8ccfbc023f1ac5a62b2_1788315226_9822.jpg",
+      "https://gagaon.com/data/editor/2609/51e0e8ecab1bb8ccfbc023f1ac5a62b2_1788315242_0157.jpg",
+      "https://gagaon.com/data/editor/2609/51e0e8ecab1bb8ccfbc023f1ac5a62b2_1788315265_2899.jpg"
+    ],
+    "checkedAt": "2026-09-14"
+  },
+  "YH-2002": {
+    "sourceLabel": "가가온 급여코드 동일상품 상세페이지 이미지",
+    "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=B03030031001",
+    "urls": [
+      "https://gagaon.com/data/editor/2208/e8b25804a683995ebe7a94dc0c0b044d_1660283460_523.jpg"
+    ],
+    "checkedAt": "2026-09-14"
+  },
+  "YH-2013": {
+    "sourceLabel": "가가온 급여코드 동일상품 상세페이지 이미지",
+    "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=B03030031002",
+    "urls": [
+      "https://gagaon.com/data/editor/2205/b353e158fb10a916ebf79bafb04efab4_1652337954_5724.jpg"
+    ],
+    "checkedAt": "2026-09-14"
+  },
+  "SW-J3": {
+    "sourceLabel": "가가온 급여코드 동일상품 상세페이지 이미지",
+    "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=M30030162001",
+    "urls": [
+      "https://gagaon.com/data/editor/2301/97a08dbca612f157d4b2e8a56985f8cb_1672817257_9938.jpg"
+    ],
+    "checkedAt": "2026-09-14"
+  },
+  "천년BED ST-30": {
+    "sourceLabel": "가가온 급여코드 동일상품 상세페이지 이미지",
+    "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=S03090178005",
+    "urls": [
+      "https://gagaon.com/data/editor/2602/01b3bea2a86eeb0ba426a4e70c76e8a7_1772165443_1595.jpg"
+    ],
+    "checkedAt": "2026-09-14"
+  },
+  "NY(S)-Ⅱ": {
+    "sourceLabel": "가가온 급여코드 동일상품 상세페이지 이미지",
+    "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=S03090200002",
+    "urls": [
+      "https://gagaon.com/data/editor/2511/956de898a163e1ef720b325c055d4701_1764313427_0081.jpg",
+      "https://gagaon.com/data/editor/2511/956de898a163e1ef720b325c055d4701_1764313614_6385.jpg",
+      "https://gagaon.com/data/editor/2511/956de898a163e1ef720b325c055d4701_1764313427_1024.jpg",
+      "https://gagaon.com/data/editor/2511/956de898a163e1ef720b325c055d4701_1764313421_9548.jpg"
+    ],
+    "checkedAt": "2026-09-14"
+  },
+  "NY(T)-2100": {
+    "sourceLabel": "가가온 급여코드 동일상품 상세페이지 이미지",
+    "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=S03090200001",
+    "urls": [
+      "https://gagaon.com/data/editor/2602/01b3bea2a86eeb0ba426a4e70c76e8a7_1772165354_4718.jpg",
+      "https://gagaon.com/data/editor/2303/d2ef620f6485178f9439411a1c888cdb_1679633641_5084.jpg",
+      "https://gagaon.com/data/editor/2501/5fecea9386487ae86da603bd97501616_1737008619_1581.jpg"
+    ],
+    "checkedAt": "2026-09-14"
+  },
+  "SE7030": {
+    "sourceLabel": "가가온 급여코드 동일상품 상세페이지 이미지",
+    "sourceUrl": "https://jmedi.gagaon.com/indi/item.php?it_id=S03090183002",
+    "urls": [
+      "https://gagaon.com/data/editor/2608/fce679beba683b100019299d2e39c56c_1787126244_1888.jpg",
+      "https://gagaon.com/data/editor/2511/afabad899fdcf314d7e5668eda1855c6_1762239538_0255.jpg",
+      "https://gagaon.com/data/editor/2511/afabad899fdcf314d7e5668eda1855c6_1762239539_6711.jpg",
+      "https://gagaon.com/data/editor/2511/afabad899fdcf314d7e5668eda1855c6_1762239541_1844.jpg",
+      "https://gagaon.com/data/editor/2511/afabad899fdcf314d7e5668eda1855c6_1762239543_0706.jpg",
+      "https://gagaon.com/data/editor/2511/afabad899fdcf314d7e5668eda1855c6_1762239546_4476.jpg",
+      "https://gagaon.com/data/editor/2511/afabad899fdcf314d7e5668eda1855c6_1762239547_9067.jpg",
+      "https://gagaon.com/data/editor/2511/afabad899fdcf314d7e5668eda1855c6_1762239549_9996.jpg",
+      "https://gagaon.com/data/editor/2511/afabad899fdcf314d7e5668eda1855c6_1762239551_3473.jpg",
+      "https://gagaon.com/data/editor/2511/afabad899fdcf314d7e5668eda1855c6_1762239553_1949.jpg",
+      "https://gagaon.com/data/editor/2511/afabad899fdcf314d7e5668eda1855c6_1762239555_1555.jpg",
+      "https://gagaon.com/data/editor/2511/afabad899fdcf314d7e5668eda1855c6_1762239559_2448.jpg",
+      "https://gagaon.com/data/editor/2511/afabad899fdcf314d7e5668eda1855c6_1762239562_2326.jpg",
+      "https://gagaon.com/data/editor/2511/afabad899fdcf314d7e5668eda1855c6_1762239563_635.jpg",
+      "https://gagaon.com/data/editor/2511/afabad899fdcf314d7e5668eda1855c6_1762239565_899.jpg",
+      "https://gagaon.com/data/editor/2511/afabad899fdcf314d7e5668eda1855c6_1762239568_3672.jpg",
+      "https://gagaon.com/data/editor/2511/afabad899fdcf314d7e5668eda1855c6_1762239571_1413.jpg"
+    ],
+    "checkedAt": "2026-09-14"
+  }
+};
