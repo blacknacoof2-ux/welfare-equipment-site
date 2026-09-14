@@ -30,9 +30,9 @@ export default function AddToConsultCart({ item, compact = false }: { item: Cons
         addConsultCartItem(item);
         setAdded(true);
       }}
-      aria-label={`${item.title} 상담 장바구니에 담기`}
+      aria-label={`${item.title} 신청목록에 담기`}
     >
-      {added ? '상담 장바구니에 담김 ✓' : '상담 장바구니에 담기'}
+      {added ? '신청목록에 담김 ✓' : '신청목록에 담기'}
     </button>
   );
 }

@@ -95,8 +95,8 @@ export default function CareConsultation({ candidates }: { candidates: Consultat
           <p>제품명을 몰라도 괜찮습니다. 불편한 상황과 사용 장소를 입력하면 현재 정상 유통 복지용구 중 맞는 품목과 제품을 먼저 추천합니다.</p>
         </div>
         <div className="consult-flow-mini">
-          <strong>추천 → 상담 장바구니 → 인정서 제출 → 담당자 확인</strong>
-          <span>등급·급여 가능 여부와 최종 본인부담금은 인정서 확인 후 확정합니다.</span>
+          <strong>추천 → 신청목록 → 수급자 정보·인정서 제출 → 아톰케어 확인</strong>
+          <span>사이트에서는 신청 접수까지 진행하고, 이후 공단 조회와 급여 확인은 아톰케어에서 별도로 처리합니다.</span>
         </div>
       </div>
 
@@ -127,7 +127,7 @@ export default function CareConsultation({ candidates }: { candidates: Consultat
         <div className="consult-results">
           <div className="consult-results-heading">
             <div><p className="eyebrow">추천 결과</p><h2>현재 상황에 맞는 제품</h2><p>추천 품목: {suggestedCategories.join(' · ')}</p></div>
-            <a className="button secondary" href="/consult/cart" onClick={persistNeeds}>상담 장바구니 보기</a>
+            <a className="button secondary" href="/consult/cart" onClick={persistNeeds}>신청목록 보기</a>
           </div>
           <div className="consult-result-grid">
             {ranked.map((candidate, index) => {
@@ -155,7 +155,7 @@ export default function CareConsultation({ candidates }: { candidates: Consultat
 
       <div className="consult-card consult-disclaimer">
         <strong>중요 안내</strong>
-        <p>이 추천은 제품 선택을 돕기 위한 1차 상담입니다. 장기요양등급, 급여 가능 여부, 한도와 실제 본인부담률은 아톰케어 담당자가 장기요양인정서 및 관련 내용을 확인한 뒤 최종 안내합니다.</p>
+        <p>이 추천은 제품 선택을 돕기 위한 1차 안내입니다. 수급자 정보와 장기요양인정서를 신청 시 함께 제출하고, 이후 공단 조회와 실제 급여 가능 여부 확인은 아톰케어에서 별도로 진행합니다.</p>
       </div>
     </section>
   );

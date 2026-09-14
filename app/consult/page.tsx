@@ -7,7 +7,7 @@ import { getBenefitMode, getPriceSuffix, publishedProducts } from '@/lib/product
 
 export const metadata: Metadata = {
   title: '수급자 맞춤 복지용구 상담·추천',
-  description: '불편한 상황과 사용환경을 입력하면 정상 유통 복지용구를 추천하고 상담 장바구니에 담아 장기요양인정서 확인 상담으로 이어집니다.',
+  description: '불편한 상황과 사용환경을 입력해 복지용구를 추천받고 신청목록에 담은 뒤 수급자 정보와 장기요양인정서를 제출하세요.',
   alternates: { canonical: '/consult' },
 };
 
