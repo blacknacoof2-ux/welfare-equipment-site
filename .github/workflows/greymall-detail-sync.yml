@@ -6,6 +6,7 @@ on:
     branches: [main]
     paths:
       - 'scripts/sync-carestore-detail-images.mjs'
+      - 'scripts/sync-gagaon-detail-images.mjs'
       - 'lib/product-detail-images.ts'
       - '.github/workflows/greymall-detail-sync.yml'
 
@@ -33,27 +34,34 @@ jobs:
       - name: Sync Carestore fallback DETAIL images
         run: node scripts/sync-carestore-detail-images.mjs
 
+      - name: Sync Gagaon fallback DETAIL images
+        run: node scripts/sync-gagaon-detail-images.mjs
+
       - name: Verify TypeScript
         run: npm install && npm run typecheck
 
       - name: Verify build
         run: npm run build
 
-      - name: Commit generated Carestore detail image data
+      - name: Commit generated fallback detail image data
         shell: bash
         run: |
           if git diff --quiet -- \
             lib/generated-carestore-detail-images.ts \
-            artifacts/carestore-detail-images-audit.json; then
-            echo 'No Carestore detail-image changes.'
+            artifacts/carestore-detail-images-audit.json \
+            lib/generated-gagaon-detail-images.ts \
+            artifacts/gagaon-detail-images-audit.json; then
+            echo 'No fallback detail-image changes.'
             exit 0
           fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add \
             lib/generated-carestore-detail-images.ts \
-            artifacts/carestore-detail-images-audit.json
-          git commit -m 'data: sync Carestore detail images'
+            artifacts/carestore-detail-images-audit.json \
+            lib/generated-gagaon-detail-images.ts \
+            artifacts/gagaon-detail-images-audit.json
+          git commit -m 'data: sync fallback detail images'
           git restore --worktree .
           git pull --rebase origin main
           git push origin HEAD:main
