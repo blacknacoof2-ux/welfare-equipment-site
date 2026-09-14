@@ -31,7 +31,7 @@ export default function HomePage() {
       <section className="hero">
         <div className="hero-copy">
           <p className="eyebrow">장기요양 복지용구 전문 플랫폼</p>
-          <h1>복지용구를 찾고, 비교하고,<br />본인부담금까지 한 번에</h1>
+          <h1>복지용구를 찾고,<br />비교하고,<br />본인부담금까지 한 번에</h1>
           <p>구입 복지용구와 대여 복지용구를 한눈에 구분하고, 제품별 15%·9%·6% 본인부담금과 규격을 확인하세요.</p>
 
           <form action="/products" method="get" style={{ marginTop: 22 }}>
