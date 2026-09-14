@@ -41,9 +41,10 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Rendered product page audit
+      - name: Rendered site audits
         run: |
           npm run start:5000 > /tmp/welfare-site.log 2>&1 &
           server_pid=$!
           trap 'kill $server_pid || true' EXIT
           npm run audit:rendered-product-pages
+          npm run audit:admin-intake
