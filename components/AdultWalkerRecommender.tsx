@@ -10,6 +10,7 @@ export type WalkerCandidate = {
   benefitPrice: number;
   dimensions?: string;
   weightKg?: number;
+  maxUserWeightKg?: number;
   description: string;
   imageUrl?: string;
 };
@@ -68,6 +69,7 @@ function scoreCandidate(
   candidate: WalkerCandidate,
   inputs: {
     heightCm: number;
+    userWeightKg: number;
     doorwayCm: number;
     environment: Environment;
     transportNeed: TransportNeed;
@@ -83,8 +85,22 @@ function scoreCandidate(
   const handleRange = getHandleRange(candidate.dimensions);
   const widthCm = getWidthCm(candidate.dimensions);
 
-  // 성인용 보행기의 손잡이 높이는 사용자의 손목 높이 부근이 일반적인 출발점입니다.
-  // 키의 약 47%를 손목 높이의 보수적인 추정치로 사용하되, 결과에는 '참고용'임을 명시합니다.
+  if (candidate.maxUserWeightKg !== undefined) {
+    if (inputs.userWeightKg > candidate.maxUserWeightKg) {
+      return {
+        ...candidate,
+        score: 0,
+        reasons: [],
+        cautions: [`사용자 몸무게 ${inputs.userWeightKg}kg가 확인된 허용하중 ${candidate.maxUserWeightKg}kg를 초과합니다.`],
+        handleRange,
+        widthCm,
+      };
+    }
+    reasons.push(`확인된 허용하중 ${candidate.maxUserWeightKg}kg 범위 안에 있습니다.`);
+    score += 8;
+  }
+
+  // 키의 약 47%를 손목 높이의 참고 추정치로 사용합니다. 최종 높이는 실제 자세에서 확인해야 합니다.
   const targetHandle = inputs.heightCm * 0.47;
   if (handleRange) {
     if (targetHandle >= handleRange[0] && targetHandle <= handleRange[1]) {
@@ -208,6 +224,7 @@ function scoreCandidate(
 
 export default function AdultWalkerRecommender({ candidates }: { candidates: WalkerCandidate[] }) {
   const [height, setHeight] = useState('165');
+  const [userWeight, setUserWeight] = useState('65');
   const [doorway, setDoorway] = useState('75');
   const [environment, setEnvironment] = useState<Environment>('mixed');
   const [transportNeed, setTransportNeed] = useState<TransportNeed>('sometimes');
@@ -216,14 +233,16 @@ export default function AdultWalkerRecommender({ candidates }: { candidates: Wal
 
   const ranked = useMemo(() => {
     const heightCm = Math.min(210, Math.max(130, Number(height) || 165));
+    const userWeightKg = Math.min(180, Math.max(30, Number(userWeight) || 65));
     const doorwayCm = Math.min(130, Math.max(0, Number(doorway) || 0));
     const prices = candidates.map((candidate) => candidate.benefitPrice).filter((price) => price > 0);
     const minPrice = prices.length ? Math.min(...prices) : 0;
     const maxPrice = prices.length ? Math.max(...prices) : 0;
 
-    const topMatches = candidates
+    return candidates
       .map((candidate) => scoreCandidate(candidate, {
         heightCm,
+        userWeightKg,
         doorwayCm,
         environment,
         transportNeed,
@@ -232,18 +251,12 @@ export default function AdultWalkerRecommender({ candidates }: { candidates: Wal
         minPrice,
         maxPrice,
       }))
+      .filter((candidate) => candidate.score > 0)
       .sort((a, b) => b.score - a.score || (a.weightKg ?? 999) - (b.weightKg ?? 999) || a.benefitPrice - b.benefitPrice)
-      .slice(0, 5);
+      .slice(0, 3);
+  }, [candidates, doorway, environment, height, priority, seatNeeded, transportNeed, userWeight]);
 
-    return topMatches.sort((a, b) => {
-      const aUnderTenThousand = copay15(a.benefitPrice) < 10000 ? 1 : 0;
-      const bUnderTenThousand = copay15(b.benefitPrice) < 10000 ? 1 : 0;
-      return aUnderTenThousand - bUnderTenThousand
-        || b.score - a.score
-        || (a.weightKg ?? 999) - (b.weightKg ?? 999)
-        || a.benefitPrice - b.benefitPrice;
-    });
-  }, [candidates, doorway, environment, height, priority, seatNeeded, transportNeed]);
+  const hasVerifiedCapacity = candidates.some((candidate) => candidate.maxUserWeightKg !== undefined);
 
   return (
     <section className="walker-recommender" aria-labelledby="walker-recommender-title">
@@ -251,24 +264,24 @@ export default function AdultWalkerRecommender({ candidates }: { candidates: Wal
         <div>
           <p className="eyebrow">FIT FINDER</p>
           <h2 id="walker-recommender-title">내 몸과 생활환경에 맞는 성인용보행기 찾기</h2>
-          <p>몇 가지 조건을 입력하면 현재 정상 유통 제품을 비교해 적합도가 높은 제품부터 보여드립니다.</p>
+          <p>키·몸무게·사용 장소·제품 무게와 이동조건을 입력하면 현재 정상 유통 제품 중 최대 3개를 추천합니다.</p>
         </div>
         <span className="walker-recommender-count">비교 대상 {candidates.length}개</span>
       </div>
 
       <div className="walker-recommender-form">
         <label>
-          <span>사용자 키</span>
+          <span>어르신 키</span>
           <div className="walker-input-with-unit">
             <input type="number" min="130" max="210" value={height} onChange={(event) => setHeight(event.target.value)} />
             <b>cm</b>
           </div>
         </label>
         <label>
-          <span>가장 좁은 문·통로 폭</span>
+          <span>어르신 몸무게</span>
           <div className="walker-input-with-unit">
-            <input type="number" min="45" max="130" value={doorway} onChange={(event) => setDoorway(event.target.value)} />
-            <b>cm</b>
+            <input type="number" min="30" max="180" value={userWeight} onChange={(event) => setUserWeight(event.target.value)} />
+            <b>kg</b>
           </div>
         </label>
         <label>
@@ -280,6 +293,13 @@ export default function AdultWalkerRecommender({ candidates }: { candidates: Wal
           </select>
         </label>
         <label>
+          <span>가장 좁은 문·통로 폭</span>
+          <div className="walker-input-with-unit">
+            <input type="number" min="45" max="130" value={doorway} onChange={(event) => setDoorway(event.target.value)} />
+            <b>cm</b>
+          </div>
+        </label>
+        <label>
           <span>차량에 싣는 빈도</span>
           <select value={transportNeed} onChange={(event) => setTransportNeed(event.target.value as TransportNeed)}>
             <option value="often">자주 싣습니다</option>
@@ -288,7 +308,7 @@ export default function AdultWalkerRecommender({ candidates }: { candidates: Wal
           </select>
         </label>
         <label>
-          <span>가장 중요한 기준</span>
+          <span>제품 선택 우선 기준</span>
           <select value={priority} onChange={(event) => setPriority(event.target.value as Priority)}>
             <option value="balanced">전체 균형</option>
             <option value="light">가벼운 제품</option>
@@ -300,13 +320,18 @@ export default function AdultWalkerRecommender({ candidates }: { candidates: Wal
           <input type="checkbox" checked={seatNeeded} onChange={(event) => setSeatNeeded(event.target.checked)} />
           <span>앉아서 쉴 수 있는 좌면이 꼭 필요해요</span>
         </label>
+        {!hasVerifiedCapacity && (
+          <p className="walker-user-weight-note">
+            몸무게는 상담정보로 받지만 현재 공개 상품 데이터에 허용하중이 없는 제품은 몸무게 적합 여부를 임의 추정하지 않습니다. 구매 전 아톰케어랩에서 허용하중을 확인합니다.
+          </p>
+        )}
       </div>
 
       <div className="walker-recommendation-results" aria-live="polite">
         {ranked.map((candidate, index) => (
           <article className={`walker-result-card ${index === 0 ? 'best' : ''}`} key={candidate.slug}>
             <div className="walker-rank">
-              <strong>{index + 1}위</strong>
+              <strong>BEST {index + 1}</strong>
               {index === 0 && <span>BEST MATCH</span>}
             </div>
             <div className="walker-result-main">
@@ -328,7 +353,8 @@ export default function AdultWalkerRecommender({ candidates }: { candidates: Wal
                 <div className="walker-fit-facts">
                   {candidate.handleRange && <span>손잡이 {candidate.handleRange[0]}~{candidate.handleRange[1]}cm</span>}
                   {candidate.widthCm && <span>폭 약 {candidate.widthCm}cm</span>}
-                  {candidate.weightKg !== undefined && <span>중량 {candidate.weightKg}kg</span>}
+                  {candidate.weightKg !== undefined && <span>제품 중량 {candidate.weightKg}kg</span>}
+                  {candidate.maxUserWeightKg !== undefined && <span>허용하중 {candidate.maxUserWeightKg}kg</span>}
                   <span>일반 15% 부담 {formatter.format(copay15(candidate.benefitPrice))}원</span>
                 </div>
                 {candidate.reasons.length > 0 && (
@@ -342,14 +368,23 @@ export default function AdultWalkerRecommender({ candidates }: { candidates: Wal
                   </ul>
                 )}
                 <a className="button primary" href={`/products/${candidate.slug}`}>제품 상세보기</a>
+                <div className="consult-call-inline"><span>구매·적합성 확인</span><a href="tel:0319753335">031-975-3335</a></div>
               </div>
             </div>
           </article>
         ))}
       </div>
 
+      {ranked.length === 0 && (
+        <div className="consult-card">
+          <h3>현재 입력 조건에 맞는 추천 제품을 찾지 못했습니다.</h3>
+          <p>조건을 임의로 완화해 부적합 제품을 추천하지 않습니다. 아톰케어랩에서 확인해 드리겠습니다.</p>
+          <a className="button primary" href="tel:0319753335">구매 및 문의 031-975-3335</a>
+        </div>
+      )}
+
       <p className="walker-recommender-note">
-        추천 점수는 공개된 제품 규격과 입력한 생활환경을 비교한 참고용 순위입니다. 실제 구매 전에는 손잡이 높이, 브레이크 조작, 보행 안정성, 좌면 높이와 사용 공간을 직접 확인하는 것이 좋습니다.
+        추천 점수는 확인된 제품 규격과 입력한 생활환경을 비교한 참고용 순위입니다. 실제 구매 전에는 허용하중, 손잡이 높이, 브레이크 조작, 보행 안정성, 좌면 높이와 사용 공간을 직접 확인해야 합니다.
       </p>
     </section>
   );
