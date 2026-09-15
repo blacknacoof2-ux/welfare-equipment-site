@@ -36,7 +36,7 @@ export default function ProductCompareTray() {
       style={{
         position: 'fixed',
         left: '50%',
-        bottom: 18,
+        bottom: 88,
         transform: 'translateX(-50%)',
         zIndex: 60,
         width: 'min(760px, calc(100vw - 24px))',
