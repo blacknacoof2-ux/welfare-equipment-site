@@ -56,7 +56,7 @@ export default function HomePage() {
           <strong>현재 공개 복지용구</strong>
           <div className="home-mode-summary">
             <a href="#purchase"><span>🛒 구입</span><b>{purchaseProducts.length}개</b></a>
-            <a href="#rental"><span>🔁 대여</span><b>{rentalProducts.length}개</b></a>}
+            <a href="#rental"><span>🔁 대여</span><b>{rentalProducts.length}개</b></a>
             {mixedProducts.length > 0 && <a href="#mixed"><span>↔️ 구입·대여</span><b>{mixedProducts.length}개</b></a>}
           </div>
           <p className="muted">단종·비유통·품절·일시품절은 공개 대상에서 제외합니다.</p>
