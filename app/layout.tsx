@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import FloatingConsultCart from '@/components/FloatingConsultCart';
 import ProductCompareTray from '@/components/ProductCompareTray';
 import { validatePublishedCatalog } from '@/lib/validate-published-catalog';
 import { validatePublishedProductImages } from '@/lib/validate-published-images';
@@ -59,6 +60,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           </nav>
         </header>
         <main>{children}</main>
+        <FloatingConsultCart />
         <ProductCompareTray />
         <footer className="site-footer">
           <strong>주식회사 아톰케어</strong>
