@@ -21,15 +21,16 @@ export type IntakeRecord = {
   beneficiary_name: string;
   birth_date: string;
   care_number: string;
+  validity_start_date: string | null;
   phone: string;
   address: string;
   address_detail: string;
   relation: string;
   needs: string;
   items: IntakeProduct[];
-  certificate_path: string;
-  certificate_name: string;
-  certificate_type: string;
+  certificate_path: string | null;
+  certificate_name: string | null;
+  certificate_type: string | null;
   status: IntakeStatus;
   staff_note: string;
   updated_at: string;
@@ -97,26 +98,32 @@ async function supabaseJson<T>(url: string, init: RequestInit): Promise<T> {
   return JSON.parse(raw) as T;
 }
 
-export async function createIntake(input: CreateIntakeInput, certificate: File) {
+export async function createIntake(input: CreateIntakeInput, certificate: File | null) {
   if (!isIntakeStoreConfigured()) throw new Error('INTAKE_STORE_NOT_CONFIGURED');
   const { url, bucket } = config();
   const month = input.submitted_at.slice(0, 7).replace('-', '/');
-  const certificatePath = `${month}/${input.request_id}/${randomUUID()}.${extensionFor(certificate)}`;
-  const objectUrl = `${url}/storage/v1/object/${encodeURIComponent(bucket)}/${certificatePath.split('/').map(encodeURIComponent).join('/')}`;
+  const certificatePath = certificate
+    ? `${month}/${input.request_id}/${randomUUID()}.${extensionFor(certificate)}`
+    : null;
+  const objectUrl = certificatePath
+    ? `${url}/storage/v1/object/${encodeURIComponent(bucket)}/${certificatePath.split('/').map(encodeURIComponent).join('/')}`
+    : null;
 
-  const bytes = await certificate.arrayBuffer();
-  const upload = await fetch(objectUrl, {
-    method: 'POST',
-    headers: supabaseHeaders({
-      'Content-Type': certificate.type,
-      'x-upsert': 'false',
-    }),
-    body: bytes,
-    cache: 'no-store',
-  });
-  if (!upload.ok) {
-    const detail = await upload.text().catch(() => '');
-    throw new Error(`CERTIFICATE_UPLOAD_${upload.status}:${detail.slice(0, 300)}`);
+  if (certificate && objectUrl) {
+    const bytes = await certificate.arrayBuffer();
+    const upload = await fetch(objectUrl, {
+      method: 'POST',
+      headers: supabaseHeaders({
+        'Content-Type': certificate.type,
+        'x-upsert': 'false',
+      }),
+      body: bytes,
+      cache: 'no-store',
+    });
+    if (!upload.ok) {
+      const detail = await upload.text().catch(() => '');
+      throw new Error(`CERTIFICATE_UPLOAD_${upload.status}:${detail.slice(0, 300)}`);
+    }
   }
 
   const row = {
@@ -126,6 +133,7 @@ export async function createIntake(input: CreateIntakeInput, certificate: File) 
     beneficiary_name: input.beneficiary_name,
     birth_date: input.birth_date,
     care_number: input.care_number,
+    validity_start_date: input.validity_start_date,
     phone: input.phone,
     address: input.address,
     address_detail: input.address_detail,
@@ -133,8 +141,8 @@ export async function createIntake(input: CreateIntakeInput, certificate: File) 
     needs: input.needs,
     items: input.items,
     certificate_path: certificatePath,
-    certificate_name: certificate.name,
-    certificate_type: certificate.type,
+    certificate_name: certificate?.name ?? null,
+    certificate_type: certificate?.type ?? null,
     status: 'NEW' satisfies IntakeStatus,
     staff_note: '',
   };
@@ -151,11 +159,13 @@ export async function createIntake(input: CreateIntakeInput, certificate: File) 
     if (!inserted?.[0]) throw new Error('INTAKE_INSERT_EMPTY');
     return inserted[0];
   } catch (error) {
-    await fetch(objectUrl, {
-      method: 'DELETE',
-      headers: supabaseHeaders(),
-      cache: 'no-store',
-    }).catch(() => undefined);
+    if (objectUrl) {
+      await fetch(objectUrl, {
+        method: 'DELETE',
+        headers: supabaseHeaders(),
+        cache: 'no-store',
+      }).catch(() => undefined);
+    }
     throw error;
   }
 }
@@ -213,7 +223,7 @@ export async function updateIntake(id: string, values: { status?: IntakeStatus; 
   return rows[0] ?? null;
 }
 
-export async function createCertificateSignedUrl(path: string, expiresIn = 900) {
+export async function createCertificateSignedUrl(path: string | null, expiresIn = 900) {
   if (!isIntakeStoreConfigured() || !path) return null;
   const { url, bucket } = config();
   const endpoint = `${url}/storage/v1/object/sign/${encodeURIComponent(bucket)}/${path.split('/').map(encodeURIComponent).join('/')}`;
