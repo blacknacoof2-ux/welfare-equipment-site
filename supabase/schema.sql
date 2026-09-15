@@ -11,19 +11,25 @@ create table if not exists public.consultations (
   beneficiary_name text not null,
   birth_date date not null,
   care_number text not null,
+  validity_start_date date,
   phone text not null,
   address text not null,
   address_detail text not null default '',
   relation text not null default '',
   needs text not null default '',
   items jsonb not null default '[]'::jsonb,
-  certificate_path text not null,
-  certificate_name text not null,
-  certificate_type text not null,
+  certificate_path text,
+  certificate_name text,
+  certificate_type text,
   status text not null default 'NEW' check (status in ('NEW', 'REVIEWING', 'CONTACTED', 'COMPLETED', 'HOLD')),
   staff_note text not null default '',
   updated_at timestamptz not null default now()
 );
+
+alter table public.consultations add column if not exists validity_start_date date;
+alter table public.consultations alter column certificate_path drop not null;
+alter table public.consultations alter column certificate_name drop not null;
+alter table public.consultations alter column certificate_type drop not null;
 
 create index if not exists consultations_submitted_at_idx
   on public.consultations (submitted_at desc);

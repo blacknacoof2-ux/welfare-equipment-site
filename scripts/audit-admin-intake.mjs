@@ -18,9 +18,10 @@ const adminLocation = admin.response.headers.get('location') ?? '';
 if (!adminLocation.includes('/admin/login')) failures.push(`admin redirect target invalid: ${adminLocation}`);
 
 const application = await fetchText('/consult/cart', { redirect: 'follow' });
-for (const requiredText of ['수급자 성명', '수급자 생년월일', '장기요양인정번호', '장기요양인정서', '수급자 정보·인정서 제출하기']) {
+for (const requiredText of ['수급자 성명', '수급자 생년월일', '장기요양인정번호', '유효기간 시작일', '장기요양인정서', '선택', '복지용구 신청 접수하기']) {
   if (!application.text.includes(requiredText)) failures.push(`application field missing: ${requiredText}`);
 }
+if (!application.text.includes('인정서는 지금 없어도')) failures.push('optional certificate guidance missing');
 
 const noStore = await fetchText('/api/consultations', {
   method: 'POST',
