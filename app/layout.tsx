@@ -8,6 +8,7 @@ import './globals.css';
 import './product-media.css';
 import './catalog-enhancements.css';
 import './consult.css';
+import './recommender.css';
 
 validatePublishedProductImages();
 validatePublishedCatalog();
