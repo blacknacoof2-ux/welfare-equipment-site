@@ -13,12 +13,13 @@ function text(formData: FormData, key: string) {
   return typeof value === 'string' ? value.trim() : '';
 }
 
-function isValidBirthDate(value: string) {
+function isValidDate(value: string, allowFuture = true) {
   if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;
   const date = new Date(`${value}T00:00:00Z`);
   if (Number.isNaN(date.getTime())) return false;
   const year = Number(value.slice(0, 4));
-  return year >= 1900 && date.getTime() <= Date.now();
+  if (year < 1900) return false;
+  return allowFuture || date.getTime() <= Date.now();
 }
 
 export async function POST(request: Request) {
@@ -42,22 +43,27 @@ export async function POST(request: Request) {
   const beneficiaryName = text(formData, 'beneficiaryName');
   const birthDate = text(formData, 'birthDate');
   const careNumber = text(formData, 'careNumber').replace(/\s+/g, '');
+  const validityStartDate = text(formData, 'validityStartDate');
   const phone = text(formData, 'phone');
   const address = text(formData, 'address');
   const addressDetail = text(formData, 'addressDetail');
   const relation = text(formData, 'relation');
   const needs = text(formData, 'needs');
   const items = text(formData, 'items');
-  const certificate = formData.get('certificate');
+  const certificateValue = formData.get('certificate');
+  const certificate = certificateValue instanceof File && certificateValue.size > 0 ? certificateValue : null;
 
-  if (!applicantName || !beneficiaryName || !birthDate || !careNumber || !phone || !address || !items || !(certificate instanceof File)) {
-    return NextResponse.json({ message: '수급자 정보, 연락처, 주소, 신청제품, 장기요양인정서를 모두 확인해 주세요.' }, { status: 400 });
+  if (!applicantName || !beneficiaryName || !birthDate || !careNumber || !validityStartDate || !phone || !address || !items) {
+    return NextResponse.json({ message: '수급자 정보, 인정번호, 유효기간 시작일, 연락처, 주소, 신청제품을 확인해 주세요.' }, { status: 400 });
   }
-  if (!isValidBirthDate(birthDate)) {
+  if (!isValidDate(birthDate, false)) {
     return NextResponse.json({ message: '수급자 생년월일을 확인해 주세요.' }, { status: 400 });
   }
+  if (!isValidDate(validityStartDate, true)) {
+    return NextResponse.json({ message: '장기요양 유효기간 시작일을 확인해 주세요.' }, { status: 400 });
+  }
   if (careNumber.length < 6 || careNumber.length > 40 || !/^[0-9A-Za-z가-힣-]+$/.test(careNumber)) {
-    return NextResponse.json({ message: '장기요양인정번호를 인정서에 표시된 내용대로 다시 확인해 주세요.' }, { status: 400 });
+    return NextResponse.json({ message: '장기요양인정번호를 다시 확인해 주세요.' }, { status: 400 });
   }
 
   const phoneDigits = phone.replace(/\D/g, '');
@@ -70,10 +76,10 @@ export async function POST(request: Request) {
   if (applicantName.length > 80 || beneficiaryName.length > 80 || relation.length > 50 || needs.length > 2000) {
     return NextResponse.json({ message: '입력한 신청 정보를 확인해 주세요.' }, { status: 400 });
   }
-  if (!allowedTypes.has(certificate.type)) {
+  if (certificate && !allowedTypes.has(certificate.type)) {
     return NextResponse.json({ message: '인정서는 JPG, PNG, WEBP 또는 PDF 파일만 제출할 수 있습니다.' }, { status: 415 });
   }
-  if (certificate.size <= 0 || certificate.size > maxFileBytes) {
+  if (certificate && certificate.size > maxFileBytes) {
     return NextResponse.json({ message: '인정서 파일은 10MB 이하로 제출해 주세요.' }, { status: 413 });
   }
 
@@ -118,6 +124,7 @@ export async function POST(request: Request) {
         beneficiary_name: beneficiaryName,
         birth_date: birthDate,
         care_number: careNumber,
+        validity_start_date: validityStartDate,
         phone,
         address,
         address_detail: addressDetail,
@@ -139,13 +146,14 @@ export async function POST(request: Request) {
     outbound.set('beneficiaryName', beneficiaryName);
     outbound.set('birthDate', birthDate);
     outbound.set('careNumber', careNumber);
+    outbound.set('validityStartDate', validityStartDate);
     outbound.set('phone', phone);
     outbound.set('address', address);
     outbound.set('addressDetail', addressDetail);
     outbound.set('relation', relation);
     outbound.set('needs', needs);
     outbound.set('items', JSON.stringify(intakeItems));
-    outbound.set('certificate', certificate, certificate.name);
+    if (certificate) outbound.set('certificate', certificate, certificate.name);
 
     try {
       const response = await fetch(webhookUrl, {
@@ -168,6 +176,7 @@ export async function POST(request: Request) {
     ok: true,
     requestId,
     status: 'NEW',
+    certificateSubmitted: Boolean(certificate),
     nextAction: 'ATOMCARE_INTERNAL_REVIEW',
   });
 }
