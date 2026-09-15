@@ -16,8 +16,8 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:5000';
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: '아톰케어 복지용구 | 장기요양 본인부담금·제품비교',
-    template: '%s | 아톰케어 복지용구',
+    default: '아톰케어랩 복지용구 | 장기요양 본인부담금·제품비교',
+    template: '%s | 아톰케어랩 복지용구',
   },
   description: '장기요양 복지용구를 품목별로 찾고, 15%·9%·6% 본인부담금을 확인하고, 제품 규격과 특징을 비교하세요.',
   keywords: ['복지용구', '장기요양 복지용구', '복지용구 본인부담금', '성인용보행기', '목욕의자', '안전손잡이'],
@@ -25,8 +25,8 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'ko_KR',
-    siteName: '아톰케어 복지용구',
-    title: '아톰케어 복지용구',
+    siteName: '아톰케어랩 복지용구',
+    title: '아톰케어랩 복지용구',
     description: '복지용구 검색·비교·본인부담금 확인',
     url: '/',
   },
@@ -46,7 +46,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }} />
         <header className="site-header">
-          <a className="brand" href="/">ATOM CARE <span>복지용구</span></a>
+          <a className="brand" href="/">ATOM CARE LAB <span>복지용구</span></a>
           <nav aria-label="주요 메뉴">
             <a href="/consult"><strong>AI 맞춤 추천</strong></a>
             <a href="/consult/cart"><strong>신청목록</strong></a>
