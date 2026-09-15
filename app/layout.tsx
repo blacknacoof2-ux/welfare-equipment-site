@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import FloatingConsultCart from '@/components/FloatingConsultCart';
+import FloatingPhoneCall from '@/components/FloatingPhoneCall';
 import ProductCompareTray from '@/components/ProductCompareTray';
 import { validatePublishedCatalog } from '@/lib/validate-published-catalog';
 import { validatePublishedProductImages } from '@/lib/validate-published-images';
@@ -62,6 +63,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <main>{children}</main>
         <FloatingConsultCart />
         <ProductCompareTray />
+        <FloatingPhoneCall />
         <footer className="site-footer">
           <strong>주식회사 아톰케어</strong>
           <p>복지용구 제품 정보는 최신 유통상태와 공단 고시를 확인하여 순차적으로 업데이트합니다.</p>
