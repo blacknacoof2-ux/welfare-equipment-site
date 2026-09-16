@@ -11,7 +11,7 @@ concurrency:
   cancel-in-progress: true
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   verify:
@@ -20,6 +20,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref || github.ref_name }}
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -29,16 +31,21 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Generate lockfile artifact
+      - name: Generate lockfile
         run: npm install --package-lock-only --ignore-scripts
 
-      - name: Upload lockfile artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: audit-package-lock
-          path: package-lock.json
-          if-no-files-found: error
-          retention-days: 1
+      - name: Commit generated lockfile once
+        if: github.event_name == 'pull_request'
+        run: |
+          if git diff --quiet -- package-lock.json && git ls-files --error-unmatch package-lock.json >/dev/null 2>&1; then
+            echo "package-lock.json already tracked and unchanged"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add package-lock.json
+          git commit -m "chore: add npm lockfile"
+          git push origin HEAD:${{ github.head_ref }}
 
       - name: Detail image coverage audit
         run: REQUIRE_FULL_DETAIL=1 npm run audit:detail-image-coverage
