@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import AddToConsultCart from '@/components/AddToConsultCart';
 import ProductCompareToggle from '@/components/ProductCompareToggle';
 import { getBenefitModeLabel } from '@/lib/category-ui';
@@ -59,7 +60,7 @@ export default async function ComparePage({
         <div className="content-card" style={{ marginTop: 20 }}>
           <h2>비교할 제품을 2~3개 선택하세요.</h2>
           <p className="muted">제품 목록이나 상세페이지의 <strong>비교하기</strong> 버튼을 누르면 같은 품목에서 최대 3개까지 선택할 수 있습니다.</p>
-          <a className="button primary" href="/products">제품 선택하러 가기</a>
+          <Link className="button primary" href="/products">제품 선택하러 가기</Link>
         </div>
       </section>
     );
@@ -73,7 +74,7 @@ export default async function ComparePage({
         <h1>같은 품목끼리만 비교할 수 있습니다.</h1>
         <div className="content-card" style={{ marginTop: 20 }}>
           <p>보행기는 보행기끼리, 목욕의자는 목욕의자끼리 비교하도록 구성되어 있습니다.</p>
-          <a className="button primary" href="/products">다시 선택하기</a>
+          <Link className="button primary" href="/products">다시 선택하기</Link>
         </div>
       </section>
     );
@@ -119,7 +120,7 @@ export default async function ComparePage({
                         style={{ display: 'block', width: 150, height: 150, objectFit: 'contain', margin: '0 auto 12px', borderRadius: 12, background: '#fff' }}
                       />
                     )}
-                    <a href={`/products/${product.slug}`} style={{ fontSize: 18 }}>{title}</a>
+                    <Link href={`/products/${product.slug}`} style={{ fontSize: 18 }}>{title}</Link>
                     <div style={{ marginTop: 10 }}>
                       <ProductCompareToggle item={{ slug: product.slug, name: title, category: product.category }} compact />
                     </div>
@@ -178,8 +179,8 @@ export default async function ComparePage({
         <h2>비교 후 선택 방법</h2>
         <p className="muted">금액만으로 결정하기보다 사용자의 신체조건, 실제 사용공간, 보호자 이동·보관 편의까지 함께 확인하세요. 원하는 제품은 비교표에서 바로 신청목록에 담을 수 있습니다.</p>
         <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
-          <a className="button secondary" href={`/products?category=${encodeURIComponent(category)}`}>같은 {category} 더 보기</a>
-          <a className="button primary" href="/consult/cart">신청목록 확인</a>
+          <Link className="button secondary" href={`/products?category=${encodeURIComponent(category)}`}>같은 {category} 더 보기</Link>
+          <Link className="button primary" href="/consult/cart">신청목록 확인</Link>
         </div>
       </div>
     </section>
