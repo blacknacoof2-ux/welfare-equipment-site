@@ -17,9 +17,12 @@ Remediation branch: `audit-remediation-20260916-v2`
 - [x] Disallow `/admin/` and `/internal/` in robots rules.
 - [x] Replace lint-blocking internal `<a>` navigation with Next.js `Link`.
 - [x] Normalize guide-page local metadata fallback to port 5000.
-- [ ] Confirm PR CI passes lint, dependency audit, image audits, typecheck, build, and rendered-site audits.
-- [ ] Review cross-product duplicate detail-image URLs for legitimate shared assets vs mismatches.
-- [ ] Merge only after required CI checks pass.
+- [x] PR CI passed dependency audit, lint, image audits, typecheck, production build, and rendered-site audits.
+- [x] CI merge gate satisfied; all required checks passed before merge.
+- [ ] Review 26 cross-product duplicate detail-image URL groups for legitimate shared assets vs mismatches. Non-blocking data QA.
+- [ ] Resolve 11 non-blocking ESLint warnings: image optimization and admin client navigation cleanup.
+- [ ] Track migration from ESLint 9.39.5 when the Next.js lint dependency chain supports the newer major version.
+- [ ] Add/verify detail images for `catalog-s03090178005-electric-bed`; current rendered audit passes because it is not a required-detail product.
 
 ## 2. Vercel
 
