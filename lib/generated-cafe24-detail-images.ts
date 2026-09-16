@@ -8,7 +8,7 @@ export type GeneratedCafe24DetailImageSet = {
   checkedAt: string;
 };
 
-export const CAFE24_DETAIL_SYNC_CHECKED_AT = "2026-09-14";
+export const CAFE24_DETAIL_SYNC_CHECKED_AT = "2026-09-16";
 export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe24DetailImageSet> = {
   "URB-PR101": {
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
@@ -16,7 +16,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "urls": [
       "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/F24010181001_detail_1.jpg"
     ],
-    "checkedAt": "2026-09-14"
+    "checkedAt": "2026-09-16"
   },
   "URB-PR102": {
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
@@ -24,7 +24,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "urls": [
       "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/F24010181002_detail_1.jpg"
     ],
-    "checkedAt": "2026-09-14"
+    "checkedAt": "2026-09-16"
   },
   "URB-PR103": {
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
@@ -32,7 +32,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "urls": [
       "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/F24010181003_detail_1.jpg"
     ],
-    "checkedAt": "2026-09-14"
+    "checkedAt": "2026-09-16"
   },
   "URB-PR104": {
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
@@ -40,7 +40,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "urls": [
       "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/F24010181004_detail_1.jpg"
     ],
-    "checkedAt": "2026-09-14"
+    "checkedAt": "2026-09-16"
   },
   "URB-PR105": {
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
@@ -48,7 +48,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "urls": [
       "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/F24010181005_detail_1.jpg"
     ],
-    "checkedAt": "2026-09-14"
+    "checkedAt": "2026-09-16"
   },
   "IU": {
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
@@ -56,7 +56,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "urls": [
       "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/B03180088605_detail_1.png"
     ],
-    "checkedAt": "2026-09-14"
+    "checkedAt": "2026-09-16"
   },
   "KSCU01": {
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
@@ -64,7 +64,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "urls": [
       "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/B03180195501_detail_1.jpg"
     ],
-    "checkedAt": "2026-09-14"
+    "checkedAt": "2026-09-16"
   },
   "AFM-02": {
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
@@ -72,7 +72,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "urls": [
       "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/F30030078003_detail_1.jpg"
     ],
-    "checkedAt": "2026-09-14"
+    "checkedAt": "2026-09-16"
   },
   "AFM-04": {
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
@@ -80,7 +80,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "urls": [
       "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/F30030078105_detail_1.jpg"
     ],
-    "checkedAt": "2026-09-14"
+    "checkedAt": "2026-09-16"
   },
   "BLS-600": {
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
@@ -88,7 +88,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "urls": [
       "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/F30031151104_detail_1.jpg"
     ],
-    "checkedAt": "2026-09-14"
+    "checkedAt": "2026-09-16"
   },
   "BLS-850": {
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
@@ -96,7 +96,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "urls": [
       "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/F30030205004_detail_1.jpg"
     ],
-    "checkedAt": "2026-09-14"
+    "checkedAt": "2026-09-16"
   },
   "J-S1": {
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
@@ -104,7 +104,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "urls": [
       "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/F30031133102_detail_1.png"
     ],
-    "checkedAt": "2026-09-14"
+    "checkedAt": "2026-09-16"
   },
   "SKC-01": {
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
@@ -112,7 +112,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "urls": [
       "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/F30031220101_detail_1.jpg"
     ],
-    "checkedAt": "2026-09-14"
+    "checkedAt": "2026-09-16"
   },
   "SKC-02": {
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
@@ -120,7 +120,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "urls": [
       "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/F30031220102_detail_1.jpg"
     ],
-    "checkedAt": "2026-09-14"
+    "checkedAt": "2026-09-16"
   },
   "URB-M101": {
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
@@ -128,7 +128,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "urls": [
       "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/F30030181002_detail_1.jpg"
     ],
-    "checkedAt": "2026-09-14"
+    "checkedAt": "2026-09-16"
   },
   "슬림핏(SL-0680WS)": {
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
@@ -139,7 +139,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
       "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/M06091152601_detail_3.jpg",
       "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/M06091152601_detail_4.jpg"
     ],
-    "checkedAt": "2026-09-14"
+    "checkedAt": "2026-09-16"
   },
   "실버카-KS-130(네이비,베이지)": {
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
@@ -147,7 +147,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "urls": [
       "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/M06090005005_detail_2.jpg"
     ],
-    "checkedAt": "2026-09-14"
+    "checkedAt": "2026-09-16"
   },
   "실버카단비(오션블루, 버건디)": {
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
@@ -158,7 +158,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
       "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/M06090005015_detail_4.jpg",
       "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/M06090005015_detail_5.jpg"
     ],
-    "checkedAt": "2026-09-14"
+    "checkedAt": "2026-09-16"
   },
   "EXCT-01R": {
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
@@ -166,7 +166,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "urls": [
       "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/M06090224501_detail_1.jpg"
     ],
-    "checkedAt": "2026-09-14"
+    "checkedAt": "2026-09-16"
   },
   "Handy": {
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
@@ -174,7 +174,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "urls": [
       "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/M06091147601_detail_1.jpg"
     ],
-    "checkedAt": "2026-09-14"
+    "checkedAt": "2026-09-16"
   },
   "KS-300": {
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
@@ -182,7 +182,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "urls": [
       "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/M06090005106_detail_1.jpg"
     ],
-    "checkedAt": "2026-09-14"
+    "checkedAt": "2026-09-16"
   },
   "Let's Be Free": {
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
@@ -190,7 +190,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "urls": [
       "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/M06060234503_detail_1.jpg"
     ],
-    "checkedAt": "2026-09-14"
+    "checkedAt": "2026-09-16"
   },
   "Let's Fly": {
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
@@ -213,7 +213,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
       "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/M06061146601_detail_17.jpg",
       "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/M06061146601_detail_18.jpg"
     ],
-    "checkedAt": "2026-09-14"
+    "checkedAt": "2026-09-16"
   },
   "Let's Move": {
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
@@ -232,7 +232,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
       "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/M06061146602_detail_13.jpg",
       "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/M06061146602_detail_14.jpg"
     ],
-    "checkedAt": "2026-09-14"
+    "checkedAt": "2026-09-16"
   },
   "유닉스 22D-A": {
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
@@ -240,7 +240,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "urls": [
       "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260506/M18031139103_detail_1.jpg"
     ],
-    "checkedAt": "2026-09-14"
+    "checkedAt": "2026-09-16"
   },
   "유닉스 22D-S": {
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
@@ -248,7 +248,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "urls": [
       "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/M18031139102_detail_1.jpg"
     ],
-    "checkedAt": "2026-09-14"
+    "checkedAt": "2026-09-16"
   },
   "MRT-2D": {
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
@@ -256,7 +256,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "urls": [
       "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/M18030043027_detail_1.jpg"
     ],
-    "checkedAt": "2026-09-14"
+    "checkedAt": "2026-09-16"
   },
   "MRT-2DP": {
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
@@ -264,7 +264,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "urls": [
       "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/M18030043026_detail_1.jpg"
     ],
-    "checkedAt": "2026-09-14"
+    "checkedAt": "2026-09-16"
   },
   "MRT-7D": {
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
@@ -272,7 +272,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "urls": [
       "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/M18030043028_detail_1.jpg"
     ],
-    "checkedAt": "2026-09-14"
+    "checkedAt": "2026-09-16"
   },
   "MTX-7DP": {
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
@@ -280,7 +280,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "urls": [
       "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/M18030043029_detail_1.jpg"
     ],
-    "checkedAt": "2026-09-14"
+    "checkedAt": "2026-09-16"
   },
   "DM-320": {
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
@@ -288,7 +288,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "urls": [
       "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/F18030233002_detail_1.jpg"
     ],
-    "checkedAt": "2026-09-14"
+    "checkedAt": "2026-09-16"
   },
   "드림 SMD-02": {
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
@@ -296,7 +296,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "urls": [
       "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/T09060232005_detail_1.jpg"
     ],
-    "checkedAt": "2026-09-14"
+    "checkedAt": "2026-09-16"
   },
   "드림 SWP-03": {
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
@@ -304,7 +304,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "urls": [
       "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/T09060232004_detail_1.jpg"
     ],
-    "checkedAt": "2026-09-14"
+    "checkedAt": "2026-09-16"
   },
   "숨M-50cc": {
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
@@ -312,7 +312,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "urls": [
       "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/T09060225002_detail_1.png"
     ],
-    "checkedAt": "2026-09-14"
+    "checkedAt": "2026-09-16"
   },
   "MDR-04": {
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
@@ -320,7 +320,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "urls": [
       "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/T09061156104_detail_2.jpg"
     ],
-    "checkedAt": "2026-09-14"
+    "checkedAt": "2026-09-16"
   },
   "NSBS-PT200": {
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
@@ -328,7 +328,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "urls": [
       "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/T09060149001_detail_1.jpg"
     ],
-    "checkedAt": "2026-09-14"
+    "checkedAt": "2026-09-16"
   },
   "NSBS-PT30": {
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
@@ -348,7 +348,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
       "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/T09060149004_detail_12.png",
       "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/T09060149004_detail_13.png"
     ],
-    "checkedAt": "2026-09-14"
+    "checkedAt": "2026-09-16"
   },
   "WDR-03": {
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
@@ -365,7 +365,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
       "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/T09060230005_detail_9.jpg",
       "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/T09060230005_detail_10.jpg"
     ],
-    "checkedAt": "2026-09-14"
+    "checkedAt": "2026-09-16"
   },
   "WDR-04": {
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
@@ -374,7 +374,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
       "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/T09061156105_detail_2.jpg",
       "https://cafe24.poxo.com/ec01/nobleo0/OP8d67okSDvg5Rv3kFOkD5oLt0G6GVj2+0DFPtdCI5PqJBnSJ4BgM//O6npKY+5vOnLJFfdFIjgmdIp/B3cHyg==/_/web/upload/NNEditor/20260521/copy-1779343958-3d869a091ab9686c39602b366aff0f01_1773041605_0955.jpg"
     ],
-    "checkedAt": "2026-09-14"
+    "checkedAt": "2026-09-16"
   },
   "BLESSON 7": {
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
@@ -382,7 +382,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "urls": [
       "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/H12030030010_detail_1.jpg"
     ],
-    "checkedAt": "2026-09-14"
+    "checkedAt": "2026-09-16"
   },
   "NT-CT100": {
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
@@ -390,7 +390,7 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "urls": [
       "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/T03030155001_detail_1.jpg"
     ],
-    "checkedAt": "2026-09-14"
+    "checkedAt": "2026-09-16"
   },
   "YH-2014": {
     "sourceLabel": "복지용구 전문몰 급여코드·동일모델 상세페이지 이미지",
@@ -398,6 +398,6 @@ export const generatedCafe24DetailImageSetsByModel: Record<string, GeneratedCafe
     "urls": [
       "https://gi.esmplus.com/noble3450/Welfare_Medical_Device/detail_images/B03030031004_detail_1.jpg"
     ],
-    "checkedAt": "2026-09-14"
+    "checkedAt": "2026-09-16"
   }
 };
