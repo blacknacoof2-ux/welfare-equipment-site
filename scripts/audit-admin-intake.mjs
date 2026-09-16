@@ -17,6 +17,15 @@ if (![302, 303, 307, 308].includes(admin.response.status)) failures.push(`unauth
 const adminLocation = admin.response.headers.get('location') ?? '';
 if (!adminLocation.includes('/admin/login')) failures.push(`admin redirect target invalid: ${adminLocation}`);
 
+const internalCatalogAudit = await fetchText('/internal/catalog-audit');
+if (![302, 303, 307, 308].includes(internalCatalogAudit.response.status)) {
+  failures.push(`unauthenticated internal catalog audit returned ${internalCatalogAudit.response.status}`);
+}
+const internalCatalogLocation = internalCatalogAudit.response.headers.get('location') ?? '';
+if (!internalCatalogLocation.includes('/admin/login')) {
+  failures.push(`internal catalog audit redirect target invalid: ${internalCatalogLocation}`);
+}
+
 const application = await fetchText('/consult/cart', { redirect: 'follow' });
 for (const requiredText of ['수급자 성명', '수급자 생년월일', '장기요양인정번호', '유효기간 시작일', '장기요양인정서', '선택', '복지용구 신청 접수하기']) {
   if (!application.text.includes(requiredText)) failures.push(`application field missing: ${requiredText}`);
@@ -33,6 +42,7 @@ console.log(JSON.stringify({
   summary: {
     adminLoginStatus: login.response.status,
     unauthenticatedAdminStatus: admin.response.status,
+    unauthenticatedInternalCatalogStatus: internalCatalogAudit.response.status,
     applicationStatus: application.response.status,
     unconfiguredIntakeStatus: noStore.response.status,
     failures: failures.length,
