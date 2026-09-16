@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { requireAdminSession } from '@/lib/admin-auth';
 import { catalogProgress, catalogProgressSummary } from '@/lib/catalog-progress';
 import {
   OFFICIAL_CATALOG_EFFECTIVE_DATE,
@@ -11,7 +12,9 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-export default function CatalogAuditPage() {
+export default async function CatalogAuditPage() {
+  await requireAdminSession();
+
   const summary = catalogProgressSummary;
   const totalCoverage =
     summary.target === 0 ? 100 : Math.round((summary.accounted / summary.target) * 1000) / 10;
