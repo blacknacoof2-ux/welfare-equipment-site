@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import ProductCard from '@/components/ProductCard';
 import ProductDetailContent from '@/components/ProductDetailContent';
@@ -128,7 +129,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
 
       <nav aria-label="breadcrumb" className="muted" style={{ marginBottom: 16 }}>
-        <a href="/">홈</a> · {category ? <a href={`/categories/${category.slug}`}>{product.category}</a> : <a href="/products">복지용구</a>} · <span>{displayTitle}</span>
+        <Link href="/">홈</Link> · {category ? <Link href={`/categories/${category.slug}`}>{product.category}</Link> : <Link href="/products">복지용구</Link>} · <span>{displayTitle}</span>
       </nav>
 
       <div className="product-detail-hero">
