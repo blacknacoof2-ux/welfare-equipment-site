@@ -2,11 +2,14 @@ import { randomUUID } from 'node:crypto';
 import { NextResponse } from 'next/server';
 import { createIntake, isIntakeStoreConfigured, type IntakeProduct } from '@/lib/intake-store';
 import { getPriceSuffix, publishedProducts } from '@/lib/products';
+import { checkRateLimit, getClientIp } from '@/lib/rate-limit';
 
 export const runtime = 'nodejs';
 
 const allowedTypes = new Set(['image/jpeg', 'image/png', 'image/webp', 'application/pdf']);
 const maxFileBytes = 10 * 1024 * 1024;
+const CONSULTATION_LIMIT = 6;
+const CONSULTATION_WINDOW_MS = 10 * 60 * 1000;
 
 function text(formData: FormData, key: string) {
   const value = formData.get(key);
@@ -23,6 +26,21 @@ function isValidDate(value: string, allowFuture = true) {
 }
 
 export async function POST(request: Request) {
+  const rateLimit = checkRateLimit(
+    `consultation:${getClientIp(request)}`,
+    CONSULTATION_LIMIT,
+    CONSULTATION_WINDOW_MS,
+  );
+  if (!rateLimit.allowed) {
+    return NextResponse.json(
+      { message: '접수 요청이 너무 많습니다. 잠시 후 다시 시도해 주세요.' },
+      {
+        status: 429,
+        headers: { 'Retry-After': String(rateLimit.retryAfterSeconds) },
+      },
+    );
+  }
+
   const webhookUrl = process.env.CONSULTATION_WEBHOOK_URL?.trim() ?? '';
   const storeConfigured = isIntakeStoreConfigured();
   if (!storeConfigured && !webhookUrl) {
