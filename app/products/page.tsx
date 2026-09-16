@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import ProductCard from '@/components/ProductCard';
 import { categories } from '@/lib/all-categories';
 import { filterBrowseProducts } from '@/lib/product-visibility';
@@ -72,10 +73,10 @@ export default async function ProductsPage({
       <p className="muted">정상 유통이 확인된 상품만 노출하며, 품목·구입·대여 여부와 15%·9%·6% 본인부담금을 한 화면에서 확인할 수 있습니다.</p>
 
       <div className="mode-filter-tabs" aria-label="구입 대여 구분">
-        <a className={!selectedMode ? 'active' : ''} href={makeHref({ nextMode: null })}>전체</a>
-        <a className={selectedMode === 'PURCHASE' ? 'active purchase' : ''} href={makeHref({ nextMode: 'PURCHASE' })}>🛒 구입</a>
-        <a className={selectedMode === 'RENTAL' ? 'active rental' : ''} href={makeHref({ nextMode: 'RENTAL' })}>🔁 대여</a>
-        <a className={selectedMode === 'PURCHASE_OR_RENTAL' ? 'active mixed' : ''} href={makeHref({ nextMode: 'PURCHASE_OR_RENTAL' })}>↔️ 구입·대여</a>
+        <Link className={!selectedMode ? 'active' : ''} href={makeHref({ nextMode: null })}>전체</Link>
+        <Link className={selectedMode === 'PURCHASE' ? 'active purchase' : ''} href={makeHref({ nextMode: 'PURCHASE' })}>🛒 구입</Link>
+        <Link className={selectedMode === 'RENTAL' ? 'active rental' : ''} href={makeHref({ nextMode: 'RENTAL' })}>🔁 대여</Link>
+        <Link className={selectedMode === 'PURCHASE_OR_RENTAL' ? 'active mixed' : ''} href={makeHref({ nextMode: 'PURCHASE_OR_RENTAL' })}>↔️ 구입·대여</Link>
       </div>
 
       <form action="/products" method="get" className="content-card product-search-panel">
@@ -106,7 +107,7 @@ export default async function ProductsPage({
 
       <div className="catalog-result-summary">
         <p><strong>검색 결과 {filtered.length}개</strong> <span className="muted">· 기본 노출 {browseProducts.length}개</span></p>
-        {(category || query || selectedMode) && <a href="/products">필터 초기화</a>}
+        {(category || query || selectedMode) && <Link href="/products">필터 초기화</Link>}
       </div>
 
       {filtered.length === 0 ? (
@@ -119,18 +120,18 @@ export default async function ProductsPage({
 
           {totalPages > 1 && (
             <nav className="catalog-pagination" aria-label="제품 목록 페이지">
-              {currentPage > 1 && <a href={makeHref({ nextPage: currentPage - 1 })}>← 이전</a>}
+              {currentPage > 1 && <Link href={makeHref({ nextPage: currentPage - 1 })}>← 이전</Link>}
               {Array.from({ length: totalPages }, (_, index) => index + 1).map((pageNumber) => (
-                <a
+                <Link
                   aria-current={pageNumber === currentPage ? 'page' : undefined}
                   className={pageNumber === currentPage ? 'active' : ''}
                   href={makeHref({ nextPage: pageNumber })}
                   key={pageNumber}
                 >
                   {pageNumber}
-                </a>
+                </Link>
               ))}
-              {currentPage < totalPages && <a href={makeHref({ nextPage: currentPage + 1 })}>다음 →</a>}
+              {currentPage < totalPages && <Link href={makeHref({ nextPage: currentPage + 1 })}>다음 →</Link>}
             </nav>
           )}
         </>

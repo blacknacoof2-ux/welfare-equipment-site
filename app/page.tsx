@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import CopayCalculator from '@/components/CopayCalculator';
 import ProductCard from '@/components/ProductCard';
 import { categories } from '@/lib/all-categories';
@@ -73,12 +74,12 @@ export default function HomePage() {
           {categories.map((category) => {
             const count = browseProducts.filter((product) => product.category === category.name).length;
             return (
-              <a className="category-card" href={`/categories/${category.slug}`} key={category.slug}>
+              <Link className="category-card" href={`/categories/${category.slug}`} key={category.slug}>
                 <span className="category-emoji" aria-hidden="true">{getCategoryEmoji(category.name)}</span>
                 <strong className="category-name">{category.name}</strong>
                 <p>{category.shortDescription}</p>
                 <b>{count > 0 ? `검증상품 ${count}개 · ` : '검증 진행중 · '}제품 보기 →</b>
-              </a>
+              </Link>
             );
           })}
         </div>
@@ -91,7 +92,7 @@ export default function HomePage() {
             <h2><span aria-hidden="true">🛒</span> 구입 복지용구</h2>
             <p className="muted">급여 기준에 따라 구입하여 사용하는 복지용구입니다. 제품 카드에서 실제 본인부담금을 바로 확인할 수 있습니다.</p>
           </div>
-          <a className="button secondary" href="/products?mode=PURCHASE">구입 제품 전체보기</a>
+          <Link className="button secondary" href="/products?mode=PURCHASE">구입 제품 전체보기</Link>
         </div>
         <div className="product-list">
           {purchaseProducts.slice(0, 9).map((product) => <ProductCard product={product} key={product.slug} />)}
@@ -105,7 +106,7 @@ export default function HomePage() {
             <h2><span aria-hidden="true">🔁</span> 대여 복지용구</h2>
             <p className="muted">월 대여 급여가격을 기준으로 15%·9%·6% 월 본인부담금을 표시합니다.</p>
           </div>
-          <a className="button secondary" href="/products?mode=RENTAL">대여 제품 전체보기</a>
+          <Link className="button secondary" href="/products?mode=RENTAL">대여 제품 전체보기</Link>
         </div>
         {rentalProducts.length > 0 ? (
           <div className="product-list">
@@ -123,7 +124,7 @@ export default function HomePage() {
               <p className="eyebrow">PURCHASE · RENTAL</p>
               <h2><span aria-hidden="true">↔️</span> 구입·대여 가능 복지용구</h2>
             </div>
-            <a className="button secondary" href="/products?mode=PURCHASE_OR_RENTAL">전체보기</a>
+            <Link className="button secondary" href="/products?mode=PURCHASE_OR_RENTAL">전체보기</Link>
           </div>
           <div className="product-list">
             {mixedProducts.slice(0, 9).map((product) => <ProductCard product={product} key={product.slug} />)}
@@ -139,7 +140,7 @@ export default function HomePage() {
           <h2>급여가격보다 중요한 건 실제 본인부담금입니다</h2>
           <p>일반 대상자는 15%, 감경 대상자는 9% 또는 6% 기준으로 확인할 수 있습니다. 제품별 급여가격 또는 월 대여가격과 함께 실제 부담 수준을 이해하기 쉽게 정리합니다.</p>
         </div>
-        <a className="button primary" href="/guide/copay">본인부담금 안내 보기</a>
+        <Link className="button primary" href="/guide/copay">본인부담금 안내 보기</Link>
       </section>
     </>
   );

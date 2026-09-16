@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import AdultWalkerRecommender, { type WalkerCandidate } from '@/components/AdultWalkerRecommender';
 import ProductCard from '@/components/ProductCard';
@@ -96,7 +97,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
       {products.length > 0 && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListLd) }} />}
 
       <nav aria-label="breadcrumb" className="muted" style={{ marginBottom: 16 }}>
-        <a href="/">홈</a> · <a href="/products">복지용구</a> · <span>{category.name}</span>
+        <Link href="/">홈</Link> · <Link href="/products">복지용구</Link> · <span>{category.name}</span>
       </nav>
 
       <div className="category-page-title">
@@ -147,7 +148,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
             <h2>WAG02와 SPORTY, 어떤 차이가 있을까요?</h2>
             <p>급여가격·본인부담금·무게·재질·규격을 한 화면에서 비교할 수 있습니다.</p>
           </div>
-          <a className="button primary" href="/compare/wag02-vs-sporty">두 제품 비교하기</a>
+          <Link className="button primary" href="/compare/wag02-vs-sporty">두 제품 비교하기</Link>
         </div>
       )}
 
@@ -173,7 +174,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
         <h2>다른 복지용구도 함께 확인하세요</h2>
         <div className="category-link-cloud">
           {categories.filter((item) => item.slug !== category.slug).map((item) => (
-            <a href={`/categories/${item.slug}`} key={item.slug}>{getCategoryEmoji(item.name)} {item.name}</a>
+            <Link href={`/categories/${item.slug}`} key={item.slug}>{getCategoryEmoji(item.name)} {item.name}</Link>
           ))}
         </div>
       </div>

@@ -13,6 +13,8 @@
     "start": "next start -H 0.0.0.0 -p 5000",
     "start:5000": "next start -H 0.0.0.0 -p 5000",
     "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "sync:greymall-detail-images": "node scripts/sync-greymall-detail-images.mjs",
     "sync:carestore-detail-images": "node scripts/sync-carestore-detail-images.mjs",
     "sync:gagaon-detail-images": "node scripts/sync-gagaon-detail-images.mjs",
@@ -32,6 +34,8 @@
     "@types/node": "^22.10.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
+    "eslint": "9.39.5",
+    "eslint-config-next": "16.3.3",
     "typescript": "^5.7.2"
   }
 }
