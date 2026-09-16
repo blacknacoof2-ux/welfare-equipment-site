@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: '복지용구란? 장기요양 복지용구 한도·구입·대여·이용방법',
@@ -8,7 +9,7 @@ export const metadata: Metadata = {
 };
 
 export default function WelfareEquipmentGuidePage() {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:5000';
   const breadcrumbLd = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -33,7 +34,7 @@ export default function WelfareEquipmentGuidePage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }} />
 
       <nav aria-label="breadcrumb" className="muted" style={{ marginBottom: 16 }}>
-        <a href="/">홈</a> · <span>복지용구 가이드</span>
+        <Link href="/">홈</Link> · <span>복지용구 가이드</span>
       </nav>
 
       <p className="eyebrow">LONG-TERM CARE GUIDE</p>
@@ -56,7 +57,7 @@ export default function WelfareEquipmentGuidePage() {
       <div className="content-card" style={{ marginTop: 20 }}>
         <h2>본인부담금은 얼마인가요?</h2>
         <p>재가급여의 일반 본인부담률은 15%입니다. 감경 대상자는 감경률에 따라 실제 부담률이 달라질 수 있으며, 이 사이트에서는 사용자가 비교하기 쉽도록 <strong>15%·9%·6%</strong> 세 가지 금액만 표시합니다.</p>
-        <a className="button primary" href="/guide/copay">본인부담금 계산·안내 보기</a>
+        <Link className="button primary" href="/guide/copay">본인부담금 계산·안내 보기</Link>
       </div>
 
       <div className="content-card" style={{ marginTop: 20 }}>
@@ -92,7 +93,7 @@ export default function WelfareEquipmentGuidePage() {
           <h2>이제 실제 복지용구를 비교해보세요</h2>
           <p>정상 유통이 확인된 제품의 급여가격과 본인부담금, 규격을 한 번에 확인할 수 있습니다.</p>
         </div>
-        <a className="button primary" href="/products">복지용구 제품 찾기</a>
+        <Link className="button primary" href="/products">복지용구 제품 찾기</Link>
       </div>
     </article>
   );

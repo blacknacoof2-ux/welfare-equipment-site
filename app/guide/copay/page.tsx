@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import CopayCalculator from '@/components/CopayCalculator';
 
 export const metadata: Metadata = {
@@ -9,7 +10,7 @@ export const metadata: Metadata = {
 };
 
 export default function CopayGuidePage() {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:5000';
   const breadcrumbLd = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -24,7 +25,7 @@ export default function CopayGuidePage() {
     <section className="section">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <nav aria-label="breadcrumb" className="muted" style={{ marginBottom: 16 }}>
-        <a href="/">홈</a> · <a href="/guide/welfare-equipment">복지용구 가이드</a> · <span>본인부담금</span>
+        <Link href="/">홈</Link> · <Link href="/guide/welfare-equipment">복지용구 가이드</Link> · <span>본인부담금</span>
       </nav>
 
       <p className="eyebrow">LONG-TERM CARE GUIDE</p>
@@ -55,7 +56,7 @@ export default function CopayGuidePage() {
       <div className="content-card" style={{ marginTop: 28 }}>
         <h2>제품별 실제 금액 확인</h2>
         <p>같은 품목이라도 제품별 급여가격이 다르므로, 모델명과 급여코드를 확인한 다음 해당 제품의 15%·9%·6% 금액을 비교하는 것이 정확합니다.</p>
-        <a className="button primary" href="/products">검증 완료 제품 검색</a>
+        <Link className="button primary" href="/products">검증 완료 제품 검색</Link>
       </div>
 
       <div className="content-card" style={{ marginTop: 20 }}>
