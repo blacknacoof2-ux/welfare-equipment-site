@@ -39,7 +39,7 @@ function escapeRegExp(value) {
 function extractHeroSrc(html, slug) {
   const id = escapeRegExp(`product-hero-${slug}`);
   const idFirst = new RegExp(`<img[^>]*id=["']${id}["'][^>]*src=["']([^"']+)["']`, 'i');
-  const srcFirst = new RegExp(`<img[^>]*src=["']([^"']+)["'][^>]*id=["']${id}["']`, 'i');
+  const srcFirst = new RegExp(`<img[^>]*src=["']([^"']+)[^>]*id=["']${id}["']`, 'i');
   const match = html.match(idFirst) ?? html.match(srcFirst);
   return match ? decodeHtmlAttribute(match[1]) : null;
 }
@@ -202,6 +202,9 @@ const results = await mapLimit(productUrls, 20, async (sitemapUrl) => {
 
 const failures = results.filter((item) => !item.ok);
 const manualHeroes = results.filter((item) => item.manualHero).map(({ slug, heroUrl }) => ({ slug, heroUrl }));
+const pagesWithoutDetailImages = results
+  .filter((item) => item.detailUrls.length === 0)
+  .map(({ slug, heroUrl }) => ({ slug, heroUrl }));
 const missingRequiredDetail = results
   .filter((item) => requiredDetailSlugs.has(item.slug) && item.detailUrls.length === 0)
   .map((item) => item.slug);
@@ -229,6 +232,7 @@ console.log(JSON.stringify({
     approvedHeroSourceCounts: sourceCounts,
     manuallyAuditedHeroCount: manualHeroes.length,
     detailPagesWithImages,
+    pagesWithoutDetailImages: pagesWithoutDetailImages.length,
     renderedDetailImageCount,
     requiredDetailProducts: requiredDetailSlugs.size,
     missingRequiredDetailCount: missingRequiredDetail.length,
@@ -237,6 +241,7 @@ console.log(JSON.stringify({
     searchOnlyVisibilityFailures: visibilityFailures.length,
   },
   manualHeroes,
+  pagesWithoutDetailImages,
   missingRequiredDetail,
   visibilityFailures,
   failures,
