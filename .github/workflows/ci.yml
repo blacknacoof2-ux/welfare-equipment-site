@@ -33,6 +33,9 @@ jobs:
       - name: Dependency vulnerability audit
         run: npm audit --audit-level=high
 
+      - name: Lint
+        run: npm run lint
+
       - name: Detail image coverage audit
         run: REQUIRE_FULL_DETAIL=1 npm run audit:detail-image-coverage
 
