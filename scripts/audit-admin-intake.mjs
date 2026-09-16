@@ -8,6 +8,19 @@ async function fetchText(pathname, init = {}) {
 
 const failures = [];
 
+const home = await fetchText('/');
+const expectedSecurityHeaders = {
+  'x-content-type-options': 'nosniff',
+  'x-frame-options': 'DENY',
+  'referrer-policy': 'strict-origin-when-cross-origin',
+  'permissions-policy': 'camera=(), microphone=(), geolocation=()',
+};
+for (const [name, expected] of Object.entries(expectedSecurityHeaders)) {
+  const actual = home.response.headers.get(name) ?? '';
+  if (actual !== expected) failures.push(`security header ${name} expected ${expected}, got ${actual || '(missing)'}`);
+}
+if (home.response.headers.has('x-powered-by')) failures.push('x-powered-by header must be disabled');
+
 const login = await fetchText('/admin/login');
 if (login.response.status !== 200) failures.push(`admin login returned ${login.response.status}`);
 if (!login.text.includes('복지용구 접수관리')) failures.push('admin login heading missing');
@@ -40,6 +53,9 @@ if (noStore.response.status !== 503) failures.push(`unconfigured intake endpoint
 
 console.log(JSON.stringify({
   summary: {
+    homeStatus: home.response.status,
+    securityHeadersChecked: Object.keys(expectedSecurityHeaders).length,
+    poweredByHeaderPresent: home.response.headers.has('x-powered-by'),
     adminLoginStatus: login.response.status,
     unauthenticatedAdminStatus: admin.response.status,
     unauthenticatedInternalCatalogStatus: internalCatalogAudit.response.status,
