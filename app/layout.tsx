@@ -3,6 +3,7 @@ import Link from 'next/link';
 import FloatingConsultCart from '@/components/FloatingConsultCart';
 import FloatingPhoneCall from '@/components/FloatingPhoneCall';
 import ProductCompareTray from '@/components/ProductCompareTray';
+import { getSiteUrl } from '@/lib/site-url';
 import { validatePublishedCatalog } from '@/lib/validate-published-catalog';
 import { validatePublishedProductImages } from '@/lib/validate-published-images';
 import './globals.css';
@@ -14,7 +15,7 @@ import './recommender.css';
 validatePublishedProductImages();
 validatePublishedCatalog();
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:5000';
+const siteUrl = getSiteUrl();
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
