@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { FormEvent, useEffect, useMemo, useState } from 'react';
 import {
   CONSULT_CART_EVENT,
@@ -34,12 +35,14 @@ export default function ConsultCart() {
   const [requestId, setRequestId] = useState('');
 
   useEffect(() => {
-    const sync = () => setItems(readConsultCart());
+    const sync = () => {
+      setItems(readConsultCart());
+      try {
+        const stored = JSON.parse(window.localStorage.getItem(CONSULT_NEEDS_KEY) ?? '{}');
+        if (typeof stored.needs === 'string') setNeeds(stored.needs);
+      } catch {}
+    };
     sync();
-    try {
-      const stored = JSON.parse(window.localStorage.getItem(CONSULT_NEEDS_KEY) ?? '{}');
-      if (typeof stored.needs === 'string') setNeeds(stored.needs);
-    } catch {}
     window.addEventListener(CONSULT_CART_EVENT, sync);
     window.addEventListener('storage', sync);
     return () => {
@@ -116,14 +119,14 @@ export default function ConsultCart() {
               <div className="consult-card consult-empty">
                 <h2>신청목록이 비어 있습니다</h2>
                 <p>필요한 복지용구를 찾아 신청목록에 담아주세요.</p>
-                <a className="button primary" href="/products">제품 찾기</a>
+                <Link className="button primary" href="/products">제품 찾기</Link>
               </div>
             ) : items.map((item) => (
               <article className="consult-cart-item" key={item.benefitCode}>
-                {item.imageUrl && <a href={`/products/${item.slug}`}><img src={item.imageUrl} alt={`${item.title} 제품사진`} /></a>}
+                {item.imageUrl && <Link href={`/products/${item.slug}`}><img src={item.imageUrl} alt={`${item.title} 제품사진`} /></Link>}
                 <div className="consult-cart-item-body">
                   <span className="category-chip">{item.category}</span>
-                  <h2><a href={`/products/${item.slug}`}>{item.title}</a></h2>
+                  <h2><Link href={`/products/${item.slug}`}>{item.title}</Link></h2>
                   <p>{item.manufacturer} · 급여코드 {item.benefitCode}</p>
                   <div className="consult-cart-prices">
                     <strong>일반 15% {formatter.format(copay(item.benefitPrice, 0.15))}원{item.priceSuffix}</strong>

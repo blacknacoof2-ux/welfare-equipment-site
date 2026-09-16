@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import FloatingConsultCart from '@/components/FloatingConsultCart';
 import FloatingPhoneCall from '@/components/FloatingPhoneCall';
 import ProductCompareTray from '@/components/ProductCompareTray';
@@ -48,17 +49,17 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }} />
         <header className="site-header">
-          <a className="brand" href="/">ATOM CARE LAB <span>복지용구</span></a>
+          <Link className="brand" href="/">ATOM CARE LAB <span>복지용구</span></Link>
           <nav aria-label="주요 메뉴">
-            <a href="/consult"><strong>AI 맞춤 추천</strong></a>
-            <a href="/consult/cart"><strong>신청목록</strong></a>
-            <a href="/compare"><strong>제품 비교</strong></a>
-            <a href="/#purchase">구입</a>
-            <a href="/#rental">대여</a>
-            <a href="/#categories">품목 찾기</a>
-            <a href="/#calculator">본인부담금</a>
-            <a href="/products">전체 제품</a>
-            <a href="/guide/copay">급여안내</a>
+            <Link href="/consult"><strong>AI 맞춤 추천</strong></Link>
+            <Link href="/consult/cart"><strong>신청목록</strong></Link>
+            <Link href="/compare"><strong>제품 비교</strong></Link>
+            <Link href="/#purchase">구입</Link>
+            <Link href="/#rental">대여</Link>
+            <Link href="/#categories">품목 찾기</Link>
+            <Link href="/#calculator">본인부담금</Link>
+            <Link href="/products">전체 제품</Link>
+            <Link href="/guide/copay">급여안내</Link>
           </nav>
         </header>
         <main>{children}</main>
