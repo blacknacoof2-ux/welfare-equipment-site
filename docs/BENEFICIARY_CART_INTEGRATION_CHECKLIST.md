@@ -15,8 +15,8 @@
 - [x] LINK-00 안전 작업 브랜치 생성: `feature/beneficiary-cart-verification`
 - [x] LINK-01 기존 `/consult/cart` 신청 흐름 및 필드 감사
 - [x] LINK-02 통합 작업 체크포인트 문서 생성
-- [ ] LINK-03 수급자 시스템 서버간 자격조회 API 추가
-- [ ] LINK-04 복지용구 사이트 자격조회 프록시 API 추가
+- [x] LINK-03 수급자 시스템 서버간 자격조회 API 추가
+- [x] LINK-04 복지용구 사이트 자격조회 프록시 API 추가
 - [ ] LINK-05 `/consult/cart` 우측 패널 3단계 UX 적용
   - 1단계 수급자 자격 확인
   - 2단계 검증 결과
@@ -32,6 +32,11 @@
 - [ ] LINK-14 PC/모바일 E2E 실기검증
 - [ ] LINK-15 두 저장소 build/lint 회귀검사
 - [ ] LINK-16 main 반영 및 Vercel 환경변수/도메인 배포
+
+## 현재 단계
+- LINK-03/04 코드는 구현 완료.
+- 다음 게이트는 두 로컬 서버에서 동일한 `BENEFICIARY_INTEGRATION_SECRET`을 설정하고 빌드 및 서버간 조회를 확인하는 것.
+- API 연결 PASS 후 LINK-05 화면 개편을 진행한다.
 
 ## 대표 실기 시나리오
 1. 성인용보행기 한도 2대, 계약완료 1대, 관리자 체크 → 남은 1대 → 보행기 1개 신청 가능
