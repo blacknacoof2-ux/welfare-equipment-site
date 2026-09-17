@@ -40,10 +40,23 @@ if (!internalCatalogLocation.includes('/admin/login')) {
 }
 
 const application = await fetchText('/consult/cart', { redirect: 'follow' });
-for (const requiredText of ['수급자 성명', '수급자 생년월일', '장기요양인정번호', '유효기간 시작일', '장기요양인정서', '선택', '복지용구 신청 접수하기']) {
+for (const requiredText of [
+  '수급자 이름',
+  '수급자 생년월일',
+  '장기요양인정번호',
+  '유효기간 시작일',
+  '장기요양 등급',
+  '휴대폰 번호',
+  '주소',
+  '장기요양인정서',
+  '선택',
+  '복지용구 신청하기',
+]) {
   if (!application.text.includes(requiredText)) failures.push(`application field missing: ${requiredText}`);
 }
-if (!application.text.includes('인정서는 지금 없어도')) failures.push('optional certificate guidance missing');
+if (!application.text.includes('선택사항입니다.')) failures.push('optional certificate guidance missing');
+if (!application.text.includes('접수 후 관리자가')) failures.push('post-submission eligibility guidance missing');
+if (application.text.includes('급여자격 확인</button>')) failures.push('customer eligibility verification button must not be rendered');
 
 const noStore = await fetchText('/api/consultations', {
   method: 'POST',
