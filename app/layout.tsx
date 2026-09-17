@@ -68,6 +68,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <FloatingPhoneCall />
         <footer className="site-footer">
           <strong>주식회사 아톰케어</strong>
+          <div className="site-footer-contact" aria-label="아톰케어 연락처">
+            <a href="tel:0319753335">031-975-3335</a>
+            <a href="mailto:atomcare@naver.com">atomcare@naver.com</a>
+          </div>
           <p>복지용구 제품 정보는 최신 유통상태와 공단 고시를 확인하여 순차적으로 업데이트합니다.</p>
         </footer>
       </body>
