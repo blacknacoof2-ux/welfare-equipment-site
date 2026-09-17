@@ -1,4 +1,9 @@
 import { NextResponse } from 'next/server';
+import {
+  BENEFICIARY_PROOF_COOKIE,
+  BENEFICIARY_PROOF_TTL_SECONDS,
+  createBeneficiaryProof,
+} from '@/lib/beneficiary-proof';
 import { checkRateLimit, getClientIp } from '@/lib/rate-limit';
 
 export const runtime = 'nodejs';
@@ -10,6 +15,18 @@ function validDate(value: string) {
   return /^\d{4}-\d{2}-\d{2}$/.test(value);
 }
 
+function withClearedProof(response: NextResponse) {
+  response.cookies.set(BENEFICIARY_PROOF_COOKIE, '', {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'lax',
+    path: '/api/consultations',
+    maxAge: 0,
+  });
+  response.headers.set('Cache-Control', 'private, no-store');
+  return response;
+}
+
 export async function POST(request: Request) {
   const rateLimit = checkRateLimit(
     `beneficiary-verify:${getClientIp(request)}`,
@@ -18,7 +35,7 @@ export async function POST(request: Request) {
   );
 
   if (!rateLimit.allowed) {
-    return NextResponse.json(
+    return withClearedProof(NextResponse.json(
       {
         ok: false,
         code: 'RATE_LIMITED',
@@ -28,21 +45,21 @@ export async function POST(request: Request) {
         status: 429,
         headers: { 'Retry-After': String(rateLimit.retryAfterSeconds) },
       },
-    );
+    ));
   }
 
   const baseUrl = process.env.BENEFICIARY_API_BASE_URL?.trim().replace(/\/$/, '');
   const integrationSecret = process.env.BENEFICIARY_INTEGRATION_SECRET?.trim();
 
   if (!baseUrl || !integrationSecret) {
-    return NextResponse.json(
+    return withClearedProof(NextResponse.json(
       {
         ok: false,
         code: 'NOT_CONFIGURED',
         message: '수급자 자격확인 서비스 연결이 아직 설정되지 않았습니다.',
       },
       { status: 503 },
-    );
+    ));
   }
 
   let body: {
@@ -55,10 +72,10 @@ export async function POST(request: Request) {
   try {
     body = await request.json();
   } catch {
-    return NextResponse.json(
+    return withClearedProof(NextResponse.json(
       { ok: false, code: 'INVALID_REQUEST', message: '입력 정보를 확인해 주세요.' },
       { status: 400 },
-    );
+    ));
   }
 
   const recognitionNumber = String(body.recognitionNumber ?? '').replace(/\D/g, '');
@@ -72,14 +89,14 @@ export async function POST(request: Request) {
     !validDate(validFrom) ||
     !/^\d{6}$/.test(pin)
   ) {
-    return NextResponse.json(
+    return withClearedProof(NextResponse.json(
       {
         ok: false,
         code: 'INVALID_REQUEST',
         message: '인정번호, 생년월일, 유효기간 시작일, 조회 비밀번호를 확인해 주세요.',
       },
       { status: 400 },
-    );
+    ));
   }
 
   try {
@@ -101,28 +118,44 @@ export async function POST(request: Request) {
     const data = await response.json().catch(() => null);
 
     if (!data || typeof data !== 'object') {
-      return NextResponse.json(
+      return withClearedProof(NextResponse.json(
         {
           ok: false,
           code: 'UPSTREAM_ERROR',
           message: '수급자 자격확인 결과를 불러오지 못했습니다.',
         },
         { status: 502 },
+      ));
+    }
+
+    const outgoing = withClearedProof(NextResponse.json(data, {
+      status: response.status,
+    }));
+
+    const result = data as { ok?: boolean; status?: string };
+    if (response.ok && result.ok && result.status === 'verified') {
+      outgoing.cookies.set(
+        BENEFICIARY_PROOF_COOKIE,
+        createBeneficiaryProof({ recognitionNumber, birthDate, validFrom }),
+        {
+          httpOnly: true,
+          secure: process.env.NODE_ENV === 'production',
+          sameSite: 'lax',
+          path: '/api/consultations',
+          maxAge: BENEFICIARY_PROOF_TTL_SECONDS,
+        },
       );
     }
 
-    return NextResponse.json(data, {
-      status: response.status,
-      headers: { 'Cache-Control': 'no-store' },
-    });
+    return outgoing;
   } catch {
-    return NextResponse.json(
+    return withClearedProof(NextResponse.json(
       {
         ok: false,
         code: 'UPSTREAM_UNAVAILABLE',
         message: '수급자 자격확인 서비스에 연결하지 못했습니다.',
       },
       { status: 502 },
-    );
+    ));
   }
 }
