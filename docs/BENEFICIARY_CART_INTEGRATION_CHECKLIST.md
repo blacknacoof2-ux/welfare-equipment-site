@@ -31,7 +31,7 @@
   - 수급자 전용 서버의 최신 등급·가능품목·남은수량 재조회
   - 브라우저가 보낸 품목가능 여부는 신뢰하지 않고 서버에서 신청제품을 다시 매칭
   - 미가능 품목 또는 남은수량 초과 시 최종 접수 차단
-- [ ] LINK-10-BUILD 최종 신청 서버 재검증 build/실기 확인
+- [ ] LINK-10-BUILD 두 프로젝트 최신 재검증 코드 build/실기 확인
 - [ ] LINK-11 관리자 접수 화면에 검증상태/등급/가능수량 표시
 - [x] LINK-12 오류·대기·확인불가·비밀번호 실패 UX 코드 적용
 - [ ] LINK-13 개인정보·Rate Limit·로그 노출 보안점검
@@ -40,10 +40,11 @@
 - [ ] LINK-16 main 반영 및 Vercel 환경변수/도메인 배포
 
 ## 현재 단계
-- `welfare-beneficiary-system` production build PASS: `/api/integration/eligibility/verify` 포함.
-- `welfare-equipment-site` LINK-04 프록시 API build PASS.
-- LINK-05~09 및 LINK-12 UI/클라이언트 검증 코드는 구현 완료.
-- LINK-10 서버 재검증 코드 구현 완료. 다음 게이트는 welfare 최신 브랜치 build 후 두 로컬 서버를 동시에 실행해 실제 조회→최종신청을 확인하는 것.
+- 기존 `welfare-beneficiary-system` build는 `/api/integration/eligibility/verify`까지 PASS.
+- 이후 추가된 `/api/integration/eligibility/revalidate`는 아직 로컬 최신 build 확인 전.
+- 기존 `welfare-equipment-site` build는 LINK-04 프록시 API까지 PASS.
+- 이후 추가된 LINK-05~10 코드는 아직 최신 브랜치 build/실기 확인 전.
+- 다음 게이트는 두 저장소를 최신 pull/build한 뒤 두 로컬 서버를 동시에 실행해 실제 조회→최종신청을 확인하는 것.
 
 ## 대표 실기 시나리오
 1. 성인용보행기 한도 2대, 계약완료 1대, 관리자 체크 → 남은 1대 → 보행기 1개 신청 가능
