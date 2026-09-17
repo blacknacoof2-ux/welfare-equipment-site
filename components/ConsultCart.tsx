@@ -7,6 +7,7 @@ import {
   CONSULT_NEEDS_KEY,
   readConsultCart,
   removeConsultCartItem,
+  writeConsultCart,
   type ConsultCartItem,
 } from '@/lib/consult-cart';
 
@@ -68,6 +69,24 @@ export default function ConsultCart() {
     return acc;
   }, { c15: 0, c9: 0, c6: 0 }), [items]);
 
+  function clearSubmittedData() {
+    setApplicantName('');
+    setBeneficiaryName('');
+    setBirthDate('');
+    setCareNumber('');
+    setValidityStartDate('');
+    setCareGrade('');
+    setPhone('');
+    setAddress('');
+    setAddressDetail('');
+    setRelation('수급자 본인');
+    setNeeds('');
+    setFile(null);
+    setConsent(false);
+    window.localStorage.removeItem(CONSULT_NEEDS_KEY);
+    writeConsultCart([]);
+  }
+
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setMessage('');
@@ -104,12 +123,39 @@ export default function ConsultCart() {
       const data = await response.json().catch(() => ({}));
       if (!response.ok) throw new Error(data.message || '신청을 전송하지 못했습니다.');
       setRequestId(data.requestId || '');
+      clearSubmittedData();
       setStatus('success');
       setMessage('신청이 접수되었습니다. 담당자가 장기요양 수급자 자격 및 급여 가능 품목을 확인한 후 연락드리겠습니다.');
     } catch (error) {
       setStatus('error');
       setMessage(error instanceof Error ? error.message : '신청을 전송하지 못했습니다.');
     }
+  }
+
+  if (status === 'success') {
+    return (
+      <section className="consult-shell">
+        <div className="consult-hero compact">
+          <div>
+            <p className="eyebrow">신청 접수 완료</p>
+            <h1>복지용구 신청이 접수되었습니다</h1>
+            <p>담당자가 수급자 자격과 급여 가능 품목을 확인한 후 연락드립니다.</p>
+          </div>
+        </div>
+
+        <div className="consult-card consult-submit-form beneficiary-verify-panel">
+          <div className="consult-submit-message success">
+            <strong>{message}</strong>
+            {requestId && <><br /><small>접수번호 {requestId}</small></>}
+          </div>
+          <p className="consult-security-note">접수가 완료되어 이 화면에 입력했던 수급자·연락처·주소·첨부파일 정보와 신청목록을 즉시 비웠습니다. 접수번호만 확인해 주세요.</p>
+          <div className="consult-actions">
+            <Link className="button primary" href="/">홈으로</Link>
+            <Link className="button" href="/products">제품 더 보기</Link>
+          </div>
+        </div>
+      </section>
+    );
   }
 
   return (
