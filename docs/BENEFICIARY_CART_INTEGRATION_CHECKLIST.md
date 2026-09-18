@@ -44,7 +44,7 @@
   - 미체크/비대상: `현재 확인된 급여 가능품목에 포함되지 않습니다.`
 - [x] B-12 수량소진 문구 실기 PASS
   - 목욕의자 계약완료 1개 / 남은수량 0개 조건에서 `급여 가능수량을 모두 사용했습니다. (남은수량 0개)` 표시 확인
-- [ ] B-13 처리상태/담당자 메모 저장 후 새로고침 유지 실기 PASS
+- [x] B-13 처리상태/담당자 메모 저장 후 새로고침 유지 실기 PASS
 
 ### C. 수급자 시스템 연동
 - [x] C-01 `welfare-beneficiary-system` 별도 Supabase 유지
@@ -77,9 +77,9 @@
 - [x] E-01 deferred intake 변경 CI PASS 이력 확보
 - [x] E-02 신청 성공 후 개인정보 초기화 변경 반영
 - [x] E-03 주소검색 포함 `welfare-equipment-site` lint/typecheck/build/렌더링 감사 PASS
-  - GitHub Actions CI #335: dependency audit / lint / 상세이미지 감사 / typecheck / build / rendered audits 모두 PASS
+  - GitHub Actions CI #336: dependency audit / lint / 상세이미지 감사 / typecheck / build / rendered audits 모두 PASS
 - [x] E-04 두 저장소 최신 상태 build/lint/typecheck PASS
-  - `welfare-equipment-site`: CI #335 PASS
+  - `welfare-equipment-site`: CI #336 PASS
   - `welfare-beneficiary-system`: CI #4 PASS; 발견된 `LayoutProps` 타입 오류 수정 후 lint/typecheck/build PASS
 - [x] E-05 PR #11 최종 diff 검토 및 ready 전환
   - PR mergeable 확인, 미해결 review thread 없음, draft 해제 완료
@@ -94,7 +94,7 @@
 
 ## 현재 작업 위치
 
-현재 **D-06/D-07 보안 회귀 + E-03/E-04 양쪽 저장소 CI + E-05 PR #11 ready 전환까지 완료**. 남은 로컬 실기 게이트는 **B-13 처리상태/담당자 메모 저장 후 새로고침 유지 확인**이다. 그 다음 `main` 병합(E-06)은 운영 자동배포 영향 확인 후 진행하고, 이후 F 운영 배포 단계로 넘어간다.
+현재 **로컬 실기 게이트 B-13까지 전부 PASS**, 보안 회귀와 양쪽 저장소 CI도 PASS이며 PR #11은 Ready + mergeable 상태다. 다음 게이트는 **E-06 main 병합**이다. 다만 `main` 병합이 Vercel 운영 자동배포를 트리거할 수 있으므로 운영 환경변수와 수급자 시스템 운영 URL 준비 여부를 확인한 뒤 병합한다.
 
 ## 운영 배포 전 참고
 
