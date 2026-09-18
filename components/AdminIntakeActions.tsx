@@ -6,6 +6,24 @@ import { ELIGIBILITY_STATUSES, eligibilityStatusLabel, type EligibilityStatus } 
 import { INTAKE_STATUSES, type IntakeStatus } from '@/lib/intake-store';
 import { intakeStatusMeta } from '@/lib/intake-status';
 
+const VERIFIED_CARE_GRADE_OPTIONS = [
+  { value: '', label: '선택 안 함' },
+  { value: '1', label: '1등급' },
+  { value: '2', label: '2등급' },
+  { value: '3', label: '3등급' },
+  { value: '4', label: '4등급' },
+  { value: '5', label: '5등급' },
+  { value: '인지지원', label: '인지지원등급' },
+] as const;
+
+const VERIFIED_COPAY_RATE_OPTIONS = [
+  { value: '', label: '선택 안 함' },
+  { value: '15', label: '15% · 일반' },
+  { value: '9', label: '9% · 감경' },
+  { value: '6', label: '6% · 감경' },
+  { value: '0', label: '0% · 본인부담 없음' },
+] as const;
+
 export default function AdminIntakeActions({
   intakeId,
   initialStatus,
@@ -29,7 +47,7 @@ export default function AdminIntakeActions({
   const [status, setStatus] = useState<IntakeStatus>(initialStatus);
   const [staffNote, setStaffNote] = useState(initialNote);
   const [eligibilityStatus, setEligibilityStatus] = useState<EligibilityStatus>(initialEligibilityStatus);
-  const [verifiedCareGrade, setVerifiedCareGrade] = useState(initialVerifiedCareGrade ?? '');
+  const [verifiedCareGrade, setVerifiedCareGrade] = useState(initialVerifiedCareGrade === 'COGNITIVE' ? '인지지원' : (initialVerifiedCareGrade ?? ''));
   const [verifiedCopayRate, setVerifiedCopayRate] = useState(initialVerifiedCopayRate == null ? '' : String(initialVerifiedCopayRate));
   const [eligibilityMessage, setEligibilityMessage] = useState(initialEligibilityMessage);
   const [saving, setSaving] = useState(false);
@@ -106,11 +124,15 @@ export default function AdminIntakeActions({
       </label>
       <label className="admin-field">
         <span>관리자 확인 등급</span>
-        <input value={verifiedCareGrade} onChange={(event) => setVerifiedCareGrade(event.target.value)} placeholder="예: 3등급, 인지지원등급" />
+        <select value={verifiedCareGrade} onChange={(event) => setVerifiedCareGrade(event.target.value)}>
+          {VERIFIED_CARE_GRADE_OPTIONS.map((option) => <option key={option.value || 'none'} value={option.value}>{option.label}</option>)}
+        </select>
       </label>
       <label className="admin-field">
         <span>관리자 확인 본인부담률 (%)</span>
-        <input type="number" min="0" max="100" step="0.01" value={verifiedCopayRate} onChange={(event) => setVerifiedCopayRate(event.target.value)} placeholder="예: 15" />
+        <select value={verifiedCopayRate} onChange={(event) => setVerifiedCopayRate(event.target.value)}>
+          {VERIFIED_COPAY_RATE_OPTIONS.map((option) => <option key={option.value || 'none'} value={option.value}>{option.label}</option>)}
+        </select>
       </label>
       <label className="admin-field">
         <span>자격확인 결과 메모</span>
