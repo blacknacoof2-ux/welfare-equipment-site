@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import AdminIntakeActions from '@/components/AdminIntakeActions';
 import { requireAdminSession } from '@/lib/admin-auth';
+import { careGradeLabel, eligibilityStatusLabel, type IntakeWithEligibility } from '@/lib/intake-eligibility';
 import { intakeStatusMeta } from '@/lib/intake-status';
 import { createCertificateSignedUrl, getIntake, isIntakeStoreConfigured } from '@/lib/intake-store';
 
@@ -19,12 +20,14 @@ export default async function AdminIntakeDetailPage({ params }: { params: Promis
   if (!isIntakeStoreConfigured()) notFound();
 
   const { id } = await params;
-  const intake = await getIntake(id).catch(() => null);
-  if (!intake) notFound();
+  const rawIntake = await getIntake(id).catch(() => null);
+  if (!rawIntake) notFound();
+  const intake = rawIntake as IntakeWithEligibility;
 
   const certificateUrl = await createCertificateSignedUrl(intake.certificate_path).catch(() => null);
   const statusMeta = intakeStatusMeta[intake.status];
   const fullAddress = `${intake.address}${intake.address_detail ? ` ${intake.address_detail}` : ''}`;
+  const eligibilityLabel = eligibilityStatusLabel[intake.eligibility_status] ?? intake.eligibility_status;
 
   return (
     <>
@@ -41,11 +44,12 @@ export default async function AdminIntakeDetailPage({ params }: { params: Promis
       <div className="admin-detail-grid">
         <div className="admin-detail-main">
           <section className="admin-panel">
-            <div className="admin-panel-heading"><div><p className="admin-kicker">BENEFICIARY</p><h2>수급자 정보</h2></div></div>
+            <div className="admin-panel-heading"><div><p className="admin-kicker">BENEFICIARY</p><h2>수급자 · 신청 정보</h2></div></div>
             <dl className="admin-info-grid">
               <div><dt>수급자명</dt><dd>{intake.beneficiary_name}</dd></div>
               <div><dt>생년월일</dt><dd>{intake.birth_date}</dd></div>
               <div><dt>장기요양인정번호</dt><dd><code>{intake.care_number}</code></dd></div>
+              <div><dt>신청 시 선택 등급</dt><dd>{careGradeLabel(intake.self_reported_care_grade)}</dd></div>
               <div><dt>유효기간 시작일</dt><dd>{intake.validity_start_date || '-'}</dd></div>
               <div><dt>신청자와의 관계</dt><dd>{intake.relation || '-'}</dd></div>
               <div><dt>신청자명</dt><dd>{intake.applicant_name}</dd></div>
@@ -53,6 +57,31 @@ export default async function AdminIntakeDetailPage({ params }: { params: Promis
               <div className="wide"><dt>주소</dt><dd>{fullAddress}</dd></div>
               <div className="wide"><dt>요청사항</dt><dd>{intake.needs || '별도 요청사항 없음'}</dd></div>
             </dl>
+          </section>
+
+          <section className="admin-panel">
+            <div className="admin-panel-heading"><div><p className="admin-kicker">ELIGIBILITY</p><h2>관리자 자격검증 결과</h2></div></div>
+            <dl className="admin-info-grid">
+              <div><dt>자격상태</dt><dd><strong>{eligibilityLabel}</strong></dd></div>
+              <div><dt>조회 수급자명</dt><dd>{intake.verified_beneficiary_name || '-'}</dd></div>
+              <div><dt>확인 등급</dt><dd>{careGradeLabel(intake.verified_care_grade)}</dd></div>
+              <div><dt>본인부담률</dt><dd>{intake.verified_copay_rate == null ? '-' : `${intake.verified_copay_rate}%`}</dd></div>
+              <div><dt>확인 유효기간</dt><dd>{intake.verified_valid_from || '-'} ~ {intake.verified_valid_to || '-'}</dd></div>
+              <div><dt>최근 조회</dt><dd>{intake.eligibility_checked_at ? dateTime.format(new Date(intake.eligibility_checked_at)) : '아직 조회하지 않음'}</dd></div>
+              <div className="wide"><dt>자격확인 메모</dt><dd>{intake.eligibility_message || '아직 자격확인 결과가 없습니다.'}</dd></div>
+            </dl>
+
+            {intake.verified_eligible_items?.length ? (
+              <div className="admin-product-list">
+                {intake.verified_eligible_items.map((item) => (
+                  <article key={`${item.itemCode}-${item.benefitType}`}>
+                    <div><span>{item.benefitType === 'purchase' ? '구입' : '대여'}</span><strong>{item.itemName}</strong><small>급여품목 코드 {item.itemCode}</small></div>
+                    <div><span>남은수량</span><strong>{item.availableQuantity}{item.unit}</strong></div>
+                    <div><span>계약완료</span><strong>{item.contractedQuantity}{item.unit}</strong></div>
+                  </article>
+                ))}
+              </div>
+            ) : null}
           </section>
 
           <section className="admin-panel">
@@ -68,7 +97,16 @@ export default async function AdminIntakeDetailPage({ params }: { params: Promis
             </div>
           </section>
 
-          <AdminIntakeActions intakeId={intake.id} initialStatus={intake.status} initialNote={intake.staff_note} />
+          <AdminIntakeActions
+            intakeId={intake.id}
+            initialStatus={intake.status}
+            initialNote={intake.staff_note}
+            initialEligibilityStatus={intake.eligibility_status}
+            initialVerifiedCareGrade={intake.verified_care_grade}
+            initialVerifiedCopayRate={intake.verified_copay_rate}
+            initialEligibilityMessage={intake.eligibility_message}
+            initialCheckedAt={intake.eligibility_checked_at}
+          />
         </div>
 
         <aside className="admin-certificate-panel admin-panel">
@@ -93,7 +131,7 @@ export default async function AdminIntakeDetailPage({ params }: { params: Promis
           ) : (
             <div className="admin-empty">
               <strong>인정서 미제출 접수</strong>
-              <p>수급자 정보와 인정번호, 유효기간 시작일로 먼저 접수되었습니다. 필요하면 상담 과정에서 인정서를 추가로 요청하세요.</p>
+              <p>신청은 먼저 접수되며, 자격조회 결과는 관리자 화면에서 별도로 확인합니다.</p>
             </div>
           )}
         </aside>

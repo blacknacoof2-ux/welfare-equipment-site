@@ -1,16 +1,49 @@
 'use client';
 
 import Link from 'next/link';
-import { FormEvent, useEffect, useMemo, useState } from 'react';
+import Script from 'next/script';
+import { FormEvent, useEffect, useMemo, useRef, useState } from 'react';
 import {
   CONSULT_CART_EVENT,
   CONSULT_NEEDS_KEY,
   readConsultCart,
   removeConsultCartItem,
+  writeConsultCart,
   type ConsultCartItem,
 } from '@/lib/consult-cart';
 
 const formatter = new Intl.NumberFormat('ko-KR');
+const CARE_GRADE_OPTIONS = [
+  { value: '1', label: '1등급' },
+  { value: '2', label: '2등급' },
+  { value: '3', label: '3등급' },
+  { value: '4', label: '4등급' },
+  { value: '5', label: '5등급' },
+  { value: 'COGNITIVE', label: '인지지원등급' },
+  { value: 'UNKNOWN', label: '잘 모름' },
+] as const;
+
+type DaumPostcodeResult = {
+  zonecode: string;
+  roadAddress: string;
+  jibunAddress: string;
+};
+
+type DaumPostcodeInstance = {
+  embed: (element: HTMLElement, options?: { autoClose?: boolean }) => void;
+};
+
+type DaumPostcodeConstructor = new (options: {
+  oncomplete: (data: DaumPostcodeResult) => void;
+  width?: string | number;
+  height?: string | number;
+}) => DaumPostcodeInstance;
+
+type DaumWindow = Window & {
+  daum?: {
+    Postcode: DaumPostcodeConstructor;
+  };
+};
 
 function copay(price: number, rate: number) {
   return Math.floor((price * rate) / 10) * 10;
@@ -24,6 +57,7 @@ export default function ConsultCart() {
   const [birthDate, setBirthDate] = useState('');
   const [careNumber, setCareNumber] = useState('');
   const [validityStartDate, setValidityStartDate] = useState('');
+  const [careGrade, setCareGrade] = useState('');
   const [phone, setPhone] = useState('');
   const [address, setAddress] = useState('');
   const [addressDetail, setAddressDetail] = useState('');
@@ -33,6 +67,11 @@ export default function ConsultCart() {
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
   const [message, setMessage] = useState('');
   const [requestId, setRequestId] = useState('');
+  const [postcodeReady, setPostcodeReady] = useState(false);
+  const [postcodeLoadError, setPostcodeLoadError] = useState(false);
+  const [addressSearchOpen, setAddressSearchOpen] = useState(false);
+  const postcodeContainerRef = useRef<HTMLDivElement | null>(null);
+  const addressDetailRef = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
     const sync = () => {
@@ -51,6 +90,38 @@ export default function ConsultCart() {
     };
   }, []);
 
+  useEffect(() => {
+    if (!addressSearchOpen) return;
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setAddressSearchOpen(false);
+    };
+    window.addEventListener('keydown', closeOnEscape);
+    return () => window.removeEventListener('keydown', closeOnEscape);
+  }, [addressSearchOpen]);
+
+  useEffect(() => {
+    if (!addressSearchOpen || !postcodeReady || !postcodeContainerRef.current) return;
+    const daum = (window as DaumWindow).daum;
+    if (!daum?.Postcode) return;
+
+    const container = postcodeContainerRef.current;
+    container.innerHTML = '';
+    const postcode = new daum.Postcode({
+      width: '100%',
+      height: '100%',
+      oncomplete: (data) => {
+        const baseAddress = data.roadAddress || data.jibunAddress;
+        const selectedAddress = data.zonecode
+          ? `[${data.zonecode}] ${baseAddress}`
+          : baseAddress;
+        setAddress(selectedAddress.trim());
+        setAddressSearchOpen(false);
+        window.setTimeout(() => addressDetailRef.current?.focus(), 0);
+      },
+    });
+    postcode.embed(container, { autoClose: false });
+  }, [addressSearchOpen, postcodeReady]);
+
   const totals = useMemo(() => items.reduce((acc, item) => {
     acc.c15 += copay(item.benefitPrice, 0.15);
     acc.c9 += copay(item.benefitPrice, 0.09);
@@ -58,9 +129,29 @@ export default function ConsultCart() {
     return acc;
   }, { c15: 0, c9: 0, c6: 0 }), [items]);
 
+  function clearSubmittedData() {
+    setApplicantName('');
+    setBeneficiaryName('');
+    setBirthDate('');
+    setCareNumber('');
+    setValidityStartDate('');
+    setCareGrade('');
+    setPhone('');
+    setAddress('');
+    setAddressDetail('');
+    setRelation('수급자 본인');
+    setNeeds('');
+    setFile(null);
+    setConsent(false);
+    setAddressSearchOpen(false);
+    window.localStorage.removeItem(CONSULT_NEEDS_KEY);
+    writeConsultCart([]);
+  }
+
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setMessage('');
+
     if (!items.length) {
       setStatus('error');
       setMessage('신청할 제품을 먼저 신청목록에 담아주세요.');
@@ -77,8 +168,9 @@ export default function ConsultCart() {
     formData.set('applicantName', applicantName);
     formData.set('beneficiaryName', beneficiaryName);
     formData.set('birthDate', birthDate);
-    formData.set('careNumber', careNumber);
+    formData.set('careNumber', careNumber.replace(/\D/g, ''));
     formData.set('validityStartDate', validityStartDate);
+    formData.set('careGrade', careGrade);
     formData.set('phone', phone);
     formData.set('address', address);
     formData.set('addressDetail', addressDetail);
@@ -92,23 +184,59 @@ export default function ConsultCart() {
       const data = await response.json().catch(() => ({}));
       if (!response.ok) throw new Error(data.message || '신청을 전송하지 못했습니다.');
       setRequestId(data.requestId || '');
+      clearSubmittedData();
       setStatus('success');
-      setMessage(file
-        ? '접수가 완료되었습니다. 제출하신 정보와 인정서를 확인한 뒤 연락드리겠습니다.'
-        : '접수가 완료되었습니다. 인정서는 없어도 먼저 접수되며, 필요한 경우 담당자가 추후 요청드리겠습니다.');
+      setMessage('신청이 접수되었습니다. 담당자가 장기요양 수급자 자격 및 급여 가능 품목을 확인한 후 연락드리겠습니다.');
     } catch (error) {
       setStatus('error');
       setMessage(error instanceof Error ? error.message : '신청을 전송하지 못했습니다.');
     }
   }
 
+  if (status === 'success') {
+    return (
+      <section className="consult-shell">
+        <div className="consult-hero compact">
+          <div>
+            <p className="eyebrow">신청 접수 완료</p>
+            <h1>복지용구 신청이 접수되었습니다</h1>
+            <p>담당자가 수급자 자격과 급여 가능 품목을 확인한 후 연락드립니다.</p>
+          </div>
+        </div>
+
+        <div className="consult-card consult-submit-form beneficiary-verify-panel">
+          <div className="consult-submit-message success">
+            <strong>{message}</strong>
+            {requestId && <><br /><small>접수번호 {requestId}</small></>}
+          </div>
+          <p className="consult-security-note">접수가 완료되어 이 화면에 입력했던 수급자·연락처·주소·첨부파일 정보와 신청목록을 즉시 비웠습니다. 접수번호만 확인해 주세요.</p>
+          <div className="consult-actions">
+            <Link className="button primary" href="/">홈으로</Link>
+            <Link className="button" href="/products">제품 더 보기</Link>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className="consult-shell">
+      <Script
+        id="daum-postcode"
+        src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"
+        strategy="afterInteractive"
+        onLoad={() => {
+          setPostcodeReady(true);
+          setPostcodeLoadError(false);
+        }}
+        onError={() => setPostcodeLoadError(true)}
+      />
+
       <div className="consult-hero compact">
         <div>
           <p className="eyebrow">복지용구 신청목록</p>
-          <h1>필요한 제품을 담고 한 번에 신청하세요</h1>
-          <p>수급자 기본정보와 장기요양인정번호를 먼저 입력해 접수할 수 있습니다. 인정서는 지금 없어도 추후 제출할 수 있습니다.</p>
+          <h1>신청 정보를 입력하고 먼저 접수하세요</h1>
+          <p>신청 접수 후 아톰케어 담당자가 수급자 자격·본인부담률·급여 가능품목과 남은 수량을 확인해 연락드립니다.</p>
         </div>
       </div>
 
@@ -133,6 +261,10 @@ export default function ConsultCart() {
                     <span>감경 9% {formatter.format(copay(item.benefitPrice, 0.09))}원{item.priceSuffix}</span>
                     <span>감경 6% {formatter.format(copay(item.benefitPrice, 0.06))}원{item.priceSuffix}</span>
                   </div>
+                  <div className="consult-eligibility-badge waiting">
+                    <strong>접수 후 자격 확인</strong>
+                    <span>담당자가 수급자 시스템에서 실제 급여자격과 남은 수량을 확인합니다.</span>
+                  </div>
                   <button type="button" className="text-button" onClick={() => removeConsultCartItem(item.benefitCode)}>삭제</button>
                 </div>
               </article>
@@ -141,44 +273,125 @@ export default function ConsultCart() {
 
           {items.length > 0 && (
             <div className="consult-card consult-total">
-              <span>신청 제품 {items.length}개 · 단순 합산 참고금액</span>
+              <span>신청 제품 {items.length}개</span>
               <strong>일반 15% {formatter.format(totals.c15)}원</strong>
               <small>감경 9% {formatter.format(totals.c9)}원 · 감경 6% {formatter.format(totals.c6)}원</small>
-              <p>※ 실제 급여 가능 여부와 본인부담률은 담당자가 별도로 확인합니다.</p>
+              <p>※ 표시 금액은 참고용이며, 최종 본인부담률과 급여 적용 여부는 접수 후 담당자가 확인합니다.</p>
             </div>
           )}
         </div>
 
-        <form className="consult-card consult-submit-form" onSubmit={submit}>
-          <div>
-            <p className="eyebrow">수급자 신청</p>
-            <h2>수급자 정보로 먼저 접수하기</h2>
-            <p className="muted">장기요양인정번호와 유효기간 시작일을 입력하면 인정서 파일이 없어도 우선 접수할 수 있습니다. 서류가 필요한 경우 담당자가 추후 안내드립니다.</p>
-          </div>
+        <div className="consult-card consult-submit-form beneficiary-verify-panel">
+          <form className="beneficiary-final-form" onSubmit={submit} autoComplete="on">
+            <div className="consult-step-section active">
+              <div className="consult-step-heading">
+                <span className="consult-step-number">1</span>
+                <div>
+                  <p className="eyebrow">신청 정보</p>
+                  <h2>수급자 · 신청자 정보</h2>
+                  <p className="muted">자격조회는 접수 후 담당자가 진행합니다. 조회 비밀번호는 입력하지 않습니다.</p>
+                </div>
+              </div>
 
-          <label><span>수급자 성명</span><input required value={beneficiaryName} onChange={(event) => setBeneficiaryName(event.target.value)} autoComplete="off" /></label>
-          <label><span>수급자 생년월일</span><input required type="date" value={birthDate} onChange={(event) => setBirthDate(event.target.value)} /></label>
-          <label><span>장기요양인정번호</span><input required value={careNumber} onChange={(event) => setCareNumber(event.target.value)} autoCapitalize="characters" autoComplete="off" placeholder="인정번호를 입력해 주세요" /></label>
-          <label><span>유효기간 시작일</span><input required type="date" value={validityStartDate} onChange={(event) => setValidityStartDate(event.target.value)} /></label>
-          <label><span>신청자 이름 <small>(연락받을 분)</small></span><input required value={applicantName} onChange={(event) => setApplicantName(event.target.value)} autoComplete="name" /></label>
-          <label><span>휴대폰 번호</span><input required value={phone} onChange={(event) => setPhone(event.target.value)} inputMode="tel" autoComplete="tel" pattern="01[016789]-?[0-9]{3,4}-?[0-9]{4}" placeholder="010-0000-0000" /></label>
-          <label><span>수급자와의 관계</span><select value={relation} onChange={(event) => setRelation(event.target.value)}><option>수급자 본인</option><option>배우자</option><option>자녀</option><option>보호자·기타 가족</option><option>기타</option></select></label>
-          <label><span>주소</span><input required value={address} onChange={(event) => setAddress(event.target.value)} autoComplete="street-address" placeholder="예: 경기도 고양시 일산서구 ..." /></label>
-          <label><span>상세주소</span><input value={addressDetail} onChange={(event) => setAddressDetail(event.target.value)} placeholder="동·호수, 건물명 등" /></label>
-          <label><span>요청사항</span><textarea rows={4} value={needs} onChange={(event) => setNeeds(event.target.value)} placeholder="예: 목욕의자와 보행기를 같이 신청하고 싶습니다." /></label>
-          <label className="consult-file-field">
-            <span>장기요양인정서 <b className="optional">선택</b></span>
-            <input type="file" accept="image/jpeg,image/png,image/webp,application/pdf" onChange={(event) => setFile(event.target.files?.[0] ?? null)} />
-            <small>지금 없어도 접수 가능합니다. 보유하신 경우 JPG·PNG·WEBP·PDF, 최대 10MB로 첨부해 주세요.</small>
-          </label>
-          <label className="consult-consent"><input type="checkbox" checked={consent} onChange={(event) => setConsent(event.target.checked)} /><span>복지용구 신청 확인을 위한 수급자 성명·생년월일·장기요양인정번호·유효기간 시작일·연락처·주소 및 제출서류의 수집·이용에 동의합니다.</span></label>
+              <label><span>수급자 이름</span><input required value={beneficiaryName} onChange={(event) => setBeneficiaryName(event.target.value)} autoComplete="off" /></label>
+              <label><span>수급자 생년월일</span><input required type="date" value={birthDate} onChange={(event) => setBirthDate(event.target.value)} /></label>
+              <label>
+                <span>장기요양인정번호</span>
+                <input
+                  required
+                  value={careNumber}
+                  onChange={(event) => setCareNumber(event.target.value.replace(/\D/g, '').slice(0, 10))}
+                  inputMode="numeric"
+                  pattern="[0-9]{10}"
+                  maxLength={10}
+                  autoComplete="off"
+                  placeholder="숫자 10자리"
+                />
+              </label>
+              <label><span>유효기간 시작일</span><input required type="date" value={validityStartDate} onChange={(event) => setValidityStartDate(event.target.value)} /></label>
+              <label>
+                <span>장기요양 등급</span>
+                <select required value={careGrade} onChange={(event) => setCareGrade(event.target.value)}>
+                  <option value="">등급을 선택해 주세요</option>
+                  {CARE_GRADE_OPTIONS.map((option) => <option key={option.value} value={option.value}>{option.label}</option>)}
+                </select>
+              </label>
+              <label><span>신청자 이름 <small>(연락받을 분)</small></span><input required value={applicantName} onChange={(event) => setApplicantName(event.target.value)} autoComplete="name" /></label>
+              <label><span>수급자와의 관계</span><select value={relation} onChange={(event) => setRelation(event.target.value)}><option>수급자 본인</option><option>배우자</option><option>자녀</option><option>보호자·기타 가족</option><option>기타</option></select></label>
+            </div>
 
-          <button className="button primary consult-submit-button" type="submit" disabled={status === 'sending' || !items.length}>{status === 'sending' ? '안전하게 접수 중…' : '복지용구 신청 접수하기'}</button>
+            <div className="consult-step-section active">
+              <div className="consult-step-heading compact">
+                <span className="consult-step-number">2</span>
+                <div>
+                  <h3>연락처 · 주소 및 신청</h3>
+                  <p>상담과 배송에 필요한 정보를 입력해 주세요.</p>
+                </div>
+              </div>
 
-          {message && <div className={`consult-submit-message ${status}`}>{message}{requestId && <><br /><small>접수번호 {requestId}</small></>}</div>}
-          <p className="consult-security-note">수급자 개인정보와 인정서 파일은 브라우저 장바구니나 GitHub에 저장하지 않습니다. 운영 서버에 연결된 비공개 접수 저장소로만 전송합니다.</p>
-        </form>
+              <label><span>휴대폰 번호</span><input required value={phone} onChange={(event) => setPhone(event.target.value)} inputMode="tel" autoComplete="tel" pattern="01[016789]-?[0-9]{3,4}-?[0-9]{4}" placeholder="010-0000-0000" /></label>
+              <label className="consult-address-field">
+                <span>주소</span>
+                <div className="consult-address-row">
+                  <input
+                    required
+                    readOnly
+                    value={address}
+                    onClick={() => setAddressSearchOpen(true)}
+                    autoComplete="street-address"
+                    placeholder="주소 찾기를 눌러 검색해 주세요"
+                    aria-describedby="consult-address-help"
+                  />
+                  <button
+                    type="button"
+                    className="button secondary consult-address-search-button"
+                    onClick={() => setAddressSearchOpen(true)}
+                  >
+                    주소 찾기
+                  </button>
+                </div>
+                <small id="consult-address-help" className="consult-address-help">도로명·지번 주소를 검색하면 우편번호와 기본주소가 자동 입력됩니다.</small>
+              </label>
+              <label><span>상세주소</span><input ref={addressDetailRef} value={addressDetail} onChange={(event) => setAddressDetail(event.target.value)} placeholder="동·호수, 건물명 등" /></label>
+              <label><span>요청사항</span><textarea rows={4} value={needs} onChange={(event) => setNeeds(event.target.value)} placeholder="예: 방문 상담 희망시간, 배송 관련 요청사항" /></label>
+              <label className="consult-file-field">
+                <span>장기요양인정서 <b className="optional">선택</b></span>
+                <input type="file" accept="image/jpeg,image/png,image/webp,application/pdf" onChange={(event) => setFile(event.target.files?.[0] ?? null)} />
+                <small>선택사항입니다. 필요하면 JPG·PNG·WEBP·PDF, 최대 10MB로 첨부할 수 있습니다.</small>
+              </label>
+              <label className="consult-consent"><input type="checkbox" checked={consent} onChange={(event) => setConsent(event.target.checked)} /><span>복지용구 신청 확인을 위한 수급자 정보·연락처·주소 및 제출서류의 수집·이용에 동의합니다.</span></label>
+
+              <button className="button primary consult-submit-button" type="submit" disabled={status === 'sending' || items.length === 0}>
+                {status === 'sending' ? '안전하게 접수 중…' : '복지용구 신청하기'}
+              </button>
+
+              {message && <div className={`consult-submit-message ${status}`}>{message}{requestId && <><br /><small>접수번호 {requestId}</small></>}</div>}
+              <p className="consult-security-note">신청 단계에서는 자격검증을 하지 않습니다. 접수 후 관리자가 별도 수급자 시스템에서 확인한 결과를 접수건에 반영합니다.</p>
+            </div>
+          </form>
+        </div>
       </div>
+
+      {addressSearchOpen && (
+        <div className="consult-address-modal" role="dialog" aria-modal="true" aria-labelledby="consult-address-title" onClick={() => setAddressSearchOpen(false)}>
+          <div className="consult-address-dialog" onClick={(event) => event.stopPropagation()}>
+            <div className="consult-address-dialog-heading">
+              <div>
+                <strong id="consult-address-title">주소 찾기</strong>
+                <span>도로명, 건물명 또는 지번으로 검색하세요.</span>
+              </div>
+              <button type="button" aria-label="주소 찾기 닫기" onClick={() => setAddressSearchOpen(false)}>×</button>
+            </div>
+            <div ref={postcodeContainerRef} className="consult-address-embed">
+              <p className={`consult-address-loading${postcodeLoadError ? ' error' : ''}`}>
+                {postcodeLoadError
+                  ? '주소 검색 서비스를 불러오지 못했습니다. 새로고침 후 다시 시도해 주세요.'
+                  : '주소 검색을 불러오는 중입니다…'}
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }

@@ -1,0 +1,105 @@
+# 수급자 자격확인 × 복지용구 신청 운영 체크리스트
+
+## 최종 운영 흐름
+
+`고객 제품 선택 → 고객 신청 접수(PENDING) → 신청화면 개인정보 초기화 → 관리자 로그인 → 관리자 접수건 확인 → 별도 수급자 시스템 서버간 조회 → 등급/본인부담률/급여가능품목/남은수량 반영 → 상담 처리 → 완료`
+
+## 고정 원칙
+
+- `welfare-equipment-site`와 `welfare-beneficiary-system`의 Supabase는 **2개로 분리 유지**한다.
+- 두 DB를 직접 합치거나 브라우저에서 서로의 service/secret key를 사용하지 않는다.
+- 두 시스템은 `BENEFICIARY_INTEGRATION_SECRET`으로 보호된 서버간 API만 사용한다.
+- 고객 신청 단계에서는 자격검증 비밀번호를 요구하지 않는다.
+- 고객이 입력한 장기요양 등급은 `self-reported` 값으로 보존하고, 관리자 조회 결과와 구분한다.
+- Supabase service role/secret, 관리자 비밀번호, integration secret은 저장소에 커밋하지 않는다.
+
+## 체크리스트
+
+### A. 고객 신청
+- [x] A-01 신청목록에서 고객 정보 입력 후 먼저 접수하는 흐름으로 변경
+- [x] A-02 고객 자격조회/PIN 입력 제거
+- [x] A-03 장기요양 등급 선택: 1~5등급, 인지지원등급, 잘 모름
+- [x] A-04 신청 접수 시 `eligibility_status=PENDING` 저장 구조 적용
+- [x] A-05 `welfare-equipment-site` Supabase 접수 저장 연결 및 실제 접수 확인
+- [x] A-06 신청 성공 후 이름/생년월일/인정번호/연락처/주소/첨부/신청목록 화면에서 즉시 초기화
+- [x] A-07 접수 완료 화면에는 접수번호 중심으로 표시
+- [x] A-08 다음/카카오 주소검색 실기 PASS
+  - 주소 클릭 또는 `주소 찾기` 버튼 → 주소검색 레이어 정상 표시
+  - 주소 선택 → 우편번호 + 기본주소 자동입력 PASS
+  - 상세주소 입력 흐름 PASS
+
+### B. 복지용구 관리자
+- [x] B-01 관리자 인증 코드 적용
+- [x] B-02 접수 상세 화면에 고객 자가입력 등급과 자격상태 표시
+- [x] B-03 관리자 상세 화면에 `수급자 시스템에서 자격조회` 기능 코드 적용
+- [x] B-04 조회 결과 저장 필드 적용: 검증성명/등급/본인부담률/유효기간/가능품목/남은수량/확인시각
+- [x] B-05 신청품목과 조회 결과 비교 후 `ELIGIBLE / INELIGIBLE / NEEDS_REVIEW` 판정 코드 적용
+- [x] B-06 관리자가 자격상태/검증등급/본인부담률을 수동 보정할 수 있는 코드 적용
+- [x] B-07 로컬 관리자 로그인 PASS
+- [x] B-08 실제 접수건 관리자 화면 표시 PASS
+- [x] B-09 실제 접수건에서 자격조회 버튼 PASS
+- [x] B-10 실제 조회 후 등급/부담률/가능품목/남은수량 반영 PASS
+- [x] B-11 수량소진 품목과 미체크 품목을 구분하는 판정 코드 구현
+  - 수량소진: `급여 가능수량을 모두 사용했습니다. (남은수량 0개)`
+  - 미체크/비대상: `현재 확인된 급여 가능품목에 포함되지 않습니다.`
+- [x] B-12 수량소진 문구 실기 PASS
+  - 목욕의자 계약완료 1개 / 남은수량 0개 조건에서 `급여 가능수량을 모두 사용했습니다. (남은수량 0개)` 표시 확인
+- [x] B-13 처리상태/담당자 메모 저장 후 새로고침 유지 실기 PASS
+
+### C. 수급자 시스템 연동
+- [x] C-01 `welfare-beneficiary-system` 별도 Supabase 유지
+- [x] C-02 서버간 `/api/integration/eligibility/revalidate` 코드 구현
+- [x] C-03 인정번호 + 생년월일 + 유효기간 시작일 기준 조회 구조 적용
+- [x] C-04 관리자 체크된 급여가능품목과 남은수량 반환 구조 적용
+- [x] C-04A 판매 급여품목 / 대여 급여품목 `전체 체크` UX 실기 PASS
+- [x] C-04B 관리자 체크 + 남은수량 0인 `exhausted` 품목도 서버간 판정용으로 반환
+- [x] C-05 두 프로젝트의 `BENEFICIARY_INTEGRATION_SECRET`을 동일한 비밀값으로 로컬 설정
+- [x] C-06 포트 2000 수급자 시스템 + 포트 5000 복지용구 사이트 동시 실행
+- [x] C-07 서버간 실제 조회 E2E PASS
+
+### D. 데이터/보안
+- [x] D-01 복지용구 Supabase에 deferred eligibility 필드 마이그레이션 적용
+- [x] D-02 고객 신청 첨부 버킷 `consultation-certificates` 확인
+- [x] D-03 첨부 최대 10MB 정책 확인
+- [x] D-04 관리자 세션은 서버 환경변수 기반으로만 검증
+- [x] D-05 브라우저에 Supabase service role / integration secret 미노출 구조
+- [x] D-06 개인정보/서버로그/오류응답/보호경로 재점검 PASS
+  - 관리자 자격조회 API·접수 PATCH 비로그인 요청 `401` 확인
+  - 기존 고객용 `/api/beneficiary/verify` 제거 및 `404` 확인
+  - 신청 API `Cache-Control: private, no-store` 확인
+  - 보안 헤더 및 `X-Powered-By` 비노출 확인
+  - `.env*` 비밀값 Git 제외 구조 확인
+- [x] D-07 관리자 로그인 rate limit 및 접수 rate limit 회귀확인 PASS
+  - 관리자 로그인 11번째 시도 `429`
+  - 고객 접수 7번째 시도 `429`
+
+### E. 코드 품질/CI
+- [x] E-01 deferred intake 변경 CI PASS 이력 확보
+- [x] E-02 신청 성공 후 개인정보 초기화 변경 반영
+- [x] E-03 주소검색 포함 `welfare-equipment-site` lint/typecheck/build/렌더링 감사 PASS
+  - GitHub Actions CI #336: dependency audit / lint / 상세이미지 감사 / typecheck / build / rendered audits 모두 PASS
+- [x] E-04 두 저장소 최신 상태 build/lint/typecheck PASS
+  - `welfare-equipment-site`: CI #336 PASS
+  - `welfare-beneficiary-system`: CI #4 PASS; 발견된 `LayoutProps` 타입 오류 수정 후 lint/typecheck/build PASS
+- [x] E-05 PR #11 최종 diff 검토 및 ready 전환
+  - PR mergeable 확인, 미해결 review thread 없음, draft 해제 완료
+- [ ] E-06 main 병합
+
+### F. 운영 배포
+- [ ] F-01 `welfare-equipment-site` Vercel 운영 환경변수 설정
+- [ ] F-02 `welfare-beneficiary-system` 운영 배포 주소 확보
+- [ ] F-03 수급자 시스템 운영 환경변수 설정
+- [ ] F-04 운영 `BENEFICIARY_API_BASE_URL`에서 `localhost:2000` 제거
+- [ ] F-05 실제 도메인에서 고객신청 → 관리자조회 → 완료 전체 PASS
+
+## 현재 작업 위치
+
+현재 **로컬 실기 게이트 B-13까지 전부 PASS**, 보안 회귀와 양쪽 저장소 CI도 PASS이며 PR #11은 Ready + mergeable 상태다. 다음 게이트는 **E-06 main 병합**이다. 다만 `main` 병합이 Vercel 운영 자동배포를 트리거할 수 있으므로 운영 환경변수와 수급자 시스템 운영 URL 준비 여부를 확인한 뒤 병합한다.
+
+## 운영 배포 전 참고
+
+현재 rate limit 저장소는 프로세스 메모리 기반이다. 로컬/단일 프로세스 회귀검사에는 정상 동작하지만, Vercel 다중 인스턴스 운영에서는 분산 rate limit 저장소 도입 여부를 F 단계에서 별도로 검토한다.
+
+## 비밀값 주의
+
+실제 `SUPABASE_SERVICE_ROLE_KEY`, `SUPABASE_SECRET_KEY`, `ADMIN_PASSWORD`, `ADMIN_SESSION_SECRET`, `BENEFICIARY_INTEGRATION_SECRET` 값은 채팅/스크린샷/저장소에 올리지 않는다.

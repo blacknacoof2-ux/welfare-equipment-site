@@ -1,12 +1,13 @@
 import { randomUUID } from 'node:crypto';
-import { NextResponse } from 'next/server';
-import { createIntake, isIntakeStoreConfigured, type IntakeProduct } from '@/lib/intake-store';
-import { getPriceSuffix, publishedProducts } from '@/lib/products';
+import { NextRequest, NextResponse } from 'next/server';
+import { createIntake, isIntakeStoreConfigured, updateIntake, type IntakeProduct } from '@/lib/intake-store';
+import { getPriceSuffix, publishedProducts, type Product } from '@/lib/products';
 import { checkRateLimit, getClientIp } from '@/lib/rate-limit';
 
 export const runtime = 'nodejs';
 
 const allowedTypes = new Set(['image/jpeg', 'image/png', 'image/webp', 'application/pdf']);
+const allowedCareGrades = new Set(['1', '2', '3', '4', '5', 'COGNITIVE', 'UNKNOWN']);
 const maxFileBytes = 10 * 1024 * 1024;
 const CONSULTATION_LIMIT = 6;
 const CONSULTATION_WINDOW_MS = 10 * 60 * 1000;
@@ -25,28 +26,32 @@ function isValidDate(value: string, allowFuture = true) {
   return allowFuture || date.getTime() <= Date.now();
 }
 
-export async function POST(request: Request) {
+function noStoreJson(body: unknown, status = 200) {
+  return NextResponse.json(body, {
+    status,
+    headers: { 'Cache-Control': 'private, no-store' },
+  });
+}
+
+export async function POST(request: NextRequest) {
   const rateLimit = checkRateLimit(
     `consultation:${getClientIp(request)}`,
     CONSULTATION_LIMIT,
     CONSULTATION_WINDOW_MS,
   );
   if (!rateLimit.allowed) {
-    return NextResponse.json(
+    return noStoreJson(
       { message: '접수 요청이 너무 많습니다. 잠시 후 다시 시도해 주세요.' },
-      {
-        status: 429,
-        headers: { 'Retry-After': String(rateLimit.retryAfterSeconds) },
-      },
+      429,
     );
   }
 
   const webhookUrl = process.env.CONSULTATION_WEBHOOK_URL?.trim() ?? '';
   const storeConfigured = isIntakeStoreConfigured();
   if (!storeConfigured && !webhookUrl) {
-    return NextResponse.json(
+    return noStoreJson(
       { message: '안전한 신청 접수 저장소가 아직 연결되지 않았습니다. 운영 담당자에게 Supabase 또는 CONSULTATION_WEBHOOK_URL 설정이 필요합니다.' },
-      { status: 503 },
+      503,
     );
   }
 
@@ -54,14 +59,15 @@ export async function POST(request: Request) {
   try {
     formData = await request.formData();
   } catch {
-    return NextResponse.json({ message: '제출 형식을 확인해 주세요.' }, { status: 400 });
+    return noStoreJson({ message: '제출 형식을 확인해 주세요.' }, 400);
   }
 
   const applicantName = text(formData, 'applicantName') || text(formData, 'name');
   const beneficiaryName = text(formData, 'beneficiaryName');
   const birthDate = text(formData, 'birthDate');
-  const careNumber = text(formData, 'careNumber').replace(/\s+/g, '');
+  const careNumber = text(formData, 'careNumber').replace(/\D/g, '');
   const validityStartDate = text(formData, 'validityStartDate');
+  const careGrade = text(formData, 'careGrade');
   const phone = text(formData, 'phone');
   const address = text(formData, 'address');
   const addressDetail = text(formData, 'addressDetail');
@@ -71,34 +77,37 @@ export async function POST(request: Request) {
   const certificateValue = formData.get('certificate');
   const certificate = certificateValue instanceof File && certificateValue.size > 0 ? certificateValue : null;
 
-  if (!applicantName || !beneficiaryName || !birthDate || !careNumber || !validityStartDate || !phone || !address || !items) {
-    return NextResponse.json({ message: '수급자 정보, 인정번호, 유효기간 시작일, 연락처, 주소, 신청제품을 확인해 주세요.' }, { status: 400 });
+  if (!applicantName || !beneficiaryName || !birthDate || !careNumber || !validityStartDate || !careGrade || !phone || !address || !items) {
+    return noStoreJson({ message: '수급자 정보, 신청자 정보, 연락처, 주소와 신청제품을 확인해 주세요.' }, 400);
   }
   if (!isValidDate(birthDate, false)) {
-    return NextResponse.json({ message: '수급자 생년월일을 확인해 주세요.' }, { status: 400 });
+    return noStoreJson({ message: '수급자 생년월일을 확인해 주세요.' }, 400);
   }
   if (!isValidDate(validityStartDate, true)) {
-    return NextResponse.json({ message: '장기요양 유효기간 시작일을 확인해 주세요.' }, { status: 400 });
+    return noStoreJson({ message: '장기요양 유효기간 시작일을 확인해 주세요.' }, 400);
   }
-  if (careNumber.length < 6 || careNumber.length > 40 || !/^[0-9A-Za-z가-힣-]+$/.test(careNumber)) {
-    return NextResponse.json({ message: '장기요양인정번호를 다시 확인해 주세요.' }, { status: 400 });
+  if (!/^\d{10}$/.test(careNumber)) {
+    return noStoreJson({ message: '장기요양인정번호 10자리를 다시 확인해 주세요.' }, 400);
+  }
+  if (!allowedCareGrades.has(careGrade)) {
+    return noStoreJson({ message: '장기요양 등급을 다시 선택해 주세요.' }, 400);
   }
 
   const phoneDigits = phone.replace(/\D/g, '');
   if (!/^01[016789]\d{7,8}$/.test(phoneDigits)) {
-    return NextResponse.json({ message: '휴대폰 번호를 확인해 주세요.' }, { status: 400 });
+    return noStoreJson({ message: '휴대폰 번호를 확인해 주세요.' }, 400);
   }
   if (address.length < 5 || address.length > 300 || addressDetail.length > 200) {
-    return NextResponse.json({ message: '주소를 다시 확인해 주세요.' }, { status: 400 });
+    return noStoreJson({ message: '주소를 다시 확인해 주세요.' }, 400);
   }
   if (applicantName.length > 80 || beneficiaryName.length > 80 || relation.length > 50 || needs.length > 2000) {
-    return NextResponse.json({ message: '입력한 신청 정보를 확인해 주세요.' }, { status: 400 });
+    return noStoreJson({ message: '입력한 신청 정보를 확인해 주세요.' }, 400);
   }
   if (certificate && !allowedTypes.has(certificate.type)) {
-    return NextResponse.json({ message: '인정서는 JPG, PNG, WEBP 또는 PDF 파일만 제출할 수 있습니다.' }, { status: 415 });
+    return noStoreJson({ message: '인정서는 JPG, PNG, WEBP 또는 PDF 파일만 제출할 수 있습니다.' }, 415);
   }
   if (certificate && certificate.size > maxFileBytes) {
-    return NextResponse.json({ message: '인정서 파일은 10MB 이하로 제출해 주세요.' }, { status: 413 });
+    return noStoreJson({ message: '인정서 파일은 10MB 이하로 제출해 주세요.' }, 413);
   }
 
   let requestedCodes: string[];
@@ -108,34 +117,31 @@ export async function POST(request: Request) {
     requestedCodes = Array.from(new Set(parsed.map((item) => String(item?.benefitCode ?? '').trim()).filter(Boolean)));
     if (!requestedCodes.length || requestedCodes.length > 30) throw new Error('invalid');
   } catch {
-    return NextResponse.json({ message: '신청목록 정보를 확인해 주세요.' }, { status: 400 });
+    return noStoreJson({ message: '신청목록 정보를 확인해 주세요.' }, 400);
   }
 
   const productsByCode = new Map(publishedProducts.map((product) => [product.benefitCode, product] as const));
   const selectedProducts = requestedCodes.map((code) => productsByCode.get(code));
   if (selectedProducts.some((product) => !product)) {
-    return NextResponse.json({ message: '현재 공개 중인 신청 제품 정보를 다시 확인해 주세요.' }, { status: 400 });
+    return noStoreJson({ message: '현재 공개 중인 신청 제품 정보를 다시 확인해 주세요.' }, 400);
   }
-
-  const intakeItems: IntakeProduct[] = selectedProducts.map((product) => {
-    if (!product) throw new Error('unreachable');
-    return {
-      slug: product.slug,
-      title: product.name === product.model ? product.name : `${product.name} ${product.model}`,
-      manufacturer: product.manufacturer,
-      benefitCode: product.benefitCode,
-      category: product.category,
-      benefitPrice: product.benefitPrice,
-      priceSuffix: getPriceSuffix(product),
-    };
-  });
+  const trustedProducts = selectedProducts.filter((product): product is Product => Boolean(product));
+  const intakeItems: IntakeProduct[] = trustedProducts.map((product) => ({
+    slug: product.slug,
+    title: product.name === product.model ? product.name : `${product.name} ${product.model}`,
+    manufacturer: product.manufacturer,
+    benefitCode: product.benefitCode,
+    category: product.category,
+    benefitPrice: product.benefitPrice,
+    priceSuffix: getPriceSuffix(product),
+  }));
 
   const requestId = `AC-${new Date().toISOString().slice(0, 10).replaceAll('-', '')}-${randomUUID().slice(0, 8).toUpperCase()}`;
   const submittedAt = new Date().toISOString();
 
   if (storeConfigured) {
     try {
-      await createIntake({
+      const stored = await createIntake({
         request_id: requestId,
         submitted_at: submittedAt,
         applicant_name: applicantName,
@@ -150,8 +156,21 @@ export async function POST(request: Request) {
         needs,
         items: intakeItems,
       }, certificate);
+
+      await updateIntake(stored.id, {
+        self_reported_care_grade: careGrade,
+        eligibility_status: 'PENDING',
+        verified_beneficiary_name: null,
+        verified_care_grade: null,
+        verified_copay_rate: null,
+        verified_valid_from: null,
+        verified_valid_to: null,
+        verified_eligible_items: [],
+        eligibility_message: '',
+        eligibility_checked_at: null,
+      } as unknown as Parameters<typeof updateIntake>[1]);
     } catch {
-      return NextResponse.json({ message: '보안 접수 저장소에 신청을 저장하지 못했습니다. 잠시 후 다시 시도해 주세요.' }, { status: 502 });
+      return noStoreJson({ message: '보안 접수 저장소에 신청을 저장하지 못했습니다. 잠시 후 다시 시도해 주세요.' }, 502);
     }
   }
 
@@ -160,17 +179,20 @@ export async function POST(request: Request) {
     outbound.set('requestId', requestId);
     outbound.set('submittedAt', submittedAt);
     outbound.set('status', 'NEW');
+    outbound.set('eligibilityStatus', 'PENDING');
     outbound.set('applicantName', applicantName);
     outbound.set('beneficiaryName', beneficiaryName);
     outbound.set('birthDate', birthDate);
     outbound.set('careNumber', careNumber);
     outbound.set('validityStartDate', validityStartDate);
+    outbound.set('selfReportedCareGrade', careGrade);
     outbound.set('phone', phone);
     outbound.set('address', address);
     outbound.set('addressDetail', addressDetail);
     outbound.set('relation', relation);
     outbound.set('needs', needs);
     outbound.set('items', JSON.stringify(intakeItems));
+    outbound.set('beneficiaryVerified', 'false');
     if (certificate) outbound.set('certificate', certificate, certificate.name);
 
     try {
@@ -181,20 +203,22 @@ export async function POST(request: Request) {
         cache: 'no-store',
       });
       if (!response.ok && !storeConfigured) {
-        return NextResponse.json({ message: '신청 접수처가 요청을 처리하지 못했습니다. 잠시 후 다시 시도해 주세요.' }, { status: 502 });
+        return noStoreJson({ message: '신청 접수처가 요청을 처리하지 못했습니다. 잠시 후 다시 시도해 주세요.' }, 502);
       }
     } catch {
       if (!storeConfigured) {
-        return NextResponse.json({ message: '신청 접수처에 연결하지 못했습니다. 잠시 후 다시 시도해 주세요.' }, { status: 502 });
+        return noStoreJson({ message: '신청 접수처에 연결하지 못했습니다. 잠시 후 다시 시도해 주세요.' }, 502);
       }
     }
   }
 
-  return NextResponse.json({
+  return noStoreJson({
     ok: true,
     requestId,
     status: 'NEW',
+    eligibilityStatus: 'PENDING',
+    beneficiaryVerified: false,
     certificateSubmitted: Boolean(certificate),
-    nextAction: 'ATOMCARE_INTERNAL_REVIEW',
+    nextAction: 'ATOMCARE_ELIGIBILITY_REVIEW',
   });
 }
