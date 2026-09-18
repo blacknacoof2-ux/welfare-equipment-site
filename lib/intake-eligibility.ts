@@ -37,7 +37,7 @@ export const eligibilityStatusLabel: Record<EligibilityStatus, string> = {
 
 export function careGradeLabel(value: string | null | undefined) {
   if (!value) return '-';
-  if (value === 'COGNITIVE') return '인지지원등급';
+  if (value === 'COGNITIVE' || value === '인지지원') return '인지지원등급';
   if (value === 'UNKNOWN') return '잘 모름';
   if (/^[1-5]$/.test(value)) return `${value}등급`;
   return value;
