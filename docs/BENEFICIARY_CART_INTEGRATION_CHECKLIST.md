@@ -36,18 +36,13 @@
 - [x] B-05 신청품목과 조회 결과 비교 후 `ELIGIBLE / INELIGIBLE / NEEDS_REVIEW` 판정 코드 적용
 - [x] B-06 관리자가 자격상태/검증등급/본인부담률을 수동 보정할 수 있는 코드 적용
 - [x] B-07 로컬 관리자 로그인 PASS
-  - `ADMIN_USERNAME` / `ADMIN_PASSWORD` / `ADMIN_SESSION_SECRET` 설정 확인
-  - 포트 5000 서버 재시작 후 `/admin` 로그인 실기 PASS
 - [x] B-08 실제 접수건 관리자 화면 표시 PASS
-  - 접수건 상세 열림
-  - 수급자/신청자/연락처/주소/인정번호/자가입력등급/자격상태/신청제품 표시 확인
 - [x] B-09 실제 접수건에서 자격조회 버튼 PASS
-  - 5000 관리자에서 2000 수급자 시스템 서버간 조회 성공
 - [x] B-10 실제 조회 후 등급/부담률/가능품목/남은수량 반영 PASS
-  - 확인등급 1등급 반영
-  - 본인부담률 15% 반영
-  - 급여가능품목 및 남은수량 반영
-  - 신청품목 `목욕의자`가 가능품목에 없어 `급여불가` 판정 확인
+- [x] B-11 수량소진 품목과 미체크 품목을 구분하는 판정 코드 구현
+  - 수량소진: `급여 가능수량을 모두 사용했습니다. (남은수량 0개)`
+  - 미체크/비대상: `현재 확인된 급여 가능품목에 포함되지 않습니다.`
+- [ ] B-12 수량소진 문구 실기 PASS
 
 ### C. 수급자 시스템 연동
 - [x] C-01 `welfare-beneficiary-system` 별도 Supabase 유지
@@ -55,16 +50,10 @@
 - [x] C-03 인정번호 + 생년월일 + 유효기간 시작일 기준 조회 구조 적용
 - [x] C-04 관리자 체크된 급여가능품목과 남은수량 반환 구조 적용
 - [x] C-04A 판매 급여품목 / 대여 급여품목 `전체 체크` UX 실기 PASS
+- [x] C-04B 관리자 체크 + 남은수량 0인 `exhausted` 품목도 서버간 판정용으로 반환
 - [x] C-05 두 프로젝트의 `BENEFICIARY_INTEGRATION_SECRET`을 동일한 비밀값으로 로컬 설정
-  - 양쪽 `.env.local` 설정 존재 확인 PASS
-  - 동일값 비교 `SAME=True` PASS
-  - secret length 64 확인 PASS
 - [x] C-06 포트 2000 수급자 시스템 + 포트 5000 복지용구 사이트 동시 실행
-  - `http://localhost:2000/admin` 접속 PASS
-  - `http://localhost:5000/admin` 접속 PASS
 - [x] C-07 서버간 실제 조회 E2E PASS
-  - 2000 저장 결과를 5000에서 조회/반영 확인
-  - 등급/본인부담률/급여가능품목/남은수량 전달 확인
 
 ### D. 데이터/보안
 - [x] D-01 복지용구 Supabase에 deferred eligibility 필드 마이그레이션 적용
@@ -85,14 +74,6 @@
 
 ### F. 운영 배포
 - [ ] F-01 `welfare-equipment-site` Vercel 운영 환경변수 설정
-  - `SUPABASE_URL`
-  - `SUPABASE_SERVICE_ROLE_KEY`
-  - `SUPABASE_CERTIFICATE_BUCKET`
-  - `ADMIN_USERNAME`
-  - `ADMIN_PASSWORD`
-  - `ADMIN_SESSION_SECRET`
-  - `BENEFICIARY_API_BASE_URL`
-  - `BENEFICIARY_INTEGRATION_SECRET`
 - [ ] F-02 `welfare-beneficiary-system` 운영 배포 주소 확보
 - [ ] F-03 수급자 시스템 운영 환경변수 설정
 - [ ] F-04 운영 `BENEFICIARY_API_BASE_URL`에서 `localhost:2000` 제거
@@ -100,21 +81,7 @@
 
 ## 현재 작업 위치
 
-현재 **로컬 서버간 자격조회 E2E까지 PASS**. 5000 관리자 화면에서 수급자명/1등급/15%/가능품목/남은수량이 정상 반영되었고, 신청품목 `목욕의자`가 2000의 현재 가능품목에 없어 `급여불가` 판정된 것도 정상 동작으로 확인했다. 다음 게이트는 **D-06/D-07 보안 회귀 → E-03/E-04 build/lint → PR #11 최종검토**다.
-
-## 실기 PASS 순서
-
-1. [x] `welfare-equipment-site` 관리자 환경변수 설정 및 5000 서버 재시작
-2. [x] `/admin` 로그인
-3. [x] `/consult/cart` 주소검색 확인
-4. [x] 테스트 신청 1건 접수
-5. [x] 관리자에서 접수건 열기
-6. [x] 두 프로젝트에 동일한 `BENEFICIARY_INTEGRATION_SECRET` 설정
-7. [x] 포트 2000/5000 동시 실행
-8. [x] 2000 수급자 시스템에서 등급/본인부담률/급여가능품목 저장
-9. [x] 5000 관리자 `수급자 시스템에서 자격조회` 실행
-10. [x] 등급/본인부담률/가능품목/남은수량 확인
-11. [ ] 상담상태 저장 후 전체 운영 흐름 마무리
+현재 **B-11/C-04B 수량소진 원인구분 코드 구현 완료**. 다음 게이트는 **B-12 실기 재조회 PASS**다. 2000에서 목욕의자 계약완료 1개/남은수량 0개 상태를 유지한 채 5000에서 재조회하고 `급여 가능수량을 모두 사용했습니다` 문구가 표시되는지 확인한다.
 
 ## 비밀값 주의
 
