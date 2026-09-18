@@ -51,6 +51,9 @@ function assessProducts(intake: IntakeWithEligibility, eligibleItems: IntakeElig
   const blocked = matches.flatMap(({ item, product, eligibleItem }) => {
     if (!product) return [`${item.title}: 현재 공개 상품 정보를 찾지 못했습니다.`];
     if (!eligibleItem) return [`${item.category}: 현재 확인된 급여 가능품목에 포함되지 않습니다.`];
+    if (eligibleItem.availableQuantity <= 0) {
+      return [`${eligibleItem.itemName}: 급여 가능수량을 모두 사용했습니다. (남은수량 0${eligibleItem.unit})`];
+    }
     const requested = counts.get(eligibleItem.itemCode) ?? 1;
     if (requested > eligibleItem.availableQuantity) {
       return [`${eligibleItem.itemName}: 남은 ${eligibleItem.availableQuantity}${eligibleItem.unit}보다 신청 수량 ${requested}개가 많습니다.`];
