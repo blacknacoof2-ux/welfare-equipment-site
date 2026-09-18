@@ -24,6 +24,16 @@ const VERIFIED_COPAY_RATE_OPTIONS = [
   { value: '0', label: '0% · 본인부담 없음' },
 ] as const;
 
+function formatKstDateTime(value: string) {
+  const timestamp = new Date(value).getTime();
+  if (!Number.isFinite(timestamp)) return value;
+
+  const kst = new Date(timestamp + 9 * 60 * 60 * 1000);
+  const pad = (number: number) => String(number).padStart(2, '0');
+
+  return `${kst.getUTCFullYear()}. ${pad(kst.getUTCMonth() + 1)}. ${pad(kst.getUTCDate())}. ${pad(kst.getUTCHours())}:${pad(kst.getUTCMinutes())}`;
+}
+
 export default function AdminIntakeActions({
   intakeId,
   initialStatus,
@@ -113,7 +123,7 @@ export default function AdminIntakeActions({
         <button type="button" className="admin-primary-button" onClick={verifyEligibility} disabled={checking}>
           {checking ? '수급자 시스템 조회 중…' : '수급자 시스템에서 자격조회'}
         </button>
-        {initialCheckedAt && <span className="admin-save-message">최근 조회 {new Date(initialCheckedAt).toLocaleString('ko-KR')}</span>}
+        {initialCheckedAt && <span className="admin-save-message">최근 조회 {formatKstDateTime(initialCheckedAt)}</span>}
       </div>
 
       <label className="admin-field">
