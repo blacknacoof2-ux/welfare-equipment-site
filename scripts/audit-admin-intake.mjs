@@ -82,7 +82,9 @@ for (const requiredText of [
 if (!application.text.includes('선택사항입니다.')) failures.push('optional certificate guidance missing');
 if (!application.text.includes('접수 후 관리자가')) failures.push('post-submission eligibility guidance missing');
 if (application.text.includes('급여자격 확인</button>')) failures.push('customer eligibility verification button must not be rendered');
-if (application.text.includes('조회 비밀번호')) failures.push('customer lookup PIN must not be rendered');
+if (application.text.includes('name="pin"') || application.text.includes('type="password"')) {
+  failures.push('customer lookup PIN input must not be rendered');
+}
 
 const noStore = await fetchText('/api/consultations', {
   method: 'POST',
