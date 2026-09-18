@@ -1,7 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { FormEvent, useEffect, useMemo, useState } from 'react';
+import Script from 'next/script';
+import { FormEvent, useEffect, useMemo, useRef, useState } from 'react';
 import {
   CONSULT_CART_EVENT,
   CONSULT_NEEDS_KEY,
@@ -21,6 +22,28 @@ const CARE_GRADE_OPTIONS = [
   { value: 'COGNITIVE', label: '인지지원등급' },
   { value: 'UNKNOWN', label: '잘 모름' },
 ] as const;
+
+type DaumPostcodeResult = {
+  zonecode: string;
+  roadAddress: string;
+  jibunAddress: string;
+};
+
+type DaumPostcodeInstance = {
+  embed: (element: HTMLElement, options?: { autoClose?: boolean }) => void;
+};
+
+type DaumPostcodeConstructor = new (options: {
+  oncomplete: (data: DaumPostcodeResult) => void;
+  width?: string | number;
+  height?: string | number;
+}) => DaumPostcodeInstance;
+
+type DaumWindow = Window & {
+  daum?: {
+    Postcode: DaumPostcodeConstructor;
+  };
+};
 
 function copay(price: number, rate: number) {
   return Math.floor((price * rate) / 10) * 10;
@@ -44,6 +67,11 @@ export default function ConsultCart() {
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
   const [message, setMessage] = useState('');
   const [requestId, setRequestId] = useState('');
+  const [postcodeReady, setPostcodeReady] = useState(false);
+  const [postcodeLoadError, setPostcodeLoadError] = useState(false);
+  const [addressSearchOpen, setAddressSearchOpen] = useState(false);
+  const postcodeContainerRef = useRef<HTMLDivElement | null>(null);
+  const addressDetailRef = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
     const sync = () => {
@@ -61,6 +89,38 @@ export default function ConsultCart() {
       window.removeEventListener('storage', sync);
     };
   }, []);
+
+  useEffect(() => {
+    if (!addressSearchOpen) return;
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setAddressSearchOpen(false);
+    };
+    window.addEventListener('keydown', closeOnEscape);
+    return () => window.removeEventListener('keydown', closeOnEscape);
+  }, [addressSearchOpen]);
+
+  useEffect(() => {
+    if (!addressSearchOpen || !postcodeReady || !postcodeContainerRef.current) return;
+    const daum = (window as DaumWindow).daum;
+    if (!daum?.Postcode) return;
+
+    const container = postcodeContainerRef.current;
+    container.innerHTML = '';
+    const postcode = new daum.Postcode({
+      width: '100%',
+      height: '100%',
+      oncomplete: (data) => {
+        const baseAddress = data.roadAddress || data.jibunAddress;
+        const selectedAddress = data.zonecode
+          ? `[${data.zonecode}] ${baseAddress}`
+          : baseAddress;
+        setAddress(selectedAddress.trim());
+        setAddressSearchOpen(false);
+        window.setTimeout(() => addressDetailRef.current?.focus(), 0);
+      },
+    });
+    postcode.embed(container, { autoClose: false });
+  }, [addressSearchOpen, postcodeReady]);
 
   const totals = useMemo(() => items.reduce((acc, item) => {
     acc.c15 += copay(item.benefitPrice, 0.15);
@@ -83,6 +143,7 @@ export default function ConsultCart() {
     setNeeds('');
     setFile(null);
     setConsent(false);
+    setAddressSearchOpen(false);
     window.localStorage.removeItem(CONSULT_NEEDS_KEY);
     writeConsultCart([]);
   }
@@ -160,6 +221,17 @@ export default function ConsultCart() {
 
   return (
     <section className="consult-shell">
+      <Script
+        id="daum-postcode"
+        src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"
+        strategy="afterInteractive"
+        onLoad={() => {
+          setPostcodeReady(true);
+          setPostcodeLoadError(false);
+        }}
+        onError={() => setPostcodeLoadError(true)}
+      />
+
       <div className="consult-hero compact">
         <div>
           <p className="eyebrow">복지용구 신청목록</p>
@@ -258,8 +330,29 @@ export default function ConsultCart() {
               </div>
 
               <label><span>휴대폰 번호</span><input required value={phone} onChange={(event) => setPhone(event.target.value)} inputMode="tel" autoComplete="tel" pattern="01[016789]-?[0-9]{3,4}-?[0-9]{4}" placeholder="010-0000-0000" /></label>
-              <label><span>주소</span><input required value={address} onChange={(event) => setAddress(event.target.value)} autoComplete="street-address" placeholder="예: 경기도 고양시 일산서구 ..." /></label>
-              <label><span>상세주소</span><input value={addressDetail} onChange={(event) => setAddressDetail(event.target.value)} placeholder="동·호수, 건물명 등" /></label>
+              <label className="consult-address-field">
+                <span>주소</span>
+                <div className="consult-address-row">
+                  <input
+                    required
+                    readOnly
+                    value={address}
+                    onClick={() => setAddressSearchOpen(true)}
+                    autoComplete="street-address"
+                    placeholder="주소 찾기를 눌러 검색해 주세요"
+                    aria-describedby="consult-address-help"
+                  />
+                  <button
+                    type="button"
+                    className="button secondary consult-address-search-button"
+                    onClick={() => setAddressSearchOpen(true)}
+                  >
+                    주소 찾기
+                  </button>
+                </div>
+                <small id="consult-address-help" className="consult-address-help">도로명·지번 주소를 검색하면 우편번호와 기본주소가 자동 입력됩니다.</small>
+              </label>
+              <label><span>상세주소</span><input ref={addressDetailRef} value={addressDetail} onChange={(event) => setAddressDetail(event.target.value)} placeholder="동·호수, 건물명 등" /></label>
               <label><span>요청사항</span><textarea rows={4} value={needs} onChange={(event) => setNeeds(event.target.value)} placeholder="예: 방문 상담 희망시간, 배송 관련 요청사항" /></label>
               <label className="consult-file-field">
                 <span>장기요양인정서 <b className="optional">선택</b></span>
@@ -278,6 +371,27 @@ export default function ConsultCart() {
           </form>
         </div>
       </div>
+
+      {addressSearchOpen && (
+        <div className="consult-address-modal" role="dialog" aria-modal="true" aria-labelledby="consult-address-title" onClick={() => setAddressSearchOpen(false)}>
+          <div className="consult-address-dialog" onClick={(event) => event.stopPropagation()}>
+            <div className="consult-address-dialog-heading">
+              <div>
+                <strong id="consult-address-title">주소 찾기</strong>
+                <span>도로명, 건물명 또는 지번으로 검색하세요.</span>
+              </div>
+              <button type="button" aria-label="주소 찾기 닫기" onClick={() => setAddressSearchOpen(false)}>×</button>
+            </div>
+            <div ref={postcodeContainerRef} className="consult-address-embed">
+              <p className={`consult-address-loading${postcodeLoadError ? ' error' : ''}`}>
+                {postcodeLoadError
+                  ? '주소 검색 서비스를 불러오지 못했습니다. 새로고침 후 다시 시도해 주세요.'
+                  : '주소 검색을 불러오는 중입니다…'}
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
