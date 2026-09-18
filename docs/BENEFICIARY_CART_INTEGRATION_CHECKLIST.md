@@ -1,69 +1,108 @@
-# 수급자 자격검증 × 복지용구 신청 연동 체크포인트
+# 수급자 자격확인 × 복지용구 신청 운영 체크리스트
 
-## 완료 기준
-`/consult/cart` 한 화면에서 왼쪽 신청제품을 유지하고, 오른쪽에서 수급자 자격을 확인한 뒤 관리자 확인 결과(등급·본인부담률·가능품목·남은수량)를 검증하여 실제 신청 가능한 제품만 최종 접수할 수 있어야 한다.
+## 최종 운영 흐름
 
-## 원칙
-- `welfare-equipment-site`는 제품 선택·추천·상담·최종 신청 담당
-- `welfare-beneficiary-system`은 수급자 자격·등급·본인부담률·가능품목·남은수량 원장 담당
-- 두 DB는 합치지 않는다.
-- 브라우저에서 Supabase secret 또는 서비스 간 비밀키를 노출하지 않는다.
-- 생년월일·인정번호·조회 비밀번호를 URL query string에 넣지 않는다.
-- 최종 신청 시 브라우저가 보내는 `급여가능` 값을 신뢰하지 않고 서버에서 다시 검증한다.
+`고객 제품 선택 → 고객 신청 접수(PENDING) → 신청화면 개인정보 초기화 → 관리자 로그인 → 관리자 접수건 확인 → 별도 수급자 시스템 서버간 조회 → 등급/본인부담률/급여가능품목/남은수량 반영 → 상담 처리 → 완료`
 
-## 작업 체크포인트
-- [x] LINK-00 안전 작업 브랜치 생성: `feature/beneficiary-cart-verification`
-- [x] LINK-01 기존 `/consult/cart` 신청 흐름 및 필드 감사
-- [x] LINK-02 통합 작업 체크포인트 문서 생성
-- [x] LINK-03 수급자 시스템 서버간 자격조회 API 추가
-- [x] LINK-04 복지용구 사이트 자격조회 프록시 API 추가
-- [x] LINK-05 `/consult/cart` 우측 패널 3단계 UX 코드 적용
-  - 1단계 수급자 자격 확인
-  - 2단계 검증 결과
-  - 3단계 배송·연락정보 및 최종신청
-- [x] LINK-06 자격 확인 결과에 등급·본인부담률 표시 코드 적용
-- [x] LINK-07 왼쪽 신청제품별 급여가능/남은수량 매칭 코드 적용
-- [x] LINK-08 미가능 품목·남은수량 초과 신청 차단(클라이언트 게이트) 코드 적용
-- [x] LINK-09 확인된 본인부담률로 예상 부담금 재계산 코드 적용
-- [x] LINK-10 최종 신청 API 서버 재검증 코드 적용
-  - 최초 자격확인 성공 시 10분 한정 HttpOnly 검증 증표 발급
-  - 최종 신청 시 인정번호·생년월일·유효기간과 증표 일치 재확인
-  - 수급자 전용 서버의 최신 등급·가능품목·남은수량 재조회
-  - 브라우저가 보낸 품목가능 여부는 신뢰하지 않고 서버에서 신청제품을 다시 매칭
-  - 미가능 품목 또는 남은수량 초과 시 최종 접수 차단
-- [ ] LINK-10-BUILD 두 프로젝트 최신 재검증 코드 build/실기 확인
-- [ ] LINK-11 관리자 접수 화면에 검증상태/등급/가능수량 표시
-- [x] LINK-12 오류·대기·확인불가·비밀번호 실패 UX 코드 적용
-- [ ] LINK-13 개인정보·Rate Limit·로그 노출 보안점검
-- [ ] LINK-14 PC/모바일 E2E 실기검증
-- [ ] LINK-15 두 저장소 build/lint 회귀검사
-- [ ] LINK-16 main 반영 및 Vercel 환경변수/도메인 배포
+## 고정 원칙
 
-## 현재 단계
-- 기존 `welfare-beneficiary-system` build는 `/api/integration/eligibility/verify`까지 PASS.
-- 이후 추가된 `/api/integration/eligibility/revalidate`는 아직 로컬 최신 build 확인 전.
-- 기존 `welfare-equipment-site` build는 LINK-04 프록시 API까지 PASS.
-- 이후 추가된 LINK-05~10 코드는 아직 최신 브랜치 build/실기 확인 전.
-- 다음 게이트는 두 저장소를 최신 pull/build한 뒤 두 로컬 서버를 동시에 실행해 실제 조회→최종신청을 확인하는 것.
+- `welfare-equipment-site`와 `welfare-beneficiary-system`의 Supabase는 **2개로 분리 유지**한다.
+- 두 DB를 직접 합치거나 브라우저에서 서로의 service/secret key를 사용하지 않는다.
+- 두 시스템은 `BENEFICIARY_INTEGRATION_SECRET`으로 보호된 서버간 API만 사용한다.
+- 고객 신청 단계에서는 자격검증 비밀번호를 요구하지 않는다.
+- 고객이 입력한 장기요양 등급은 `self-reported` 값으로 보존하고, 관리자 조회 결과와 구분한다.
+- Supabase service role/secret, 관리자 비밀번호, integration secret은 저장소에 커밋하지 않는다.
 
-## 대표 실기 시나리오
-1. 성인용보행기 한도 2대, 계약완료 1대, 관리자 체크 → 남은 1대 → 보행기 1개 신청 가능
-2. 성인용보행기 남은 1대인데 신청목록에 2개 → 최종신청 차단
-3. 욕창예방방석 남은 0개 → 급여불가 표시 및 최종신청 차단/제외 안내
-4. 관리자 미체크 품목 → 급여가능으로 취급하지 않음
-5. 수급자 확인대기 → 제품은 보이되 최종 급여신청 비활성화
-6. 인정번호/생년월일/유효기간/조회 비밀번호 불일치 → 자격검증 실패
-7. 확인완료 수급자 → 등급·본인부담률·가능품목·남은수량 표시
-8. 관리자 수정 후 재조회 → 최신 값 즉시 반영
-9. 자격 확인 후 입력정보 변경 또는 10분 경과 → 최종신청 차단 후 재확인 요구
-10. 브라우저 요청을 변조해 불가품목을 전송 → 서버 재검증에서 차단
+## 체크리스트
 
-## 배포 전 필수 환경변수(값은 저장소에 커밋 금지)
-### welfare-equipment-site
-- `BENEFICIARY_API_BASE_URL`
-- `BENEFICIARY_INTEGRATION_SECRET`
+### A. 고객 신청
+- [x] A-01 신청목록에서 고객 정보 입력 후 먼저 접수하는 흐름으로 변경
+- [x] A-02 고객 자격조회/PIN 입력 제거
+- [x] A-03 장기요양 등급 선택: 1~5등급, 인지지원등급, 잘 모름
+- [x] A-04 신청 접수 시 `eligibility_status=PENDING` 저장 구조 적용
+- [x] A-05 `welfare-equipment-site` Supabase 접수 저장 연결 및 실제 접수 확인
+- [x] A-06 신청 성공 후 이름/생년월일/인정번호/연락처/주소/첨부/신청목록 화면에서 즉시 초기화
+- [x] A-07 접수 완료 화면에는 접수번호 중심으로 표시
+- [ ] A-08 다음/카카오 주소검색 실기 PASS
+  - 코드 구현 완료
+  - 주소 클릭 또는 `주소 찾기` 버튼 → 페이지 내 주소검색 레이어
+  - 선택 시 `[우편번호] 기본주소` 자동 입력
+  - 선택 후 상세주소 자동 포커스
+  - 로컬 브라우저 실기 확인 대기
 
-### welfare-beneficiary-system
-- `BENEFICIARY_INTEGRATION_SECRET`
+### B. 복지용구 관리자
+- [x] B-01 관리자 인증 코드 적용
+- [x] B-02 접수 상세 화면에 고객 자가입력 등급과 자격상태 표시
+- [x] B-03 관리자 상세 화면에 `수급자 시스템에서 자격조회` 기능 코드 적용
+- [x] B-04 조회 결과 저장 필드 적용: 검증성명/등급/본인부담률/유효기간/가능품목/남은수량/확인시각
+- [x] B-05 신청품목과 조회 결과 비교 후 `ELIGIBLE / INELIGIBLE / NEEDS_REVIEW` 판정 코드 적용
+- [x] B-06 관리자가 자격상태/검증등급/본인부담률을 수동 보정할 수 있는 코드 적용
+- [ ] B-07 로컬 관리자 로그인 PASS
+  - `ADMIN_USERNAME` 확인 완료
+  - `ADMIN_PASSWORD` 확인 완료
+  - `ADMIN_SESSION_SECRET` 32자 이상 설정 및 서버 재시작 확인 대기
+- [ ] B-08 실제 접수건 관리자 화면 표시 PASS
+- [ ] B-09 실제 접수건에서 자격조회 버튼 PASS
+- [ ] B-10 실제 조회 후 등급/부담률/가능품목/남은수량 반영 PASS
 
-실제 비밀값은 Vercel/로컬 `.env.local`에만 저장한다.
+### C. 수급자 시스템 연동
+- [x] C-01 `welfare-beneficiary-system` 별도 Supabase 유지
+- [x] C-02 서버간 `/api/integration/eligibility/revalidate` 코드 구현
+- [x] C-03 인정번호 + 생년월일 + 유효기간 시작일 기준 조회 구조 적용
+- [x] C-04 관리자 체크된 급여가능품목과 남은수량 반환 구조 적용
+- [ ] C-05 두 프로젝트의 `BENEFICIARY_INTEGRATION_SECRET`을 동일한 비밀값으로 로컬 설정
+- [ ] C-06 포트 2000 수급자 시스템 + 포트 5000 복지용구 사이트 동시 실행
+- [ ] C-07 서버간 실제 조회 E2E PASS
+
+### D. 데이터/보안
+- [x] D-01 복지용구 Supabase에 deferred eligibility 필드 마이그레이션 적용
+- [x] D-02 고객 신청 첨부 버킷 `consultation-certificates` 확인
+- [x] D-03 첨부 최대 10MB 정책 확인
+- [x] D-04 관리자 세션은 서버 환경변수 기반으로만 검증
+- [x] D-05 브라우저에 Supabase service role / integration secret 미노출 구조
+- [ ] D-06 실기 기준 개인정보/서버로그/오류응답 노출 재점검
+- [ ] D-07 관리자 로그인 rate limit 및 접수 rate limit 회귀확인
+
+### E. 코드 품질/CI
+- [x] E-01 deferred intake 변경 CI PASS 이력 확보
+- [x] E-02 신청 성공 후 개인정보 초기화 변경 반영
+- [ ] E-03 주소검색 변경 lint/typecheck/build/렌더링 감사 PASS
+- [ ] E-04 두 저장소 최신 상태 build/lint PASS
+- [ ] E-05 PR #11 최종 diff 검토 및 ready 전환
+- [ ] E-06 main 병합
+
+### F. 운영 배포
+- [ ] F-01 `welfare-equipment-site` Vercel 운영 환경변수 설정
+  - `SUPABASE_URL`
+  - `SUPABASE_SERVICE_ROLE_KEY`
+  - `SUPABASE_CERTIFICATE_BUCKET`
+  - `ADMIN_USERNAME`
+  - `ADMIN_PASSWORD`
+  - `ADMIN_SESSION_SECRET`
+  - `BENEFICIARY_API_BASE_URL`
+  - `BENEFICIARY_INTEGRATION_SECRET`
+- [ ] F-02 `welfare-beneficiary-system` 운영 배포 주소 확보
+- [ ] F-03 수급자 시스템 운영 환경변수 설정
+- [ ] F-04 운영 `BENEFICIARY_API_BASE_URL`에서 `localhost:2000` 제거
+- [ ] F-05 실제 도메인에서 고객신청 → 관리자조회 → 완료 전체 PASS
+
+## 현재 작업 위치
+
+현재 다음 게이트는 **B-07 관리자 로그인 PASS**와 **A-08 주소검색 실기 PASS**다. 그 다음 `C-05 → C-07` 서버간 자격조회 실기검증으로 진행한다.
+
+## 실기 PASS 순서
+
+1. `welfare-equipment-site` 관리자 `ADMIN_SESSION_SECRET` 설정 후 5000 서버 재시작
+2. `/admin` 로그인
+3. 최신 브랜치 pull 후 `/consult/cart` 주소검색 확인
+4. 테스트 신청 1건 접수
+5. 관리자에서 접수건 열기
+6. 두 프로젝트에 동일한 `BENEFICIARY_INTEGRATION_SECRET` 설정
+7. 포트 2000/5000 동시 실행
+8. 관리자 `수급자 시스템에서 자격조회` 실행
+9. 등급/본인부담률/가능품목/남은수량 확인
+10. 상담상태 저장 후 전체 E2E PASS 처리
+
+## 비밀값 주의
+
+실제 `SUPABASE_SERVICE_ROLE_KEY`, `SUPABASE_SECRET_KEY`, `ADMIN_PASSWORD`, `ADMIN_SESSION_SECRET`, `BENEFICIARY_INTEGRATION_SECRET` 값은 채팅/스크린샷/저장소에 올리지 않는다.
