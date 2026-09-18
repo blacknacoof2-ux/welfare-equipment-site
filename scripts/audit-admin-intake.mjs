@@ -39,6 +39,31 @@ if (!internalCatalogLocation.includes('/admin/login')) {
   failures.push(`internal catalog audit redirect target invalid: ${internalCatalogLocation}`);
 }
 
+const protectedVerify = await fetchText('/api/admin/intakes/00000000-0000-0000-0000-000000000000/verify-eligibility', {
+  method: 'POST',
+});
+if (protectedVerify.response.status !== 401) {
+  failures.push(`unauthenticated eligibility verify returned ${protectedVerify.response.status}, expected 401`);
+}
+
+const protectedPatch = await fetchText('/api/admin/intakes/00000000-0000-0000-0000-000000000000', {
+  method: 'PATCH',
+  headers: { 'content-type': 'application/json' },
+  body: '{}',
+});
+if (protectedPatch.response.status !== 401) {
+  failures.push(`unauthenticated intake patch returned ${protectedPatch.response.status}, expected 401`);
+}
+
+const legacyVerify = await fetchText('/api/beneficiary/verify', {
+  method: 'POST',
+  headers: { 'content-type': 'application/json' },
+  body: '{}',
+});
+if (legacyVerify.response.status !== 404) {
+  failures.push(`legacy customer beneficiary verify endpoint must be removed; got ${legacyVerify.response.status}`);
+}
+
 const application = await fetchText('/consult/cart', { redirect: 'follow' });
 for (const requiredText of [
   '수급자 이름',
@@ -57,12 +82,43 @@ for (const requiredText of [
 if (!application.text.includes('선택사항입니다.')) failures.push('optional certificate guidance missing');
 if (!application.text.includes('접수 후 관리자가')) failures.push('post-submission eligibility guidance missing');
 if (application.text.includes('급여자격 확인</button>')) failures.push('customer eligibility verification button must not be rendered');
+if (application.text.includes('조회 비밀번호')) failures.push('customer lookup PIN must not be rendered');
 
 const noStore = await fetchText('/api/consultations', {
   method: 'POST',
   body: new FormData(),
 });
 if (noStore.response.status !== 503) failures.push(`unconfigured intake endpoint must fail closed with 503, got ${noStore.response.status}`);
+if ((noStore.response.headers.get('cache-control') ?? '') !== 'private, no-store') {
+  failures.push(`intake API cache-control must be private, no-store; got ${noStore.response.headers.get('cache-control') || '(missing)'}`);
+}
+
+const loginRateIp = '198.51.100.201';
+let loginRateStatus = 0;
+for (let i = 0; i < 11; i += 1) {
+  const attempt = await fetchText('/api/admin/login', {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json',
+      'x-forwarded-for': loginRateIp,
+    },
+    body: JSON.stringify({ username: 'audit', password: 'audit' }),
+  });
+  loginRateStatus = attempt.response.status;
+}
+if (loginRateStatus !== 429) failures.push(`admin login rate limit expected 429 on attempt 11, got ${loginRateStatus}`);
+
+const consultationRateIp = '198.51.100.202';
+let consultationRateStatus = 0;
+for (let i = 0; i < 7; i += 1) {
+  const attempt = await fetchText('/api/consultations', {
+    method: 'POST',
+    headers: { 'x-forwarded-for': consultationRateIp },
+    body: new FormData(),
+  });
+  consultationRateStatus = attempt.response.status;
+}
+if (consultationRateStatus !== 429) failures.push(`consultation rate limit expected 429 on attempt 7, got ${consultationRateStatus}`);
 
 console.log(JSON.stringify({
   summary: {
@@ -72,8 +128,13 @@ console.log(JSON.stringify({
     adminLoginStatus: login.response.status,
     unauthenticatedAdminStatus: admin.response.status,
     unauthenticatedInternalCatalogStatus: internalCatalogAudit.response.status,
+    unauthenticatedEligibilityVerifyStatus: protectedVerify.response.status,
+    unauthenticatedIntakePatchStatus: protectedPatch.response.status,
+    legacyCustomerVerifyStatus: legacyVerify.response.status,
     applicationStatus: application.response.status,
     unconfiguredIntakeStatus: noStore.response.status,
+    adminLoginRateLimitStatus: loginRateStatus,
+    consultationRateLimitStatus: consultationRateStatus,
     failures: failures.length,
   },
   failures,
