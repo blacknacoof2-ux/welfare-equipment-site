@@ -1,4 +1,12 @@
+'use client';
+
+import { usePathname } from 'next/navigation';
+
 export default function FloatingPhoneCall() {
+  const pathname = usePathname();
+
+  if (pathname.startsWith('/admin')) return null;
+
   return (
     <aside className="floating-phone-call" aria-label="구매 및 문의 전화">
       <span>구매 및 문의</span>
