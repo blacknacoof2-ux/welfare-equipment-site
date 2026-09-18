@@ -44,6 +44,7 @@
   - 미체크/비대상: `현재 확인된 급여 가능품목에 포함되지 않습니다.`
 - [x] B-12 수량소진 문구 실기 PASS
   - 목욕의자 계약완료 1개 / 남은수량 0개 조건에서 `급여 가능수량을 모두 사용했습니다. (남은수량 0개)` 표시 확인
+- [ ] B-13 처리상태/담당자 메모 저장 후 새로고침 유지 실기 PASS
 
 ### C. 수급자 시스템 연동
 - [x] C-01 `welfare-beneficiary-system` 별도 Supabase 유지
@@ -62,15 +63,26 @@
 - [x] D-03 첨부 최대 10MB 정책 확인
 - [x] D-04 관리자 세션은 서버 환경변수 기반으로만 검증
 - [x] D-05 브라우저에 Supabase service role / integration secret 미노출 구조
-- [ ] D-06 실기 기준 개인정보/서버로그/오류응답 노출 재점검
-- [ ] D-07 관리자 로그인 rate limit 및 접수 rate limit 회귀확인
+- [x] D-06 개인정보/서버로그/오류응답/보호경로 재점검 PASS
+  - 관리자 자격조회 API·접수 PATCH 비로그인 요청 `401` 확인
+  - 기존 고객용 `/api/beneficiary/verify` 제거 및 `404` 확인
+  - 신청 API `Cache-Control: private, no-store` 확인
+  - 보안 헤더 및 `X-Powered-By` 비노출 확인
+  - `.env*` 비밀값 Git 제외 구조 확인
+- [x] D-07 관리자 로그인 rate limit 및 접수 rate limit 회귀확인 PASS
+  - 관리자 로그인 11번째 시도 `429`
+  - 고객 접수 7번째 시도 `429`
 
 ### E. 코드 품질/CI
 - [x] E-01 deferred intake 변경 CI PASS 이력 확보
 - [x] E-02 신청 성공 후 개인정보 초기화 변경 반영
-- [ ] E-03 주소검색 변경 lint/typecheck/build/렌더링 감사 PASS
-- [ ] E-04 두 저장소 최신 상태 build/lint PASS
-- [ ] E-05 PR #11 최종 diff 검토 및 ready 전환
+- [x] E-03 주소검색 포함 `welfare-equipment-site` lint/typecheck/build/렌더링 감사 PASS
+  - GitHub Actions CI #335: dependency audit / lint / 상세이미지 감사 / typecheck / build / rendered audits 모두 PASS
+- [x] E-04 두 저장소 최신 상태 build/lint/typecheck PASS
+  - `welfare-equipment-site`: CI #335 PASS
+  - `welfare-beneficiary-system`: CI #4 PASS; 발견된 `LayoutProps` 타입 오류 수정 후 lint/typecheck/build PASS
+- [x] E-05 PR #11 최종 diff 검토 및 ready 전환
+  - PR mergeable 확인, 미해결 review thread 없음, draft 해제 완료
 - [ ] E-06 main 병합
 
 ### F. 운영 배포
@@ -82,7 +94,11 @@
 
 ## 현재 작업 위치
 
-현재 **B-12 수량소진 문구 실기 PASS까지 완료**. 다음 게이트는 **5000 관리자 처리상태/담당자 메모 저장 및 새로고침 유지 확인**, 이후 D-06/D-07 보안·로그 점검과 E-03/E-04 build/lint 감사다.
+현재 **D-06/D-07 보안 회귀 + E-03/E-04 양쪽 저장소 CI + E-05 PR #11 ready 전환까지 완료**. 남은 로컬 실기 게이트는 **B-13 처리상태/담당자 메모 저장 후 새로고침 유지 확인**이다. 그 다음 `main` 병합(E-06)은 운영 자동배포 영향 확인 후 진행하고, 이후 F 운영 배포 단계로 넘어간다.
+
+## 운영 배포 전 참고
+
+현재 rate limit 저장소는 프로세스 메모리 기반이다. 로컬/단일 프로세스 회귀검사에는 정상 동작하지만, Vercel 다중 인스턴스 운영에서는 분산 rate limit 저장소 도입 여부를 F 단계에서 별도로 검토한다.
 
 ## 비밀값 주의
 
