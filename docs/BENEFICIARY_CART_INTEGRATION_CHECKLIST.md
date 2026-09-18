@@ -49,7 +49,10 @@
 - [x] C-02 서버간 `/api/integration/eligibility/revalidate` 코드 구현
 - [x] C-03 인정번호 + 생년월일 + 유효기간 시작일 기준 조회 구조 적용
 - [x] C-04 관리자 체크된 급여가능품목과 남은수량 반환 구조 적용
-- [ ] C-05 두 프로젝트의 `BENEFICIARY_INTEGRATION_SECRET`을 동일한 비밀값으로 로컬 설정
+- [x] C-05 두 프로젝트의 `BENEFICIARY_INTEGRATION_SECRET`을 동일한 비밀값으로 로컬 설정
+  - 양쪽 `.env.local` 설정 존재 확인 PASS
+  - 동일값 비교 `SAME=True` PASS
+  - secret length 64 확인 PASS
 - [ ] C-06 포트 2000 수급자 시스템 + 포트 5000 복지용구 사이트 동시 실행
 - [ ] C-07 서버간 실제 조회 E2E PASS
 
@@ -87,7 +90,7 @@
 
 ## 현재 작업 위치
 
-현재 **B-07 관리자 로그인 PASS + A-08 주소검색 실기 PASS + B-08 실제 접수건 관리자 표시 PASS 완료**. 다음 게이트는 **C-05 두 프로젝트의 `BENEFICIARY_INTEGRATION_SECRET` 동일값 설정**이다. 그 다음 C-06 포트 2000/5000 동시 실행 후 B-09/B-10 자격조회 실기검증으로 진행한다.
+현재 **B-07 관리자 로그인 PASS + A-08 주소검색 실기 PASS + B-08 실제 접수건 관리자 표시 PASS + C-05 연동 Secret 동일값 설정 PASS 완료**. 다음 게이트는 **C-06 포트 2000/5000 동시 실행**이다. 이후 B-09/B-10 자격조회 실기검증으로 진행한다.
 
 ## 실기 PASS 순서
 
@@ -96,7 +99,7 @@
 3. [x] `/consult/cart` 주소검색 확인
 4. [x] 테스트 신청 1건 접수
 5. [x] 관리자에서 접수건 열기
-6. [ ] 두 프로젝트에 동일한 `BENEFICIARY_INTEGRATION_SECRET` 설정
+6. [x] 두 프로젝트에 동일한 `BENEFICIARY_INTEGRATION_SECRET` 설정
 7. [ ] 포트 2000/5000 동시 실행
 8. [ ] 관리자 `수급자 시스템에서 자격조회` 실행
 9. [ ] 등급/본인부담률/가능품목/남은수량 확인
