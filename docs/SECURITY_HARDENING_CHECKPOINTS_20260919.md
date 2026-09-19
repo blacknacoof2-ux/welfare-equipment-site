@@ -6,11 +6,11 @@
 - 원칙: 체크는 실제 코드/CI/운영 검증 완료 후에만 `[x]`로 변경한다.
 
 ## P0 — 운영 화면·배포 게이트
-- [ ] P0-01 관리자(`/admin`)에서 공개 Header/Footer/전화/신청목록/제품비교 UI 완전 분리
-- [ ] P0-02 관리자 목록 시간대 `Asia/Seoul` 명시 및 상세 화면과 일치
-- [ ] P0-03 관리자 비로그인·로그인·상세 화면 회귀 테스트
-- [ ] P0-04 CI: dependency audit / lint / image audits / typecheck / build / rendered audits PASS
-- [ ] P0-05 Vercel Preview 또는 Production 후보 배포 READY 확인
+- [x] P0-01 관리자(`/admin`)에서 공개 Header/Footer/전화/신청목록/제품비교 UI 완전 분리 — rendered audit PASS
+- [ ] P0-02 관리자 목록 시간대 `Asia/Seoul` 명시 및 상세 화면과 일치 — 코드/CI PASS, 실제 데이터 화면 검증 대기
+- [ ] P0-03 관리자 비로그인·로그인·상세 화면 회귀 테스트 — 비로그인/로그인 렌더 감사 PASS, 실제 로그인 상세 검증 대기
+- [x] P0-04 CI: dependency audit / lint / image audits / typecheck / build / rendered audits PASS — CI #346
+- [x] P0-05 Vercel Preview 또는 Production 후보 배포 READY 확인 — `c808fc9` Preview READY
 - [ ] P0-06 GitHub `main` 보호 규칙 적용(PR + CI 필수, force-push/삭제 금지) — 저장소 관리자 설정 필요
 - [ ] P0-07 `CONSULTATION_WEBHOOK_URL` 사용 여부 확인; 미사용이면 Production/Preview에서 제거
 
