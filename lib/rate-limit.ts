@@ -51,9 +51,17 @@ function distributedConfig() {
   };
 }
 
+function firstForwardedIp(value: string | null) {
+  return value?.split(',')[0]?.trim() || '';
+}
+
 export function getClientIp(request: Request) {
-  const forwarded = request.headers.get('x-forwarded-for');
-  if (forwarded) return forwarded.split(',')[0]?.trim() || 'unknown';
+  const vercelForwarded = firstForwardedIp(request.headers.get('x-vercel-forwarded-for'));
+  if (vercelForwarded) return vercelForwarded;
+
+  const forwarded = firstForwardedIp(request.headers.get('x-forwarded-for'));
+  if (forwarded) return forwarded;
+
   return request.headers.get('x-real-ip')?.trim() || 'unknown';
 }
 
