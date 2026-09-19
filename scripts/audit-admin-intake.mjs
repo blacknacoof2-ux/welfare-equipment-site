@@ -51,6 +51,9 @@ const protectedVerify = await fetchText('/api/admin/intakes/00000000-0000-0000-0
 if (protectedVerify.response.status !== 401) {
   failures.push(`unauthenticated eligibility verify returned ${protectedVerify.response.status}, expected 401`);
 }
+if ((protectedVerify.response.headers.get('cache-control') ?? '') !== 'private, no-store') {
+  failures.push(`eligibility verify cache-control must be private, no-store; got ${protectedVerify.response.headers.get('cache-control') || '(missing)'}`);
+}
 
 const protectedPatch = await fetchText('/api/admin/intakes/00000000-0000-0000-0000-000000000000', {
   method: 'PATCH',
@@ -59,6 +62,9 @@ const protectedPatch = await fetchText('/api/admin/intakes/00000000-0000-0000-00
 });
 if (protectedPatch.response.status !== 401) {
   failures.push(`unauthenticated intake patch returned ${protectedPatch.response.status}, expected 401`);
+}
+if ((protectedPatch.response.headers.get('cache-control') ?? '') !== 'private, no-store') {
+  failures.push(`intake patch cache-control must be private, no-store; got ${protectedPatch.response.headers.get('cache-control') || '(missing)'}`);
 }
 
 const legacyVerify = await fetchText('/api/beneficiary/verify', {
@@ -138,7 +144,9 @@ console.log(JSON.stringify({
     unauthenticatedAdminStatus: admin.response.status,
     unauthenticatedInternalCatalogStatus: internalCatalogAudit.response.status,
     unauthenticatedEligibilityVerifyStatus: protectedVerify.response.status,
+    eligibilityVerifyNoStore: protectedVerify.response.headers.get('cache-control') === 'private, no-store',
     unauthenticatedIntakePatchStatus: protectedPatch.response.status,
+    intakePatchNoStore: protectedPatch.response.headers.get('cache-control') === 'private, no-store',
     legacyCustomerVerifyStatus: legacyVerify.response.status,
     applicationStatus: application.response.status,
     unconfiguredIntakeStatus: noStore.response.status,
