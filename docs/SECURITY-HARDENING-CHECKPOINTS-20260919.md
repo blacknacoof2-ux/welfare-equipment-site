@@ -11,8 +11,8 @@
 - [x] P0-03 관리자 로그인/상세 실제 브라우저 회귀 — Preview 로그인/목록/상세 진입 및 새로고침 후 세션 유지 PASS; DevTools Console에 React `#418`, hydration, uncaught 오류 재발 없음
 - [x] P0-04 CI dependency audit / lint / image audit / typecheck / build / rendered audits PASS — CI #362, head `e055242`
 - [x] P0-05 Vercel Preview READY — 최신 보안 브랜치 Preview READY; 브라우저 검증 시점 기준 Preview deployment `dpl_6NR5Vau6DEyfdVazfaxGerTVm4ss` 최근 1시간 error/warning/fatal runtime 로그 0건
-- [ ] P0-06 GitHub `main` 보호 규칙 적용(PR + CI 필수, force-push/삭제 금지) — 저장소 관리자 설정 필요
-- [ ] P0-07 `CONSULTATION_WEBHOOK_URL` 사용 여부 확인 — 미사용이면 제거
+- [x] P0-06 GitHub `main` 보호 규칙 적용 — Ruleset `Protect main` active; default branch 대상, deletion/force-push 차단, PR 필수, required check `verify`, branch up-to-date 필수, bypass 없음
+- [ ] P0-07 `CONSULTATION_WEBHOOK_URL` 사용 여부 확인 — Vercel Production+Preview에 값 존재 확인. 코드에서 실제 fallback/복제 전송 경로로 사용 중이므로 외부 수신처 사용 의도 확인 후 미사용이면 제거
 - [ ] P0-08 GitHub 저장소 공개 여부 결정 — 현재 `welfare-equipment-site`는 Public. `.env`, `.env.local`, `.env.production`, `.env.development`, `.env.preview` 커밋 이력은 조회 결과 0건이고 현재 `.env.example`의 관리자 아이디 예시도 제거함. 운영/내부 코드 비공개가 원칙이면 Private 전환 검토; 전환 전 Vercel/GitHub 연동 영향 확인 필요
 
 ## P1
