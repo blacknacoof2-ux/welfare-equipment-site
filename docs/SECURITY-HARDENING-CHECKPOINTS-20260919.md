@@ -12,7 +12,7 @@
 - [x] P0-04 CI dependency audit / lint / image audit / typecheck / build / rendered audits PASS — CI #362, head `e055242`
 - [x] P0-05 Vercel Preview READY — 최신 보안 브랜치 Preview READY; 브라우저 검증 시점 기준 Preview deployment `dpl_6NR5Vau6DEyfdVazfaxGerTVm4ss` 최근 1시간 error/warning/fatal runtime 로그 0건
 - [x] P0-06 GitHub `main` 보호 규칙 적용 — Ruleset `Protect main` active; default branch 대상, deletion/force-push 차단, PR 필수, required check `verify`, branch up-to-date 필수, bypass 없음
-- [ ] P0-07 `CONSULTATION_WEBHOOK_URL` 사용 여부 확인 — Vercel에서 Preview 범위 해제, Production 유지 완료. 새 Preview 재배포 후 webhook 없이 테스트 접수 1건이 Supabase/관리자에 정상 저장되는지 검증 대기
+- [x] P0-07 `CONSULTATION_WEBHOOK_URL` Preview 제거 검증 — Preview 범위에서 webhook 해제 후 `TEST_WEBHOOK_OFF_0921` 접수 성공; Supabase `AC-20260921-51E2C412`, status `NEW`, eligibility `PENDING` 저장 확인; 관리자 목록 표시 PASS; 해당 Preview 최근 30분 error/warning/fatal 0건. Production webhook 제거는 운영 반영 단계에서 진행 가능
 - [ ] P0-08 GitHub 저장소 공개 여부 결정 — 현재 `welfare-equipment-site`는 Public. `.env`, `.env.local`, `.env.production`, `.env.development`, `.env.preview` 커밋 이력은 조회 결과 0건이고 현재 `.env.example`의 관리자 아이디 예시도 제거함. 운영/내부 코드 비공개가 원칙이면 Private 전환 검토; 전환 전 Vercel/GitHub 연동 영향 확인 필요
 
 ## P1
