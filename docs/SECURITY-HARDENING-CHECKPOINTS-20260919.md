@@ -22,6 +22,7 @@
 - [x] P1-04 `consultations` anon/authenticated 권한 revoke — 운영 Supabase 적용 및 재확인
 - [x] P1-05 보호된 관리자 API `private, no-store` + 비인증 401 감사 PASS
 - [x] P1-06 신청 생년월일/유효기간 날짜 검증 강화 — 존재하지 않는 달력 날짜 거부, 생년월일 미래 날짜 거부
+- [x] P1-07 관리자 자격조회 결과에서 현재 사용 가능한 복지용구만 표시 — Preview 실제 브라우저에서 27개 원본 중 `availableQuantity > 0`인 23개만 표시 확인; 소진 4개(목욕의자, 이동변기, 경사로(실외용), 수동침대)는 목록 제외, 신청 품목 소진 경고는 유지
 
 ## P2
 - [ ] P2-01 수급자 시스템 승인 transaction/RPC 원자화 — 별도 수급자 Supabase 직접 검증 후 진행
