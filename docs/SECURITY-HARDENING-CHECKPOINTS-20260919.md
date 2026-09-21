@@ -6,11 +6,11 @@
 - 원칙: 실제 코드/CI/운영 검증 완료 후에만 `[x]`로 변경한다.
 
 ## P0
-- [x] P0-01 `/admin` 공개 Header/Footer/전화/비교/신청 플로팅 분리 — rendered audit PASS
-- [ ] P0-02 관리자 목록/상세 한국시간 표시 실제 브라우저 검증 — Preview 로그인 환경변수 불일치로 대기
-- [ ] P0-03 관리자 로그인/상세 실제 브라우저 회귀 — Preview `/api/admin/login` 401 반복, 같은 시각 Production 로그인 200 확인. Preview `ADMIN_USERNAME`/`ADMIN_PASSWORD` 환경값 정합성 확인 후 재검증
-- [x] P0-04 CI dependency audit / lint / image audit / typecheck / build / rendered audits PASS — CI #361, head `50461c8`
-- [x] P0-05 Vercel Preview READY — `50461c8` / `dpl_AqeTZm1x7zeaugA6XXE53JErAovg`; error/warning/fatal runtime 로그 0건
+- [x] P0-01 `/admin` 공개 Header/Footer/전화/비교/신청 플로팅 분리 — Preview 실로그인 `/admin` 화면 및 rendered audit PASS
+- [x] P0-02 관리자 목록/상세 한국시간 표시 실제 브라우저 검증 — 목록/상세 모두 `2026. 09. 18. 09:47`; 운영 Supabase `submitted_at=2026-09-18 00:47:23.258+00`, Asia/Seoul 변환 `09:47:23.258`와 일치
+- [ ] P0-03 관리자 로그인/상세 실제 브라우저 회귀 — Preview 로그인/목록/상세 진입 PASS; F5 새로고침 및 DevTools Console React `#418` 재발 여부 최종 확인 대기
+- [x] P0-04 CI dependency audit / lint / image audit / typecheck / build / rendered audits PASS — CI #362, head `e055242`
+- [x] P0-05 Vercel Preview READY — 최신 보안 브랜치 Preview READY; error/warning/fatal runtime 로그 0건
 - [ ] P0-06 GitHub `main` 보호 규칙 적용(PR + CI 필수, force-push/삭제 금지) — 저장소 관리자 설정 필요
 - [ ] P0-07 `CONSULTATION_WEBHOOK_URL` 사용 여부 확인 — 미사용이면 제거
 - [ ] P0-08 GitHub 저장소 공개 여부 결정 — 현재 `welfare-equipment-site`는 Public. `.env`, `.env.local`, `.env.production`, `.env.development`, `.env.preview` 커밋 이력은 조회 결과 0건이고 현재 `.env.example`의 관리자 아이디 예시도 제거함. 운영/내부 코드 비공개가 원칙이면 Private 전환 검토; 전환 전 Vercel/GitHub 연동 영향 확인 필요
