@@ -1,16 +1,17 @@
 import { randomUUID } from 'node:crypto';
 import { NextRequest, NextResponse } from 'next/server';
-import { createIntake, isIntakeStoreConfigured, updateIntake, type IntakeProduct } from '@/lib/intake-store';
+import { createIntake, isIntakeStoreConfigured, type IntakeProduct } from '@/lib/intake-store';
 import { getPriceSuffix, publishedProducts, type Product } from '@/lib/products';
-import { checkRateLimit, getClientIp } from '@/lib/rate-limit';
+import { checkPersistentRateLimit, getClientIp } from '@/lib/rate-limit';
 
 export const runtime = 'nodejs';
 
 const allowedTypes = new Set(['image/jpeg', 'image/png', 'image/webp', 'application/pdf']);
 const allowedCareGrades = new Set(['1', '2', '3', '4', '5', 'COGNITIVE', 'UNKNOWN']);
-const maxFileBytes = 10 * 1024 * 1024;
+const maxFileBytes = 4 * 1024 * 1024;
 const CONSULTATION_LIMIT = 6;
 const CONSULTATION_WINDOW_MS = 10 * 60 * 1000;
+const OUTBOUND_TIMEOUT_MS = 8_000;
 
 function text(formData: FormData, key: string) {
   const value = formData.get(key);
@@ -18,23 +19,57 @@ function text(formData: FormData, key: string) {
 }
 
 function isValidDate(value: string, allowFuture = true) {
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;
-  const date = new Date(`${value}T00:00:00Z`);
-  if (Number.isNaN(date.getTime())) return false;
-  const year = Number(value.slice(0, 4));
-  if (year < 1900) return false;
+  const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value);
+  if (!match) return false;
+
+  const year = Number(match[1]);
+  const month = Number(match[2]);
+  const day = Number(match[3]);
+  if (year < 1900 || month < 1 || month > 12 || day < 1 || day > 31) return false;
+
+  const date = new Date(Date.UTC(year, month - 1, day));
+  if (
+    date.getUTCFullYear() !== year ||
+    date.getUTCMonth() !== month - 1 ||
+    date.getUTCDate() !== day
+  ) {
+    return false;
+  }
+
   return allowFuture || date.getTime() <= Date.now();
 }
 
-function noStoreJson(body: unknown, status = 200) {
+function noStoreJson(body: unknown, status = 200, headers: HeadersInit = {}) {
   return NextResponse.json(body, {
     status,
-    headers: { 'Cache-Control': 'private, no-store' },
+    headers: {
+      'Cache-Control': 'private, no-store',
+      ...headers,
+    },
   });
 }
 
+async function certificateMatchesDeclaredType(file: File) {
+  const bytes = new Uint8Array(await file.slice(0, 16).arrayBuffer());
+  const startsWith = (...signature: number[]) => signature.every((value, index) => bytes[index] === value);
+
+  if (file.type === 'image/jpeg') return startsWith(0xff, 0xd8, 0xff);
+  if (file.type === 'image/png') return startsWith(0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a);
+  if (file.type === 'application/pdf') return startsWith(0x25, 0x50, 0x44, 0x46, 0x2d);
+  if (file.type === 'image/webp') {
+    return (
+      startsWith(0x52, 0x49, 0x46, 0x46) &&
+      bytes[8] === 0x57 &&
+      bytes[9] === 0x45 &&
+      bytes[10] === 0x42 &&
+      bytes[11] === 0x50
+    );
+  }
+  return false;
+}
+
 export async function POST(request: NextRequest) {
-  const rateLimit = checkRateLimit(
+  const rateLimit = await checkPersistentRateLimit(
     `consultation:${getClientIp(request)}`,
     CONSULTATION_LIMIT,
     CONSULTATION_WINDOW_MS,
@@ -43,6 +78,7 @@ export async function POST(request: NextRequest) {
     return noStoreJson(
       { message: '접수 요청이 너무 많습니다. 잠시 후 다시 시도해 주세요.' },
       429,
+      { 'Retry-After': String(rateLimit.retryAfterSeconds) },
     );
   }
 
@@ -107,7 +143,18 @@ export async function POST(request: NextRequest) {
     return noStoreJson({ message: '인정서는 JPG, PNG, WEBP 또는 PDF 파일만 제출할 수 있습니다.' }, 415);
   }
   if (certificate && certificate.size > maxFileBytes) {
-    return noStoreJson({ message: '인정서 파일은 10MB 이하로 제출해 주세요.' }, 413);
+    return noStoreJson({ message: '인정서 파일은 4MB 이하로 제출해 주세요.' }, 413);
+  }
+  if (certificate) {
+    let validSignature = false;
+    try {
+      validSignature = await certificateMatchesDeclaredType(certificate);
+    } catch {
+      return noStoreJson({ message: '인정서 파일을 확인하지 못했습니다. 다시 선택해 주세요.' }, 400);
+    }
+    if (!validSignature) {
+      return noStoreJson({ message: '파일 확장자와 실제 파일 형식이 일치하지 않습니다.' }, 415);
+    }
   }
 
   let requestedCodes: string[];
@@ -141,7 +188,7 @@ export async function POST(request: NextRequest) {
 
   if (storeConfigured) {
     try {
-      const stored = await createIntake({
+      await createIntake({
         request_id: requestId,
         submitted_at: submittedAt,
         applicant_name: applicantName,
@@ -155,9 +202,6 @@ export async function POST(request: NextRequest) {
         relation,
         needs,
         items: intakeItems,
-      }, certificate);
-
-      await updateIntake(stored.id, {
         self_reported_care_grade: careGrade,
         eligibility_status: 'PENDING',
         verified_beneficiary_name: null,
@@ -168,7 +212,7 @@ export async function POST(request: NextRequest) {
         verified_eligible_items: [],
         eligibility_message: '',
         eligibility_checked_at: null,
-      } as unknown as Parameters<typeof updateIntake>[1]);
+      }, certificate);
     } catch {
       return noStoreJson({ message: '보안 접수 저장소에 신청을 저장하지 못했습니다. 잠시 후 다시 시도해 주세요.' }, 502);
     }
@@ -201,6 +245,7 @@ export async function POST(request: NextRequest) {
         body: outbound,
         headers: { 'x-atomcare-request-id': requestId },
         cache: 'no-store',
+        signal: AbortSignal.timeout(OUTBOUND_TIMEOUT_MS),
       });
       if (!response.ok && !storeConfigured) {
         return noStoreJson({ message: '신청 접수처가 요청을 처리하지 못했습니다. 잠시 후 다시 시도해 주세요.' }, 502);
