@@ -32,7 +32,7 @@ export default function HomePage() {
       <section className="hero">
         <div className="hero-copy">
           <p className="eyebrow">장기요양 복지용구 전문 플랫폼</p>
-          <h1>복지용구를 찾고,<br />비교하고,<br />본인부담금까지 한 번에</h1>
+          <h1>장기요양 복지용구를 찾고,<br />비교하고,<br />본인부담금까지 한 번에</h1>
           <p>구입 복지용구와 대여 복지용구를 한눈에 구분하고, 제품별 15%·9%·6% 본인부담금과 규격을 확인하세요.</p>
 
           <form action="/products" method="get" style={{ marginTop: 22 }}>
@@ -137,10 +137,13 @@ export default function HomePage() {
       <section className="section guide-block">
         <div>
           <p className="eyebrow">GUIDE</p>
-          <h2>급여가격보다 중요한 건 실제 본인부담금입니다</h2>
-          <p>일반 대상자는 15%, 감경 대상자는 9% 또는 6% 기준으로 확인할 수 있습니다. 제품별 급여가격 또는 월 대여가격과 함께 실제 부담 수준을 이해하기 쉽게 정리합니다.</p>
+          <h2>장기요양 복지용구, 한도·구입·대여부터 확인하세요</h2>
+          <p>복지용구의 뜻과 연간 한도, 구입·대여 방식, 본인부담금 확인 방법을 먼저 이해하면 필요한 제품을 더 빠르게 찾을 수 있습니다.</p>
         </div>
-        <Link className="button primary" href="/guide/copay">본인부담금 안내 보기</Link>
+        <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
+          <Link className="button primary" href="/guide/welfare-equipment">복지용구 이용 가이드</Link>
+          <Link className="button secondary" href="/guide/copay">본인부담금 안내</Link>
+        </div>
       </section>
     </>
   );
