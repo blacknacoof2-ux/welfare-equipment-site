@@ -24,6 +24,12 @@ if (home.response.headers.has('x-powered-by')) failures.push('x-powered-by heade
 const login = await fetchText('/admin/login');
 if (login.response.status !== 200) failures.push(`admin login returned ${login.response.status}`);
 if (!login.text.includes('복지용구 접수관리')) failures.push('admin login heading missing');
+if (!login.text.includes('수급자 관리')) failures.push('admin beneficiary management shortcut missing');
+for (const publicChromeMarker of ['class="site-header"', 'class="site-footer"', 'tel:0319753335']) {
+  if (login.text.includes(publicChromeMarker)) {
+    failures.push(`admin login must not render public site chrome: ${publicChromeMarker}`);
+  }
+}
 
 const admin = await fetchText('/admin');
 if (![302, 303, 307, 308].includes(admin.response.status)) failures.push(`unauthenticated admin returned ${admin.response.status}`);
@@ -45,6 +51,9 @@ const protectedVerify = await fetchText('/api/admin/intakes/00000000-0000-0000-0
 if (protectedVerify.response.status !== 401) {
   failures.push(`unauthenticated eligibility verify returned ${protectedVerify.response.status}, expected 401`);
 }
+if ((protectedVerify.response.headers.get('cache-control') ?? '') !== 'private, no-store') {
+  failures.push(`eligibility verify cache-control must be private, no-store; got ${protectedVerify.response.headers.get('cache-control') || '(missing)'}`);
+}
 
 const protectedPatch = await fetchText('/api/admin/intakes/00000000-0000-0000-0000-000000000000', {
   method: 'PATCH',
@@ -53,6 +62,9 @@ const protectedPatch = await fetchText('/api/admin/intakes/00000000-0000-0000-00
 });
 if (protectedPatch.response.status !== 401) {
   failures.push(`unauthenticated intake patch returned ${protectedPatch.response.status}, expected 401`);
+}
+if ((protectedPatch.response.headers.get('cache-control') ?? '') !== 'private, no-store') {
+  failures.push(`intake patch cache-control must be private, no-store; got ${protectedPatch.response.headers.get('cache-control') || '(missing)'}`);
 }
 
 const legacyVerify = await fetchText('/api/beneficiary/verify', {
@@ -128,10 +140,13 @@ console.log(JSON.stringify({
     securityHeadersChecked: Object.keys(expectedSecurityHeaders).length,
     poweredByHeaderPresent: home.response.headers.has('x-powered-by'),
     adminLoginStatus: login.response.status,
+    adminPublicChromeHidden: !['class="site-header"', 'class="site-footer"', 'tel:0319753335'].some((marker) => login.text.includes(marker)),
     unauthenticatedAdminStatus: admin.response.status,
     unauthenticatedInternalCatalogStatus: internalCatalogAudit.response.status,
     unauthenticatedEligibilityVerifyStatus: protectedVerify.response.status,
+    eligibilityVerifyNoStore: protectedVerify.response.headers.get('cache-control') === 'private, no-store',
     unauthenticatedIntakePatchStatus: protectedPatch.response.status,
+    intakePatchNoStore: protectedPatch.response.headers.get('cache-control') === 'private, no-store',
     legacyCustomerVerifyStatus: legacyVerify.response.status,
     applicationStatus: application.response.status,
     unconfiguredIntakeStatus: noStore.response.status,

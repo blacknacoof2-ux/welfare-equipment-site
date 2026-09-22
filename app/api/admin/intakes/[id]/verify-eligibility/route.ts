@@ -6,6 +6,8 @@ import { getBenefitMode, publishedProducts, type Product } from '@/lib/products'
 
 export const runtime = 'nodejs';
 
+const ELIGIBILITY_TIMEOUT_MS = 8_000;
+
 type RevalidationResult = {
   ok?: boolean;
   status?: string;
@@ -22,6 +24,13 @@ type RevalidationResult = {
   };
   eligibleItems?: IntakeEligibilityItem[];
 };
+
+function noStoreJson(body: unknown, status = 200) {
+  return NextResponse.json(body, {
+    status,
+    headers: { 'Cache-Control': 'private, no-store' },
+  });
+}
 
 function benefitModeMatches(product: Product, eligibleItem: IntakeEligibilityItem) {
   const mode = getBenefitMode(product);
@@ -66,25 +75,26 @@ function assessProducts(intake: IntakeWithEligibility, eligibleItems: IntakeElig
 
 export async function POST(_request: Request, { params }: { params: Promise<{ id: string }> }) {
   const session = await getCurrentAdminSession();
-  if (!session) return NextResponse.json({ message: '로그인이 필요합니다.' }, { status: 401 });
+  if (!session) return noStoreJson({ message: '로그인이 필요합니다.' }, 401);
   if (!isIntakeStoreConfigured()) {
-    return NextResponse.json({ message: '운영 접수 저장소가 아직 연결되지 않았습니다.' }, { status: 503 });
+    return noStoreJson({ message: '운영 접수 저장소가 아직 연결되지 않았습니다.' }, 503);
   }
 
   const beneficiaryApiBaseUrl = process.env.BENEFICIARY_API_BASE_URL?.trim().replace(/\/$/, '');
   const integrationSecret = process.env.BENEFICIARY_INTEGRATION_SECRET?.trim();
   if (!beneficiaryApiBaseUrl || !integrationSecret) {
-    return NextResponse.json({ message: '수급자 시스템 연동 환경설정을 확인해 주세요.' }, { status: 503 });
+    return noStoreJson({ message: '수급자 시스템 연동 환경설정을 확인해 주세요.' }, 503);
   }
 
   const { id } = await params;
   const rawIntake = await getIntake(id).catch(() => null);
-  if (!rawIntake) return NextResponse.json({ message: '접수건을 찾지 못했습니다.' }, { status: 404 });
+  if (!rawIntake) return noStoreJson({ message: '접수건을 찾지 못했습니다.' }, 404);
   const intake = rawIntake as IntakeWithEligibility;
   if (!intake.validity_start_date) {
-    return NextResponse.json({ message: '유효기간 시작일이 없어 자동 자격조회를 진행할 수 없습니다.' }, { status: 400 });
+    return noStoreJson({ message: '유효기간 시작일이 없어 자동 자격조회를 진행할 수 없습니다.' }, 400);
   }
 
+  const checkedAt = new Date().toISOString();
   let response: Response;
   let data: RevalidationResult | null;
   try {
@@ -100,13 +110,22 @@ export async function POST(_request: Request, { params }: { params: Promise<{ id
         validFrom: intake.validity_start_date,
       }),
       cache: 'no-store',
+      signal: AbortSignal.timeout(ELIGIBILITY_TIMEOUT_MS),
     });
     data = await response.json().catch(() => null) as RevalidationResult | null;
-  } catch {
-    return NextResponse.json({ message: '수급자 시스템에 연결하지 못했습니다.' }, { status: 502 });
+  } catch (error) {
+    const timedOut = error instanceof DOMException && error.name === 'TimeoutError';
+    const eligibilityMessage = timedOut
+      ? '수급자 시스템 응답이 지연되어 자동 조회를 중단했습니다. 잠시 후 다시 조회해 주세요.'
+      : '수급자 시스템에 연결하지 못했습니다. 잠시 후 다시 조회해 주세요.';
+    await updateIntake(id, {
+      eligibility_status: 'NEEDS_REVIEW',
+      eligibility_message: eligibilityMessage,
+      eligibility_checked_at: checkedAt,
+    } as unknown as Parameters<typeof updateIntake>[1]).catch(() => null);
+    return noStoreJson({ message: eligibilityMessage, code: timedOut ? 'ELIGIBILITY_TIMEOUT' : 'ELIGIBILITY_UNAVAILABLE' }, 502);
   }
 
-  const checkedAt = new Date().toISOString();
   if (!response.ok || !data?.ok) {
     const eligibilityMessage = data?.message || '수급자 자격정보를 확인하지 못했습니다.';
     await updateIntake(id, {
@@ -114,7 +133,7 @@ export async function POST(_request: Request, { params }: { params: Promise<{ id
       eligibility_message: eligibilityMessage,
       eligibility_checked_at: checkedAt,
     } as unknown as Parameters<typeof updateIntake>[1]).catch(() => null);
-    return NextResponse.json({ message: eligibilityMessage }, { status: response.status >= 400 ? response.status : 502 });
+    return noStoreJson({ message: eligibilityMessage }, response.status >= 400 ? response.status : 502);
   }
 
   if (data.status !== 'verified' || !data.beneficiary?.name) {
@@ -130,7 +149,7 @@ export async function POST(_request: Request, { params }: { params: Promise<{ id
       eligibility_message: eligibilityMessage,
       eligibility_checked_at: checkedAt,
     } as unknown as Parameters<typeof updateIntake>[1]);
-    return NextResponse.json({ ok: true, eligibilityStatus: 'NEEDS_REVIEW', intake: updated, message: eligibilityMessage });
+    return noStoreJson({ ok: true, eligibilityStatus: 'NEEDS_REVIEW', intake: updated, message: eligibilityMessage });
   }
 
   const eligibleItems = data.eligibleItems ?? [];
@@ -152,7 +171,7 @@ export async function POST(_request: Request, { params }: { params: Promise<{ id
     eligibility_checked_at: checkedAt,
   } as unknown as Parameters<typeof updateIntake>[1]);
 
-  return NextResponse.json({
+  return noStoreJson({
     ok: true,
     eligibilityStatus,
     blocked,

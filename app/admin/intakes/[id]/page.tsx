@@ -30,6 +30,8 @@ export default async function AdminIntakeDetailPage({ params }: { params: Promis
   const statusMeta = intakeStatusMeta[intake.status];
   const fullAddress = `${intake.address}${intake.address_detail ? ` ${intake.address_detail}` : ''}`;
   const eligibilityLabel = eligibilityStatusLabel[intake.eligibility_status] ?? intake.eligibility_status;
+  const verifiedItems = intake.verified_eligible_items ?? [];
+  const availableItems = verifiedItems.filter((item) => item.availableQuantity > 0);
 
   return (
     <>
@@ -73,15 +75,31 @@ export default async function AdminIntakeDetailPage({ params }: { params: Promis
               <div className="wide"><dt>자격확인 메모</dt><dd>{intake.eligibility_message || '아직 자격확인 결과가 없습니다.'}</dd></div>
             </dl>
 
-            {intake.verified_eligible_items?.length ? (
-              <div className="admin-product-list">
-                {intake.verified_eligible_items.map((item) => (
-                  <article key={`${item.itemCode}-${item.benefitType}`}>
-                    <div><span>{item.benefitType === 'purchase' ? '구입' : '대여'}</span><strong>{item.itemName}</strong><small>급여품목 코드 {item.itemCode}</small></div>
-                    <div><span>남은수량</span><strong>{item.availableQuantity}{item.unit}</strong></div>
-                    <div><span>계약완료</span><strong>{item.contractedQuantity}{item.unit}</strong></div>
-                  </article>
-                ))}
+            {verifiedItems.length ? (
+              <div>
+                <div className="admin-panel-heading">
+                  <div>
+                    <p className="admin-kicker">AVAILABLE BENEFITS</p>
+                    <h2>사용 가능한 복지용구</h2>
+                  </div>
+                  <span>{availableItems.length}개 품목</span>
+                </div>
+                {availableItems.length ? (
+                  <div className="admin-product-list">
+                    {availableItems.map((item) => (
+                      <article key={`${item.itemCode}-${item.benefitType}`}>
+                        <div><span>{item.benefitType === 'purchase' ? '구입' : '대여'}</span><strong>{item.itemName}</strong><small>급여품목 코드 {item.itemCode}</small></div>
+                        <div><span>사용 가능</span><strong>{item.availableQuantity}{item.unit}</strong></div>
+                        <div><span>계약완료</span><strong>{item.contractedQuantity}{item.unit}</strong></div>
+                      </article>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="admin-empty">
+                    <strong>현재 사용 가능한 복지용구가 없습니다.</strong>
+                    <p>남은 급여 가능수량이 0인 품목은 이 목록에서 제외됩니다. 신청 불가 사유는 위 자격확인 메모에서 확인할 수 있습니다.</p>
+                  </div>
+                )}
               </div>
             ) : null}
           </section>
