@@ -5,11 +5,18 @@ import { INTAKE_STATUSES, isIntakeStoreConfigured, updateIntake, type IntakeStat
 
 export const runtime = 'nodejs';
 
+function noStoreJson(body: unknown, status = 200) {
+  return NextResponse.json(body, {
+    status,
+    headers: { 'Cache-Control': 'private, no-store' },
+  });
+}
+
 export async function PATCH(request: Request, { params }: { params: Promise<{ id: string }> }) {
   const session = await getCurrentAdminSession();
-  if (!session) return NextResponse.json({ message: '로그인이 필요합니다.' }, { status: 401 });
+  if (!session) return noStoreJson({ message: '로그인이 필요합니다.' }, 401);
   if (!isIntakeStoreConfigured()) {
-    return NextResponse.json({ message: '운영 접수 저장소가 아직 연결되지 않았습니다.' }, { status: 503 });
+    return noStoreJson({ message: '운영 접수 저장소가 아직 연결되지 않았습니다.' }, 503);
   }
 
   let body: {
@@ -23,7 +30,7 @@ export async function PATCH(request: Request, { params }: { params: Promise<{ id
   try {
     body = await request.json();
   } catch {
-    return NextResponse.json({ message: '저장할 내용을 확인해 주세요.' }, { status: 400 });
+    return noStoreJson({ message: '저장할 내용을 확인해 주세요.' }, 400);
   }
 
   const status = typeof body.status === 'string' ? body.status : undefined;
@@ -36,22 +43,22 @@ export async function PATCH(request: Request, { params }: { params: Promise<{ id
     : Number(body.verifiedCopayRate);
 
   if (status && !INTAKE_STATUSES.includes(status as IntakeStatus)) {
-    return NextResponse.json({ message: '처리상태 값이 올바르지 않습니다.' }, { status: 400 });
+    return noStoreJson({ message: '처리상태 값이 올바르지 않습니다.' }, 400);
   }
   if (eligibilityStatus && !ELIGIBILITY_STATUSES.includes(eligibilityStatus as EligibilityStatus)) {
-    return NextResponse.json({ message: '자격상태 값이 올바르지 않습니다.' }, { status: 400 });
+    return noStoreJson({ message: '자격상태 값이 올바르지 않습니다.' }, 400);
   }
   if (staffNote && staffNote.length > 5000) {
-    return NextResponse.json({ message: '담당자 메모는 5,000자 이하로 입력해 주세요.' }, { status: 400 });
+    return noStoreJson({ message: '담당자 메모는 5,000자 이하로 입력해 주세요.' }, 400);
   }
   if (verifiedCareGrade && verifiedCareGrade.length > 40) {
-    return NextResponse.json({ message: '확인 등급을 다시 확인해 주세요.' }, { status: 400 });
+    return noStoreJson({ message: '확인 등급을 다시 확인해 주세요.' }, 400);
   }
   if (eligibilityMessage && eligibilityMessage.length > 2000) {
-    return NextResponse.json({ message: '자격확인 메모는 2,000자 이하로 입력해 주세요.' }, { status: 400 });
+    return noStoreJson({ message: '자격확인 메모는 2,000자 이하로 입력해 주세요.' }, 400);
   }
   if (verifiedCopayRate != null && (!Number.isFinite(verifiedCopayRate) || verifiedCopayRate < 0 || verifiedCopayRate > 100)) {
-    return NextResponse.json({ message: '본인부담률을 다시 확인해 주세요.' }, { status: 400 });
+    return noStoreJson({ message: '본인부담률을 다시 확인해 주세요.' }, 400);
   }
 
   const { id } = await params;
@@ -64,9 +71,9 @@ export async function PATCH(request: Request, { params }: { params: Promise<{ id
       ...(body.verifiedCopayRate !== undefined ? { verified_copay_rate: verifiedCopayRate } : {}),
       ...(eligibilityMessage !== undefined ? { eligibility_message: eligibilityMessage } : {}),
     } as unknown as Parameters<typeof updateIntake>[1]);
-    if (!updated) return NextResponse.json({ message: '접수건을 찾지 못했습니다.' }, { status: 404 });
-    return NextResponse.json({ ok: true, intake: updated });
+    if (!updated) return noStoreJson({ message: '접수건을 찾지 못했습니다.' }, 404);
+    return noStoreJson({ ok: true, intake: updated });
   } catch {
-    return NextResponse.json({ message: '접수건을 저장하지 못했습니다.' }, { status: 502 });
+    return noStoreJson({ message: '접수건을 저장하지 못했습니다.' }, 502);
   }
 }
