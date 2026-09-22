@@ -51,6 +51,8 @@ export type IntakeListItem = Pick<
   | 'updated_at'
 >;
 
+export type IntakeCounts = Record<IntakeStatus, number> & { total: number };
+
 type CreateIntakeInput = Omit<
   IntakeRecord,
   'id' | 'certificate_path' | 'certificate_name' | 'certificate_type' | 'status' | 'staff_note' | 'updated_at'
@@ -107,6 +109,27 @@ async function supabaseJson<T>(url: string, init: RequestInit): Promise<T> {
   }
   if (!raw) return undefined as T;
   return JSON.parse(raw) as T;
+}
+
+async function exactIntakeCount(status?: IntakeStatus) {
+  const { url } = config();
+  const filter = status ? `&status=eq.${encodeURIComponent(status)}` : '';
+  const response = await fetch(`${url}/rest/v1/consultations?select=id${filter}`, {
+    headers: supabaseHeaders({
+      Prefer: 'count=exact',
+      Range: '0-0',
+    }),
+    cache: 'no-store',
+  });
+  if (!response.ok) {
+    const detail = await response.text().catch(() => '');
+    throw new Error(`SUPABASE_COUNT_${response.status}:${detail.slice(0, 300)}`);
+  }
+
+  const contentRange = response.headers.get('content-range') ?? '';
+  const match = /\/(\d+)$/.exec(contentRange);
+  if (!match) throw new Error('SUPABASE_COUNT_MISSING');
+  return Number(match[1]);
 }
 
 export async function createIntake(input: CreateIntakeInput, certificate: File | null) {
@@ -211,6 +234,26 @@ export async function listIntakes(limit = 200): Promise<IntakeListItem[]> {
     `${url}/rest/v1/consultations?select=${encodeURIComponent(select)}&order=submitted_at.desc&limit=${Math.min(Math.max(limit, 1), 500)}`,
     { headers: supabaseHeaders() },
   );
+}
+
+export async function getIntakeCounts(): Promise<IntakeCounts> {
+  if (!isIntakeStoreConfigured()) {
+    return { NEW: 0, REVIEWING: 0, CONTACTED: 0, COMPLETED: 0, HOLD: 0, total: 0 };
+  }
+
+  const [total, ...statusCounts] = await Promise.all([
+    exactIntakeCount(),
+    ...INTAKE_STATUSES.map((status) => exactIntakeCount(status)),
+  ]);
+
+  return {
+    NEW: statusCounts[0],
+    REVIEWING: statusCounts[1],
+    CONTACTED: statusCounts[2],
+    COMPLETED: statusCounts[3],
+    HOLD: statusCounts[4],
+    total,
+  };
 }
 
 export async function getIntake(id: string): Promise<IntakeRecord | null> {
