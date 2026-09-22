@@ -54,7 +54,18 @@ export type IntakeListItem = Pick<
 type CreateIntakeInput = Omit<
   IntakeRecord,
   'id' | 'certificate_path' | 'certificate_name' | 'certificate_type' | 'status' | 'staff_note' | 'updated_at'
->;
+> & {
+  self_reported_care_grade?: string | null;
+  eligibility_status?: string;
+  verified_beneficiary_name?: string | null;
+  verified_care_grade?: string | null;
+  verified_copay_rate?: number | null;
+  verified_valid_from?: string | null;
+  verified_valid_to?: string | null;
+  verified_eligible_items?: unknown[];
+  eligibility_message?: string;
+  eligibility_checked_at?: string | null;
+};
 
 function config() {
   return {
@@ -145,6 +156,16 @@ export async function createIntake(input: CreateIntakeInput, certificate: File |
     certificate_type: certificate?.type ?? null,
     status: 'NEW' satisfies IntakeStatus,
     staff_note: '',
+    self_reported_care_grade: input.self_reported_care_grade ?? null,
+    eligibility_status: input.eligibility_status ?? 'PENDING',
+    verified_beneficiary_name: input.verified_beneficiary_name ?? null,
+    verified_care_grade: input.verified_care_grade ?? null,
+    verified_copay_rate: input.verified_copay_rate ?? null,
+    verified_valid_from: input.verified_valid_from ?? null,
+    verified_valid_to: input.verified_valid_to ?? null,
+    verified_eligible_items: input.verified_eligible_items ?? [],
+    eligibility_message: input.eligibility_message ?? '',
+    eligibility_checked_at: input.eligibility_checked_at ?? null,
   };
 
   try {
