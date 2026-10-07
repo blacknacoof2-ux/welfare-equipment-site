@@ -53,6 +53,20 @@ function extractDetailSrcs(html, slug) {
   return Array.from(html.matchAll(pattern), (match) => decodeHtmlAttribute(match[1]));
 }
 
+function extractJsonLd(html) {
+  return Array.from(
+    html.matchAll(/<script[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi),
+    (match) => {
+      try {
+        return JSON.parse(match[1]);
+      } catch {
+        return null;
+      }
+    },
+  ).filter(Boolean);
+}
+
+
 function isStandardCatalogHero(url) {
   if (!url) return false;
   const normalized = url.toLowerCase();
@@ -168,6 +182,18 @@ const results = await mapLimit(productUrls, 20, async (sitemapUrl) => {
     const blockedDetailRendered = detailUrls.filter((detailUrl) => blockedSellerDetailUrls.has(detailUrl));
     const hasGalleryThumbs = html.includes('product-gallery-thumbs');
     const hasLegacyVerificationPanel = html.includes('원문·검증 자료');
+    const jsonLd = extractJsonLd(html);
+    const productLd = jsonLd.find((item) => item?.['@type'] === 'Product') ?? null;
+    const isRentalOnly = html.includes('mode-rental');
+    const structuredDataOk = isRentalOnly
+      ? productLd === null
+      : Boolean(
+          productLd
+          && productLd.offers?.['@type'] === 'Offer'
+          && Number(productLd.offers.price) > 0
+          && productLd.offers.priceCurrency === 'KRW'
+          && productLd.offers.url === sitemapUrl
+        );
 
     return {
       slug,
@@ -178,6 +204,9 @@ const results = await mapLimit(productUrls, 20, async (sitemapUrl) => {
       blockedDetailRendered,
       hasGalleryThumbs,
       hasLegacyVerificationPanel,
+      isRentalOnly,
+      hasProductStructuredData: Boolean(productLd),
+      structuredDataOk,
       manualHero: Boolean(heroUrl && manuallyAuditedHeroUrls.has(heroUrl)),
       ok: response.status === 200
         && Boolean(heroUrl)
@@ -185,7 +214,8 @@ const results = await mapLimit(productUrls, 20, async (sitemapUrl) => {
         && detailPolicyFailures.length === 0
         && blockedDetailRendered.length === 0
         && !hasGalleryThumbs
-        && !hasLegacyVerificationPanel,
+        && !hasLegacyVerificationPanel
+        && structuredDataOk,
     };
   } catch (error) {
     return {
@@ -197,6 +227,9 @@ const results = await mapLimit(productUrls, 20, async (sitemapUrl) => {
       blockedDetailRendered: [],
       hasGalleryThumbs: false,
       hasLegacyVerificationPanel: false,
+      isRentalOnly: false,
+      hasProductStructuredData: false,
+      structuredDataOk: false,
       manualHero: false,
       ok: false,
       error: error instanceof Error ? error.message : String(error),
@@ -216,6 +249,9 @@ const countMismatch = productUrls.length !== expectedProductCount;
 const detailPagesWithImages = results.filter((item) => item.detailUrls.length > 0).length;
 const renderedDetailImageCount = results.reduce((sum, item) => sum + item.detailUrls.length, 0);
 const verificationPanelCount = results.filter((item) => item.hasLegacyVerificationPanel).length;
+const rentalOnlyPages = results.filter((item) => item.isRentalOnly).length;
+const productStructuredDataPages = results.filter((item) => item.hasProductStructuredData).length;
+const structuredDataFailures = results.filter((item) => !item.structuredDataOk).map((item) => item.slug);
 
 const sourceCounts = results.reduce((acc, item) => {
   if (!item.heroUrl) acc.MISSING += 1;
@@ -241,6 +277,9 @@ console.log(JSON.stringify({
     requiredDetailProducts: requiredDetailSlugs.size,
     missingRequiredDetailCount: missingRequiredDetail.length,
     legacyVerificationPanelCount: verificationPanelCount,
+    rentalOnlyPages,
+    productStructuredDataPages,
+    structuredDataFailures: structuredDataFailures.length,
     searchOnlyVisibilityChecks: browseSurfaces.length * searchOnlyModels.length + searchOnlyModels.length,
     searchOnlyVisibilityFailures: visibilityFailures.length,
     sitemapSearchOnlyFailures: sitemapSearchOnlyFailures.length,
@@ -250,6 +289,7 @@ console.log(JSON.stringify({
   missingRequiredDetail,
   visibilityFailures,
   sitemapSearchOnlyFailures,
+  structuredDataFailures,
   failures,
 }, null, 2));
 
