@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { categories } from '@/lib/all-categories';
+import { filterBrowseProducts } from '@/lib/product-visibility';
 import { publishedProducts } from '@/lib/products';
 
 function latestCheckedAt(products: typeof publishedProducts) {
@@ -11,7 +12,8 @@ function latestCheckedAt(products: typeof publishedProducts) {
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:5000';
-  const catalogLastModified = latestCheckedAt(publishedProducts);
+  const indexableProducts = filterBrowseProducts(publishedProducts);
+  const catalogLastModified = latestCheckedAt(indexableProducts);
 
   const staticPages: MetadataRoute.Sitemap = [
     { url: baseUrl, ...(catalogLastModified ? { lastModified: catalogLastModified } : {}) },
@@ -24,7 +26,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const categoryPages: MetadataRoute.Sitemap = categories
     .map((category) => {
-      const categoryProducts = publishedProducts.filter((product) => product.category === category.name);
+      const categoryProducts = indexableProducts.filter((product) => product.category === category.name);
       if (categoryProducts.length === 0) return null;
       const lastModified = latestCheckedAt(categoryProducts);
       return {
@@ -34,7 +36,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })
     .filter((entry): entry is MetadataRoute.Sitemap[number] => Boolean(entry));
 
-  const productPages: MetadataRoute.Sitemap = publishedProducts.map((product) => ({
+  const productPages: MetadataRoute.Sitemap = indexableProducts.map((product) => ({
     url: `${baseUrl}/products/${product.slug}`,
     lastModified: new Date(product.sourceCheckedAt),
   }));
