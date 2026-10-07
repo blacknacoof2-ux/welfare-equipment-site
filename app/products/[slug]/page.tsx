@@ -113,7 +113,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
     );
   }
 
-  const productLd = {
+  const productLd = benefitMode === 'RENTAL' ? null : {
     '@context': 'https://schema.org',
     '@type': 'Product',
     name: displayTitle,
@@ -124,6 +124,12 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
     description: product.description,
     sku: product.benefitCode,
     url: productUrl,
+    offers: {
+      '@type': 'Offer',
+      price: product.benefitPrice,
+      priceCurrency: 'KRW',
+      url: productUrl,
+    },
     additionalProperty,
     ...(structuredImages.length > 0 ? { image: structuredImages } : {}),
   };
@@ -140,7 +146,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
   return (
     <section className="section">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productLd) }} />
+      {productLd && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productLd) }} />}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
 
       <nav aria-label="breadcrumb" className="muted" style={{ marginBottom: 16 }}>
