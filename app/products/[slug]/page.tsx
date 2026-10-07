@@ -9,6 +9,7 @@ import { categories } from '@/lib/all-categories';
 import { getBenefitModeEmoji, getBenefitModeLabel, getCategoryEmoji } from '@/lib/category-ui';
 import { getProductDisplayTitle, isSameProductNameAndModel } from '@/lib/product-display';
 import { getProductMedia } from '@/lib/product-images';
+import { isSearchOnlyProduct } from '@/lib/product-visibility';
 import {
   getBenefitMode,
   getCopays,
@@ -40,6 +41,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: `${displayTitle} ${modeText}·급여가격`,
     description,
     alternates: { canonical: `/products/${product.slug}` },
+    robots: isSearchOnlyProduct(product) ? { index: false, follow: true } : { index: true, follow: true },
     openGraph: {
       title: `${displayTitle} | ${product.category}`,
       description,
@@ -68,9 +70,22 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   const primaryPriceLabel = getPrimaryPriceLabel(product);
   const rentalCopays = product.rentalMonthlyPrice ? getCopays(product.rentalMonthlyPrice) : null;
   const category = categories.find((item) => item.name === product.category);
-  const relatedProducts = publishedProducts.filter(
-    (item) => item.category === product.category && item.slug !== product.slug,
+  const categoryPeers = publishedProducts.filter(
+    (item) => item.category === product.category,
+  );
+  const relatedProducts = categoryPeers.filter(
+    (item) => item.slug !== product.slug,
   ).slice(0, 4);
+  const categoryPrices = categoryPeers.map((item) => item.benefitPrice);
+  const categoryMinPrice = Math.min(...categoryPrices);
+  const categoryMaxPrice = Math.max(...categoryPrices);
+  const categoryPricePosition = categoryPeers.length > 1
+    ? product.benefitPrice === categoryMinPrice
+      ? '현재 공개 제품 중 급여가격이 가장 낮은 편입니다.'
+      : product.benefitPrice === categoryMaxPrice
+        ? '현재 공개 제품 중 급여가격이 가장 높은 편입니다.'
+        : `현재 공개된 ${product.category} ${categoryPeers.length}개 중 중간 가격대에 해당합니다.`
+    : '현재 이 품목에서 공개 중인 단일 검증 제품입니다.';
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:5000';
   const categoryUrl = category ? `${baseUrl}/categories/${category.slug}` : `${baseUrl}/products`;
   const productUrl = `${baseUrl}/products/${product.slug}`;
@@ -190,6 +205,18 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           </table>
         </div>
       )}
+
+      <div className="content-card" style={{ marginTop: 20 }}>
+        <h2>{categoryEmoji} 같은 {product.category} 안에서 비교하면</h2>
+        <p>
+          현재 공개 중인 {product.category}은(는) {categoryPeers.length}개이며,
+          급여가격 범위는 {formatter.format(categoryMinPrice)}원{priceSuffix}부터 {formatter.format(categoryMaxPrice)}원{priceSuffix}입니다.
+          {' '}{displayTitle}의 {primaryPriceLabel}은 {formatter.format(product.benefitPrice)}원{priceSuffix}으로, {categoryPricePosition}
+        </p>
+        <p className="muted">
+          가격만으로 선택하지 말고 규격·중량·재질·사용환경과 실제 본인부담금을 함께 비교하세요.
+        </p>
+      </div>
 
       <div className="content-card" style={{ marginTop: 20 }}>
         <h2>{categoryEmoji} 제품 상세정보</h2>
