@@ -24,17 +24,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/compare/wag02-vs-sporty` },
   ];
 
-  const categoryPages: MetadataRoute.Sitemap = categories
-    .map((category) => {
-      const categoryProducts = indexableProducts.filter((product) => product.category === category.name);
-      if (categoryProducts.length === 0) return null;
-      const lastModified = latestCheckedAt(categoryProducts);
-      return {
-        url: `${baseUrl}/categories/${category.slug}`,
-        ...(lastModified ? { lastModified } : {}),
-      };
-    })
-    .filter((entry): entry is MetadataRoute.Sitemap[number] => Boolean(entry));
+  const categoryPages: MetadataRoute.Sitemap = categories.flatMap((category) => {
+    const categoryProducts = indexableProducts.filter((product) => product.category === category.name);
+    if (categoryProducts.length === 0) return [];
+    const lastModified = latestCheckedAt(categoryProducts);
+    return [{
+      url: `${baseUrl}/categories/${category.slug}`,
+      ...(lastModified ? { lastModified } : {}),
+    }];
+  });
 
   const productPages: MetadataRoute.Sitemap = indexableProducts.map((product) => ({
     url: `${baseUrl}/products/${product.slug}`,
