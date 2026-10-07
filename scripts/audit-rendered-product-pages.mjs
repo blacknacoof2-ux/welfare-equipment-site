@@ -1,5 +1,5 @@
 const baseUrl = process.env.AUDIT_BASE_URL ?? 'http://127.0.0.1:5000';
-const expectedProductCount = Number(process.env.EXPECTED_PRODUCT_COUNT ?? 352);
+const expectedProductCount = Number(process.env.EXPECTED_PRODUCT_COUNT ?? 350);
 const searchOnlyModels = ['HM-606', 'HM-608'];
 
 const manuallyAuditedHeroUrls = new Set([
@@ -150,6 +150,10 @@ const productUrls = Array.from(new Set(locs.filter((value) => {
   }
 })));
 
+const sitemapSearchOnlyFailures = productUrls.filter((value) =>
+  searchOnlyModels.some((model) => value.toUpperCase().includes(model.replace('-', '').toUpperCase())),
+);
+
 const results = await mapLimit(productUrls, 20, async (sitemapUrl) => {
   const parsed = new URL(sitemapUrl);
   const url = `${baseUrl}${parsed.pathname}${parsed.search}`;
@@ -239,11 +243,13 @@ console.log(JSON.stringify({
     legacyVerificationPanelCount: verificationPanelCount,
     searchOnlyVisibilityChecks: browseSurfaces.length * searchOnlyModels.length + searchOnlyModels.length,
     searchOnlyVisibilityFailures: visibilityFailures.length,
+    sitemapSearchOnlyFailures: sitemapSearchOnlyFailures.length,
   },
   manualHeroes,
   pagesWithoutDetailImages,
   missingRequiredDetail,
   visibilityFailures,
+  sitemapSearchOnlyFailures,
   failures,
 }, null, 2));
 
@@ -253,4 +259,5 @@ if (
   || manualHeroes.length !== 3
   || missingRequiredDetail.length
   || visibilityFailures.length
+  || sitemapSearchOnlyFailures.length
 ) process.exitCode = 1;
