@@ -5,11 +5,21 @@ import { categories } from '@/lib/all-categories';
 import { filterBrowseProducts } from '@/lib/product-visibility';
 import { getBenefitMode, publishedProducts, type BenefitMode } from '@/lib/products';
 
-export const metadata: Metadata = {
-  title: '복지용구 제품 찾기',
-  description: '정상 유통이 확인된 장기요양 복지용구를 품목·구입·대여로 구분해 찾고, 제품별 15%·9%·6% 본인부담금을 확인하세요.',
-  alternates: { canonical: '/products' },
-};
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: Promise<{ category?: string; q?: string; mode?: string; page?: string }>;
+}): Promise<Metadata> {
+  const { category, q, mode, page } = await searchParams;
+  const hasFilteredView = Boolean(category?.trim() || q?.trim() || mode?.trim() || (page && page !== '1'));
+
+  return {
+    title: '복지용구 제품 찾기',
+    description: '정상 유통이 확인된 장기요양 복지용구를 품목·구입·대여로 구분해 찾고, 제품별 15%·9%·6% 본인부담금을 확인하세요.',
+    alternates: { canonical: '/products' },
+    robots: hasFilteredView ? { index: false, follow: true } : { index: true, follow: true },
+  };
+}
 
 const validModes = new Set<BenefitMode>(['PURCHASE', 'RENTAL', 'PURCHASE_OR_RENTAL']);
 const PAGE_SIZE = 36;
@@ -71,6 +81,12 @@ export default async function ProductsPage({
       <p className="eyebrow">PRODUCTS</p>
       <h1>{title}</h1>
       <p className="muted">정상 유통이 확인된 상품만 노출하며, 품목·구입·대여 여부와 15%·9%·6% 본인부담금을 한 화면에서 확인할 수 있습니다.</p>
+
+      <nav className="category-link-cloud" aria-label="복지용구 주요 품목" style={{ marginTop: 18 }}>
+        {activeCategories.map((item) => (
+          <Link href={`/categories/${item.slug}`} key={item.slug}>{item.name} 제품 보기</Link>
+        ))}
+      </nav>
 
       <div className="mode-filter-tabs" aria-label="구입 대여 구분">
         <Link className={!selectedMode ? 'active' : ''} href={makeHref({ nextMode: null })}>전체</Link>
