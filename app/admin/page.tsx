@@ -1,35 +1,42 @@
 import { requireAdminSession } from '@/lib/admin-auth';
 import { intakeStatusMeta } from '@/lib/intake-status';
-import { isIntakeStoreConfigured, listIntakes, type IntakeStatus } from '@/lib/intake-store';
+import { getIntakeCounts, isIntakeStoreConfigured, listIntakes, type IntakeCounts, type IntakeStatus } from '@/lib/intake-store';
 
 export const dynamic = 'force-dynamic';
 
 const dateTime = new Intl.DateTimeFormat('ko-KR', {
+  timeZone: 'Asia/Seoul',
   year: 'numeric',
   month: '2-digit',
   day: '2-digit',
   hour: '2-digit',
   minute: '2-digit',
+  hour12: false,
 });
+
+const emptyCounts: IntakeCounts = {
+  NEW: 0,
+  REVIEWING: 0,
+  CONTACTED: 0,
+  COMPLETED: 0,
+  HOLD: 0,
+  total: 0,
+};
 
 export default async function AdminDashboardPage() {
   await requireAdminSession();
   const configured = isIntakeStoreConfigured();
 
   let intakes = [] as Awaited<ReturnType<typeof listIntakes>>;
+  let counts = emptyCounts;
   let loadError = '';
   if (configured) {
     try {
-      intakes = await listIntakes();
+      [intakes, counts] = await Promise.all([listIntakes(), getIntakeCounts()]);
     } catch {
-      loadError = '접수 저장소에서 목록을 불러오지 못했습니다. Supabase 연결과 schema.sql 적용 여부를 확인해 주세요.';
+      loadError = '접수 저장소에서 목록 또는 통계를 불러오지 못했습니다. Supabase 연결과 schema.sql 적용 여부를 확인해 주세요.';
     }
   }
-
-  const counts = intakes.reduce<Record<IntakeStatus, number>>((acc, intake) => {
-    acc[intake.status] += 1;
-    return acc;
-  }, { NEW: 0, REVIEWING: 0, CONTACTED: 0, COMPLETED: 0, HOLD: 0 });
 
   return (
     <>
@@ -56,7 +63,7 @@ export default async function AdminDashboardPage() {
             <strong>{counts[status]}</strong>
           </div>
         ))}
-        <div className="admin-stat-card total"><span>전체 접수</span><strong>{intakes.length}</strong></div>
+        <div className="admin-stat-card total"><span>전체 접수</span><strong>{counts.total}</strong></div>
       </section>
 
       <section className="admin-panel">
@@ -65,7 +72,7 @@ export default async function AdminDashboardPage() {
             <p className="admin-kicker">INTAKES</p>
             <h2>최근 접수</h2>
           </div>
-          <span className="admin-count">{intakes.length}건</span>
+          <span className="admin-count">최근 {intakes.length}건 표시</span>
         </div>
 
         {intakes.length === 0 ? (
