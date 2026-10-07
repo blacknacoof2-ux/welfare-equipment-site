@@ -2,33 +2,41 @@ import type { MetadataRoute } from 'next';
 import { categories } from '@/lib/all-categories';
 import { publishedProducts } from '@/lib/products';
 
+function latestCheckedAt(products: typeof publishedProducts) {
+  const timestamps = products
+    .map((product) => Date.parse(product.sourceCheckedAt))
+    .filter((value) => Number.isFinite(value));
+  return timestamps.length > 0 ? new Date(Math.max(...timestamps)) : undefined;
+}
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:5000';
-  const now = new Date();
+  const catalogLastModified = latestCheckedAt(publishedProducts);
 
   const staticPages: MetadataRoute.Sitemap = [
-    { url: baseUrl, lastModified: now, changeFrequency: 'daily', priority: 1 },
-    { url: `${baseUrl}/products`, lastModified: now, changeFrequency: 'daily', priority: 0.9 },
-    { url: `${baseUrl}/consult`, lastModified: now, changeFrequency: 'weekly', priority: 0.95 },
-    { url: `${baseUrl}/guide/welfare-equipment`, lastModified: now, changeFrequency: 'monthly', priority: 0.9 },
-    { url: `${baseUrl}/guide/copay`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
-    { url: `${baseUrl}/compare/wag02-vs-sporty`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
+    { url: baseUrl, ...(catalogLastModified ? { lastModified: catalogLastModified } : {}) },
+    { url: `${baseUrl}/products`, ...(catalogLastModified ? { lastModified: catalogLastModified } : {}) },
+    { url: `${baseUrl}/consult` },
+    { url: `${baseUrl}/guide/welfare-equipment` },
+    { url: `${baseUrl}/guide/copay` },
+    { url: `${baseUrl}/compare/wag02-vs-sporty` },
   ];
 
   const categoryPages: MetadataRoute.Sitemap = categories
-    .filter((category) => publishedProducts.some((product) => product.category === category.name))
-    .map((category) => ({
-      url: `${baseUrl}/categories/${category.slug}`,
-      lastModified: now,
-      changeFrequency: 'weekly',
-      priority: category.slug === 'adult-walker' ? 0.9 : 0.8,
-    }));
+    .map((category) => {
+      const categoryProducts = publishedProducts.filter((product) => product.category === category.name);
+      if (categoryProducts.length === 0) return null;
+      const lastModified = latestCheckedAt(categoryProducts);
+      return {
+        url: `${baseUrl}/categories/${category.slug}`,
+        ...(lastModified ? { lastModified } : {}),
+      };
+    })
+    .filter((entry): entry is MetadataRoute.Sitemap[number] => Boolean(entry));
 
   const productPages: MetadataRoute.Sitemap = publishedProducts.map((product) => ({
     url: `${baseUrl}/products/${product.slug}`,
     lastModified: new Date(product.sourceCheckedAt),
-    changeFrequency: 'weekly',
-    priority: 0.8,
   }));
 
   return [...staticPages, ...categoryPages, ...productPages];
