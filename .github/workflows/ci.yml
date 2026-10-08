@@ -53,6 +53,12 @@ jobs:
           npm run start:5000 > /tmp/welfare-site.log 2>&1 &
           server_pid=$!
           trap 'kill $server_pid || true' EXIT
+          for i in {1..40}; do
+            if curl -fsS http://127.0.0.1:5000/ >/tmp/home.html; then break; fi
+            sleep 0.5
+          done
+          curl -fsSI http://127.0.0.1:5000/favicon.ico | grep -qi '^HTTP/.* 200'
+          grep -Eqi '<link[^>]+rel=["'"']icon["'"'][^>]+href=["'"']/favicon\.ico' /tmp/home.html
           npm run audit:rendered-product-pages
           npm run audit:admin-intake
           npm run audit:product-compare
