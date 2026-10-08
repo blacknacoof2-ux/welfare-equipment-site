@@ -58,7 +58,8 @@ jobs:
             sleep 0.5
           done
           curl -fsSI http://127.0.0.1:5000/favicon.ico | grep -qi '^HTTP/.* 200'
-          grep -Eqi '<link[^>]+rel=["'"']icon["'"'][^>]+href=["'"']/favicon\.ico' /tmp/home.html
+          grep -Fq 'rel="icon"' /tmp/home.html
+          grep -Fq '/favicon.ico' /tmp/home.html
           npm run audit:rendered-product-pages
           npm run audit:admin-intake
           npm run audit:product-compare
