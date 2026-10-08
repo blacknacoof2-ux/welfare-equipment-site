@@ -56,3 +56,5 @@ jobs:
           npm run audit:rendered-product-pages
           npm run audit:admin-intake
           npm run audit:product-compare
+          test "$(curl -s -o /tmp/favicon.ico -w '%{http_code}' http://127.0.0.1:5000/favicon.ico)" = "200"
+          curl -fsS http://127.0.0.1:5000/ | grep -Eiq 'rel=["'"'"'][^"'"'"']*icon'
