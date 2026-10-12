@@ -122,6 +122,24 @@ export default function WelfareEquipmentGuidePage() {
       </div>
 
       <div className="content-card" style={{ marginTop: 20 }}>
+        <h2>보호자 상담 전 확인할 5가지</h2>
+        <p>제품명만으로 적합성을 결정하기 어렵습니다. 상담 전에 다음 항목을 기록하면 모델별 규격과 급여방식을 더 정확히 비교할 수 있습니다.</p>
+        <ol>
+          <li><strong>사용 공간:</strong> 실내·실외 사용 비중과 가장 좁은 출입문·복도 폭</li>
+          <li><strong>신체 조건:</strong> 이용자의 키와 보행·이동 시 필요한 보조 수준</li>
+          <li><strong>이동 및 보관:</strong> 접이 필요 여부, 차량 적재, 제품을 들어 올릴 보호자의 상황</li>
+          <li><strong>제품 규격:</strong> 손잡이 높이·제품 폭·무게·좌석 유무 등의 확인 가능한 정보</li>
+          <li><strong>급여 조건:</strong> 장기요양 인정내용, 구입·대여 구분, 실제 적용 본인부담률</li>
+        </ol>
+        <p className="muted">이 체크리스트는 비교를 돕는 참고용이며, 실제 사용 적합성과 급여 가능 여부는 전문가 상담 및 공단 확인을 거쳐 결정해야 합니다.</p>
+        <div className="category-link-cloud">
+          <Link href="/categories/adult-walker">성인용보행기 규격·급여가격 확인</Link>
+          <Link href="/compare/wag02-vs-sporty">WAG02·SPORTY 실제 모델 비교</Link>
+          <Link href="/guide/copay">본인부담금 계산 기준 확인</Link>
+        </div>
+      </div>
+
+      <div className="content-card" style={{ marginTop: 20 }}>
         <h2>제품을 고를 때 꼭 확인하세요</h2>
         <p>같은 품목이라도 크기, 무게, 접이 방식, 소재, 설치 조건과 사용 가능 햇수가 다를 수 있습니다. 단순히 가격이 낮은 제품보다 사용자의 신체상태와 실제 생활공간에 맞는 제품을 선택하는 것이 중요합니다.</p>
         <p>아톰케어 복지용구 사이트는 현재 유통상태를 확인하고 급여코드와 급여가격을 별도 자료로 교차 확인한 상품부터 공개합니다.</p>

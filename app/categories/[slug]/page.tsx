@@ -8,7 +8,7 @@ import { getCategoryEmoji } from '@/lib/category-ui';
 import { getProductDisplayTitle } from '@/lib/product-display';
 import { getProductMedia } from '@/lib/product-images';
 import { filterBrowseProducts } from '@/lib/product-visibility';
-import { getBenefitMode, publishedProducts } from '@/lib/products';
+import { getBenefitMode, getCopays, publishedProducts } from '@/lib/products';
 
 export function generateStaticParams() {
   return categories.map((category) => ({ slug: category.slug }));
@@ -122,6 +122,47 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
         <h2>{emoji} {category.name} 본인부담금 확인 방법</h2>
         <p className="muted">제품의 급여가격 또는 월 대여 급여가격을 기준으로 일반 15%, 감경 9%, 감경 6% 금액을 계산합니다. 이 사이트는 0% 금액은 표시하지 않습니다.</p>
       </div>
+
+      {category.slug === 'adult-walker' && products.length > 0 && (
+        <div className="content-card" style={{ marginTop: 20 }}>
+          <h2>성인용보행기 종류와 선택 기준</h2>
+          <p>보행기는 사용자에게 필요한 지지 방식, 실내외 사용 환경, 바퀴 구조와 접이·휴대 조건에 따라 비교해야 합니다. &lsquo;워커 보행기&rsquo;나 &lsquo;노인 보행기&rsquo;처럼 검색하더라도 실제 적합성은 모델의 확인된 규격을 기준으로 판단하세요.</p>
+          <ul>
+            <li><strong>실내 이용:</strong> 가장 좁은 문폭·복도 폭과 회전 공간을 먼저 확인합니다.</li>
+            <li><strong>실외 이용:</strong> 바퀴 구조·브레이크 조작 방법·노면 사용조건을 제품별로 확인합니다.</li>
+            <li><strong>이동·보관:</strong> 전체 무게, 접이 구조와 차량 적재 가능 여부를 확인합니다.</li>
+            <li><strong>급여가격:</strong> 공개된 제품별 가격과 본인부담금의 차이를 비교합니다.</li>
+          </ul>
+          <p className="muted">모든 제품을 같은 종류로 단정하지 않고, 실제 확인된 개별 제품 정보와 사용설명서를 기준으로 선택해야 합니다.</p>
+          <h3>대표 제품 급여가격·본인부담금 비교</h3>
+          <div style={{ overflowX: 'auto' }}>
+            <table className="price-table">
+              <thead><tr><th>제품</th><th>급여가격</th><th>15% 부담</th><th>9% 부담</th><th>6% 부담</th><th>중량</th></tr></thead>
+              <tbody>
+                {products.filter((product) => product.model === 'WAG02' || product.model === 'SPORTY').map((product) => {
+                  const copays = getCopays(product.benefitPrice);
+                  return (
+                    <tr key={product.slug}>
+                      <th><Link href={`/products/${product.slug}`}>{getProductDisplayTitle(product)}</Link></th>
+                      <td>{product.benefitPrice.toLocaleString('ko-KR')}원</td>
+                      <td>{copays.copay15.toLocaleString('ko-KR')}원</td>
+                      <td>{copays.copay9.toLocaleString('ko-KR')}원</td>
+                      <td>{copays.copay6.toLocaleString('ko-KR')}원</td>
+                      <td>{product.weightKg !== undefined ? `${product.weightKg}kg` : '확인 필요'}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+          <p className="muted">비교표는 현재 게시 중인 제품 원장의 급여가격을 그대로 사용합니다. 해당 수급자의 실제 부담률과 구매 가능 여부는 별도 확인이 필요합니다.</p>
+          <div className="category-link-cloud">
+            <Link href="/compare/wag02-vs-sporty">WAG02·SPORTY 상세 비교</Link>
+            <Link href="/guide/welfare-equipment">복지용구 이용 가이드</Link>
+            <Link href="/guide/copay">본인부담금 계산 기준</Link>
+          </div>
+        </div>
+      )}
 
       {category.slug === 'adult-walker' && walkerCandidates.length > 0 && (
         <AdultWalkerRecommender candidates={walkerCandidates} />
