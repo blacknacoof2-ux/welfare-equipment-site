@@ -126,7 +126,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
       {category.slug === 'adult-walker' && products.length > 0 && (
         <div className="content-card" style={{ marginTop: 20 }}>
           <h2>성인용보행기 종류와 선택 기준</h2>
-          <p>보행기는 사용자에게 필요한 지지 방식, 실내외 사용 환경, 바퀴 구조와 접이·휴대 조건에 따라 비교해야 합니다. '워커 보행기'나 '노인 보행기'처럼 검색하더라도 실제 적합성은 모델의 확인된 규격을 기준으로 판단하세요.</p>
+          <p>보행기는 사용자에게 필요한 지지 방식, 실내외 사용 환경, 바퀴 구조와 접이·휴대 조건에 따라 비교해야 합니다. &lsquo;워커 보행기&rsquo;나 &lsquo;노인 보행기&rsquo;처럼 검색하더라도 실제 적합성은 모델의 확인된 규격을 기준으로 판단하세요.</p>
           <ul>
             <li><strong>실내 이용:</strong> 가장 좁은 문폭·복도 폭과 회전 공간을 먼저 확인합니다.</li>
             <li><strong>실외 이용:</strong> 바퀴 구조·브레이크 조작 방법·노면 사용조건을 제품별로 확인합니다.</li>
