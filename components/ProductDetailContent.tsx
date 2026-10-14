@@ -20,7 +20,7 @@ const verifiedOverrides: Record<string, Partial<DetailGuide>> = {
       "벽체 재질과 고정 방식이 이 제품의 설치 조건에 맞는지 공급사 설명서를 확인하세요.",
     ],
   },
-  'catalog-f18030045119-safety-handle': {
+  'f18030045119-safety-handle': {
     highlights: [
       "YGC01은 스테인리스와 ABS수지로 표기된 유광정밀 안전손잡이입니다.",
       "등록 규격은 길이 55cm·높이 7.4cm이며 손잡이둘레는 32Φ로 기록되어 있습니다.",
@@ -31,7 +31,7 @@ const verifiedOverrides: Record<string, Partial<DetailGuide>> = {
       "32Φ 표기의 측정 기준과 설치 부속품 포함 여부는 제조사 자료에서 확인하세요.",
     ],
   },
-  'catalog-f18030060113-safety-handle': {
+  'f18030060113-safety-handle': {
     highlights: [
       "ASH-120은 천연목 손잡이와 아연합금 소재가 등록된 에이엠이 안전손잡이입니다.",
       "제품 길이는 41cm이며 높이 5.5cm, 손잡이 직경 3.5cm로 기재되어 있습니다.",
