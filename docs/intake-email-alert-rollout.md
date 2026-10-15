@@ -13,6 +13,7 @@
 4. 실제 대상 Supabase DB에 대해 `supabase/sql/intake-email-outbox.sql`을 검토한 다음 명시적으로 승인받아 적용하세요. 이 SQL은 기존 행을 소급 통지하지 않습니다.
 5. `supabase/functions/send-intake-alert/index.ts`를 배포하되, 호출 가능 경로의 인증 정책을 별도로 검증하세요. 사용자 브라우저는 호출할 수 없어야 합니다.
 6. Supabase Edge Function Secret 설정:
+   - `INTAKE_EMAIL_ENABLED`: 기본 미설정/false. 테스트 통과 및 별도 활성화 승인 시에만 `true` 설정
    - `INTAKE_EMAIL_WORKER_SECRET`: 최소 32자리 고엔트로피 랜덤, 비공개 (스케줄러 헤더와 동일)
    - `RESEND_API_KEY`: Resend 서버 API 키
    - `INTAKE_EMAIL_FROM`: Resend에서 인증된 발신주소
@@ -27,6 +28,8 @@
 - 작업 선점은 DB의 `FOR UPDATE SKIP LOCKED`와 2분 lease로 중복 동시 처리를 줄입니다. Resend Idempotency-Key 재사용으로 공급자 중복 방지도 시도합니다. 완전한 종단 간 exactly-once 보장은 불가하므로 공급자 결과 불확실 시 관리자 점검 절차가 필요합니다.
 - 지연된 작업과 4회 이상 실패한 작업은 `needs_review`에 유지하고 자동 발송을 중단합니다.
 - 23시간 경과한 작업은 자동 재시도를 중단합니다(Resend idempotency 보존기간 경계 대비).
+- `INTAKE_EMAIL_ENABLED=true`가 없는 한 어떠한 이메일도 발송하지 않습니다. 이중 안전장치로 수신처는 `atomcare@naver.com` 일치 여부를 검사합니다.
+- Resend 성공 응답에서 메시지 ID를 확인하지 못하면 발송 완료로 표시하지 않고 재검토 대상으로 관리합니다.
 - 사전 SQL 승인·Edge Function 배포·비밀값 설정·스케줄러 연결 전에는 어떤 메일도 발송하지 않습니다.
 - 기존 고객 접수 API, Admin, 기존 웹훅, 상품·SEO·Production 설정은 이 PR에서 변경하지 않습니다.
 
