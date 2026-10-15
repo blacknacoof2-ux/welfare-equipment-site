@@ -13,6 +13,7 @@ const json = (body: unknown, status = 200) => new Response(JSON.stringify(body),
 
 function getConfig() {
   return {
+    enabled: Deno.env.get('INTAKE_EMAIL_ENABLED') === 'true',
     workerSecret: Deno.env.get('INTAKE_EMAIL_WORKER_SECRET')?.trim() ?? '',
     resendKey: Deno.env.get('RESEND_API_KEY')?.trim() ?? '',
     from: Deno.env.get('INTAKE_EMAIL_FROM')?.trim() ?? '',
@@ -88,9 +89,15 @@ async function processJob(config: ReturnType<typeof getConfig>, job: Job): Promi
       });
       return 'failed';
     }
-    const result = await send.json().catch(() => ({})) as {id?: string};
+    const result = await send.json().catch(() => ({})) as {id?: unknown};
+    if (typeof result.id !== 'string' || result.id.length < 8 || result.id.length > 200) {
+      await rpc(config, 'fail_intake_email', {
+        p_job_id: job.id, p_lease_token: job.lease_token, p_error_code: 'RESEND_NO_MESSAGE_ID',
+      });
+      return 'failed';
+    }
     await rpc(config, 'complete_intake_email', {
-      p_job_id: job.id, p_lease_token: job.lease_token, p_provider_id: result.id || 'accepted_without_id',
+      p_job_id: job.id, p_lease_token: job.lease_token, p_provider_id: result.id,
     });
     return 'sent';
   } catch {
@@ -105,8 +112,9 @@ Deno.serve(async (request: Request) => {
   if (request.method !== 'POST') return json({ok:false}, 405);
   const c = getConfig();
   // Fail closed: no outbound email until all configuration is explicitly installed.
-  if (!c.workerSecret || c.workerSecret.length < 32 || !c.resendKey || !c.from ||
-      !c.to || !c.supabaseUrl || !c.serviceKey) return json({ok:false, reason:'NOT_CONFIGURED'}, 503);
+  if (!c.enabled || !c.workerSecret || c.workerSecret.length < 32 || !c.resendKey || !c.from ||
+      c.to.toLowerCase() !== 'atomcare@naver.com' || !c.supabaseUrl || !c.serviceKey)
+    return json({ok:false, reason:'NOT_CONFIGURED'}, 503);
   if (request.headers.get('x-atomcare-worker-secret') !== c.workerSecret) return json({ok:false}, 401);
   let jobs: Job[];
   try { jobs = await rpc<Job[]>(c, 'claim_intake_email_batch', {p_limit:5}); }
