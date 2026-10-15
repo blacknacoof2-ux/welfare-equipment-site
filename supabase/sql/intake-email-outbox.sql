@@ -5,7 +5,7 @@ BEGIN;
 
 CREATE TABLE IF NOT EXISTS public.intake_email_outbox (
   id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
-  intake_id uuid NOT NULL REFERENCES public.consultations(id) ON DELETE RESTRICT,
+  intake_id uuid NOT NULL REFERENCES public.consultations(id) ON DELETE CASCADE,
   event_type text NOT NULL DEFAULT 'consultation.created'
     CHECK (event_type = 'consultation.created'),
   request_id text NOT NULL,
