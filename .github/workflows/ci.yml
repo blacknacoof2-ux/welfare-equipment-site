@@ -42,6 +42,9 @@ jobs:
       - name: Detail image URL integrity audit
         run: REQUIRE_REMOTE_DETAIL=1 npm run audit:detail-image-integrity
 
+      - name: Intake email worker mock tests (no network)
+        run: node --test scripts/test-intake-email.mjs
+
       - name: Typecheck
         run: npm run typecheck
 
