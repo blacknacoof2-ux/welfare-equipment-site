@@ -228,9 +228,9 @@ export async function POST(request: NextRequest) {
         submittedAt,
         productCount: intakeItems.length,
       });
-    } catch (error) {
-      // Do not expose SMTP credentials or customer personal data in logs.
-      console.error('[intake-notification]', error instanceof Error ? error.message.replace(/[^A-Z0-9_]/g, '') : 'UNKNOWN');
+    } catch {
+      // Log a fixed error code only: SMTP errors may contain secrets or customer data.
+      console.error('[intake-notification] SMTP_SEND_FAILED');
     }
   }
 
