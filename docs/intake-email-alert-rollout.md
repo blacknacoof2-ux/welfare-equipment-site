@@ -42,3 +42,25 @@
 - 기존 5건(점검 당시) 접수에 과거분 이메일이 생성되지 않는지 확인
 - 기존 `npm run lint`, `npm run typecheck`, `npm run build`, `npm run audit:admin-intake` 통과
 - 명시적 배포·발송 승인 후에만 Production 변경
+
+## 2026-10-15 읽기 전용 연결·DNS 사전점검
+
+- GitHub PR #24 최신 격리 PostgreSQL 통합 테스트 및 CI: PASS. 단, 이것은 Production 적용의 승인이 아님.
+- Vercel 프로젝트 `welfare-equipment-site`: Production에 `SUPABASE_URL`, `CONSULTATION_WEBHOOK_URL` 환경변수 항목 존재.
+- **중요**: Vercel API는 위 Sensitive 값의 실제 내용을 반환하지 않음. 따라서 Supabase 프로젝트의 URL 일치와 웹훅 URL의 활성 여부는 **미확인**. 항목 존재만으로 활성화됐다고 주장하지 말 것.
+- Supabase에서 조회 가능한 후보 프로젝트 `welfare-equipment-site`(`dafvwbrfiolccagymufz`)는 활성. Edge Functions 0개 확인. 실제 Production의 접수 DB와 동일한지는 연결값 확인 전까지 단정 금지.
+- Production Vercel 배포는 PR #23의 커밋 `ff1125416ca5`, READY. PR #24는 Draft 상태로 **미병합**.
+- Vercel 도메인 설정에서 `atomcare.co.kr`의 네임서버가 `ns.gabia.net`, `ns1.gabia.co.kr`, `ns.gabia.co.kr`로 확인됨. DNS의 실관리자는 **가비아**이며 Vercel DNS 레코드 목록이 비어 있다고 해서 가비아 DNS 레코드가 없다는 뜻은 아님.
+- 현재 실행 환경에서는 가비아 권한 및 공용 DNS 실시간 조회가 불가능하므로 `notify.atomcare.co.kr` DNS 발신 인증 상태는 **미확인**.
+
+### 발신 도메인 준비 — 관리자 수행·검증 필요
+
+1. [Resend Domains](https://resend.com/domains)에서 `notify.atomcare.co.kr`을 발신용으로 추가한 다음, Resend에 표시되는 **정확한** DNS 레코드와 상태를 확인한다. 인증 완료 전 실제 이메일을 보내지 않는다.
+2. 가비아 관리계정에서 **`atomcare.co.kr` DNS 관리**를 열고 Resend가 제공한 하위 도메인용 DKIM/SPF 및 필요한 MX/CNAME 레코드만 추가한다. 레코드 이름·값·우선순위는 반드시 해당 Resend 화면을 그대로 따른다. 이 문서에 임의 SPF/DKIM 값을 작성하거나 자동으로 생성하지 않는다.
+3. `atomcare.co.kr` 루트의 MX, TXT(SPF), 기존 웹사이트 A/CNAME 등을 변경·삭제하지 않는다. `atomcare@naver.com`은 **알림 수신 주소**이며 `alerts@notify.atomcare.co.kr`은 **발신 주소**다.
+4. Resend에 `Verified`가 표시되면, DNS 레코드값이나 API 키 대신 도메인 인증 완료 화면(민감 값 가림)만 공유한다.
+5. 별도 승인 후 실제 서비스 비밀값은 Supabase Edge Function Secrets에 안전하게 등록한다. **API 키를 채팅, GitHub Issue/PR, Vercel 공개 설정 등에 붙여넣지 않는다.** 메일 발송 활성화 플래그는 계속 `false`로 유지한다.
+6. Vercel Production의 `SUPABASE_URL` 항목을 사용자가 화면에서 확인하고, 실제 프로젝트 ref가 `dafvwbrfiolccagymufz`와 일치하는지 **일치/불일치만** 회신한다. 실제 URL이나 service role key는 공유하지 않는다.
+7. Vercel Production의 `CONSULTATION_WEBHOOK_URL`이 빈 값인지/사용 중인지, 수신 서비스 관리자가 누구인지 확인한다. URL, 서명키, 고객 개인정보를 외부로 공개하지 않는다. 민감정보 외부 전송 경로에 대한 별도 승인 없이 기존 웹훅을 이메일 발송 시스템에 재사용하지 않는다.
+
+**계속 차단되는 단계:** 실제 Production DB SQL 실행, Supabase Edge Function 배포, Cron 등록, DNS 레코드 변경, Resend 실발송은 별도 사용자의 구체적 승인 없이는 실행하지 않는다.
