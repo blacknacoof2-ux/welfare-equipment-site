@@ -1,3 +1,4 @@
+// @ts-nocheck -- Deno Edge Function is checked in Supabase's Deno runtime, not Next.js TypeScript.
 // Supabase Edge Function: notification worker (NOT deployed by this PR).
 // Secret env required: INTAKE_EMAIL_WORKER_SECRET, RESEND_API_KEY,
 // INTAKE_EMAIL_FROM, INTAKE_EMAIL_TO, SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY.
