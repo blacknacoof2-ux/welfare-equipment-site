@@ -1,0 +1,5 @@
+# This function uses a private, high-entropy x-atomcare-worker-secret header.
+# Gateway JWT checking must be disabled ONLY for this function; the handler
+# rejects missing/incorrect secrets and refuses to send unless enabled.
+[functions.send-intake-alert]
+verify_jwt = false
