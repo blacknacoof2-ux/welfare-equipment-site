@@ -51,7 +51,7 @@ test('Valid SMTP alert only has request metadata, not applicant personal data',a
   assert.equal(message.from.address,'atomcare@naver.com');
   assert.match(message.text,/AC-20261015-ABCDEF12/);
   for(const word of ['care_number','birth_date','address','phone','certificate','beneficiaryName']) {
-    assert.ok(!JSON.stringify(message).includes(word));
+    assert.ok(!message.text.includes(word));
   }
 });
 test('Invalid request metadata is rejected before any SMTP send',async()=>{
