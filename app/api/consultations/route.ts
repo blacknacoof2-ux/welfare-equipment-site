@@ -1,4 +1,5 @@
 import { randomUUID } from 'node:crypto';
+import { sendIntakeEmailNotification } from '@/lib/intake-email-smtp';
 import { NextRequest, NextResponse } from 'next/server';
 import { createIntake, isIntakeStoreConfigured, type IntakeProduct } from '@/lib/intake-store';
 import { getPriceSuffix, publishedProducts, type Product } from '@/lib/products';
@@ -215,6 +216,21 @@ export async function POST(request: NextRequest) {
       }, certificate);
     } catch {
       return noStoreJson({ message: '보안 접수 저장소에 신청을 저장하지 못했습니다. 잠시 후 다시 시도해 주세요.' }, 502);
+    }
+  }
+
+  // SMTP notification is best-effort and only follows a successful, persisted intake.
+  // Never include applicant details, care numbers or certificate files in email.
+  if (storeConfigured) {
+    try {
+      await sendIntakeEmailNotification({
+        requestId,
+        submittedAt,
+        productCount: intakeItems.length,
+      });
+    } catch {
+      // Log a fixed error code only: SMTP errors may contain secrets or customer data.
+      console.error('[intake-notification] SMTP_SEND_FAILED');
     }
   }
 

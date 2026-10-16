@@ -42,6 +42,9 @@ jobs:
       - name: Detail image URL integrity audit
         run: REQUIRE_REMOTE_DETAIL=1 npm run audit:detail-image-integrity
 
+      - name: Naver SMTP intake tests (mock, no email)
+        run: node --test scripts/test-intake-smtp.mjs
+
       - name: Typecheck
         run: npm run typecheck
 
