@@ -46,7 +46,8 @@ export async function POST(request: Request) {
   if (!process.env.SUPABASE_URL || !process.env.SUPABASE_SERVICE_ROLE_KEY) {
     return reply('시험 발송 제한 저장소가 연결되지 않았습니다.', 503);
   }
-  const limit = await checkPersistentRateLimit('admin-smtp-test:20261016', 1, 24 * 60 * 60 * 1000);
+  const kstDay = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Seoul', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
+  const limit = await checkPersistentRateLimit(`admin-smtp-test:${kstDay}`, 1, 24 * 60 * 60 * 1000);
   if (limit.source !== 'distributed') return reply('발송 횟수 제한을 검증하지 못했습니다.', 503);
   if (!limit.allowed) return reply('오늘 시험 발송 시도가 이미 있었습니다.', 429);
 
