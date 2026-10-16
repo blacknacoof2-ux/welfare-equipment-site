@@ -45,6 +45,9 @@ jobs:
       - name: Naver SMTP intake tests (mock, no email)
         run: node --test scripts/test-intake-smtp.mjs
 
+      - name: Admin-only SMTP test tests (offline, no email)
+        run: node --test scripts/test-admin-smtp-test.mjs
+
       - name: Typecheck
         run: npm run typecheck
 
