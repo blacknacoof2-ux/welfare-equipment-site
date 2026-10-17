@@ -33,3 +33,15 @@ test('admin route authenticates and requires explicit origin, confirmation and p
   assert.ok(!route.includes('createIntake('));
   assert.ok(!route.includes('updateIntake('));
 });
+
+test('diagnostics use fixed categories and do not print SMTP error details', () => {
+  assert.match(route, /classifySmtpTestError\(error\)/);
+  assert.match(route, /AUTH_REJECTED/);
+  assert.match(route, /CONNECTION_FAILED/);
+  assert.match(route, /CONNECTION_TIMEOUT_OR_SOCKET/);
+  assert.match(route, /TLS_FAILED/);
+  assert.match(route, /CONFIG_INVALID/);
+  assert.ok(!route.includes('console.error(error)'));
+  assert.ok(!route.includes('error.stack'));
+  assert.ok(!route.includes('error.response)'));
+});
