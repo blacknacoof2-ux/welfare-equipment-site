@@ -13,6 +13,23 @@ function reply(message: string, status: number) {
   });
 }
 
+
+// Allowlist only: exception.message, stack, response, and auth payloads are
+// intentionally never accessed or logged.
+export function classifySmtpTestError(error: unknown): string {
+  if (!(error instanceof Error)) return 'UNKNOWN';
+  if (error.message === 'SMTP_TEST_CONFIG_INVALID') return 'CONFIG_INVALID';
+  if (error.message === 'SMTP_TEST_DISABLED') return 'TEST_DISABLED';
+  if (error.message === 'SMTP_TEST_RECIPIENT_REJECTED') return 'RECIPIENT_REJECTED';
+  const details = error as Error & { code?: unknown; responseCode?: unknown };
+  if (details.code === 'EAUTH' || details.responseCode === 535 || details.responseCode === 534) return 'AUTH_REJECTED';
+  if (details.code === 'ETIMEDOUT' || details.code === 'ESOCKET') return 'CONNECTION_TIMEOUT_OR_SOCKET';
+  if (details.code === 'ECONNECTION' || details.code === 'ECONNREFUSED' || details.code === 'ENOTFOUND' || details.code === 'EHOSTUNREACH') return 'CONNECTION_FAILED';
+  if (details.code === 'ETLS' || details.code === 'ESOCKETTLS') return 'TLS_FAILED';
+  if (details.code === 'EENVELOPE' || details.responseCode === 550 || details.responseCode === 553) return 'RECIPIENT_REJECTED';
+  return 'UNKNOWN';
+}
+
 export async function POST(request: Request) {
   const session = await getCurrentAdminSession();
   if (!session) return reply('관리자 로그인이 필요합니다.', 401);
@@ -56,9 +73,11 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: true, status: 'smtp_accepted' }, {
       headers: { 'Cache-Control': 'private, no-store' },
     });
-  } catch {
-    // Never reveal SMTP server responses or credentials to browser/logs.
-    console.error('[admin-smtp-test] SMTP_TEST_FAILED');
-    return reply('SMTP 시험에 실패했습니다. 관리자 로그를 확인해 주세요.', 502);
+  } catch (error: unknown) {
+    // Log a fixed category only. Never expose SMTP error messages, server replies,
+    // SMTP credentials, customer data, or IP addresses.
+    const diagnostic = classifySmtpTestError(error);
+    console.error('[admin-smtp-test] SMTP_TEST_FAILED:' + diagnostic);
+    return reply('SMTP 시험에 실패했습니다. 오류 분류: ' + diagnostic, 502);
   }
 }
